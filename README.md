@@ -1,7 +1,7 @@
 # NLP Studies
 
 ## Book notes
-## Processamento de Linguagem Natural: Conceitos, Técnicas e Aplicações em Português
+- Processamento de Linguagem Natural: Conceitos, Técnicas e Aplicações em Português
 
 ## Natural Language Processing (NLP) Course Notes
 - [Natural Language Processing with Classification and Vector Spaces](https://github.com/k3ybladewielder/nlp/blob/main/nlp_classification_vectors/nlp_classification_vectors.ipynb)
