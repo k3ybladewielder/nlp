@@ -31,6 +31,9 @@ Os sons da fala podem ser digitalizados e processados usando-se algoritmos tanto
 
 Um sistema computacional para a língua falada necessita de capacidades tanto de reconhecimento quanto de síntese de fala. Entretanto, esses dois componentes não são suficientes para a construção de um sistema útil. Um componente de compreensão e diálogo é necessário para a interação com o usuário; o conhecimento de domínio é necessário para guiar a interpretação da fala pelo sistema e permitir que ele determine a ação apropriada. Para todos esses componentes, há uma série de desafios, que incluem robustez, flexibilidade, facilidade de integração e eficiência de engenharia.
 
+## 4.1...
+
+
 ## Recap Deep Learning
 **Seq2Seq (Sequência para Sequência):** Seq2Seq é uma arquitetura de rede neural projetada para lidar com dados sequenciais, como texto ou fala. Ela é especialmente útil em tarefas de processamento de linguagem natural, como tradução automática ou resumo de texto. O conceito básico por trás do Seq2Seq é que você alimenta uma sequência de entrada para a rede neural e ela produz uma sequência de saída. Isso é feito por meio de duas partes principais: um codificador e um decodificador. O codificador processa a entrada e captura as informações relevantes, enquanto o decodificador gera a sequência de saída a partir dessas informações. Por exemplo, na tradução automática, o codificador pode receber uma frase em inglês e o decodificador produzirá a mesma frase em outro idioma, como francês.
 
