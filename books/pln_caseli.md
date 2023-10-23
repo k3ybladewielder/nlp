@@ -31,7 +31,20 @@ Os sons da fala podem ser digitalizados e processados usando-se algoritmos tanto
 
 Um sistema computacional para a língua falada necessita de capacidades tanto de reconhecimento quanto de síntese de fala. Entretanto, esses dois componentes não são suficientes para a construção de um sistema útil. Um componente de compreensão e diálogo é necessário para a interação com o usuário; o conhecimento de domínio é necessário para guiar a interpretação da fala pelo sistema e permitir que ele determine a ação apropriada. Para todos esses componentes, há uma série de desafios, que incluem robustez, flexibilidade, facilidade de integração e eficiência de engenharia.
 
-## 4.1...
+## Token e Type
+Token é um termo que significa qualquer sequência de caracteres à qual se atribui um valor. Diante dessa definição, é comum associarmos token à palavra escrita. Nesse sentido, a quantidade de palavras + sinais de pontuação de uma sentença equivale à quantidade de tokens, por exemplo, a frase do Exemplo 4.2 contém 12 tokens, já que, em PLN, os sinais de pontuação (vírgula e ponto final) também são considerados tokens.
+
+Exemplo 4.2  
+- Eu sempre viajo para Campinas, para Salvador e para Belém.
+
+Type, por sua vez, refere-se aos tokens únicos encontrados numa frase ou texto. Retomando a frase do Exemplo 4.2, encontramos 10 types (“eu”, “sempre”, “viajo”, “para”, “Campinas”, “,”, “Salvador”, “e”, “Belém” e “.”). Nessa sentença, a palavra “para” ocorre três vezes, então ela é contada 3 vezes como token, mas apenas 1 vez como type.
+
+## Lexema, Lexia e Lema
+Lexema é sinônimo de unidade lexical, o que implica características de som, forma e significado. Por exemplo, “comprei” é um lexema cuja representação fonética é [kõpr’ ej] ; morfologicamente, é um verbo flexionado na primeira pessoa do singular, no pretérito perfeito do modo indicativo. Seu significado é o que encontramos nos dicionários: adquirir (algo, produto, serviço etc.) em troca de pagamento.
+
+
+# 4.2.2
+
 
 
 ## Recap Deep Learning
