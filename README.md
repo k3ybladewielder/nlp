@@ -11,4 +11,4 @@
   - HuggingFace NLP Course
   
 ## Resources
-- Datacamp Spacy Cheatsheet [blog post](https://www.datacamp.com/cheat-sheet/spacy-cheat-sheet-advanced-nlp-in-python)[pdf](spacy_cheatsheet.pdf)
+- Datacamp Spacy Cheatsheet [(blog post)](https://www.datacamp.com/cheat-sheet/spacy-cheat-sheet-advanced-nlp-in-python) and [(pdf)](spacy_cheatsheet.pdf)
