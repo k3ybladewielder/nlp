@@ -14,3 +14,4 @@ Natural Language Processing (NLP) Course Notes, resources and exercises.
   
 ## Resources
 - Datacamp Spacy Cheatsheet [(blog post)](https://www.datacamp.com/cheat-sheet/spacy-cheat-sheet-advanced-nlp-in-python) and [(pdf)](spacy_cheatsheet.pdf)
+- [Prompt Engineering Guide](https://www.promptingguide.ai/)
