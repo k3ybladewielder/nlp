@@ -10,7 +10,7 @@
   - Natural Language Processing with Attention Models @ DeeplearningAi [Licença CC BY-NC-SA](https://github.com/k3ybladewielder/math_for_ml_ds/blob/main/LICENSE)
   - [HuggingFace NLP Course](https://github.com/k3ybladewielder/nlp/blob/main/huggingface_course/nlp_course.ipynb)
   - [Stanford XCS224U: Natural Language Understanding](https://github.com/k3ybladewielder/nlp/blob/main/Stanford%XCS224U/Stanford%XCS224U.md)
-  - [Stanford CS224N: NLP with Deep Learning]((https://github.com/k3ybladewielder/nlp/blob/main/Stanford%CS224N/Stanford%CS224N.md)
+  - [Stanford CS224N: NLP with Deep Learning](https://github.com/k3ybladewielder/nlp/blob/main/Stanford%CS224N/Stanford%CS224N.md)
   
 ## Resources
 - Datacamp Spacy Cheatsheet [(blog post)](https://www.datacamp.com/cheat-sheet/spacy-cheat-sheet-advanced-nlp-in-python) and [(pdf)](spacy_cheatsheet.pdf)
