@@ -46,7 +46,7 @@ Para superar essa limitação, muitas abordagens mais recentes no campo de Proce
 
 ## Model structure and linguistic structure
 
-A estrutura linguística de frases e a estrutura de modelos referem-se a dois conceitos diferentes, mas podemos explorar ambos.
+A estrutura linguística de frases e a estrutura de modelos referem-se a dois conceitos diferentes.
 
 ### Estrutura Linguística de Frases:
 
@@ -93,17 +93,13 @@ A estrutura linguística de frases e a estrutura de modelos referem-se a dois co
 
 Em resumo, a estrutura linguística de frases lida com a organização de palavras para formar uma unidade significativa, enquanto a estrutura de modelos refere-se à arquitetura e organização de redes neurais ou modelos de linguagem para processar e entender a linguagem natural de maneira mais dinâmica e contextual.
 
-Vamos explorar as estruturas dos modelos GloVe, RNN (Redes Neurais Recorrentes), Tree Structure Networks RNN e Bidirectional RNN.
-
 ### 1. GloVe (Global Vectors for Word Representation):
-
 #### Estrutura:
 - **Tipo:** Modelo de aprendizado não supervisionado para representações de palavras.
 - **Arquitetura:** Não é uma rede neural, mas uma técnica de vetorização de palavras baseada em estatísticas globais de co-ocorrência.
 - **Treinamento:** Utiliza uma matriz de co-ocorrência e técnicas de fatoração para aprender representações distribuídas de palavras.
 
 ### 2. RNN (Redes Neurais Recorrentes):
-
 #### Estrutura:
 - **Tipo:** Modelo de aprendizado supervisionado, usado principalmente para sequências.
 - **Arquitetura:** Possui células recorrentes que permitem a informação ser persistente ao longo do tempo. Cada unidade recebe uma entrada e a informação da unidade anterior.
@@ -116,35 +112,6 @@ Vamos explorar as estruturas dos modelos GloVe, RNN (Redes Neurais Recorrentes),
 - **Treinamento:** Semelhante a uma RNN tradicional, mas com considerações especiais para a estrutura de árvore.
 
 ### 4. Bidirectional RNN (RNN Bidirecional):
-
-#### Estrutura:
-- **Tipo:** Extensão da RNN padrão.
-- **Arquitetura:** Possui duas camadas de células recorrentes, uma processando a sequência da esquerda para a direita e a outra da direita para a esquerda.
-- **Vantagem:** Captura informações contextuais de ambos os lados da sequência, melhorando a compreensão contextual.
-
-Essas estruturas representam diferentes abordagens para lidar com dados sequenciais, como texto. O GloVe é uma técnica baseada em estatísticas, enquanto RNN, Tree Structure Networks RNN e Bidirectional RNN são modelos de aprendizado de máquina que incorporam arquiteturas específicas para lidar com a natureza sequencial ou hierárquica dos dados linguísticos. Cada um tem suas aplicações específicas em tarefas de processamento de linguagem natural (NLP) e pode ser escolhido com base nas características do problema em questão.
-
-### 5. GloVe (Global Vectors for Word Representation):
-
-#### Estrutura:
-- **Tipo:** Modelo de aprendizado não supervisionado para representações de palavras.
-- **Arquitetura:** Não é uma rede neural, mas uma técnica de vetorização de palavras baseada em estatísticas globais de co-ocorrência.
-- **Treinamento:** Utiliza uma matriz de co-ocorrência e técnicas de fatoração para aprender representações distribuídas de palavras.
-
-### 6. RNN (Redes Neurais Recorrentes):
-
-#### Estrutura:
-- **Tipo:** Modelo de aprendizado supervisionado, usado principalmente para sequências.
-- **Arquitetura:** Possui células recorrentes que permitem a informação ser persistente ao longo do tempo. Cada unidade recebe uma entrada e a informação da unidade anterior.
-- **Treinamento:** Usa backpropagation através do tempo (BPTT) para ajustar os pesos durante o treinamento.
-
-### 7. Tree Structure Networks RNN:
-#### Estrutura:
-- **Tipo:** Modelo de aprendizado supervisionado, projetado para processar estruturas de árvores.
-- **Arquitetura:** Utiliza estruturas de árvore para modelar relações hierárquicas entre elementos de uma sequência.
-- **Treinamento:** Semelhante a uma RNN tradicional, mas com considerações especiais para a estrutura de árvore.
-
-### 8. Bidirectional RNN (RNN Bidirecional):
 #### Estrutura:
 - **Tipo:** Extensão da RNN padrão.
 - **Arquitetura:** Possui duas camadas de células recorrentes, uma processando a sequência da esquerda para a direita e a outra da direita para a esquerda.
@@ -156,7 +123,6 @@ Essas estruturas representam diferentes abordagens para lidar com dados sequenci
 O mecanismo de atenção é uma técnica fundamental em modelos de aprendizado de máquina, especialmente em tarefas de processamento de linguagem natural (NLP), onde é crucial considerar diferentes partes de uma sequência de entrada de maneira ponderada. O mecanismo de atenção permite que o modelo atribua diferentes pesos a diferentes partes da entrada, destacando as informações mais relevantes para a tarefa em questão.
 
 ### Mecanismo de Atenção em NLP:
-
 1. **Entrada Sequencial:**
    - Suponha que temos uma sequência de palavras ou vetores de entrada, como uma frase em um problema de NLP.
 
@@ -176,14 +142,12 @@ O mecanismo de atenção é uma técnica fundamental em modelos de aprendizado d
 ### Exemplo Simples:
 
 Considere a frase: "O gato está dormindo no sofá."
-
 - **Consulta:** Pode ser uma representação contextual, como um vetor que representa o significado de uma palavra específica.
 - **Pontuação de Atenção:** Calcula a similaridade entre a consulta e cada palavra da frase.
 - **Pesos Normalizados:** Aplica a função softmax nas pontuações para obter pesos normalizados.
 - **Atenção Ponderada:** Combina as palavras ponderadas pela atenção para obter uma representação contextualizada.
 
 ### Aplicações:
-
 - **Tradução Automática:** Destacar palavras relevantes em uma frase de origem para a tradução.
 - **Sumarização de Texto:** Identificar partes importantes de um texto para criar uma sumarização concisa.
 - **Processamento de Perguntas e Respostas:** Focar em partes relevantes do contexto para gerar respostas.
@@ -300,3 +264,5 @@ Aqui está uma explicação mais detalhada sobre como o fine-tuning é realizado
    - Fine-tuning de modelos para tarefas de tradução automática, adaptando modelos de linguagem para pares de idiomas específicos.
 
 O fine-tuning em NLP é uma estratégia poderosa para adaptar modelos pré-treinados a tarefas específicas de linguagem, permitindo uma utilização mais eficiente de recursos computacionais e dados.
+
+
