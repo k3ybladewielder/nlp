@@ -1,4 +1,5 @@
 # Stanford XCS224U: Natural Language Understanding
+> O XCS224u tem o curso CS224n como prerequisito.[Background Materials](https://web.stanford.edu/class/cs224u/background.html)
 
 ## Course Overview, Part 1
 ...
@@ -265,4 +266,35 @@ Aqui está uma explicação mais detalhada sobre como o fine-tuning é realizado
 
 O fine-tuning em NLP é uma estratégia poderosa para adaptar modelos pré-treinados a tarefas específicas de linguagem, permitindo uma utilização mais eficiente de recursos computacionais e dados.
 
+# Tranformers Core Model Structure
+A arquitetura dos modelos Transformers, introduzida por Vaswani et al. em 2017, é uma arquitetura de aprendizado de máquina que se tornou amplamente utilizada em tarefas de Processamento de Linguagem Natural (NLP) e além. A característica distintiva dos modelos Transformers é a atenção, que permite que o modelo atenda simultaneamente a todas as posições de entrada em uma sequência, em vez de depender de uma abordagem sequencial ou recorrente.
 
+Aqui estão os principais componentes da arquitetura Transformer:
+
+1. **Encoder-Decoder Architecture:**
+   - Muitos modelos Transformer consistem em uma arquitetura de codificador-decodificador. No caso de tarefas de tradução, por exemplo, o codificador processa a sequência de entrada na língua de origem, e o decodificador gera a sequência de saída na língua de destino.
+
+2. **Attention Mechanism:**
+   - O mecanismo de atenção é central para os Transformers. Ele permite que o modelo "preste atenção" a diferentes partes da entrada ao calcular uma pontuação de atenção para cada posição. Isso é feito por meio de três vetores: consulta (Q), chave (K) e valor (V). A atenção é calculada como uma soma ponderada dos valores, onde os pesos são determinados pela compatibilidade entre a consulta e a chave.
+   - Exemplo: Considere a frase "The cat sat on the mat." O mecanismo de atenção permite que o modelo dê mais peso a diferentes palavras dependendo do contexto. Por exemplo, ao traduzir para outra língua, o modelo pode dar mais atenção a "cat" ao gerar a palavra correspondente na língua de destino.
+
+3. **Multi-Head Attention:**
+   - Para melhorar a representação, os modelos Transformers usam atenção multi-cabeça, onde várias cabeças de atenção são calculadas independentemente e, em seguida, concatenadas e linearmente transformadas. Isso permite que o modelo aprenda diferentes representações ponderadas.
+   - Exemplo: Suponha que estamos analisando uma frase e queremos entender tanto os sujeitos quanto os objetos. Cada cabeça de atenção pode se concentrar em diferentes partes da frase, como sujeitos ou objetos específicos.
+
+4. **Positional Encoding:**
+   - Uma desvantagem dos modelos Transformers é que eles não têm uma noção intrínseca de ordem ou posição nas sequências. Para contornar isso, os modelos incorporam informações de posição através da adição de codificações posicionais às embeddings de entrada.
+   - Exemplo: Considere as frases "I love transformers" e "Transformers love me." As palavras têm significados diferentes dependendo de sua posição nas frases. As codificações posicionais ajudam o modelo a capturar essas diferenças.
+
+5. **Feedforward Neural Networks:**
+   - Após a camada de atenção, cada posição passa por uma rede neural feedforward, adicionando uma camada de não-linearidade. Isso ajuda o modelo a aprender representações não lineares mais complexas, capturando relações mais abstratas entre as palavras.
+
+6. **Layer Normalization and Residual Connections:**
+   - Cada subcamada (atualmente, subcamadas são atenção e feedforward) é seguida por uma camada de normalização e uma conexão residual. Isso ajuda na estabilidade do treinamento e facilita o fluxo de gradientes.
+   - Exemplo: A normalização de camada e as conexões residuais são usadas para melhorar a estabilidade do treinamento e facilitar o fluxo de gradientes. Isso é particularmente útil em modelos profundos como os Transformers.
+
+7. **Self-Attention:**
+   - Em muitos casos, como no BERT, os modelos Transformers usam autoatenção, onde a entrada é considerada para calcular as atenções em si mesma. Isso permite que o modelo capture dependências de longo alcance.
+   - Exemplo: Ao processar uma sequência de palavras, o mecanismo de autoatenção permite que cada palavra considere todas as outras palavras em relação a si mesma. Isso é valioso para entender dependências de longo alcance.
+   
+    
