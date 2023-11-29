@@ -297,4 +297,215 @@ Aqui estão os principais componentes da arquitetura Transformer:
    - Em muitos casos, como no BERT, os modelos Transformers usam autoatenção, onde a entrada é considerada para calcular as atenções em si mesma. Isso permite que o modelo capture dependências de longo alcance.
    - Exemplo: Ao processar uma sequência de palavras, o mecanismo de autoatenção permite que cada palavra considere todas as outras palavras em relação a si mesma. Isso é valioso para entender dependências de longo alcance.
    
-    
+# BERT Core Model Components
+O BERT (Bidirectional Encoder Representations from Transformers) é um modelo de linguagem pré-treinado baseado na arquitetura Transformer. Aqui estão os componentes essenciais do BERT:
+
+1. **Arquitetura Transformer:**
+   - BERT utiliza a arquitetura Transformer, composta por um codificador empregado em uma configuração bidirecional. Isso significa que o modelo leva em consideração as palavras anteriores e posteriores para cada palavra em uma frase durante o treinamento.
+
+2. **Camadas de Ativação e Normalização:**
+   - BERT incorpora camadas de ativação (como ReLU) e normalização de camada após as operações de atenção e redes neurais feedforward. Essas camadas contribuem para a estabilidade do treinamento e facilitam o fluxo de gradientes.
+
+3. **Multi-Head Self-Attention:**
+   - O mecanismo de autoatenção é aplicado em várias cabeças (multi-head attention), permitindo que o modelo capture diferentes aspectos de dependências em uma frase de maneira simultânea. Isso ajuda BERT a entender contextos complexos e relações entre palavras.
+
+4. **Embeddings Posicionais:**
+   - Dado que a arquitetura Transformer não leva em conta a ordem das palavras em uma frase, BERT incorpora informações de posição através de embeddings posicionais. Isso permite que o modelo diferencie entre palavras que ocorrem em diferentes posições dentro de uma sequência.
+
+5. **Camada de Token [CLS]:**
+   - BERT adiciona um token especial [CLS] (CLS token) no início de cada sequência de entrada. O vetor de representação associado ao token [CLS] é usado como uma representação agregada da frase inteira para tarefas de classificação.
+
+6. **Pré-treinamento com Masked Language Model (MLM):**
+   - Durante a fase de pré-treinamento, BERT treina um modelo de linguagem de forma bidirecional. Uma parte das palavras em cada sequência de entrada é mascarada, e o modelo é treinado para prever essas palavras mascaradas com base no contexto das palavras circundantes.
+
+7. **Pré-treinamento de Palavras Inteiras (Whole Word Masking):**
+   - BERT usa uma abordagem de "Whole Word Masking" durante o pré-treinamento, na qual palavras inteiras são mascaradas de uma vez. Isso ajuda o modelo a entender o contexto e a relação semântica entre palavras completas.
+
+8. **Fine-Tuning para Tarefas Específicas:**
+   - Após o pré-treinamento, BERT pode ser afinado para tarefas específicas, como classificação de sentimentos, perguntas e respostas, ou NER (Reconhecimento de Entidade Nomeada), utilizando camadas adicionais e ajustando parâmetros para a tarefa específica.
+
+Esses componentes tornam o BERT uma arquitetura poderosa e versátil para uma variedade de tarefas de Processamento de Linguagem Natural (NLP), permitindo que o modelo compreenda contextos complexos e relações semânticas em sequências de texto.
+
+# RoBERTa Core Model Components
+RoBERTa (Robustly optimized BERT approach with pre-training Larger Amount of data) é uma variação do modelo BERT projetada para otimizar o desempenho e a eficiência do treinamento. Aqui estão os componentes centrais do ROBERTA:
+
+1. **Arquitetura Baseada em Transformer:**
+   - ROBERTA mantém a arquitetura baseada em Transformer, herdada do BERT. A arquitetura é composta por camadas de autoatenção, camadas de feedforward, normalização de camada e conexões residuais.
+
+2. **Treinamento Escalonado e Batch Size Dinâmico:**
+   - ROBERTA utiliza uma abordagem de treinamento escalonado (layer-wise training) e ajusta o tamanho do lote dinamicamente durante o treinamento. Isso permite que camadas mais profundas se beneficiem de tamanhos de lote maiores, o que melhora o desempenho do modelo.
+
+3. **Remoção da Pré-treinamento de Sentença (NSP):**
+   - ROBERTA remove a tarefa de pré-treinamento de sentença (Next Sentence Prediction - NSP) usada no BERT. Em vez disso, ele pré-treina o modelo apenas com tarefas de preenchimento de máscara (Masked Language Model - MLM) e utiliza um conjunto de dados mais extenso.
+
+4. **Tokenização Dinâmica e Aprendizado Contínuo:**
+   - ROBERTA incorpora uma abordagem de tokenização dinâmica, o que significa que o tamanho do vocabulário pode ser expandido dinamicamente durante o treinamento. Isso é especialmente útil para lidar com grandes quantidades de dados.
+
+5. **Aumento do Tamanho do Modelo e Treinamento com Mais Dados:**
+   - ROBERTA aumenta o tamanho do modelo em comparação com o BERT padrão e é treinado com uma quantidade significativamente maior de dados. Isso ajuda a capturar uma representação mais rica e robusta das linguagens.
+
+6. **Atenção Contínua em Segmentos (Causal Language Modeling):**
+   - Durante o treinamento, ROBERTA introduz a atenção contínua em segmentos para lidar com tokens de segmentos em um fluxo contínuo, melhorando a capacidade do modelo de entender e representar contextos complexos.
+
+7. **Utilização de Stop Words no Pré-treinamento:**
+   - ROBERTA faz uso de palavras comuns (stop words) no pré-treinamento, o que pode ajudar a melhorar a capacidade do modelo de compreender e generalizar.
+
+8. **Redução de Memória e Processamento Eficiente:**
+   - ROBERTA utiliza estratégias eficientes para redução de memória, como compartilhamento de parâmetros e compressão de representações intermediárias, tornando-o mais escalável e eficiente em termos de recursos computacionais.
+
+Esses componentes fazem do ROBERTA uma extensão e otimização do BERT, resultando em um modelo mais robusto e eficiente para tarefas de Processamento de Linguagem Natural.
+
+# BERT vs RoBERTa
+1. **Treinamento Escalonado (Layer-wise Training):**
+   - **BERT:** Treina todas as camadas simultaneamente.
+   - **ROBERTA:** Utiliza treinamento escalonado, treinando camadas mais profundas com tamanhos de lote maiores.
+
+2. **Tamanho do Lote Dinâmico:**
+   - **BERT:** Usa um tamanho de lote constante durante o treinamento.
+   - **ROBERTA:** Adapta dinamicamente o tamanho do lote, aumentando-o para camadas mais profundas.
+
+3. **Pré-treinamento de Sentença (NSP):**
+   - **BERT:** Inclui a tarefa NSP (Next Sentence Prediction) no pré-treinamento.
+   - **ROBERTA:** Remove a tarefa NSP e foca exclusivamente em MLM (Masked Language Model).
+
+4. **Tamanho do Modelo:**
+   - **BERT:** Tamanho de modelo padrão.
+   - **ROBERTA:** Aumenta o tamanho do modelo, proporcionando maior capacidade de representação.
+
+5. **Tokenização Dinâmica:**
+   - **BERT:** Usa um vocabulário estático durante todo o treinamento.
+   - **ROBERTA:** Incorpora tokenização dinâmica, permitindo expansão do vocabulário durante o treinamento.
+
+6. **Quantidade de Dados de Treinamento:**
+   - **BERT:** Treinado com um conjunto de dados específico.
+   - **ROBERTA:** Treinado com uma quantidade significativamente maior de dados.
+
+7. **Atenção Contínua em Segmentos (Causal Language Modeling):**
+   - **BERT:** Não inclui atenção contínua em segmentos.
+   - **ROBERTA:** Introduz atenção contínua em segmentos para lidar com tokens de segmentos em um fluxo contínuo.
+
+8. **Utilização de Stop Words no Pré-treinamento:**
+   - **BERT:** Não especificamente projetado para incluir stop words no pré-treinamento.
+   - **ROBERTA:** Faz uso de stop words no pré-treinamento para melhorar a compreensão e generalização.
+
+9. **Redução de Memória e Processamento Eficiente:**
+   - **BERT:** Não implementa estratégias específicas de redução de memória.
+   - **ROBERTA:** Usa estratégias eficientes, como compartilhamento de parâmetros e compressão de representações intermediárias.
+
+Em resumo, o ROBERTA é uma extensão otimizada do BERT, incorporando estratégias como treinamento escalonado, aumento do tamanho do modelo, tokenização dinâmica e utilização de stop words no pré-treinamento para melhorar o desempenho e a eficiência do modelo. Essas modificações tornam o ROBERTA mais robusto e eficiente em relação a determinados aspectos do treinamento e da representação linguística.
+
+# ELECTRA Core Model Components
+O ELECTRA (Efficiently Learning an Encoder that Classifies Token Replacements Accurately) é um modelo de linguagem pré-treinado que se destaca por sua eficiência de treinamento e bom desempenho em tarefas downstream*. Aqui estão os principais componentes do ELECTRA:
+
+1. **Generador de Tokens Masked (Geração de Token Mascaramento):**
+   - Diferentemente do BERT, que usa uma abordagem de preenchimento de máscara (MLM) para mascarar aleatoriamente palavras em uma sequência, o ELECTRA usa um gerador de tokens mascarados. Este gerador substitui aleatoriamente palavras reais por [MASK] e treina o modelo para reconhecer essas substituições.
+
+2. **Discriminador de Tokens Substituídos:**
+   - O ELECTRA introduz um discriminador que é treinado para distinguir tokens reais de tokens gerados pelo gerador de tokens mascarados. Esse componente é crucial para a abordagem de treinamento do ELECTRA.
+
+3. **Tarefas de Pré-treinamento:**
+   - O modelo é pré-treinado em duas tarefas simultâneas: a tarefa de reconhecimento de tokens mascarados (MLM-like) e a tarefa de discriminação adversarial entre tokens reais e tokens gerados.
+
+4. **Substituição de Tokens por [MASK]:**
+   - No ELECTRA, uma porcentagem significativa dos tokens é substituída por [MASK] durante o pré-treinamento, em comparação com a pequena fração de tokens mascarados no BERT. Isso cria um sinal de treinamento mais forte para o modelo.
+
+5. **Treinamento Adversarial:**
+   - O treinamento adversarial entre o gerador e o discriminador é uma parte central do ELECTRA. O gerador tenta gerar tokens mascarados que se assemelham a tokens reais, enquanto o discriminador tenta distinguir entre tokens reais e gerados.
+
+6. **Estratégia de Substituição Dinâmica:**
+   - O ELECTRA utiliza uma estratégia de substituição dinâmica, onde alguns tokens são substituídos por [MASK], alguns permanecem inalterados e outros são substituídos por palavras reais. Essa abordagem permite um treinamento mais eficiente.
+
+7. **Aproveitamento de Modelos de Linguagem Pré-existentes:**
+   - O ELECTRA pode se beneficiar de modelos de linguagem pré-existentes, como o BERT, para inicialização de parâmetros antes do treinamento adversarial.
+
+8. **Desempenho Eficiente em Tarefas Downstream:**
+   - Devido à sua abordagem de treinamento eficiente e ao uso de uma quantidade significativamente menor de parâmetros em comparação com modelos tradicionais, o ELECTRA demonstrou bom desempenho em tarefas downstream com menos recursos computacionais."Tarefas downstream" referem-se a tarefas específicas de Processamento de Linguagem Natural (PLN) que são resolvidas utilizando modelos de linguagem pré-treinados. Em um contexto de modelos de linguagem pré-treinados, o termo "downstream" refere-se ao movimento de uma tarefa mais geral (pré-treinamento) para tarefas mais específicas e aplicadas (tarefas downstream). Ex: 
+ - Classificação de Sentimento, Perguntas e Respostas (QA), Named Entity Recognition (NER), Tradução Automátic Geração de Texto, Sumarização de Texto, Análise de Sentimento.
+
+Em resumo, o ELECTRA se destaca pela sua eficiência de treinamento, aproveitando um gerador de tokens mascarados e um discriminador adversarial para pré-treinamento. Essa abordagem adversarial resulta em representações mais ricas e eficazes para várias tarefas de Processamento de Linguagem Natural (NLP).
+
+# Bert vs RoBERta e ELECTRA
+Vamos comparar as principais diferenças entre o BERT, RoBERTa e ELECTRA:
+
+1. **Arquitetura Base:**
+   - **BERT:** Utiliza a arquitetura Transformer com atenção bidirecional.
+   - **RoBERTa:** Também utiliza a arquitetura Transformer, com algumas otimizações, como treinamento escalonado e tamanho de lote dinâmico.
+   - **ELECTRA:** Introduz uma abordagem adversarial, com um gerador de tokens mascarados e um discriminador adversarial.
+
+2. **Tarefas de Pré-treinamento:**
+   - **BERT:** Pré-treina o modelo com tarefas de preenchimento de máscara (MLM) e previsão de sentença seguinte (Next Sentence Prediction - NSP).
+   - **RoBERTa:** Foca principalmente na tarefa de preenchimento de máscara (MLM), removendo a tarefa NSP.
+   - **ELECTRA:** Introduz uma tarefa adversarial, substituindo tokens reais por tokens mascarados e treinando um discriminador para distinguir entre tokens reais e gerados.
+
+3. **Preenchimento de Máscara (MLM):**
+   - **BERT:** Usa uma estratégia de preenchimento de máscara padrão.
+   - **RoBERTa:** Aprimora a estratégia de preenchimento de máscara com uma porcentagem maior de tokens mascarados e tamanhos de lote dinâmicos.
+   - **ELECTRA:** Substitui aleatoriamente palavras reais por tokens mascarados durante o pré-treinamento adversarial.
+
+4. **Treinamento Adversarial:**
+   - **BERT:** Não incorpora um treinamento adversarial explícito.
+   - **RoBERTa:** Não introduz treinamento adversarial, mas otimizações como treinamento escalonado.
+   - **ELECTRA:** Treina o modelo adversarialmente com um gerador de tokens mascarados e um discriminador adversarial.
+
+5. **Aumento do Tamanho do Modelo:**
+   - **BERT:** Tamanho de modelo padrão.
+   - **RoBERTa:** Aumenta o tamanho do modelo para melhorar a capacidade de representação.
+   - **ELECTRA:** Usa uma quantidade significativamente menor de parâmetros comparado a modelos tradicionais.
+
+6. **Desempenho em Tarefas Downstream:**
+   - **BERT:** Demonstra bom desempenho em tarefas downstream.
+   - **RoBERTa:** Tende a superar o desempenho do BERT em várias tarefas devido a otimizações e pré-treinamento mais extensivo.
+   - **ELECTRA:** Também mostra desempenho competitivo em tarefas downstream, especialmente em cenários com recursos computacionais limitados.
+
+Essas são algumas das diferenças fundamentais entre o BERT, RoBERTa e ELECTRA. Cada um desses modelos apresenta inovações específicas para melhorar a eficiência do pré-treinamento e o desempenho em tarefas downstream.
+
+# Comparativo Geral dos componentes principais (core components) do BERT, RoBERTa e ELECTRA:
+### BERT (Bidirectional Encoder Representations from Transformers):
+
+1. **MLM (Masked Language Model):**
+   - **Descrição:** Usa a tarefa de preenchimento de máscara, onde uma pequena porcentagem de palavras em uma sequência é mascarada e o modelo é treinado para prever essas palavras mascaradas.
+   - **Papel:** Enriquecer as representações aprendendo contextos bidirecionais.
+
+2. **NSP (Next Sentence Prediction):**
+   - **Descrição:** Tarefa adicional para prever se uma frase segue a outra em um par de sentenças.
+   - **Papel:** Capturar relacionamentos entre sentenças em tarefas que exigem compreensão de contexto global.
+
+### RoBERTa (Robustly optimized BERT approach with pre-training Larger Amount of data):
+
+1. **MLM (Masked Language Model):**
+   - **Descrição:** Similar ao BERT, mas com uma abordagem mais intensiva, mascarando uma porcentagem maior de palavras e usando tamanhos de lote dinâmicos.
+   - **Papel:** Aprimorar a capacidade de representação com treinamento mais extensivo.
+
+2. **NSP (Next Sentence Prediction):**
+   - **Descrição:** Removido da arquitetura original do BERT.
+   - **Papel:** Eliminar redundâncias e enfocar principalmente na tarefa de preenchimento de máscara.
+
+### ELECTRA (Efficiently Learning an Encoder that Classifies Token Replacements Accurately):
+
+1. **Generador de Tokens Masked (Geração de Token Mascaramento):**
+   - **Descrição:** Substitui aleatoriamente palavras reais por tokens mascarados e treina o modelo adversarialmente para distinguir tokens reais de tokens gerados pelo gerador.
+   - **Papel:** Fortalecer o sinal de treinamento e criar representações mais discriminativas.
+
+2. **Discriminador de Tokens Substituídos:**
+   - **Descrição:** Treinado para distinguir entre tokens reais e tokens gerados pelo gerador.
+   - **Papel:** Avaliar a autenticidade dos tokens durante o treinamento adversarial.
+
+3. **Tarefas de Pré-treinamento:**
+   - **Descrição:** Pré-treina o modelo simultaneamente em tarefas de preenchimento de máscara e discriminação adversarial.
+   - **Papel:** Aprimorar representações por meio de treinamento adversarial.
+
+### Comparação Geral:
+
+- **Abordagem de Preenchimento de Máscara (MLM):**
+  - **BERT:** Preenchimento de máscara padrão.
+  - **RoBERTa:** Preenchimento de máscara mais intensivo.
+  - **ELECTRA:** Abordagem adversarial com substituição dinâmica.
+
+- **Next Sentence Prediction (NSP):**
+  - **BERT:** Incluído originalmente.
+  - **RoBERTa:** Removido para focar mais no MLM.
+  - **ELECTRA:** Não incorpora explicitamente.
+
+- **Treinamento Adversarial:**
+  - **BERT e RoBERTa:** Não introduzem treinamento adversarial.
+  - **ELECTRA:** Treinamento adversarial fundamental com gerador e discriminador.
