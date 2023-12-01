@@ -509,3 +509,179 @@ Essas são algumas das diferenças fundamentais entre o BERT, RoBERTa e ELECTRA.
 - **Treinamento Adversarial:**
   - **BERT e RoBERTa:** Não introduzem treinamento adversarial.
   - **ELECTRA:** Treinamento adversarial fundamental com gerador e discriminador.
+  
+# Seq2seq Models
+Os modelos sequência para sequência, também conhecidos como seq2seq, são uma classe de modelos de aprendizado de máquina que são usados para tarefas onde a entrada e a saída são sequências de dados. Eles são comumente usados em tarefas de Processamento de Linguagem Natural (PNL) e tradução automática. Aqui está uma explicação geral, uma descrição do funcionamento e exemplos de modelos seq2seq:
+
+### Explicação Geral:
+
+1. **Entrada e Saída Sequenciais:**
+   - Os modelos seq2seq são projetados para lidar com entradas e saídas que são sequências, como frases em linguagem natural.
+
+2. **Arquitetura Encoder-Decoder:**
+   - Geralmente, os modelos seq2seq consistem em duas partes principais: um encoder (codificador) e um decoder (decodificador). O encoder processa a entrada sequencial e produz um vetor de contexto. O decoder usa esse vetor de contexto para gerar a saída sequencial.
+
+3. **Representação Vetorial:**
+   - Durante o treinamento, o modelo aprende representações vetoriais que capturam a semântica da sequência de entrada.
+
+### Funcionamento:
+
+1. **Encoder:**
+   - A sequência de entrada é alimentada ao encoder, que converte cada elemento da sequência em uma representação vetorial.
+
+2. **Vetor de Contexto:**
+   - O encoder produz um vetor de contexto que captura as informações relevantes da sequência de entrada.
+
+3. **Decoder:**
+   - O vetor de contexto é usado como entrada para o decoder, que gera a sequência de saída um elemento de cada vez.
+
+4. **Treinamento com Teacher Forcing:**
+   - Durante o treinamento, o modelo é alimentado com pares de sequências de entrada e saída conhecidas. O decoder é incentivado a gerar a sequência de saída correta em cada etapa.
+
+5. **Inferência:**
+   - Durante a inferência, o modelo é alimentado com uma sequência de entrada e usa o decoder para gerar a sequência de saída.
+
+6. **Exemplos de Modelos Seq2Seq:**
+ - Tradução Automática, Geração de Resumo, Diálogos (QA), Geração de Código, Correção de Texto
+ 
+# T5 Core Components 
+O T5 (Text-to-Text Transfer Transformer) é um modelo de linguagem proposto pelo Google Research que segue a abordagem "text-to-text", tratando todas as tarefas de processamento de linguagem natural (PNL) como problemas de conversão de texto para texto. Aqui estão os principais componentes do T5:
+
+### 1. **Arquitetura Transformer:**
+   - O T5 utiliza a arquitetura Transformer, que é baseada em mecanismos de atenção para capturar relações de longo alcance em sequências.
+
+### 2. **Encoder-Decoder Framework:**
+   - Assim como muitos modelos seq2seq, o T5 possui uma estrutura de codificador-decodificador (encoder-decoder). O codificador processa a entrada e gera uma representação contextual, enquanto o decodificador usa essa representação para gerar a saída.
+
+### 3. **Text-to-Text Paradigm:**
+   - A característica distintiva do T5 é a abordagem "text-to-text", onde todas as tarefas são formuladas como problemas de conversão de texto para texto. Isso inclui tarefas de classificação, geração, tradução, entre outras.
+
+### 4. **Tokenização Universal:**
+   - O T5 utiliza uma tokenização universal, tratando todas as tarefas como tarefas de geração de texto. Cada entrada é prefixada com um rótulo que indica a tarefa específica.
+
+### 5. **Pesos Compartilhados:**
+   - O T5 compartilha pesos entre o codificador e o decodificador. Isso contribui para um treinamento eficiente e uma representação mais coerente.
+
+### 6. **Treinamento Multi-Tarefa:**
+   - O modelo é treinado simultaneamente em várias tarefas usando um único modelo. Isso permite que o T5 generalize melhor em uma ampla variedade de tarefas de PNL.
+
+### 7. **Transfer Learning:**
+   - O T5 é pré-treinado em grandes conjuntos de dados e, em seguida, ajustado finamente para tarefas específicas. Isso segue a abordagem de transfer learning, onde o conhecimento aprendido em uma tarefa é transferido para melhorar o desempenho em outras tarefas.
+
+### Exemplo de Uso do T5:
+
+Suponha que temos uma tarefa de tradução de inglês para francês. A entrada seria algo como "translate English to French: 'The cat is on the mat'" e a saída esperada seria a tradução correspondente para o francês.
+
+1. **Entrada:**
+   - "translate English to French: 'The cat is on the mat'"
+
+2. **Saída Esperada:**
+   - "Le chat est sur le tapis"
+
+Neste exemplo, a tarefa específica (tradução) é indicada pelo rótulo na entrada, e o modelo é treinado para gerar a saída desejada.
+
+O T5 é conhecido por sua versatilidade e desempenho sólido em uma variedade de tarefas, tornando-o uma escolha popular para abordagens text-to-text em PNL.
+
+# BART Core Components
+O BART (Bidirectional and Auto-Regressive Transformers) é um modelo de linguagem proposto pela Facebook AI Research (FAIR) que utiliza a arquitetura Transformer. Ele foi projetado para realizar tarefas de geração de sequência e compressão de texto. Aqui estão os principais componentes do BART:
+
+### 1. **Arquitetura Transformer:**
+   - O BART utiliza a arquitetura Transformer, que é composta por camadas de autoatentividade para processar informações de entrada.
+
+### 2. **Encoder-Decoder Framework:**
+   - O BART segue uma estrutura de codificador-decodificador (encoder-decoder), onde o codificador processa a entrada e gera uma representação contextual, e o decodificador usa essa representação para gerar a saída.
+
+### 3. **Tokenização:**
+   - Assim como outros modelos de linguagem, o BART faz uso de uma estratégia de tokenização para dividir o texto em unidades discretas, como palavras ou subpalavras.
+
+### 4. **BART como Modelo Denoising:**
+   - O treinamento do BART é formulado como um problema de denoising autoencoder. Ele é treinado para reconstruir a sequência original a partir de uma versão corrompida da sequência, onde partes aleatórias foram mascaradas ou removidas.
+
+### 5. **Masked Language Model (MLM):**
+   - Durante o treinamento, o BART utiliza uma versão modificada da tarefa de preenchimento de máscara (MLM), onde uma parte da sequência é mascarada e o modelo é treinado para prever essas partes mascaradas.
+
+### 6. **Inversão de Sequência no Codificador:**
+   - Uma característica única do BART é a inversão da sequência no codificador. Isso significa que a ordem das palavras na entrada é invertida antes de ser passada para o codificador.
+
+### 7. **Fine-Tuning para Tarefas Específicas:**
+   - Após o pré-treinamento, o BART pode ser ajustado finamente (fine-tuned) para tarefas específicas, como resumo de texto, tradução automática, entre outras.
+
+### 8. **Geração de Sequências de Saída:**
+   - Durante a geração de sequências de saída, o BART é usado para produzir uma sequência de palavras ou subpalavras que representa a resposta desejada.
+
+### Exemplo de Uso do BART:
+
+Suponha que temos a seguinte tarefa de resumo de texto:
+
+1. **Entrada:**
+   - "O BART é um modelo de linguagem baseado na arquitetura Transformer. Ele é projetado para realizar tarefas de geração de sequência e compressão de texto."
+
+2. **Saída Esperada:**
+   - "O BART, baseado na arquitetura Transformer, é especializado em geração de sequência e compressão de texto."
+
+Neste exemplo, o BART seria treinado para gerar automaticamente o resumo da entrada.
+
+O BART é conhecido por sua eficácia em tarefas de geração de sequência e resumo de texto, e seu treinamento denoising autoencoder contribui para a capacidade do modelo de compreender e gerar sequências coesas.
+
+# Destillation
+A destilação, no contexto de modelos de aprendizado de máquina, refere-se a uma técnica na qual o conhecimento de um modelo maior e mais complexo é transferido para um modelo menor e mais simples. Esse processo é muitas vezes chamado de "destilação do conhecimento" ou "aprendizado por destilação". O principal objetivo é transferir o conhecimento adquirido por um modelo mais complexo para um modelo mais leve, mantendo ou melhorando o desempenho do modelo menor.
+
+### Principais Componentes do Processo de Destilação:
+
+1. **Modelo Professor (Complexo):**
+   - Um modelo maior e mais complexo (professor) é treinado em uma tarefa específica. Esse modelo geralmente tem uma capacidade de representação mais rica e é capaz de aprender padrões complexos nos dados.
+
+2. **Modelo Aluno (Simplificado):**
+   - Um modelo menor e mais simples (aluno) é criado para realizar a mesma tarefa. Este modelo é mais leve em termos de parâmetros e complexidade.
+
+3. **Transferência de Conhecimento:**
+   - O conhecimento do modelo professor é transferido para o modelo aluno. Isso geralmente é feito ajustando o modelo aluno para imitar as previsões do modelo professor.
+
+4. **Regularização:**
+   - Técnicas de regularização são frequentemente aplicadas para evitar que o modelo aluno se ajuste excessivamente aos dados de treinamento. Isso pode incluir penalidades em divergências entre as distribuições de probabilidade das previsões do professor e do aluno.
+
+### Benefícios da Destilação:
+
+1. **Redução de Recursos:**
+   - Modelos menores resultantes da destilação geralmente têm menos parâmetros, ocupam menos espaço em memória e são mais rápidos para inferência.
+
+2. **Generalização Melhorada:**
+   - A destilação pode ajudar o modelo menor a generalizar melhor em relação a dados não vistos, incorporando o conhecimento aprendido pelo modelo professor.
+
+3. **Transferência de Tarefas:**
+   - Os modelos destilados podem ser mais eficientes em transferir conhecimento para tarefas relacionadas ou domínios semelhantes.
+
+### Performace
+A performance de modelos destilados pode ser avaliada em relação a diferentes métricas e considerações, dependendo do contexto específico da aplicação. Aqui estão algumas considerações gerais sobre a performance de modelos destilados:
+
+1. **Eficiência e Inferência Rápida:**
+   - Um dos principais objetivos ao destilar conhecimento é criar modelos mais leves e eficientes, especialmente em termos de inferência. Modelos destilados geralmente apresentam tempos de inferência mais rápidos em comparação com modelos mais complexos, tornando-os adequados para implantação em dispositivos com recursos limitados.
+
+2. **Redução de Parâmetros:**
+   - Modelos destilados geralmente têm um número menor de parâmetros em comparação com seus modelos professores mais complexos. Isso pode resultar em menor uso de memória, tornando-os mais escaláveis e eficientes em termos de recursos.
+
+3. **Transferência de Tarefas e Generalização:**
+   - A performance de modelos destilados muitas vezes é avaliada em tarefas específicas para as quais foram treinados, mas também pode ser interessante avaliar sua capacidade de generalização. Modelos destilados são projetados para transferir conhecimento para tarefas relacionadas, portanto, avaliar sua performance em uma gama mais ampla de tarefas é relevante.
+
+4. **Conservação de Conhecimento:**
+   - A performance é frequentemente avaliada em termos da capacidade do modelo aluno em conservar o conhecimento do modelo professor. Isso pode ser medido usando métricas de desempenho específicas para a tarefa em questão.
+
+5. **Robustez e Regularização:**
+   - Modelos destilados são muitas vezes treinados com técnicas de regularização para evitar ajuste excessivo aos dados de treinamento. Avaliar a robustez do modelo destilado em relação a dados não vistos ou condições adversas pode ser crucial.
+
+6. **Comparação com Modelos Base:**
+   - A performance de modelos destilados é frequentemente comparada com modelos base que não passaram pelo processo de destilação. Isso ajuda a entender os benefícios e possíveis compensações introduzidos pela destilação.
+
+7. **Avaliação de Tarefas Específicas:**
+   - A performance real de modelos destilados é fortemente dependente da tarefa específica para a qual foram treinados. Portanto, métricas relevantes para a tarefa, como acurácia, precisão, recall, F1-score, BLEU score (em tradução automática), entre outras, são utilizadas.
+
+Em resumo, a avaliação da performance de modelos destilados é multifacetada e depende das metas específicas da aplicação. Ela não se limita apenas ao desempenho em tarefas individuais, mas também considera fatores como eficiência computacional, generalização e conservação de conhecimento do modelo professor.
+
+# Current trends
+1. As arquiteturas autorregressivas parecem ter assumido o controle, possivelmente apenas porque o campo está focado na geração.
+
+2. Os modelos bidirecionais ainda podem ter vantagem quando se trata de representação. A representação de sentença de modelos bidirecionais como o BERT e como elas se relacionam é superior, eles ainda têm vantagem sobre modelos como GPT.
+
+3. Seq2seq ainda é uma escolha dominante para tarefas com essa estrutura. Eles têm uma vantagem em termos de viés arquitetônico que os ajuda a compreender a tarefa por si próprios.
+
+4. As pessoas ainda estão obcecadas com o crescimento exponencial do número de parâmetros de modelos, mas estamos vendo um movimento contrário em direção a modelos "menores" (parâmetros ainda 10B)
