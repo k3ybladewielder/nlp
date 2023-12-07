@@ -1,5 +1,6 @@
 # Stanford XCS224U: Natural Language Understanding
-> O XCS224u tem o curso CS224n como prerequisito.[Background Materials](https://web.stanford.edu/class/cs224u/background.html)
+- O XCS224u tem o curso CS224n como prerequisito.[Background Materials](https://web.stanford.edu/class/cs224u/background.html)
+- [Materiais do curso](https://web.stanford.edu/class/cs224u/index.html)
 
 ## Course Overview, Part 1
 ...
@@ -868,10 +869,35 @@ A geração de novos dados por modelos de linguagem congelados ocorre por meio d
 É importante notar que, embora os modelos de linguagem congelados possam gerar novas sequências de texto, a qualidade e a relevância dessas sequências dependerão da qualidade do treinamento prévio do modelo. Além disso, a aleatoriedade introduzida pela amostragem ou as escolhas determinísticas do feixe de busca podem resultar em variações nas sequências geradas a cada vez que o modelo é usado para geração.
 
 ## Current Movement (2023)
+### Dataset used for self-supervision
+1. OpenBookCorpus (Bandy and Vincent 2021): https://huggingface.co/datasets/bookcorpusopen
+2. The Pile (Gao et al. 2020): https://pile.eleuther.ai
+3. Big Science Data (Laurençon et al. 2022): https://huggingface.co/bigscience-data
+4. Wikipedia processing: https://github.com/attardi/wikiextractor
+5. Pushshift Reddit Data (Baumgartner et al. 2020): https://files.pushshift.io/reddit/
+6. Colossal Clean Crawled Corpus (C4; Dodge et al. 2021): https://github.com/allenai/allennlp/discussions/5056
 
+### Dataset used for instruction fine-tuning
+- Não sabemos muito sobre o que os laboratórios industriais
+estão fazendo aqui.
+- Podemos inferir que eles estão pagando muitas pessoas para
+gerar dados de instrução.
+- Também podemos inferir que eles estão usando seus próprios
+modelos para gerar exemplos e julgar
+entre exemplos.
+- O Stanford Human Preferences Dataset (SHP) (SHP) é um
+recurso para ajuste de instrução naturalista (naturalistic fine-tuning): https://huggingface.co/datasets/stanfordnlp/SHP
 
+### Self-instruct
+<img src="self_instruct.png">
 
+Self-istruct (learning) é uma técnica para melhorar a performace do modelo utilizando modelos. Nesse caso, criando mais tasks para fazer o instruct fine tuning. Nesse pipeline exemplo, um conjunto de tasks escrita por humanos é armazenada num pool, em que no primeiro passo, o modelo de linguagem cria novas instruções via in-context learning, no passo seguinte a nova instrução é inputada novamente no modelo de linguagem, com um novo prompt, para decidir se a instrução é uma tarefa de classificação ou não. Esse novo par de input/output é usado para o aprendizado supervisionado seguinte. 
 
+<img src="self_instruct_prompt_template.png">
+
+Essa abordagem foi utilziada no modelo Alpaca, possibilitando a especialização do modelo, num tamanho consideravelmente menor e mantendo a performace comparando com os modelos anteriores.
+
+<img src="alpaca.png">
 
 ## Techniques and Suggested Methods
 
