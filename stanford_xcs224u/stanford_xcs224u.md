@@ -2,6 +2,11 @@
 - O XCS224u tem o curso CS224n como prerequisito.[Background Materials](https://web.stanford.edu/class/cs224u/background.html)
 - [Materiais do curso](https://web.stanford.edu/class/cs224u/index.html)
 
+# Summary
+> INSERIR SUMÁRIO
+
+> INSERIR TOPICOS PARA SUMARIO SEGUINDO A EMENTA
+
 ## Course Overview, Part 1
 ...
 
@@ -940,18 +945,6 @@ Self-Consistency lembra random forest, no sentido de que são gerados um conjunt
 ### Self-Ask
 
 ### Iterative rewriting
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Behavorial Evaluation of NLU Models
 ## Overview
