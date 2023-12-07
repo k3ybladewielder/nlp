@@ -895,11 +895,63 @@ Self-istruct (learning) é uma técnica para melhorar a performace do modelo uti
 
 <img src="self_instruct_prompt_template.png">
 
-Essa abordagem foi utilziada no modelo Alpaca, possibilitando a especialização do modelo, num tamanho consideravelmente menor e mantendo a performace comparando com os modelos anteriores.
+Essa abordagem foi utilizada no modelo Alpaca, possibilitando a especialização do modelo, num tamanho consideravelmente menor e mantendo a performace comparando com os modelos anteriores.
 
 <img src="alpaca.png">
 
 ## Techniques and Suggested Methods
+### Demonstrations
+Demonstration é uma técnica de in-context learning em que se cria recursivamente contexto, pergunta e resposta para se ter respostas corretas.
+
+<img src="demonstration.png">
+
+### Choosing demonstrations
+- Podem ser escolhidos aleatoriamente a partir dos dados disponíveis.
+- Escolhidos com base no relacionamento com o exemplo alvo.
+  - Geração: Recuperada com base na similaridade com a entrada alvo.
+  - Classificação: Escolhido para ajudar o modelo a determinar implicitamente o tipo de entrada de destino.
+- Filtrando para aqueles que atendem a critérios específicos:
+  - Geração: A evidência contém a saída.
+  - Geração: O LM prevê a saída correta.
+  - Classificação: Todos os rótulos representados.
+- Amostrado e reescrito pelo LM:
+  - Sintetize múltiplas demonstrações iniciais em demonstrações individuais.
+  - Altere o estilo ou a formatação para corresponder ao alvo.
+
+**Seu prompt pode deve conter substrings que foram geradas por um prompt diferente do seu LM.**
+
+### Chain of Thought
+Chain of Thought é uma técnica que explica explicitamente o passo a passo do **raciocínio** para responder coisas complexas.
+
+<img src="chain_of_tought.png">
+
+### Generic step-by-step with instruction
+É parecido com Chain of Thought, mas aqui, o modelo é instruído a seguir um passo a passo para chegar a uma resposta.
+
+<img src="generic_step.png">
+
+### Self-Consistency
+Self-Consistency lembra random forest, no sentido de que são gerados um conjunto de respostas seguindo um raciocínio (ex. chain of tought), e em seguida os caminhos de raciocínio (reasoning paths) são "marginalizados", agregando e selecionando a resposta mais frequente.
+
+<img src="self_consistency.png"> 
+
+### Self-Consistency in DSP
+
+### Self-Ask
+
+### Iterative rewriting
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Behavorial Evaluation of NLU Models
 ## Overview
