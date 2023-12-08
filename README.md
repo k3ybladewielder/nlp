@@ -1,13 +1,15 @@
 # NLP Studies
+Este repositório possui anotações, notas e insights **pessoais** sobre estudos. Ele não possui materiais derivados.
+
 ## Book notes
 - [Processamento de Linguagem Natural: Conceitos, Técnicas e Aplicações em Português](https://github.com/k3ybladewielder/nlp/blob/main/books/pln_caseli.md)
 
 ## Courses
 Natural Language Processing (NLP) Course Notes, resources and exercises.
-  - [Natural Language Processing with Classification and Vector Spaces](https://github.com/k3ybladewielder/nlp/blob/main/nlp_classification_vectors/nlp_classification_vectors.ipynb) @ DeeplearningAi
-  - Natural Language Processing with Probabilistic Models @ DeeplearningAi
-  - Natural Language Processing with Sequence Models @ DeeplearningAi
-  - Natural Language Processing with Attention Models @ DeeplearningAi
+  - [Natural Language Processing with Classification and Vector Spaces](https://github.com/k3ybladewielder/nlp/blob/main/nlp_classification_vectors/nlp_classification_vectors.ipynb) @ DeeplearningAI
+  - Natural Language Processing with Probabilistic Models @ DeeplearningAI
+  - Natural Language Processing with Sequence Models @ DeeplearningAI
+  - Natural Language Processing with Attention Models @ DeeplearningAI
   - [HuggingFace NLP Course](https://github.com/k3ybladewielder/nlp/blob/main/huggingface_course/nlp_course.ipynb)
   - [Stanford CS224N: NLP with Deep Learning](https://github.com/k3ybladewielder/nlp/blob/main/stanford_cs224n/stanford_cs224n.md)
   - [Stanford XCS224U: Natural Language Understanding](https://github.com/k3ybladewielder/nlp/blob/main/stanford_xcs224u/stanford_xcs224u.md)
