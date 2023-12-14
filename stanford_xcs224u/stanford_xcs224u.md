@@ -1145,9 +1145,55 @@ Os métodos podem ser agrupados no framework analítico a seguir. Nele, são rep
 <img src="analytical_framework.png">
 
 ### Probing
-Sondagem (probing), envolve a introdução de tarefas de avaliação específicas para sondar as capacidades linguísticas subjacentes do modelo. Pode incluir tarefas que investigam a compreensão de sintaxe, semântica, ou outros aspectos linguísticos.
+O Probing é uma técnica utilizada na avaliação de modelos de Compreensão de Linguagem Natural (NLU) para investigar e entender as capacidades linguísticas subjacentes do modelo. Em termos simples, o Probing envolve a introdução (seleção ou criação) de tarefas de avaliação específicas que sondam aspectos linguísticos particulares para determinar o que o modelo aprendeu durante o treinamento. No contexto do Probing, os pesquisadores selecionam ou criam tarefas específicas para avaliar aspectos linguísticos particulares do modelo de Compreensão de Linguagem Natural (NLU). Esses aspectos linguísticos são avaliados utilizandos um modelo menor (probe) e específico para cada tarefa, de forma supervisionada, para determinar o que está latentemente codificado em suas representações ocultas.
 
-Tenney et al. 2019
+Probing é uma fonte de insights valiosos, mas precisamos proceder com cautela:
+- Uma sondagem muito poderosa pode levar você a ver coisas que não estão no modelo de destino (mas sim na sua sondagem).
+- As sondagens não podem nos dizer se as informações que identificamos têm alguma relação causal com o comportamento do modelo alvo.
+
+Receita para probing:
+1. Estabeleça uma hipótese sobre um aspecto da estrutura interna do modelo alvo.
+2. Escolha uma tarefa supervisionada que seja uma proxy da estrutura interna de interesse.
+3. Identifique o local do modelo onde você acredita que a estrutura será codificada. Um conjunto de representações vetoriais interna do modelo.
+4. Treine a sonda supervisionada no(s) local(is) escolhido(s)
+
+#### Core Method
+<img src="probing_core_method.png">
+
+O processo é feito de forma instrutiva com um modelo como o BERT, ele é rodado milhares de vezes, a representação vetorial escolhida é coletada para cada rodada e usada pra construir um pequeno connjunto de dados de aprendizagem supervisionada. Então um pequeno modelo linear é fitado na representação interna (representação vetorial), usando os rótulos da task escolhida. O modelo BERT foi utilizado somente como um "motor" (engine) para gerar as representações vetoriais de cada rodada e criar o dataset com as representações e a task como label.
+
+#### **Processo do Probing:**
+1. **Seleção/criação de Tarefas Específicas:** Os pesquisadores escolhem ou projetam tarefas específicas que abordam características linguísticas particulares que desejam avaliar no modelo de NLU. Essas tarefas podem incluir aspectos sintáticos, semânticos, de entidades nomeadas, ou qualquer outra propriedade linguística de interesse. Cada tarefa tem um objetivo claro e específico que ajuda a sondar o conhecimento ou a capacidade do modelo em relação a essa propriedade linguística. Por exemplo, se a tarefa é sobre entidades nomeadas, o objetivo pode ser identificar se o modelo consegue reconhecer e rotular corretamente entidades em uma frase.
+
+2. **Treinamento do Prober (Sonda):** Introdução de um "prober" ou sonda (modelo treinado separadamente para realizar a tarefa específica), que é um modelo simples e específico para a tarefa de avaliação escolhida. Este modelo é treinado para avaliar a habilidade do modelo principal (o modelo de NLU) na tarefa específica.
+
+3. **Avaliação do Modelo de NLU:** O modelo de NLU é avaliado na tarefa de sondagem usando o prober treinado. Isso ajuda a determinar o quanto o modelo principal possui conhecimento ou habilidade na área específica sondada. Isso fornece insights sobre como o modelo principal lida com a tarefa específica, indicando seu nível de conhecimento ou capacidade na propriedade linguística em questão.
+
+#### **Exemplos de Tarefas Probing:**
+1. **Sintaxe:**
+   - Tarefa: Prever a estrutura sintática de uma sentença.
+   - Exemplo: Dada a sentença "O gato está na caixa", prever a árvore sintática.
+
+2. **Semântica:**
+   - Tarefa: Avaliar a compreensão semântica.
+   - Exemplo: Dada a pergunta "Qual é a capital da França?", prever a resposta "Paris".
+
+3. **Entidades Nomeadas:**
+   - Tarefa: Identificar entidades nomeadas.
+   - Exemplo: Dada a frase "Barack Obama nasceu em Honolulu", prever "Barack Obama" como uma entidade nomeada.
+
+4. **Concordância de Gênero:**
+   - Tarefa: Avaliar a compreensão de gênero.
+   - Exemplo: Dada a frase "O médico falou com a paciente. Ele deu conselhos", prever que "Ele" se refere ao médico.
+
+#### **Importância do Probing:**
+- **Interpretabilidade do Modelo:** O Probing ajuda a interpretar o que os modelos de NLU aprenderam em níveis mais granulares, possibilitando insights sobre as representações internas.
+
+- **Identificação de Fraquezas:** Pode revelar fraquezas ou vieses nos modelos, indicando áreas em que os modelos podem ter dificuldades.
+
+- **Aprimoramento do Treinamento:** Os resultados do Probing podem orientar o treinamento de modelos, destacando áreas que podem ser melhoradas para alcançar um entendimento mais profundo da linguagem natural.
+
+O Probing é uma ferramenta valiosa na avaliação de modelos de NLU, proporcionando uma visão mais detalhada de suas habilidades linguísticas e contribuindo para a compreensão de como esses modelos processam e representam informações linguísticas.
 
 ### Feature Attribution
 O método de atribuição de características (feature attribution) visa identificar quais partes do texto de entrada contribuem mais para as decisões do modelo. Métodos como Saliency Maps ou LRP (Layer-wise Relevance Propagation) podem ser utilizados para essa análise.
