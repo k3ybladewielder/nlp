@@ -947,7 +947,7 @@ Através de demonstrações, direcionar o modelo decompor o raciocínio em parte
 
 # Behavorial Evaluation of NLU Models
 ## Overview
-- Este tópico fornece uma visão geral da avaliação comportamental de modelos de compreensão de linguagem natural (NLU). Essa abordagem de avaliação visa examinar o desempenho dos modelos em tarefas específicas relacionadas à compreensão e interpretação de linguagem natural.
+- Este tópico fornece uma visão geral da avaliação comportamental de modelos de compreensão de linguagem natural (NLU). Essa abordagem de avaliação visa examinar o desempenho (comportamento) dos modelos em tarefas específicas relacionadas à compreensão e interpretação de linguagem natural.
 - Essa abordagem comportamental foca no output dado certo input, se produziu o resultado esperado ou não.
 
 - Standard evaluations
@@ -1132,15 +1132,33 @@ Adversarial NLI é uma estratégia valiosa para avaliar e aprimorar modelos de i
 ## DynaSent
 - DynaSent é um dataset utilizado para avaliar modelos em tarefas dinâmicas de análise de sentimentos. Este conjunto de dados dinâmico destaca a importância de compreender como os modelos NLU lidam com a mudança de sentimentos ao longo do tempo e contextos diversos. O DynaSent é construído para testar a capacidade dos modelos de compreender e generalizar em cenários onde os sentimentos podem variar, fornecendo uma visão mais realista das capacidades de compreensão de sentimentos dos modelos em situações dinâmicas e em evolução. A dinamicidade do conjunto de dados apresenta desafios únicos, exigindo que os modelos não apenas identifiquem sentimentos, mas também se adaptem a mudanças de tom e contextos específicos ao longo do tempo. Ao focar no DynaSent, os pesquisadores podem entender melhor como os modelos NLU lidam com nuances temporais e variações de sentimentos, contribuindo para uma avaliação mais completa da capacidade desses modelos em contextos de análise de sentimentos.
 
-# Natural Language Undersanting (NLU)
-## Literature Review Overview
+# Structural Evaluation of NLU Models
+### Overview
+Descreve uma visão geral dos métodos de análise utilizados na compreensão de linguagem natural (NLU). Estes métodos visam entender e avaliar o funcionamento interno dos modelos de NLU.
 
-# Analysis Methods for NLU
-## Overview
-## Probing
-## Feature Attribution
-## Causal Abstraction and Interchange Intervention Training (IIT)
-## Distributed Alignment Search (DAS)
+Testes comportamentais tem a limitação de que apenas avaliam o output, não as causas que geraram os outputs, a configuração do modelo não é avaliada. Ou seja, com testes comportamentais não temos uma garantia sistemática de que pra cada string inteira o modelo se comportará como planejado. Para suprir esse gap, testes Estruturais como Probing, Feature Attribution, IIT e DAS foram desenvolvidos e são foco de pesquisa. Os testes estruturais são uma forma de olhar dentro da "black box" dos modelos de linguagem.
+
+Os principais métodos de avaliação estrutural de modelos de NLU que serão estudados são Probing, Feature Attibution, IIT e DAS.
+
+Os métodos podem ser agrupados no framework analítico a seguir. Nele, são representados a capacidade do método de caracterizar as representações (inputs, internas e outputs), garantir afirmações cauais/inferencias causais sobre o modelo, e capacidade de melhoria dos modelos ao utilizar esses métodos
+
+<img src="analytical_framework.png">
+
+### Probing
+Sondagem (probing), envolve a introdução de tarefas de avaliação específicas para sondar as capacidades linguísticas subjacentes do modelo. Pode incluir tarefas que investigam a compreensão de sintaxe, semântica, ou outros aspectos linguísticos.
+
+Tenney et al. 2019
+
+### Feature Attribution
+O método de atribuição de características (feature attribution) visa identificar quais partes do texto de entrada contribuem mais para as decisões do modelo. Métodos como Saliency Maps ou LRP (Layer-wise Relevance Propagation) podem ser utilizados para essa análise.
+
+### Causal Abstraction and Interchange Intervention Training (IIT)
+Aborda a abstração causal e o treinamento com intervenção de troca (IIT). Esses métodos envolvem a manipulação de variáveis de entrada ou intervenções no treinamento para entender melhor as relações causais dentro do modelo e como ele responde a diferentes entradas.
+
+### Distributed Alignment Search (DAS)
+Introduz o método de busca de alinhamento distribuído (DAS), que pode ser usado para avaliar como os neurônios ou unidades dentro do modelo estão alinhados em relação às diferentes características linguísticas. Isso pode oferecer insights sobre como o modelo representa e processa informações linguísticas.
+
+
 
 # NLP Methods and Metrics
 ## Overview
@@ -1149,4 +1167,7 @@ Adversarial NLI é uma estratégia valiosa para avaliar e aprimorar modelos de i
 ## Datasets
 ## Data Organization
 ## Model Evaluation
+
+
+
 
