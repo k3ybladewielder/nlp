@@ -1147,6 +1147,12 @@ Os métodos podem ser agrupados no framework analítico a seguir. Nele, são rep
 ### Probing
 O Probing é uma técnica utilizada na avaliação de modelos de Compreensão de Linguagem Natural (NLU) para investigar e entender as capacidades linguísticas subjacentes do modelo. Em termos simples, o Probing envolve a introdução (seleção ou criação) de tarefas de avaliação específicas que sondam aspectos linguísticos particulares para determinar o que o modelo aprendeu durante o treinamento. No contexto do Probing, os pesquisadores selecionam ou criam tarefas específicas para avaliar aspectos linguísticos particulares do modelo de Compreensão de Linguagem Natural (NLU). Esses aspectos linguísticos são avaliados utilizandos um modelo menor (probe) e específico para cada tarefa, de forma supervisionada, para determinar o que está latentemente codificado em suas representações ocultas.
 
+Overview:
+1. Core idea: use supervised models (the probes) to determine what is latently encoded in the hidden representations of our target models.
+2. Often applied in the context of BERTology – see especially Tenney et al. 2019.
+3. A source of valuable insights, but we need to proceed with caution: É A very powerful probe might lead you to see things that aren’t in the target model (but rather in your probe).
+4. Probes cannot tell us about whether the information that we identify has any causal relationship with the target model’s behavior.
+
 Probing é uma fonte de insights valiosos, mas precisamos proceder com cautela:
 - Uma sondagem muito poderosa pode levar você a ver coisas que não estão no modelo de destino (mas sim na sua sondagem).
 - As sondagens não podem nos dizer se as informações que identificamos têm alguma relação causal com o comportamento do modelo alvo.
@@ -1157,12 +1163,16 @@ Receita para probing:
 3. Identifique o local do modelo onde você acredita que a estrutura será codificada. Um conjunto de representações vetoriais interna do modelo.
 4. Treine a sonda supervisionada no(s) local(is) escolhido(s)
 
+Conneau et al. 2018; Tenney et al. 2019
+
 #### Core Method
 <img src="probing_core_method.png">
 
 O processo é feito de forma instrutiva com um modelo como o BERT, ele é rodado milhares de vezes, a representação vetorial escolhida é coletada para cada rodada e usada pra construir um pequeno connjunto de dados de aprendizagem supervisionada. Então um pequeno modelo linear é fitado na representação interna (representação vetorial), usando os rótulos da task escolhida. O modelo BERT foi utilizado somente como um "motor" (engine) para gerar as representações vetoriais de cada rodada e criar o dataset com as representações e a task como label.
 
-#### **Processo do Probing:**
+O exemplo acima é uma simplificação para fins didáticos.
+
+#### **Processo do Probing:** (Gerado com chatGPT)
 1. **Seleção/criação de Tarefas Específicas:** Os pesquisadores escolhem ou projetam tarefas específicas que abordam características linguísticas particulares que desejam avaliar no modelo de NLU. Essas tarefas podem incluir aspectos sintáticos, semânticos, de entidades nomeadas, ou qualquer outra propriedade linguística de interesse. Cada tarefa tem um objetivo claro e específico que ajuda a sondar o conhecimento ou a capacidade do modelo em relação a essa propriedade linguística. Por exemplo, se a tarefa é sobre entidades nomeadas, o objetivo pode ser identificar se o modelo consegue reconhecer e rotular corretamente entidades em uma frase.
 
 2. **Treinamento do Prober (Sonda):** Introdução de um "prober" ou sonda (modelo treinado separadamente para realizar a tarefa específica), que é um modelo simples e específico para a tarefa de avaliação escolhida. Este modelo é treinado para avaliar a habilidade do modelo principal (o modelo de NLU) na tarefa específica.
@@ -1186,20 +1196,98 @@ O processo é feito de forma instrutiva com um modelo como o BERT, ele é rodado
    - Tarefa: Avaliar a compreensão de gênero.
    - Exemplo: Dada a frase "O médico falou com a paciente. Ele deu conselhos", prever que "Ele" se refere ao médico.
 
-#### **Importância do Probing:**
-- **Interpretabilidade do Modelo:** O Probing ajuda a interpretar o que os modelos de NLU aprenderam em níveis mais granulares, possibilitando insights sobre as representações internas.
-
-- **Identificação de Fraquezas:** Pode revelar fraquezas ou vieses nos modelos, indicando áreas em que os modelos podem ter dificuldades.
-
-- **Aprimoramento do Treinamento:** Os resultados do Probing podem orientar o treinamento de modelos, destacando áreas que podem ser melhoradas para alcançar um entendimento mais profundo da linguagem natural.
-
 O Probing é uma ferramenta valiosa na avaliação de modelos de NLU, proporcionando uma visão mais detalhada de suas habilidades linguísticas e contribuindo para a compreensão de como esses modelos processam e representam informações linguísticas.
 
 ### Feature Attribution
 O método de atribuição de características (feature attribution) visa identificar quais partes do texto de entrada contribuem mais para as decisões do modelo. Métodos como Saliency Maps ou LRP (Layer-wise Relevance Propagation) podem ser utilizados para essa análise.
 
-### Causal Abstraction and Interchange Intervention Training (IIT)
-Aborda a abstração causal e o treinamento com intervenção de troca (IIT). Esses métodos envolvem a manipulação de variáveis de entrada ou intervenções no treinamento para entender melhor as relações causais dentro do modelo e como ele responde a diferentes entradas.
+**Métodos de Feature Attribution**:
+
+#### Integrated Gradients
+**Integrated Gradients** é uma técnica de atribuição de importância que visa explicar as predições de modelos de aprendizado de máquina, mostrando como cada recurso de entrada contribui para a saída do modelo. Esta técnica tem suas raízes na teoria de integração de cálculo, permitindo uma abordagem sistemática para a atribuição de importância ao longo de uma trajetória contínua entre uma linha de base (geralmente uma entrada nula) e a entrada original.
+
+**Princípios e Axiomas dos Integrated Gradients:**
+
+***Sensitivity***
+Se duas entradas x e x 0 diferem apenas na dimensão i e levam a previsões diferentes, então o recurso fi tem atribuição diferente de zero.
+```
+M([1, 0, 1]) = positivo
+M([1, 1, 1]) = negativo
+```
+***Implementation invariance***
+Se dois modelos M e M0 têm comportamento de entrada/saída idêntico, então as atribuições para M e M0 são idênticas.
+
+**Processo de Cálculo:**
+1. **Definição da Linha de Base:** Começa-se com uma linha de base, que é uma entrada nula ou uma entrada que representa uma condição de referência. Geralmente, todos os recursos da linha de base são definidos como zero.
+
+2. **Criação de Trajetória:** Cria-se uma trajetória suave entre a linha de base e a entrada original. Isso pode ser realizado por meio de uma interpolação linear ou outra técnica que permita seguir uma trajetória contínua.
+
+3. **Cálculo dos Gradientes:** Calculam-se os gradientes da saída do modelo em relação à entrada em vários pontos ao longo da trajetória. Esses gradientes indicam como cada recurso contribui para a variação na saída.
+
+4. **Integração ao Longo da Trajetória:** Integram-se os gradientes ao longo da trajetória utilizando uma técnica de integração, como a regra do trapézio. Isso resulta nas atribuições de importância integradas para cada recurso.
+
+5. **Atribuição de Importância Final:** A atribuição de importância final para cada recurso é obtida subtraindo a importância na linha de base da importância na entrada real.
+
+**Aplicações:**
+Os Integrated Gradients são frequentemente utilizados para interpretar modelos de aprendizado profundo em tarefas de NLU, fornecendo uma compreensão mais refinada de como as características de entrada influenciam as decisões do modelo. Eles são aplicados em várias tarefas, incluindo classificação de texto, processamento de linguagem natural e visão computacional.
+
+#### Outros métodos
+Saliency Maps:
+- Descrição: Saliency maps destacam as regiões mais importantes nas entradas. Em NLU, isso pode ser aplicado a palavras ou tokens específicos para entender quais contribuem mais para a decisão do modelo.
+- Exemplo: Para uma classificação de sentimento, uma saliency map poderia mostrar as palavras mais relevantes que influenciam a predição positiva ou negativa.
+
+Gradient-based Methods:
+- Descrição: Métodos baseados em gradientes calculam a derivada da saída do modelo em relação às entradas. Isso indica como pequenas mudanças nas entradas afetam a saída.
+- Exemplo: Se uma palavra específica em uma frase tem uma grande influência nas previsões, seu gradiente seria significativo.
+
+LIME (Local Interpretable Model-agnostic Explanations):
+- Descrição: LIME cria interpretações locais para as previsões do modelo, gerando instâncias próximas da entrada original e treinando um modelo interpretável nessas instâncias.
+- Exemplo: Em NLU, LIME pode gerar frases similares à entrada original e destacar as palavras mais importantes para uma decisão específica do modelo.
+
+Exemplo de um modelo de NLU treinado para classificação de sentimento em análises de produto:
+- Entrada: "O produto é incrível, superando minhas expectativas!"
+- Saída Prevista: Sentimento Positivo
+
+Usando Feature Attribution:
+- Saliency Map: Pode destacar as palavras "incrível" e "superando" como influentes para a predição positiva.
+- Gradient-based Method: Mostrará como mudanças nessas palavras afetam a predição positiva.
+- LIME: Pode gerar uma frase similar sem a palavra "incrível" e ver como isso afeta a previsão.
+- Integrated Gradients: Destacará a importância das palavras ao longo da trajetória da entrada original para uma linha de base.
+
+Essas técnicas fornecem interpretações valiosas sobre como o modelo atribui importância às diferentes partes da entrada, contribuindo para uma compreensão mais profunda de seu comportamento em tarefas específicas de NLU.
+
+### Causal Abstraction & Interchange Intervention Training (IIT)
+#### Causal Abstraction
+Receita para abstração causal
+1. Estabeleça uma hipótese sobre (um aspecto) da estrutura causal do modelo alvo.
+2. Procure um alinhamento entre o modelo causal e o modelo alvo.
+3. Realize **intervenções de intercâmbio (interchange interventions)**
+
+<img src="causal_abstraction.png">
+
+Neste método, são feitas intervenções alterando os valores dos neurônios para verificar a relação causal a partir do resultado. A partir das intervenções, podemos validar a hipótese gerada da estrutura causal do modelo. Quando a intervenção não causa nenhum impacto, provamos que aquela região não exerce papel causal no comportamento de entrada e saída do modelo.
+
+Como não podemos verificar todas as possibilidades possíveis de intervenção num cenário real, devido a infinidade de combinações possíveis, é feito em um subconjunto de exemplos. E para metrificar o sucesso das intervenções, é aplicado ***interchgange intervention accuracy (IIA)**.
+
+#### interchgange intervention
+
+1. IIA é a percentagem de intervenções de intercâmbio que conduzem a resultados que correspondem aos do modelo causal no alinhamento escolhido.
+2. O IIA é dimensionado em [0, 1], como acontece com uma métrica de precisão normal.
+3. O AII pode, na verdade, estar acima do desempenho da tarefa, se as intervenções de intercâmbio colocarem o modelo num estado melhor.
+4. O IIA é extremamente sensível ao conjunto de intervenções de intercâmbio realizadas.
+5. Preste especial atenção a quantas intervenções de intercâmbio devem alterar o rótulo de resultados, uma vez que fornecem as evidências mais claras.
+
+#### Descobertas da abstração causal
+
+1. Modelos de BERT ajustados têm sucesso em exemplos difíceis e fora de domínio, envolvendo implicação e negação lexical, **porque** são abstraídos por programas simples de monotonicidade (Geiger et al. 2020).
+2. Modelos BERT ajustados têm sucesso na tarefa MQNLI **porque** encontram soluções composicionais (Geiger et al. 2021).
+3. Os modelos têm sucesso na tarefa MNIST Pointer Value Retrieval (MNIST-PVR; Zhang et al. 2021) **porque** são abstraídos por programas simples como “se o dígito for 6, então o rótulo está no canto inferior esquerdo” (Geiger et al. .2021).
+4. BART e T5 utilizam representações coerentes de entidades e situações que evoluem à medida que o discurso se desenrola (Li et al. 2021).
+5. Este notebook do curso é uma introdução prática a essas técnicas: ```https://github.com/cgpotts/cs224u/blob/main/iit_equality.ipynb```
+
+### Interchange Intervention Training (IIT)
+
+#### Descobertas de IIT
 
 ### Distributed Alignment Search (DAS)
 Introduz o método de busca de alinhamento distribuído (DAS), que pode ser usado para avaliar como os neurônios ou unidades dentro do modelo estão alinhados em relação às diferentes características linguísticas. Isso pode oferecer insights sobre como o modelo representa e processa informações linguísticas.
