@@ -728,7 +728,268 @@ DAS ainda é um método novo e em desenvolvimento. Algumas de suas limitações 
 
 ## 7. Methods and Metrics
 ### 7.1. Classifier Metrics
+#### Confusion Matrices
+Em NLP, a matriz de confusão é uma ferramenta essencial para avaliar o desempenho de um modelo de classificação. Ela fornece uma visão geral de como o modelo está se saindo em cada classe, identificando áreas onde ele pode melhorar.
+
+A matriz de confusão é uma tabela que mostra o número de previsões corretas e incorretas feitas pelo modelo para cada classe. Ela é geralmente representada como uma tabela quadrada com quatro entradas:
+
+* **Verdadeiro positivo (TP)**: o número de vezes que o modelo previu corretamente que uma instância era da classe positiva.
+* **Falso positivo (FP)**: o número de vezes que o modelo previu incorretamente que uma instância era da classe positiva.
+* **Verdadeiro negativo (TN)**: o número de vezes que o modelo previu corretamente que uma instância era da classe negativa.
+* **Falso negativo (FN)**: o número de vezes que o modelo previu incorretamente que uma instância era da classe negativa.
+
+Por exemplo, suponha que um modelo de classificação de spam seja avaliado em um conjunto de dados com 100 instâncias, das quais 80 são spam e 20 não são spam. Se o modelo prever corretamente que 75 das instâncias de spam são spam e 15 das instâncias não spam não são spam, a matriz de confusão será a seguinte:
+
+```
+   |   | Spam | Não Spam |
+---|---|---|---|
+Spam | 75 | 5 |
+Não Spam | 15 | 5 |
+```
+
+Neste exemplo, o modelo está se saindo bem, pois previu corretamente 80 das 100 instâncias (75 spam + 5 não spam). No entanto, há espaço para melhorias, pois o modelo previu incorretamente 15 instâncias de spam como não spam (falsos negativos) e 5 instâncias não spam como spam (falsos positivos).
+
+As métricas de desempenho mais comuns que podem ser derivadas da matriz de confusão são a precisão, o recall e o F1-score.
+
+* **Precisão:** a proporção de instâncias que foram classificadas corretamente como positivas, incluindo tanto os verdadeiros positivos quanto os falsos positivos.
+
+```
+Precisão = TP / (TP + FP)
+```
+
+* **Recall:** a proporção de instâncias positivas que foram classificadas corretamente, incluindo tanto os verdadeiros positivos quanto os falsos negativos.
+
+```
+Recall = TP / (TP + FN)
+```
+
+* **F1-score:** uma média harmoniosa da precisão e do recall, que leva em consideração a importância de ambos os valores.
+
+```
+F1-score = 2 * (Precisão * Recall) / (Precisão + Recall)
+```
+
+A precisão é importante quando é importante minimizar o número de falsos positivos, como no caso de um modelo de classificação de spam. O recall é importante quando é importante minimizar o número de falsos negativos, como no caso de um modelo de diagnóstico médico. O F1-score é uma medida equilibrada de precisão e recall.
+
+A matriz de confusão é uma ferramenta valiosa para avaliar o desempenho de um modelo de classificação em NLP. Ela fornece uma visão geral de como o modelo está se saindo em cada classe, identificando áreas onde ele pode melhorar.
+
+#### Accuracy 
+Acurácia é uma métrica de avaliação de desempenho muito popular para descobrir a performance de um modelo de machine learning em uma tarefa de classificação. Costuma-se pensar nela como “taxa de acerto” do modelo. Ela é calculada dividindo o número de previsões corretas pelo número total de previsões.
+
+Em NLP, a acurácia é geralmente calculada dividindo o número de verdadeiros positivos (TP) e verdadeiros negativos (TN) pelo número total de instâncias no conjunto de dados de teste.
+
+Por exemplo, suponha que um modelo de classificação de spam seja avaliado em um conjunto de dados com 100 instâncias, das quais 80 são spam e 20 não são spam. Se o modelo prever corretamente que 75 das instâncias de spam são spam e 15 das instâncias não spam não são spam, a acurácia do modelo será de 85%.
+
+```
+   |   | Spam | Não Spam |
+---|---|---|---|
+Spam | 75 | 5 |
+Não Spam | 15 | 5 |
+```
+
+```
+Acurácia = (75 + 5) / 100 = 0.80 = 80%
+```
+
+No entanto, é importante observar que a acurácia nem sempre é a métrica mais apropriada para avaliar o desempenho de um modelo de classificação. Em alguns casos, pode ser mais importante minimizar o número de falsos negativos (FN), como no caso de um modelo de diagnóstico médico. Nesses casos, outras métricas, como o recall, podem ser mais adequadas.
+
+Além disso, a acurácia pode ser enganadora em conjuntos de dados com classes desbalanceadas. Por exemplo, se um conjunto de dados de classificação de spam contém 90% de instâncias de não spam, um modelo que apenas prevê que todas as instâncias são não spam terá uma acurácia de 90%, mesmo que seja um modelo muito ruim.
+
+Em geral, a acurácia é uma métrica útil para avaliar o desempenho de um modelo de classificação, mas é importante considerar as limitações da métrica antes de usá-la para tomar decisões.
+
+#### Accuracy and Cross-entropy loss
+Tanto a acurácia quanto o cross-entropy loss são métricas utilizadas para avaliar o desempenho de modelos de Machine Learning em tarefas de classificação em NLP. No entanto, elas servem a propósitos diferentes e fornecem insights distintos sobre o comportamento do modelo.
+
+**Acurácia:**
+
+- **O que é:** Representa a proporção de previsões corretas feitas pelo modelo em relação ao total de previsões. 
+- **Como é calculada:** (Verdadeiros positivos + Verdadeiros negativos) / Número total de instâncias.
+- **Vantagens:** Simples de entender e interpretar. Útil para comparar modelos em cenários simples com classes balanceadas.
+- **Desvantagens:** Sensível a classes desbalanceadas. Não penaliza de forma igual erros em classes majoritárias e minoritárias. Não informa sobre a distribuição de probabilidades do modelo.
+
+**Cross-entropy loss:**
+
+- **O que é:** Função de perda que mede a "distância" entre a distribuição de probabilidades prevista pelo modelo e a distribuição de probabilidades real (ground truth) para cada instância.
+- **Como é calculada:** -soma(p_i * log(q_i)), onde p_i é a probabilidade do modelo para a classe i e q_i é a probabilidade real da classe i.
+- **Vantagens:** Considera a distribuição de probabilidades do modelo. Penaliza com mais intensidade erros em classes minoritárias. Útil para tarefas complexas e classes desbalanceadas.
+- **Desvantagens:** Difícil de interpretar diretamente. Não reflete diretamente a "taxa de acerto" do modelo. Pode ser sensível a outliers no conjunto de dados.
+
+**Em resumo:**
+
+- Use a **acurácia** para uma visão geral simples do desempenho em tarefas simples com classes balanceadas.
+- Use o **cross-entropy loss** para obter um feedback mais granular sobre a qualidade das previsões, especialmente em tarefas complexas e com classes desbalanceadas.
+
+**Exemplo:**
+
+Imagine um modelo classificando e-mails como spam ou não spam. Um modelo que prevê todos os e-mails como não spam (sem levar em conta o conteúdo) pode ter uma acurácia de 95% se 99% dos e-mails forem não spam. Porém, esse modelo seria ineficaz para detectar e-mails de spam reais. O cross-entropy loss, nesse caso, seria alto, refletindo a divergência entre as previsões do modelo e a realidade.
+
+Ao utilizar ambas as métricas em conjunto, você obtém uma compreensão mais completa do desempenho do seu modelo e pode identificar áreas para melhoria.
+
+#### Precision
+## Precisão em NLP: Acertando no Alvo
+
+Em tarefas de classificação em NLP, a precisão (também conhecida como **precisão positiva**) é uma métrica vital para avaliar o quão **acuradas** são as previsões do seu modelo. Imagine-a como um atirador acertando o alvo certo: quanto maior a precisão, mais certeiros seus disparos. Precisão é a proporção de **verdadeiros positivos (TP)** sobre o total de previsões positivas feitas pelo modelo.
+
+```
+Precisão = TP / (TP + FP)
+```
+
+* **TP (Verdadeiros positivos):** o número de instâncias que o modelo corretamente classificou como pertencentes à classe positiva.
+* **FP (Falsos positivos):** o número de instâncias que o modelo erroneamente classificou como pertencentes à classe positiva, mas na verdade não pertencem.
+
+Um valor de precisão de 1.0 significa que todas as previsões positivas do modelo foram corretas, ou seja, o atirador acertou todos os alvos. Por outro lado, um valor de 0.5 indica que apenas metade das previsões positivas foram corretas, o que equivale a acertar apenas metade dos alvos.
+
+A precisão é particularmente relevante em situações onde **classificar incorretamente uma instância como positiva tem alto custo**. Por exemplo:
+
+* Um filtro de spam com baixa precisão pode marcar muitos e-mails legítimos como spam, incomodando os usuários.
+* Um sistema de detecção de fraude com baixa precisão pode marcar muitas transações legítimas como fraudulentas, impedindo vendas legítimas.
+
+A precisão pode ser enganosa em conjuntos de dados com **classes desbalanceadas**. Se a classe positiva for muito menor que a classe negativa, um modelo que simplesmente prevê que todas as instâncias pertencem à classe negativa pode ter uma precisão alta, mas ser na verdade ineficaz em detectar a classe minoritária. Em cenários onde **o recall (capacidade de identificar todos os positivos verdadeiros) é mais importante**, a precisão pode não ser a métrica ideal.
+
+A precisão é uma métrica essencial para avaliar a confiabilidade das previsões positivas do seu modelo de NLP. No entanto, é importante considerá-la em conjunto com outras métricas, como o recall e o F1-score, para obter uma avaliação completa do desempenho do modelo.
+
+#### Recall
+Em tarefas de classificação em NLP, o **recall**, também conhecido como **sensibilidade**,  é uma métrica que mede a capacidade do seu modelo de **identificar todas as instâncias positivas verdadeiras**. Imagine-o como um caçador de tesouros que não deixa nenhuma joia preciosa para trás. Quanto maior o recall, mais eficiente ele é em encontrar todos os tesouros escondidos. O recall é a proporção de **verdadeiros positivos (TP)** sobre o total de instâncias que realmente pertencem à classe positiva.
+
+```
+Recall = TP / (TP + FN)
+```
+
+* **TP (Verdadeiros positivos):** o número de instâncias que o modelo corretamente classificou como pertencentes à classe positiva.
+* **FN (Falsos negativos):** o número de instâncias que o modelo erroneamente classificou como pertencentes à classe negativa, mas na verdade pertencem à classe positiva (os tesouros perdidos).
+
+Um valor de recall de 1.0 significa que o modelo identificou todos os verdadeiros positivos, ou seja, o caçador encontrou todas as joias. Por outro lado, um valor de 0.5 indica que o modelo perdeu metade dos tesouros, identificando apenas 50% dos verdadeiros positivos.
+
+O recall é particularmente relevante em situações onde **não identificar um verdadeiro positivo tem alto custo**. Por exemplo:
+
+* Um sistema de diagnóstico médico com baixo recall pode falhar em detectar uma doença grave, levando a consequências sérias.
+* Um sistema de filtragem de spam com baixo recall pode permitir que muitos e-mails de spam passem despercebidos, inundando a caixa de entrada do usuário.
+
+Assim como a precisão, o recall pode ser enganoso em conjuntos de dados com **classes desbalanceadas**. Se a classe positiva for muito menor que a classe negativa, um modelo que simplesmente prevê que todas as instâncias pertencem à classe majoritária pode ter um recall alto, mas ser na verdade ineficaz em identificar a classe minoritária. Em cenários onde **a precisão (evitar falsos positivos) é mais importante**, o recall pode não ser a métrica ideal.
+
+O recall é uma métrica essencial para avaliar a capacidade do seu modelo de NLP de não deixar nenhum exemplo positivo verdadeiro para trás. No entanto, é importante considerá-lo em conjunto com outras métricas, como a precisão e o F1-score, para obter uma avaliação completa do desempenho do modelo.
+
+#### F Scores
+O F1-Score é uma média harmônica ponderada da Precisão e Recall. Isso significa que ele leva em consideração ambas as métricas, dando um peso maior à que estiver pior. Ele age como um mediador justo, evitando que uma métrica ofusque a outra.
+
+```
+F1-Score = 2 * (Precisão * Recall) / (Precisão + Recall)
+```
+
+Valores próximos a 1.0 indicam um modelo de alto desempenho, que acerta o alvo com frequência e identifica a maioria dos positivos verdadeiros. Valores próximos a 0.0 indicam um modelo de baixo desempenho, que erra a maioria dos disparos e deixa muitos positivos verdadeiros para trás.
+
+A vantagem é que é uma métrica balanceada, considerando tanto Precisão quanto Recall. É útil para comparar modelos em tarefas com classes desbalanceadas, onde as métricas individuais podem ser enganosas e é fácil de interpretar e entender.
+
+Pode não ser a melhor métrica para tarefas onde uma das métricas (Precisão ou Recall) é significativamente mais importante que a outra. Sensível a outliers no conjunto de dados.
+
+Deve ser usado em tarefas de classificação onde o equilíbrio entre Precisão e Recall é importante. Em conjuntos de dados com classes desbalanceadas e quando você deseja uma métrica simples e compreensível para comparar o desempenho de diferentes modelos.
+
+O F1-Score é uma importante ferramenta no arsenal de métricas de classificação em NLP. Ele ajuda a encontrar o equilíbrio entre Precisão e Recall, dando uma visão mais completa do desempenho do seu modelo. No entanto, lembre-se de considerar o contexto da sua tarefa e as particularidades dos seus dados para escolher a métrica mais adequada.
+
+Espero que esta explicação ajude! Lembre-se, no mundo das métricas de NLP, utilizar apenas uma pode cegar você para parte da realidade. Utilize o F1-Score junto a outras métricas para iluminar o caminho certo para o sucesso do seu modelo!
+
+#### Averaging F scores
+Macro-averaging: Imagine reunir os exércitos de todas as classes para uma grande batalha. Macro-averaging calcula o F1-Score individual de cada classe (como a precisão e o recall de cada batalhão) e, em seguida, tira a média desses valores. É como se cada classe tivesse o mesmo peso, independentemente do número de instâncias.
+- Vantagens: Justo para classes desbalanceadas, onde um exército pequeno não se perde na multidão.
+- Desvantagens: Pode mascarar problemas em classes menores, pois o desempenho das classes maiores influencia mais a média.
+
+Weighted averaging: Agora, pense em cada exército sendo recompensado de acordo com seu tamanho. Weighted averaging atribui um peso a cada F1-Score baseado no número de instâncias na classe correspondente. É como se os exércitos maiores tivessem uma voz mais alta na hora de calcular a média do F1-Score geral.
+- Vantagens: Enfatiza o desempenho em classes maiores, o que pode ser importante em situações onde classificar mal essas classes tem maior impacto.
+- Desvantagens: Pode ser tendencioso para classes maiores, negligenciando o desempenho das classes menores.
+
+Micro-averaging: Esqueça os exércitos separados! Micro-averaging calcula o F1-Score considerando todas as instâncias do conjunto de dados como um único exército. É como se todos os soldados lutassem juntos e seu desempenho coletivo determinasse o F1-Score geral.
+- Vantagens: Dá peso igual a todas as instâncias, independentemente da classe, o que pode ser útil para tarefas onde todas as classes são igualmente importantes.
+- Desvantagens: Pode ser enganoso em conjuntos de dados com classes desbalanceadas, pois o desempenho da classe majoritária domina o resultado.
+
+#### Precision-Recall Curves
+É um gráfico que mostra a precisão em função do recall para diferentes limiares de classificação. Cada ponto na curva representa uma configuração específica do modelo, onde um limiar particular é usado para separar as classes positiva e negativa.
+
+Interpretando Curva Precisão-Recall:
+* **Canto superior direito:** Representa a melhor combinação de precisão e recall que o modelo pode alcançar. Quanto mais próximo do canto, melhor o desempenho.
+* **Curva inclinada para a direita:** Indica que o modelo sacrifica precisão para aumentar o recall (mais positivos verdadeiros identificados, mas também mais falsos positivos).
+* **Curva inclinada para a esquerda:** Indica que o modelo sacrifica recall para aumentar a precisão (menos falsos positivos, mas também menos positivos verdadeiros identificados).
+* **Área sob a curva (AUC):** Representa a eficiência geral do modelo em equilibrar precisão e recall. Quanto maior a AUC, melhor o desempenho.
+
+Curva Precisão-Recall tem como vantagens:
+* Permite visualizar o trade-off entre precisão e recall para diferentes configurações do modelo.
+* Útil para comparar o desempenho de diferentes modelos na mesma tarefa.
+* Particularmente útil em tarefas com classes desbalanceadas, onde a precisão e o recall podem ser enganosos individualmente.
+
+As limitações da Curva Precisão-Recall incluem:
+* Pode ser difícil de interpretar para iniciantes.
+* Sensível a outliers no conjunto de dados.
+
+A Curva Precisão-Recall deve ser usada quando a relação entre precisão e recall é importante e o trade-off precisa ser analisado, em tarefas com classes desbalanceadas e quando se deseja comparar o desempenho de diferentes modelos para uma mesma tarefa.
+
+A Curva Precisão-Recall é uma ferramenta poderosa para entender o comportamento de um modelo de classificação em NLP e escolher a configuração que melhor se adapta às suas necessidades. Lembre-se, não existe uma curva perfeita, e a escolha do ponto ideal depende do contexto da sua tarefa e das prioridades que você estabelece.
+
 ### 7.2. Generation Metrics
+**Perplexity:**
+- *Definição:* Perplexidade é uma medida da qualidade de um modelo de linguagem em prever uma sequência de palavras. Representa o quão surpreendente é uma sequência para o modelo.
+- *Fórmula:* \(\text{Perplexity} = 2^{-\frac{1}{N} \sum_{i=1}^{N} \log_2 P(w_i | w_1^{i-1})}\), onde \(N\) é o número de palavras na sequência.
+- *Propriedades:* Quanto menor a perplexidade, melhor o modelo. Indica a surpresa média do modelo perante a sequência de palavras.
+- *Vantagens:* Simples de calcular e interpretar.
+- *Desvantagens:* Sensível ao tamanho do corpus de treinamento.
+- *Quando usar:* Útil para avaliar modelos de linguagem, especialmente em tarefas de geração de texto.
+
+**Word-error rate (WER):**
+- *Definição:* WER é uma métrica para avaliar a precisão de sistemas de reconhecimento de fala ou transcrição automática.
+- *Fórmula:* \(WER = \frac{S + D + I}{N}\), onde \(S\) é o número de substituições, \(D\) é o número de deleções, \(I\) é o número de inserções, e \(N\) é o número total de palavras na referência.
+- *Propriedades:* Quanto menor o WER, melhor o desempenho do sistema.
+- *Vantagens:* Captura erros em substituições, deleções e inserções.
+- *Desvantagens:* Não considera a ordem das palavras.
+- *Quando usar:* Adequado para avaliar sistemas de reconhecimento de fala ou transcrição de áudio.
+
+**BLEU scores:**
+- *Definição:* BLEU avalia a qualidade de traduções automáticas em relação a referências humanas.
+- *Fórmula:* \(BLEU = \text{BP} \times \exp(\sum_{n=1}^{N} \frac{1}{N} \log p_n)\), onde \(BP\) é o fator de penalização de brevidade e \(p_n\) é a precisão de n-gramas.
+- *Propriedades:* Quanto maior o BLEU, melhor a qualidade da tradução.
+- *Vantagens:* Leva em consideração a precisão dos n-gramas.
+- *Desvantagens:* Não considera a semântica ou ordem das palavras.
+- *Quando usar:* Aplicável em tarefas de tradução automática, especialmente em comparações entre diferentes sistemas.
+
+**ROUGE:**
+- *Definição:* ROUGE avalia a qualidade de resumos automáticos em relação a referências humanas.
+- *Fórmula:* Variantes incluem ROUGE-N, ROUGE-L, ROUGE-W, etc.
+- *Propriedades:* Quanto maior o ROUGE, melhor a qualidade do resumo.
+- *Vantagens:* Leva em consideração a sobreposição de n-gramas.
+- *Desvantagens:* Não captura a semântica dos resumos.
+- *Quando usar:* Útil para avaliar sistemas de geração automática de resumos.
+
+**METER:**
+- *Definição:* METER é uma métrica de avaliação automática de tradução automática que considera aspectos semânticos e sintáticos.
+- *Fórmula:* Varia entre as diferentes variantes do METER.
+- *Propriedades:* Projetado para abordar deficiências percebidas em outras métricas como o BLEU.
+- *Vantagens:* Considera aspectos semânticos e sintáticos.
+- *Desvantagens:* Menos amplamente utilizado e estabelecido que métricas como BLEU.
+- *Quando usar:* Pode ser considerado em avaliações de tradução automática quando a semântica e a sintaxe são cruciais.
+
+**CIDEr:**
+- *Definição:* CIDEr é uma métrica de avaliação automática de geração de descrições de imagens.
+- *Fórmula:* \(CIDEr = \frac{1}{M} \sum_{i=1}^{M} \text{CIDEr}_i\), onde \(\text{CIDEr}_i\) é calculado com base em semelhanças de n-gramas.
+- *Propriedades:* Visa avaliar a diversidade e a relevância das descrições geradas.
+- *Vantagens:* Considera a diversidade e a relevância das descrições.
+- *Desvantagens:* Específico para avaliação de geração de descrições de imagens.
+- *Quando usar:* Adequado para avaliar modelos de geração automática de descrições de imagens.
+
+**BERTScore:**
+- *Definição:* BERTScore avalia a qualidade da correspondência semântica entre duas sentenças usando representações de linguagem BERT.
+- *Fórmula:* Combina precisão, recuperação e pontuação F1.
+- *Propriedades:* Leva em consideração a semântica das sentenças.
+- *Vantagens:* Alinhamento baseado em representações contextualizadas.
+- *Desvantagens:* Pode ser computacionalmente intensivo.
+- *Quando usar:* Útil quando a correspondência semântica precisa ser avaliada, por exemplo, em avaliações de tradução automática.
+
+**Interpretação dos Resultados:**
+- Perplexity: Menor perplexidade indica melhor desempenho do modelo.
+- WER: Menor taxa de erro é desejada.
+- BLEU, ROUGE, CIDEr, BERTScore: Maior pontuação indica melhor desempenho.
+
+**Melhoria em Relação aos Demais:**
+- METER: Melhoria em relação ao BLEU, considerando aspectos semânticos e sintáticos.
+- CIDEr: Melhoria em relação ao BLEU, considerando diversidade e relevância.
+- BERTScore: Melhoria em relação ao BLEU e ROUGE, considerando alinhamento semântico com embeddings BERT.
+
 ### 7.3. Datasets
 ### 7.4. Data Organization
 ### 7.5. Model Evaluation
