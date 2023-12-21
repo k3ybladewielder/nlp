@@ -272,7 +272,7 @@ Essa abordagem foi utilizada no modelo Alpaca, possibilitando a especialização
 #### Demonstrations
 Demonstration é uma técnica de in-context learning em que se cria recursivamente contexto, pergunta e resposta para se ter respostas corretas.
 
-<img src="demonstration.png">
+<img src="./imgs/demonstration.png">
 
 #### Choosing demonstrations
 - Podem ser escolhidos aleatoriamente a partir dos dados disponíveis.
@@ -377,7 +377,7 @@ Os limites dos testes adversariais em avaliações comportamentais de modelos de
 - Inoculation by fine-tuning
 A técnica de "Inoculation by Fine-Tuning" refere-se a uma abordagem em aprendizado de máquina, especialmente em processamento de linguagem natural (PLN), para melhorar a robustez dos modelos diante de fraquezas específicas identificadas em conjuntos de dados ou em modelos pré-treinados. Essa abordagem envolve a introdução controlada de exemplos "inoculativos" durante a fase de ajuste fino (fine-tuning) para fortalecer o modelo contra deficiências conhecidas.
 
-<img src="inoculation.png">
+<img src="./imgs/inoculation.png">
 
 Aqui estão alguns aspectos chave dessa técnica:
 
@@ -420,7 +420,7 @@ Tanto a composicionalidade quanto a systematicity são conceitos essenciais para
 ### 5.3. COGS and ReCOGS
 - Introduz os conceitos de COGS (Compositional Generalization Score) e ReCOGS (Reverse Compositional Generalization Score). Essas métricas são utilizadas para avaliar a capacidade de modelos NLU em generalizar para composições inversas ou novas composições, medindo a robustez da compreensão composicional.
 
-<img src="cogs_recogs.png">
+<img src="./imgs/cogs_recogs.png">
 
 **COGS (Compositional Generalization Score):**
 
@@ -620,7 +620,7 @@ Receita para abstração causal
 2. Procure um alinhamento entre o modelo causal e o modelo alvo.
 3. Realize **intervenções de intercâmbio (interchange interventions)**
 
-<img src="causal_abstraction.png">
+<img src="./imgs/causal_abstraction.png">
 
 Neste método, são feitas intervenções alterando os valores dos neurônios para verificar a relação causal a partir do resultado. A partir das intervenções, podemos validar a hipótese gerada da estrutura causal do modelo. Quando a intervenção não causa nenhum impacto, provamos que aquela região não exerce papel causal no comportamento de entrada e saída do modelo.
 
@@ -645,7 +645,7 @@ Como não podemos verificar todas as possibilidades possíveis de intervenção 
 ### Interchange Intervention Training (IIT)
 IIT se baseia na abstração causal com interchange intervention, mas os parametros são atualizados com o sinal do erro do modelo em relação ao resultado da hipótese causal. Os pesos são atualizados para ajustar o output em relação ao resultado da hipótese causal. No subset em que houve a intervenção, é feito uma atualização "dupla", porquê é atualizado em relação ao target exemplo e da fonte (a direita). Primeiro recebe os parâmetros da fonte, depois eles são atualizados de acordo com o erro em relação a estrutura causal da hipótese. No fim, o     modelo é forçado a ter a estrutura causal da hipótese criada.
 
-<img src="iit.png">
+<img src="./imgs/iit.png">
 
 #### Descobertas de IIT
 1. Geiger et al. (2022b) desenvolvem o IIT e usam-no para obter resultados SOTA na tarefa MNIST Pointer Value Retrieval (MNIST-PVR; Zhang et al. 2021) e no benchmark de grounded language understanding ReaSCAN (Wu et al. 2021) .
