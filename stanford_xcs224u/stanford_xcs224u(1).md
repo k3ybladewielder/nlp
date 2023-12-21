@@ -8,9 +8,6 @@ Acesse o cronograma, materiais, recuros e programa do curso [aqui](https://web.s
 Playlist com as aulas no [youtube](https://www.youtube.com/playlist?list=PLoROMvodv4rOwvldxftJTmoR3kRcWkJBp)
 
 # Summary
-Certamente! Aqui está a lista atualizada com a numeração dos tópicos para os links:
-
-# Summary
 1. [**Intro and Evolution of NLP**](#1-intro-and-evolution-of-nlp)
 2. [**Natural Language Understanding**](#2-natural-language-understanding)
    - 2.1. [Contextual Word Representation](#21-contextual-word-representation)
