@@ -695,8 +695,6 @@ Em resumo, a avaliação da performance de modelos destilados é multifacetada e
 # Information Retrieval
 Em Information Retrieval (Recuperação de Informações), "knowledge-intensive tasks" (tarefas intensivas em conhecimento) referem-se a atividades que requerem um entendimento mais profundo e contextual das informações do que simples processamento de texto bruto. Essas tarefas frequentemente envolvem a aplicação de conhecimento prévio, semântica e compreensão mais avançada das relações entre conceitos. 
 
-Certamente, vou descrever cada uma dessas tarefas em Information Retrieval:
-
 1. **Question Answering (QA - Resposta a Perguntas):**
    - *Descrição:* Esta tarefa envolve o desenvolvimento de modelos capazes de responder a perguntas formuladas em linguagem natural. O objetivo é compreender a pergunta e fornecer uma resposta precisa.
    - *Exemplo:* Pergunta: "Quem foi o primeiro presidente dos Estados Unidos?" Resposta: "George Washington."
