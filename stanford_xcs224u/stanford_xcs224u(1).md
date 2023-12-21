@@ -19,7 +19,7 @@ Playlist com as aulas no [youtube](https://www.youtube.com/playlist?list=PLoROMv
    - 2.7. [ELECTRA](#electra)
    - 2.8. [Seq2seq Architectures](#seq2seq-architectures)
    - 2.9. [Distillation](#distillation)
-3. [**Information Retrieval**](#information-retrieval)
+3. [**Information Retrieval**](#3-information-retrieval)
    - 3.1. [Classical Information Retrieval](#classical-information-retrieval)
    - 3.2. [IR Metrics](#ir-metrics)
    - 3.3. [Neural IR](#neural-ir)
@@ -59,7 +59,7 @@ Playlist com as aulas no [youtube](https://www.youtube.com/playlist?list=PLoROMv
 ### 2.8. Seq2seq Architectures
 ### 2.9. Distillation
 
-## Information Retrieval
+## 3. Information Retrieval
 Em Information Retrieval (Recuperação de Informações), "knowledge-intensive tasks" (tarefas intensivas em conhecimento) referem-se a atividades que requerem um entendimento mais profundo e contextual das informações do que simples processamento de texto bruto. Essas tarefas frequentemente envolvem a aplicação de conhecimento prévio, semântica e compreensão mais avançada das relações entre conceitos. 
 
 1. **Question Answering (QA - Resposta a Perguntas):**
