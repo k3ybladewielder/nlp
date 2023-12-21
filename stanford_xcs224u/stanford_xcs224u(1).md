@@ -59,7 +59,7 @@ Playlist com as aulas no [youtube](https://www.youtube.com/playlist?list=PLoROMv
 ### 2.8. Seq2seq Architectures
 ### 2.9. Distillation
 
-## 3. Information Retrieval
+## Information Retrieval
 Em Information Retrieval (Recuperação de Informações), "knowledge-intensive tasks" (tarefas intensivas em conhecimento) referem-se a atividades que requerem um entendimento mais profundo e contextual das informações do que simples processamento de texto bruto. Essas tarefas frequentemente envolvem a aplicação de conhecimento prévio, semântica e compreensão mais avançada das relações entre conceitos. 
 
 1. **Question Answering (QA - Resposta a Perguntas):**
