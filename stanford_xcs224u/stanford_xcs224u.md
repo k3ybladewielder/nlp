@@ -980,18 +980,218 @@ A Curva Precisão-Recall é uma ferramenta poderosa para entender o comportament
 - *Desvantagens:* Pode ser computacionalmente intensivo.
 - *Quando usar:* Útil quando a correspondência semântica precisa ser avaliada, por exemplo, em avaliações de tradução automática.
 
-**Interpretação dos Resultados:**
-- Perplexity: Menor perplexidade indica melhor desempenho do modelo.
-- WER: Menor taxa de erro é desejada.
-- BLEU, ROUGE, CIDEr, BERTScore: Maior pontuação indica melhor desempenho.
-
-**Melhoria em Relação aos Demais:**
+**Melhorias em Relação aos Demais:**
 - METER: Melhoria em relação ao BLEU, considerando aspectos semânticos e sintáticos.
 - CIDEr: Melhoria em relação ao BLEU, considerando diversidade e relevância.
 - BERTScore: Melhoria em relação ao BLEU e ROUGE, considerando alinhamento semântico com embeddings BERT.
 
 ### 7.3. Datasets
+**Funções dos datasets em NLP**:
+1. Otimizar modelos
+2. Avaliar modelos
+3. Comparar modelos
+4. Habilitar novos recursos em modelos
+5. Medir o progresso em todo o campo
+6. Investigação científica
+
+Os benchmarks saturam mais rápido que nunca, logo, precisamos de novos datasets para habilitar novos benchmarks mais adequados para mensurar as capacidades dos modelos. E também, as limitações dos benchmarks são atingidas rapidamente.
+
+**Trade-off sobre tipos de datasets**:
+Naturalista: encontrado e com curadoria
+- Vantagens: Abundante, Barato e **Genuíno**
+- Desvantagens: Não controlado, Limitado (tipo de informação coletada), Intrusivo.
+
+Crowdsourced: desenvolvido em laboratório
+- Vantagens: Controlada (voce define a task), Preservação da privacidade, **Expressivo** (mais informativo por ser intencional, os crowdworkers executarão uma task de simples à complexa)
+- Desvantagens: Escasso, Caro, Planejado (não-natural)
+
+**Exemplos adversários ou os casos mais comuns?** (Ambos!)
+- Standard: Crie um conjunto de dados a partir de um único processo independente de modelo e divida-o em treinamento/desenvolvimento/teste.
+- Avaliação adversária: Um conjunto de testes separado é criado de maneiras que você suspeita ou sabe que serão desafiadoras, considerando o seu sistema e/ou os dados do treino (Standard).
+- Conjuntos de dados adversários: Conjunto de dados (treinar/desenvolver/teste) guiado por tentativas de enganar um conjunto de modelos.
+
+**Principais lições até agora**
+1. Os principais sistemas encontraram frequentemente soluções assistemáticas.
+2. O progresso nos conjuntos de desafios parece estar correlacionado com
+progresso.
+3. Os sistemas atuais ganham força em casos contraditórios sem
+degradação nos casos gerais.
+4. Exemplos adversários muitas vezes definem a percepção pública
+
 ### 7.4. Data Organization
+**Treinamento/Desenvolvimento/Teste**
+• Comum em grandes conjuntos de dados disponíveis publicamente.
+• Pressupõe um conjunto de dados bastante grande.
+• Todos nós seguimos o sistema de honra de realizar execuções de conjuntos de testes somente quando o desenvolvimento estiver concluído.
+• A parte de teste garante avaliações consistentes, mas incentiva subidas.
+
+**Sem divisões fixas**
+• Pequenos conjuntos de dados públicos podem não ter divisões predefinidas.
+• Um desafio para a avaliação: para comparações robustas, você realmente precisa executar todos os modelos usando seu regime de avaliação nas suas divisões.
+• Para grandes conjuntos de dados, você pode impor divisões e usá-las para todo o projeto:
+   - Simplifica sua configuração experimental.
+   - Reduz a otimização de hiperparâmetros.
+• Para conjuntos de dados pequenos, impor uma divisão pode deixar poucos dados, levando a um desempenho altamente variável.
+
+**Validação cruzada**
+
+Na validação cruzada, pegamos um conjunto de exemplos e os particionamos em duas ou mais divisões de treinamento/teste e, em seguida, calculamos a média dos resultados de alguma forma.
+
+**Trade-offs Validação cruzada (divisões aleatórias)**
+• Bom: você pode criar quantos quiser sem ter esse impacto na proporção de exemplos de treinamento e de teste.
+• Ruim: não há garantia de que todos os exemplos serão usados o mesmo número de vezes para treinamento e teste.
+
+**Trade-offs de validação cruzada (K-Fold)**
+- Bom: cada exemplo aparece em um conjunto de trens exatamente k − 1 vezes e em um conjunto de testes exatamente uma vez.
+- Ruim: o tamanho de k determina o tamanho do trem/teste:  
+  - 3 vezes: treinar 67%, testar 33%.
+  - 10 vezes: treinar 90%, testar 10%.
+  
 ### 7.5. Model Evaluation
+**Visão geral**
+• Linhas de base
+• Otimização de hiperparâmetros
+• Comparação de classificador
+• Avaliação de modelos sem convergência
+• O papel da inicialização aleatória de parâmetros
+
+Linhas de base
+- Os números da avaliação nunca podem ser entendidos adequadamente de forma isolada:
+1. Seu sistema obtém 0,95 F1! Sua tarefa é muito fácil?
+2. Seu sistema obtém 0,60 F1. Mas o que os humanos ganham?
+
+As linhas de base são cruciais para experimentos fortes
+• A definição de linhas de base não deve ser uma reflexão tardia, mas sim central
+de como você define suas hipóteses gerais.
+• As linhas de base são essenciais para construir um caso persuasivo.
+• Eles também podem ser usados para iluminar aspectos específicos do problema
+e virtudes específicas do sistema proposto.
+
+Linhas de base aleatórias
+Quase sempre é útil incluir linhas de base aleatórias. aprender:
+• Classificador Dummy
+   - estratificado
+   - uniforme
+   - mais frequente
+• DummyRegressor
+   - media
+   - mediana
+
+**Linhas de base específicas da tarefa**
+
+Vale a pena considerar se o seu problema sugere uma linha de base que revelará algo sobre o problema ou a forma como ele é modelado.
+
+Dois exemplos recentes da NLU:
+• NLI: linhas de base apenas para hipóteses.
+• A tarefa Story Cloze: Distinguir entre um final coerente e incoerente para uma história. Sistemas que olham apenas para as opções finais podem funcionar muito bem (Schwartz et al. 2017).
+
+**Otimização de hiperparâmetros**
+Discutido em nossa unidade sobre análise de sentimento. Justificativas:
+• Obtenção da melhor versão do seu modelo.
+• Realização de comparações justas entre modelos.
+• Compreender a estabilidade da sua arquitetura.
+
+**Todos os ajustes de hiperparâmetros devem ser feitos somente em dados de treinamento e desenvolvimento.**
+
+A configuração ideal de otimização de hiperparâmetros
+1. Para cada hiperparâmetro, identifique um grande conjunto de valores para ele.
+2. Crie uma lista de todas as combinações de todos os valores dos hiperparâmetros. Este será o produto cruzado de todos os valores para todos os recursos identificados na etapa 1.
+3. Para cada uma das configurações, faça a validação cruzada com os dados de treinamento disponíveis.
+4. Escolha as configurações com melhor desempenho na etapa 3, treine todos os dados de treinamento usando essas configurações e, em seguida, avalie esse modelo no conjunto de teste.
+
+**Um exemplo**
+1. O parâmetro h1 possui 5 valores.
+2. O parâmetro h2 possui 10 valores.
+3. Configurações totais: 5 · 10 = 50.
+4. Adicione h3 com 2 valores.
+5. Configurações totais: 5 · 10 · 2 = 100.
+6. Validação cruzada de 5 vezes para selecionar parâmetros ideais: 500 execuções
+
+**Considerações práticas**
+O que foi dito acima é insustentável como um conjunto de leis para a comunidade científica. Se a adotássemos, modelos complexos treinados em grandes conjuntos de dados acabariam sendo desfavorecidos e apenas os muito ricos poderiam participar.
+
+Rajkomar et al. (2018): “o desempenho de todas as redes neurais acima foi [sic] ajustado automaticamente usando o Google Vizier [35] com um total de> 201.000 horas de GPU”
+
+**Compromissos razoáveis**
+
+Passos pragmáticos que você pode tomar para aliviar esse problema, em ordem decrescente de
+atratividade:
+1. A amostragem aleatória e a amostragem guiada permitem explorar um grande espaço com um orçamento fixo de execuções.
+2. Pesquise com base em algumas épocas de treinamento. (Poderia ser reforçado com curvas de aprendizagem curtas para diferentes ambientes.)
+3. Pesquise com base em subconjuntos de dados. (No entanto, alguns parâmetros dependerão muito do tamanho do conjunto de dados, portanto isso pode ser arriscado.)
+4. Por meio de pesquisa heurística, determine quais hiperparâmetros são menos importantes e defina-os manualmente. (Justifique isso no artigo!)
+5. Encontre hiperparâmetros ideais por meio de uma única divisão e use-os para todas as divisões subsequentes. Justificado se as divisões forem semelhantes.
+6. Adote as escolhas dos outros. Os céticos reclamarão que essas descobertas não se traduzem em seus novos conjuntos de dados, mas podem ser a única opção.
+
+**Ferramentas para pesquisa de hiperparâmetros**
+• de sklearn.model_selection importar GridSearchCV, RandomizedSearchCV, HalvingGridSearchCV
+• O scikit-optimize oferece uma variedade de métodos para pesquisa guiada através da grade de hiperparâmetros.
+
+**Comparação de classificador**
+
+Suponha que você avaliou dois modelos de classificador. Seu desempenho provavelmente é diferente até certo ponto. O que pode ser feito para estabelecer se estes modelos são diferentes em algum sentido significativo?
+• Diferenças práticas
+• Intervalos de confiança
+• Teste de postos sinalizados de Wilcoxon
+• Teste de McNemar
+
+**Avaliando modelos sem convergência**
+• Ao trabalhar com modelos lineares, raramente surgem problemas de convergência.
+• Com redes neurais, a convergência ocupa o centro das atenções:
+   - Os modelos raramente convergem.
+   - Pois eles convergem em taxas diferentes entre as execuções.
+   - O seu desempenho nos dados de teste depende muitas vezes fortemente destas diferenças.
+• Às vezes, um modelo com um erro final baixo acaba sendo ótimo, e às vezes é pior do que aquele que terminou com um erro maior. Quem sabe?!
+
+**Testes incrementais de conjunto de desenvolvimento**
+1. Para lidar com essa incerteza: colete regularmente informações sobre o desempenho do conjunto de desenvolvedores como parte do treinamento.
+2. Por exemplo, a cada 100 iterações, pode-se fazer previsões no conjunto de desenvolvimento e armazenar esse vetor de previsões.
+3. Todos os modelos PyTorch para este curso possuem um early_stopping com vários parâmetros controláveis.
+
+**Curvas de aprendizado com intervalos de confiança**
+<img src=".imgs/learning_curve.png">
+
+A adição de intervalos de confiança (IC) à learning curve fornece uma maneira de quantificar a incerteza associada ao desempenho do modelo em diferentes pontos do treinamento. Isso é particularmente útil ao lidar com conjuntos de dados limitados ou quando se deseja entender a estabilidade estatística do desempenho do modelo. 
+
+1. **Erro Médio e Intervalo de Confiança:**
+   - A learning curve com intervalos de confiança normalmente exibe a média do erro (ou outra métrica de desempenho) juntamente com um intervalo de confiança ao redor dessa média.
+   - O intervalo de confiança fornece uma estimativa da variabilidade ou incerteza associada à métrica de desempenho em um determinado ponto.
+
+2. **Variação Estatística:**
+   - Se o intervalo de confiança é estreito, isso sugere uma variação estatística menor e maior confiança nos valores médios exibidos.
+   - Um intervalo de confiança mais amplo indica maior incerteza estatística e maior variação nas medições.
+
+3. **Convergência Estável:**
+   - Se a learning curve mostra que a média do erro converge para um valor estável e o intervalo de confiança diminui, isso sugere que o modelo está se estabilizando em um desempenho consistente.
+
+4. **Identificação de Problemas:**
+   - Um intervalo de confiança que aumenta repentinamente pode indicar problemas, como instabilidade no treinamento ou sensibilidade excessiva a variações nos dados.
+   - Variações súbitas podem indicar overfitting ou underfitting em certas fases do treinamento.
+
+5. **Avaliação da Significância:**
+   - Os intervalos de confiança permitem avaliar a significância estatística de diferenças entre pontos da learning curve.
+   - Se os intervalos de confiança não se sobrepõem entre duas configurações diferentes do modelo, isso pode indicar uma diferença estatisticamente significativa.
+
+6. **Tomada de Decisões Informada:**
+   - Ao tomar decisões sobre ajustes de hiperparâmetros, parar o treinamento ou escolher modelos, considere não apenas a média do desempenho, mas também o intervalo de confiança associado.
+   - Evite tomar decisões com base apenas em pequenas variações que podem ser devidas a flutuações aleatórias.
+
+7. **Compreensão da Estabilidade do Modelo:**
+   - Intervalos de confiança mais amplos em pontos específicos da learning curve podem indicar que o modelo é menos estável nesses estágios do treinamento.
+   - Modelos mais estáveis são geralmente preferíveis, especialmente em situações em que a confiabilidade é crítica.
+
+8. **Tamanho da Amostra:**
+   - O tamanho da amostra pode afetar a largura dos intervalos de confiança. Em geral, quanto maior a amostra, menor a incerteza associada à média.
+
+A interpretação de uma learning curve com intervalos de confiança é uma combinação de análise estatística e conhecimento do problema específico. Esses intervalos proporcionam uma visão mais completa da variabilidade no desempenho do modelo e ajudam a tomar decisões mais informadas durante o treinamento e avaliação do modelo.
+
+**A função da inicialização aleatória de parâmetros**
+1. A maioria dos modelos de aprendizagem profunda tem seus parâmetros inicializados aleatoriamente
+2. Claramente significativo para problemas de otimização não convexos. Modelos mais simples também podem ser afetados.
+3. Reimers e Gurevych (2017):
+   - Diferentes inicializações para modelos de sequência neural podem levar a diferenças estatisticamente significativas.
+   - Vários sistemas recentes são indistinguíveis em termos de desempenho bruto, uma vez tida em conta esta fonte de variação.
+4. Relacionado: falha catastrófica como resultado de uma inicialização infeliz.
+5. Em Assessment_methods.ipynb: Uma rede feedforward no problema XOR é bem-sucedida 8 de 10 vezes.
 
 ## 8. Fantastic Language Models and How to Build Them
