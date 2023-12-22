@@ -51,13 +51,120 @@ Playlist com as aulas no [youtube](https://www.youtube.com/playlist?list=PLoROMv
 ## 2. Natural Language Understanding
 ### 2.1. Contextual Word Representation
 ### 2.2. Transformer
+A arquitetura dos modelos Transformers, introduzida por Vaswani et al. em 2017, é uma arquitetura de aprendizado de máquina que se tornou amplamente utilizada em tarefas de Processamento de Linguagem Natural (NLP) e além. A característica distintiva dos modelos Transformers é a atenção, que permite que o modelo atenda simultaneamente a todas as posições de entrada em uma sequência, em vez de depender de uma abordagem sequencial ou recorrente.
+
+1. **Encoder-Decoder Architecture:** Muitos modelos Transformer consistem em uma arquitetura de codificador-decodificador. No caso de tarefas de tradução, por exemplo, o codificador processa a sequência de entrada na língua de origem, e o decodificador gera a sequência de saída na língua de destino.
+2. **Attention Mechanism:**O mecanismo de atenção é central para os Transformers. Ele permite que o modelo "preste atenção" a diferentes partes da entrada ao calcular uma pontuação de atenção para cada posição. Isso é feito por meio de três vetores: consulta (Q), chave (K) e valor (V). A atenção é calculada como uma soma ponderada dos valores, onde os pesos são determinados pela compatibilidade entre a consulta e a chave. **Exemplo:** Considere a frase "The cat sat on the mat." O mecanismo de atenção permite que o modelo dê mais peso a diferentes palavras dependendo do contexto. Por exemplo, ao traduzir para outra língua, o modelo pode dar mais atenção a "cat" ao gerar a palavra correspondente na língua de destino.
+3. **Multi-Head Attention:** Para melhorar a representação, os modelos Transformers usam atenção multi-cabeça, onde várias cabeças de atenção são calculadas independentemente e, em seguida, concatenadas e linearmente transformadas. Isso permite que o modelo aprenda diferentes representações ponderadas. **Exemplo:** Suponha que estamos analisando uma frase e queremos entender tanto os sujeitos quanto os objetos. Cada cabeça de atenção pode se concentrar em diferentes partes da frase, como sujeitos ou objetos específicos.
+4. **Positional Encoding:** Uma desvantagem dos modelos Transformers é que eles não têm uma noção intrínseca de ordem ou posição nas sequências. Para contornar isso, os modelos incorporam informações de posição através da adição de codificações posicionais às embeddings de entrada. **Exemplo:** Considere as frases "I love transformers" e "Transformers love me." As palavras têm significados diferentes dependendo de sua posição nas frases. As codificações posicionais ajudam o modelo a capturar essas diferenças.
+5. **Feedforward Neural Networks:** Após a camada de atenção, cada posição passa por uma rede neural feedforward, adicionando uma camada de não-linearidade. Isso ajuda o modelo a aprender representações não lineares mais complexas, capturando relações mais abstratas entre as palavras.
+6. **Layer Normalization and Residual Connections:** Cada subcamada (atualmente, subcamadas são atenção e feedforward) é seguida por uma camada de normalização e uma conexão residual. Isso ajuda na estabilidade do treinamento e facilita o fluxo de gradientes. **Exemplo:** A normalização de camada e as conexões residuais são usadas para melhorar a estabilidade do treinamento e facilitar o fluxo de gradientes. Isso é particularmente útil em modelos profundos como os Transformers.
+7. **Self-Attention:** Em muitos casos, como no BERT, os modelos Transformers usam autoatenção, onde a entrada é considerada para calcular as atenções em si mesma. Isso permite que o modelo capture dependências de longo alcance. **Exemplo:** Ao processar uma sequência de palavras, o mecanismo de autoatenção permite que cada palavra considere todas as outras palavras em relação a si mesma. Isso é valioso para entender dependências de longo alcance.
+   
 ### 2.3. Positional Encoding
 ### 2.4. GPT (Generative Pre-trained Transformer)
 ### 2.5. BERT (Bidirectional Encoder Representations from Transformers)
+O BERT (Bidirectional Encoder Representations from Transformers) é um modelo de linguagem pré-treinado baseado na arquitetura Transformer. Aqui estão os componentes essenciais do BERT:
+
+1. **Arquitetura Transformer:**
+   - BERT utiliza a arquitetura Transformer, composta por um codificador empregado em uma configuração bidirecional. Isso significa que o modelo leva em consideração as palavras anteriores e posteriores para cada palavra em uma frase durante o treinamento.
+
+2. **Camadas de Ativação e Normalização:**
+   - BERT incorpora camadas de ativação (como ReLU) e normalização de camada após as operações de atenção e redes neurais feedforward. Essas camadas contribuem para a estabilidade do treinamento e facilitam o fluxo de gradientes.
+
+3. **Multi-Head Self-Attention:**
+   - O mecanismo de autoatenção é aplicado em várias cabeças (multi-head attention), permitindo que o modelo capture diferentes aspectos de dependências em uma frase de maneira simultânea. Isso ajuda BERT a entender contextos complexos e relações entre palavras.
+
+4. **Embeddings Posicionais:**
+   - Dado que a arquitetura Transformer não leva em conta a ordem das palavras em uma frase, BERT incorpora informações de posição através de embeddings posicionais. Isso permite que o modelo diferencie entre palavras que ocorrem em diferentes posições dentro de uma sequência.
+
+5. **Camada de Token [CLS]:**
+   - BERT adiciona um token especial [CLS] (CLS token) no início de cada sequência de entrada. O vetor de representação associado ao token [CLS] é usado como uma representação agregada da frase inteira para tarefas de classificação.
+
+6. **Pré-treinamento com Masked Language Model (MLM):** Durante a fase de pré-treinamento, BERT treina um modelo de linguagem de forma bidirecional. Uma parte das palavras em cada sequência de entrada é mascarada, e o modelo é treinado para prever essas palavras mascaradas com base no contexto das palavras circundantes.
+7. **Pré-treinamento de Palavras Inteiras (Whole Word Masking):** BERT usa uma abordagem de "Whole Word Masking" durante o pré-treinamento, na qual palavras inteiras são mascaradas de uma vez. Isso ajuda o modelo a entender o contexto e a relação semântica entre palavras completas.
+8. **Fine-Tuning para Tarefas Específicas:** Após o pré-treinamento, BERT pode ser afinado para tarefas específicas, como classificação de sentimentos, perguntas e respostas, ou NER (Reconhecimento de Entidade Nomeada), utilizando camadas adicionais e ajustando parâmetros para a tarefa específica.
+
+Esses componentes tornam o BERT uma arquitetura poderosa e versátil para uma variedade de tarefas de Processamento de Linguagem Natural (NLP), permitindo que o modelo compreenda contextos complexos e relações semânticas em sequências de texto.
+
 ### 2.6. RoBERTa
+RoBERTa (Robustly optimized BERT approach with pre-training Larger Amount of data) é uma variação do modelo BERT projetada para otimizar o desempenho e a eficiência do treinamento. Aqui estão os componentes centrais do ROBERTA:
+
+1. **Arquitetura Baseada em Transformer:** ROBERTA mantém a arquitetura baseada em Transformer, herdada do BERT. A arquitetura é composta por camadas de autoatenção, camadas de feedforward, normalização de camada e conexões residuais.
+2. **Treinamento Escalonado e Batch Size Dinâmico:** ROBERTA utiliza uma abordagem de treinamento escalonado (layer-wise training) e ajusta o tamanho do lote dinamicamente durante o treinamento. Isso permite que camadas mais profundas se beneficiem de tamanhos de lote maiores, o que melhora o desempenho do modelo.
+3. **Remoção da Pré-treinamento de Sentença (NSP):** ROBERTA remove a tarefa de pré-treinamento de sentença (Next Sentence Prediction - NSP) usada no BERT. Em vez disso, ele pré-treina o modelo apenas com tarefas de preenchimento de máscara (Masked Language Model - MLM) e utiliza um conjunto de dados mais extenso.
+4. **Tokenização Dinâmica e Aprendizado Contínuo:** ROBERTA incorpora uma abordagem de tokenização dinâmica, o que significa que o tamanho do vocabulário pode ser expandido dinamicamente durante o treinamento. Isso é especialmente útil para lidar com grandes quantidades de dados.
+5. **Aumento do Tamanho do Modelo e Treinamento com Mais Dados:** ROBERTA aumenta o tamanho do modelo em comparação com o BERT padrão e é treinado com uma quantidade significativamente maior de dados. Isso ajuda a capturar uma representação mais rica e robusta das linguagens.
+6. **Atenção Contínua em Segmentos (Causal Language Modeling):** Durante o treinamento, ROBERTA introduz a atenção contínua em segmentos para lidar com tokens de segmentos em um fluxo contínuo, melhorando a capacidade do modelo de entender e representar contextos complexos.
+7. **Utilização de Stop Words no Pré-treinamento:** ROBERTA faz uso de palavras comuns (stop words) no pré-treinamento, o que pode ajudar a melhorar a capacidade do modelo de compreender e generalizar.
+8. **Redução de Memória e Processamento Eficiente:** ROBERTA utiliza estratégias eficientes para redução de memória, como compartilhamento de parâmetros e compressão de representações intermediárias, tornando-o mais escalável e eficiente em termos de recursos computacionais.
+
+Esses componentes fazem do ROBERTA uma extensão e otimização do BERT, resultando em um modelo mais robusto e eficiente para tarefas de Processamento de Linguagem Natural.
+
 ### 2.7. ELECTRA
+O ELECTRA (Efficiently Learning an Encoder that Classifies Token Replacements Accurately) é um modelo de linguagem pré-treinado que se destaca por sua eficiência de treinamento e bom desempenho em tarefas downstream*. Aqui estão os principais componentes do ELECTRA:
+
+1. **Generador de Tokens Masked (Geração de Token Mascaramento):**  Diferentemente do BERT, que usa uma abordagem de preenchimento de máscara (MLM) para mascarar aleatoriamente palavras em uma sequência, o ELECTRA usa um gerador de tokens mascarados. Este gerador substitui aleatoriamente palavras reais por [MASK] e treina o modelo para reconhecer essas substituições.
+2. **Discriminador de Tokens Substituídos:**  O ELECTRA introduz um discriminador que é treinado para distinguir tokens reais de tokens gerados pelo gerador de tokens mascarados. Esse componente é crucial para a abordagem de treinamento do ELECTRA.
+3. **Tarefas de Pré-treinamento:**  O modelo é pré-treinado em duas tarefas simultâneas: a tarefa de reconhecimento de tokens mascarados (MLM-like) e a tarefa de discriminação adversarial entre tokens reais e tokens gerados.
+4. **Substituição de Tokens por [MASK]:**  No ELECTRA, uma porcentagem significativa dos tokens é substituída por [MASK] durante o pré-treinamento, em comparação com a pequena fração de tokens mascarados no BERT. Isso cria um sinal de treinamento mais forte para o modelo.
+5. **Treinamento Adversarial:**  O treinamento adversarial entre o gerador e o discriminador é uma parte central do ELECTRA. O gerador tenta gerar tokens mascarados que se assemelham a tokens reais, enquanto o discriminador tenta distinguir entre tokens reais e gerados.
+6. **Estratégia de Substituição Dinâmica:** O ELECTRA utiliza uma estratégia de substituição dinâmica, onde alguns tokens são substituídos por [MASK], alguns permanecem inalterados e outros são substituídos por palavras reais. Essa abordagem permite um treinamento mais eficiente.
+7. **Aproveitamento de Modelos de Linguagem Pré-existentes:** O ELECTRA pode se beneficiar de modelos de linguagem pré-existentes, como o BERT, para inicialização de parâmetros antes do treinamento adversarial.
+8. **Desempenho Eficiente em Tarefas Downstream:** Devido à sua abordagem de treinamento eficiente e ao uso de uma quantidade significativamente menor de parâmetros em comparação com modelos tradicionais, o ELECTRA demonstrou bom desempenho em tarefas downstream com menos recursos computacionais."Tarefas downstream" referem-se a tarefas específicas de Processamento de Linguagem Natural (PLN) que são resolvidas utilizando modelos de linguagem pré-treinados. Em um contexto de modelos de linguagem pré-treinados, o termo "downstream" refere-se ao movimento de uma tarefa mais geral (pré-treinamento) para tarefas mais específicas e aplicadas (tarefas downstream). Ex: 
+ - Classificação de Sentimento, Perguntas e Respostas (QA), Named Entity Recognition (NER), Tradução Automátic Geração de Texto, Sumarização de Texto, Análise de Sentimento.
+
+Em resumo, o ELECTRA se destaca pela sua eficiência de treinamento, aproveitando um gerador de tokens mascarados e um discriminador adversarial para pré-treinamento. Essa abordagem adversarial resulta em representações mais ricas e eficazes para várias tarefas de Processamento de Linguagem Natural (NLP).
+
 ### 2.8. Seq2seq Architectures
+Os modelos sequência para sequência, também conhecidos como seq2seq, são uma classe de modelos de aprendizado de máquina que são usados para tarefas onde a entrada e a saída são sequências de dados. Eles são comumente usados em tarefas de Processamento de Linguagem Natural (PNL) e tradução automática. Aqui está uma explicação geral, uma descrição do funcionamento e exemplos de modelos seq2seq:
+
+1. **Entrada e Saída Sequenciais:** Os modelos seq2seq são projetados para lidar com entradas e saídas que são sequências, como frases em linguagem natural.
+2. **Arquitetura Encoder-Decoder:** Geralmente, os modelos seq2seq consistem em duas partes principais: um encoder (codificador) e um decoder (decodificador). O encoder processa a entrada sequencial e produz um vetor de contexto. O decoder usa esse vetor de contexto para gerar a saída sequencial.
+3. **Representação Vetorial:** Durante o treinamento, o modelo aprende representações vetoriais que capturam a semântica da sequência de entrada.
+
+#### Funcionamento:
+1. **Encoder:** A sequência de entrada é alimentada ao encoder, que converte cada elemento da sequência em uma representação vetorial.
+2. **Vetor de Contexto:** O encoder produz um vetor de contexto que captura as informações relevantes da sequência de entrada.
+3. **Decoder:** O vetor de contexto é usado como entrada para o decoder, que gera a sequência de saída um elemento de cada vez.
+4. **Treinamento com Teacher Forcing:** Durante o treinamento, o modelo é alimentado com pares de sequências de entrada e saída conhecidas. O decoder é incentivado a gerar a sequência de saída correta em cada etapa.
+5. **Inferência:** Durante a inferência, o modelo é alimentado com uma sequência de entrada e usa o decoder para gerar a sequência de saída.
+6. **Exemplos de Modelos Seq2Seq:** Tradução Automática, Geração de Resumo, Diálogos (QA), Geração de Código, Correção de Texto
+
+### Benchmarks entre os modelos
+
 ### 2.9. Distillation
+A destilação, no contexto de modelos de aprendizado de máquina, refere-se a uma técnica na qual o conhecimento de um modelo maior e mais complexo é transferido para um modelo menor e mais simples. Esse processo é muitas vezes chamado de "destilação do conhecimento" ou "aprendizado por destilação". O principal objetivo é transferir o conhecimento adquirido por um modelo mais complexo para um modelo mais leve, mantendo ou melhorando o desempenho do modelo menor.
+
+#### Principais Componentes do Processo de Destilação:
+1. **Modelo Professor (Complexo):** Um modelo maior e mais complexo (professor) é treinado em uma tarefa específica. Esse modelo geralmente tem uma capacidade de representação mais rica e é capaz de aprender padrões complexos nos dados.
+2. **Modelo Aluno (Simplificado):** Um modelo menor e mais simples (aluno) é criado para realizar a mesma tarefa. Este modelo é mais leve em termos de parâmetros e complexidade.
+3. **Transferência de Conhecimento:** O conhecimento do modelo professor é transferido para o modelo aluno. Isso geralmente é feito ajustando o modelo aluno para imitar as previsões do modelo professor.
+4. **Regularização:** Técnicas de regularização são frequentemente aplicadas para evitar que o modelo aluno se ajuste excessivamente aos dados de treinamento. Isso pode incluir penalidades em divergências entre as distribuições de probabilidade das previsões do professor e do aluno.
+
+#### Benefícios da Destilação:
+1. **Redução de Recursos:** Modelos menores resultantes da destilação geralmente têm menos parâmetros, ocupam menos espaço em memória e são mais rápidos para inferência.
+2. **Generalização Melhorada:** A destilação pode ajudar o modelo menor a generalizar melhor em relação a dados não vistos, incorporando o conhecimento aprendido pelo modelo professor.
+3. **Transferência de Tarefas:** Os modelos destilados podem ser mais eficientes em transferir conhecimento para tarefas relacionadas ou domínios semelhantes.
+
+#### Performace
+A performance de modelos destilados pode ser avaliada em relação a diferentes métricas e considerações, dependendo do contexto específico da aplicação. Aqui estão algumas considerações gerais sobre a performance de modelos destilados:
+
+1. **Eficiência e Inferência Rápida:** Um dos principais objetivos ao destilar conhecimento é criar modelos mais leves e eficientes, especialmente em termos de inferência. Modelos destilados geralmente apresentam tempos de inferência mais rápidos em comparação com modelos mais complexos, tornando-os adequados para implantação em dispositivos com recursos limitados.
+2. **Redução de Parâmetros:** Modelos destilados geralmente têm um número menor de parâmetros em comparação com seus modelos professores mais complexos. Isso pode resultar em menor uso de memória, tornando-os mais escaláveis e eficientes em termos de recursos.
+3. **Transferência de Tarefas e Generalização:** A performance de modelos destilados muitas vezes é avaliada em tarefas específicas para as quais foram treinados, mas também pode ser interessante avaliar sua capacidade de generalização. Modelos destilados são projetados para transferir conhecimento para tarefas relacionadas, portanto, avaliar sua performance em uma gama mais ampla de tarefas é relevante.
+4. **Conservação de Conhecimento:** A performance é frequentemente avaliada em termos da capacidade do modelo aluno em conservar o conhecimento do modelo professor. Isso pode ser medido usando métricas de desempenho específicas para a tarefa em questão.
+5. **Robustez e Regularização:** Modelos destilados são muitas vezes treinados com técnicas de regularização para evitar ajuste excessivo aos dados de treinamento. Avaliar a robustez do modelo destilado em relação a dados não vistos ou condições adversas pode ser crucial.
+6. **Comparação com Modelos Base:** A performance de modelos destilados é frequentemente comparada com modelos base que não passaram pelo processo de destilação. Isso ajuda a entender os benefícios e possíveis compensações introduzidos pela destilação.
+7. **Avaliação de Tarefas Específicas:** A performance real de modelos destilados é fortemente dependente da tarefa específica para a qual foram treinados. Portanto, métricas relevantes para a tarefa, como acurácia, precisão, recall, F1-score, BLEU score (em tradução automática), entre outras, são utilizadas.
+
+Em resumo, a avaliação da performance de modelos destilados é multifacetada e depende das metas específicas da aplicação. Ela não se limita apenas ao desempenho em tarefas individuais, mas também considera fatores como eficiência computacional, generalização e conservação de conhecimento do modelo professor.
+
+#### Current trends
+1. As arquiteturas autorregressivas parecem ter assumido o controle, possivelmente apenas porque o campo está focado na geração.
+2. Os modelos bidirecionais ainda podem ter vantagem quando se trata de representação. A representação de sentença de modelos bidirecionais como o BERT e como elas se relacionam é superior, eles ainda têm vantagem sobre modelos como GPT.
+3. Seq2seq ainda é uma escolha dominante para tarefas com essa estrutura. Eles têm uma vantagem em termos de viés arquitetônico que os ajuda a compreender a tarefa por si próprios.
+4. As pessoas ainda estão obcecadas com o crescimento exponencial do número de parâmetros de modelos, mas estamos vendo um movimento contrário em direção a modelos "menores" (parâmetros ainda 10B)
 
 ## 3. Information Retrieval
 Em Information Retrieval (Recuperação de Informações), "knowledge-intensive tasks" (tarefas intensivas em conhecimento) referem-se a atividades que requerem um entendimento mais profundo e contextual das informações do que simples processamento de texto bruto. Essas tarefas frequentemente envolvem a aplicação de conhecimento prévio, semântica e compreensão mais avançada das relações entre conceitos. 
@@ -634,7 +741,6 @@ Como não podemos verificar todas as possibilidades possíveis de intervenção 
 5. Preste especial atenção a quantas intervenções de intercâmbio devem alterar o rótulo de resultados, uma vez que fornecem as evidências mais claras.
 
 #### Descobertas da abstração causal
-
 1. Modelos de BERT ajustados têm sucesso em exemplos difíceis e fora de domínio, envolvendo implicação e negação lexical, **porque** são abstraídos por programas simples de monotonicidade (Geiger et al. 2020).
 2. Modelos BERT ajustados têm sucesso na tarefa MQNLI **porque** encontram soluções composicionais (Geiger et al. 2021).
 3. Os modelos têm sucesso na tarefa MNIST Pointer Value Retrieval (MNIST-PVR; Zhang et al. 2021) **porque** são abstraídos por programas simples como “se o dígito for 6, então o rótulo está no canto inferior esquerdo” (Geiger et al. .2021).
@@ -1020,26 +1126,26 @@ degradação nos casos gerais.
 
 ### 7.4. Data Organization
 **Treinamento/Desenvolvimento/Teste**
-• Comum em grandes conjuntos de dados disponíveis publicamente.
-• Pressupõe um conjunto de dados bastante grande.
-• Todos nós seguimos o sistema de honra de realizar execuções de conjuntos de testes somente quando o desenvolvimento estiver concluído.
-• A parte de teste garante avaliações consistentes, mas incentiva subidas.
+- Comum em grandes conjuntos de dados disponíveis publicamente.
+- Pressupõe um conjunto de dados bastante grande.
+- Todos nós seguimos o sistema de honra de realizar execuções de conjuntos de testes somente quando o desenvolvimento estiver concluído.
+- A parte de teste garante avaliações consistentes, mas incentiva subidas.
 
 **Sem divisões fixas**
-• Pequenos conjuntos de dados públicos podem não ter divisões predefinidas.
-• Um desafio para a avaliação: para comparações robustas, você realmente precisa executar todos os modelos usando seu regime de avaliação nas suas divisões.
-• Para grandes conjuntos de dados, você pode impor divisões e usá-las para todo o projeto:
+- Pequenos conjuntos de dados públicos podem não ter divisões predefinidas.
+- Um desafio para a avaliação: para comparações robustas, você realmente precisa executar todos os modelos usando seu regime de avaliação nas suas divisões.
+- Para grandes conjuntos de dados, você pode impor divisões e usá-las para todo o projeto:
    - Simplifica sua configuração experimental.
    - Reduz a otimização de hiperparâmetros.
-• Para conjuntos de dados pequenos, impor uma divisão pode deixar poucos dados, levando a um desempenho altamente variável.
+- Para conjuntos de dados pequenos, impor uma divisão pode deixar poucos dados, levando a um desempenho altamente variável.
 
 **Validação cruzada**
 
 Na validação cruzada, pegamos um conjunto de exemplos e os particionamos em duas ou mais divisões de treinamento/teste e, em seguida, calculamos a média dos resultados de alguma forma.
 
 **Trade-offs Validação cruzada (divisões aleatórias)**
-• Bom: você pode criar quantos quiser sem ter esse impacto na proporção de exemplos de treinamento e de teste.
-• Ruim: não há garantia de que todos os exemplos serão usados o mesmo número de vezes para treinamento e teste.
+- Bom: você pode criar quantos quiser sem ter esse impacto na proporção de exemplos de treinamento e de teste.
+- Ruim: não há garantia de que todos os exemplos serão usados o mesmo número de vezes para treinamento e teste.
 
 **Trade-offs de validação cruzada (K-Fold)**
 - Bom: cada exemplo aparece em um conjunto de trens exatamente k − 1 vezes e em um conjunto de testes exatamente uma vez.
@@ -1049,11 +1155,11 @@ Na validação cruzada, pegamos um conjunto de exemplos e os particionamos em du
   
 ### 7.5. Model Evaluation
 **Visão geral**
-• Linhas de base
-• Otimização de hiperparâmetros
-• Comparação de classificador
-• Avaliação de modelos sem convergência
-• O papel da inicialização aleatória de parâmetros
+- Linhas de base
+- Otimização de hiperparâmetros
+- Comparação de classificador
+- Avaliação de modelos sem convergência
+- O papel da inicialização aleatória de parâmetros
 
 Linhas de base
 - Os números da avaliação nunca podem ser entendidos adequadamente de forma isolada:
@@ -1061,19 +1167,19 @@ Linhas de base
 2. Seu sistema obtém 0,60 F1. Mas o que os humanos ganham?
 
 As linhas de base são cruciais para experimentos fortes
-• A definição de linhas de base não deve ser uma reflexão tardia, mas sim central
+- A definição de linhas de base não deve ser uma reflexão tardia, mas sim central
 de como você define suas hipóteses gerais.
-• As linhas de base são essenciais para construir um caso persuasivo.
-• Eles também podem ser usados para iluminar aspectos específicos do problema
+- As linhas de base são essenciais para construir um caso persuasivo.
+- Eles também podem ser usados para iluminar aspectos específicos do problema
 e virtudes específicas do sistema proposto.
 
 Linhas de base aleatórias
 Quase sempre é útil incluir linhas de base aleatórias. aprender:
-• Classificador Dummy
+- Classificador Dummy
    - estratificado
    - uniforme
    - mais frequente
-• DummyRegressor
+- DummyRegressor
    - media
    - mediana
 
@@ -1082,14 +1188,14 @@ Quase sempre é útil incluir linhas de base aleatórias. aprender:
 Vale a pena considerar se o seu problema sugere uma linha de base que revelará algo sobre o problema ou a forma como ele é modelado.
 
 Dois exemplos recentes da NLU:
-• NLI: linhas de base apenas para hipóteses.
-• A tarefa Story Cloze: Distinguir entre um final coerente e incoerente para uma história. Sistemas que olham apenas para as opções finais podem funcionar muito bem (Schwartz et al. 2017).
+- NLI: linhas de base apenas para hipóteses.
+- A tarefa Story Cloze: Distinguir entre um final coerente e incoerente para uma história. Sistemas que olham apenas para as opções finais podem funcionar muito bem (Schwartz et al. 2017).
 
 **Otimização de hiperparâmetros**
 Discutido em nossa unidade sobre análise de sentimento. Justificativas:
-• Obtenção da melhor versão do seu modelo.
-• Realização de comparações justas entre modelos.
-• Compreender a estabilidade da sua arquitetura.
+- Obtenção da melhor versão do seu modelo.
+- Realização de comparações justas entre modelos.
+- Compreender a estabilidade da sua arquitetura.
 
 **Todos os ajustes de hiperparâmetros devem ser feitos somente em dados de treinamento e desenvolvimento.**
 
@@ -1124,24 +1230,24 @@ atratividade:
 6. Adote as escolhas dos outros. Os céticos reclamarão que essas descobertas não se traduzem em seus novos conjuntos de dados, mas podem ser a única opção.
 
 **Ferramentas para pesquisa de hiperparâmetros**
-• de sklearn.model_selection importar GridSearchCV, RandomizedSearchCV, HalvingGridSearchCV
-• O scikit-optimize oferece uma variedade de métodos para pesquisa guiada através da grade de hiperparâmetros.
+- de sklearn.model_selection importar GridSearchCV, RandomizedSearchCV, HalvingGridSearchCV
+- O scikit-optimize oferece uma variedade de métodos para pesquisa guiada através da grade de hiperparâmetros.
 
 **Comparação de classificador**
 
 Suponha que você avaliou dois modelos de classificador. Seu desempenho provavelmente é diferente até certo ponto. O que pode ser feito para estabelecer se estes modelos são diferentes em algum sentido significativo?
-• Diferenças práticas
-• Intervalos de confiança
-• Teste de postos sinalizados de Wilcoxon
-• Teste de McNemar
+- Diferenças práticas
+- Intervalos de confiança
+- Teste de postos sinalizados de Wilcoxon
+- Teste de McNemar
 
 **Avaliando modelos sem convergência**
-• Ao trabalhar com modelos lineares, raramente surgem problemas de convergência.
-• Com redes neurais, a convergência ocupa o centro das atenções:
+- Ao trabalhar com modelos lineares, raramente surgem problemas de convergência.
+- Com redes neurais, a convergência ocupa o centro das atenções:
    - Os modelos raramente convergem.
    - Pois eles convergem em taxas diferentes entre as execuções.
    - O seu desempenho nos dados de teste depende muitas vezes fortemente destas diferenças.
-• Às vezes, um modelo com um erro final baixo acaba sendo ótimo, e às vezes é pior do que aquele que terminou com um erro maior. Quem sabe?!
+- Às vezes, um modelo com um erro final baixo acaba sendo ótimo, e às vezes é pior do que aquele que terminou com um erro maior. Quem sabe?!
 
 **Testes incrementais de conjunto de desenvolvimento**
 1. Para lidar com essa incerteza: colete regularmente informações sobre o desempenho do conjunto de desenvolvedores como parte do treinamento.
@@ -1195,3 +1301,4 @@ A interpretação de uma learning curve com intervalos de confiança é uma comb
 5. Em Assessment_methods.ipynb: Uma rede feedforward no problema XOR é bem-sucedida 8 de 10 vezes.
 
 ## 8. Fantastic Language Models and How to Build Them
+

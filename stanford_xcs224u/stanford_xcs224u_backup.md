@@ -335,29 +335,14 @@ Esses componentes tornam o BERT uma arquitetura poderosa e versátil para uma va
 # RoBERTa Core Model Components
 RoBERTa (Robustly optimized BERT approach with pre-training Larger Amount of data) é uma variação do modelo BERT projetada para otimizar o desempenho e a eficiência do treinamento. Aqui estão os componentes centrais do ROBERTA:
 
-1. **Arquitetura Baseada em Transformer:**
-   - ROBERTA mantém a arquitetura baseada em Transformer, herdada do BERT. A arquitetura é composta por camadas de autoatenção, camadas de feedforward, normalização de camada e conexões residuais.
-
-2. **Treinamento Escalonado e Batch Size Dinâmico:**
-   - ROBERTA utiliza uma abordagem de treinamento escalonado (layer-wise training) e ajusta o tamanho do lote dinamicamente durante o treinamento. Isso permite que camadas mais profundas se beneficiem de tamanhos de lote maiores, o que melhora o desempenho do modelo.
-
-3. **Remoção da Pré-treinamento de Sentença (NSP):**
-   - ROBERTA remove a tarefa de pré-treinamento de sentença (Next Sentence Prediction - NSP) usada no BERT. Em vez disso, ele pré-treina o modelo apenas com tarefas de preenchimento de máscara (Masked Language Model - MLM) e utiliza um conjunto de dados mais extenso.
-
-4. **Tokenização Dinâmica e Aprendizado Contínuo:**
-   - ROBERTA incorpora uma abordagem de tokenização dinâmica, o que significa que o tamanho do vocabulário pode ser expandido dinamicamente durante o treinamento. Isso é especialmente útil para lidar com grandes quantidades de dados.
-
-5. **Aumento do Tamanho do Modelo e Treinamento com Mais Dados:**
-   - ROBERTA aumenta o tamanho do modelo em comparação com o BERT padrão e é treinado com uma quantidade significativamente maior de dados. Isso ajuda a capturar uma representação mais rica e robusta das linguagens.
-
-6. **Atenção Contínua em Segmentos (Causal Language Modeling):**
-   - Durante o treinamento, ROBERTA introduz a atenção contínua em segmentos para lidar com tokens de segmentos em um fluxo contínuo, melhorando a capacidade do modelo de entender e representar contextos complexos.
-
-7. **Utilização de Stop Words no Pré-treinamento:**
-   - ROBERTA faz uso de palavras comuns (stop words) no pré-treinamento, o que pode ajudar a melhorar a capacidade do modelo de compreender e generalizar.
-
-8. **Redução de Memória e Processamento Eficiente:**
-   - ROBERTA utiliza estratégias eficientes para redução de memória, como compartilhamento de parâmetros e compressão de representações intermediárias, tornando-o mais escalável e eficiente em termos de recursos computacionais.
+1. **Arquitetura Baseada em Transformer:** ROBERTA mantém a arquitetura baseada em Transformer, herdada do BERT. A arquitetura é composta por camadas de autoatenção, camadas de feedforward, normalização de camada e conexões residuais.
+2. **Treinamento Escalonado e Batch Size Dinâmico:** ROBERTA utiliza uma abordagem de treinamento escalonado (layer-wise training) e ajusta o tamanho do lote dinamicamente durante o treinamento. Isso permite que camadas mais profundas se beneficiem de tamanhos de lote maiores, o que melhora o desempenho do modelo.
+3. **Remoção da Pré-treinamento de Sentença (NSP):** ROBERTA remove a tarefa de pré-treinamento de sentença (Next Sentence Prediction - NSP) usada no BERT. Em vez disso, ele pré-treina o modelo apenas com tarefas de preenchimento de máscara (Masked Language Model - MLM) e utiliza um conjunto de dados mais extenso.
+4. **Tokenização Dinâmica e Aprendizado Contínuo:** ROBERTA incorpora uma abordagem de tokenização dinâmica, o que significa que o tamanho do vocabulário pode ser expandido dinamicamente durante o treinamento. Isso é especialmente útil para lidar com grandes quantidades de dados.
+5. **Aumento do Tamanho do Modelo e Treinamento com Mais Dados:** ROBERTA aumenta o tamanho do modelo em comparação com o BERT padrão e é treinado com uma quantidade significativamente maior de dados. Isso ajuda a capturar uma representação mais rica e robusta das linguagens.
+6. **Atenção Contínua em Segmentos (Causal Language Modeling):** Durante o treinamento, ROBERTA introduz a atenção contínua em segmentos para lidar com tokens de segmentos em um fluxo contínuo, melhorando a capacidade do modelo de entender e representar contextos complexos.
+7. **Utilização de Stop Words no Pré-treinamento:** ROBERTA faz uso de palavras comuns (stop words) no pré-treinamento, o que pode ajudar a melhorar a capacidade do modelo de compreender e generalizar.
+8. **Redução de Memória e Processamento Eficiente:** ROBERTA utiliza estratégias eficientes para redução de memória, como compartilhamento de parâmetros e compressão de representações intermediárias, tornando-o mais escalável e eficiente em termos de recursos computacionais.
 
 Esses componentes fazem do ROBERTA uma extensão e otimização do BERT, resultando em um modelo mais robusto e eficiente para tarefas de Processamento de Linguagem Natural.
 
@@ -403,29 +388,14 @@ Em resumo, o ROBERTA é uma extensão otimizada do BERT, incorporando estratégi
 # ELECTRA Core Model Components
 O ELECTRA (Efficiently Learning an Encoder that Classifies Token Replacements Accurately) é um modelo de linguagem pré-treinado que se destaca por sua eficiência de treinamento e bom desempenho em tarefas downstream*. Aqui estão os principais componentes do ELECTRA:
 
-1. **Generador de Tokens Masked (Geração de Token Mascaramento):**
-   - Diferentemente do BERT, que usa uma abordagem de preenchimento de máscara (MLM) para mascarar aleatoriamente palavras em uma sequência, o ELECTRA usa um gerador de tokens mascarados. Este gerador substitui aleatoriamente palavras reais por [MASK] e treina o modelo para reconhecer essas substituições.
-
-2. **Discriminador de Tokens Substituídos:**
-   - O ELECTRA introduz um discriminador que é treinado para distinguir tokens reais de tokens gerados pelo gerador de tokens mascarados. Esse componente é crucial para a abordagem de treinamento do ELECTRA.
-
-3. **Tarefas de Pré-treinamento:**
-   - O modelo é pré-treinado em duas tarefas simultâneas: a tarefa de reconhecimento de tokens mascarados (MLM-like) e a tarefa de discriminação adversarial entre tokens reais e tokens gerados.
-
-4. **Substituição de Tokens por [MASK]:**
-   - No ELECTRA, uma porcentagem significativa dos tokens é substituída por [MASK] durante o pré-treinamento, em comparação com a pequena fração de tokens mascarados no BERT. Isso cria um sinal de treinamento mais forte para o modelo.
-
-5. **Treinamento Adversarial:**
-   - O treinamento adversarial entre o gerador e o discriminador é uma parte central do ELECTRA. O gerador tenta gerar tokens mascarados que se assemelham a tokens reais, enquanto o discriminador tenta distinguir entre tokens reais e gerados.
-
-6. **Estratégia de Substituição Dinâmica:**
-   - O ELECTRA utiliza uma estratégia de substituição dinâmica, onde alguns tokens são substituídos por [MASK], alguns permanecem inalterados e outros são substituídos por palavras reais. Essa abordagem permite um treinamento mais eficiente.
-
-7. **Aproveitamento de Modelos de Linguagem Pré-existentes:**
-   - O ELECTRA pode se beneficiar de modelos de linguagem pré-existentes, como o BERT, para inicialização de parâmetros antes do treinamento adversarial.
-
-8. **Desempenho Eficiente em Tarefas Downstream:**
-   - Devido à sua abordagem de treinamento eficiente e ao uso de uma quantidade significativamente menor de parâmetros em comparação com modelos tradicionais, o ELECTRA demonstrou bom desempenho em tarefas downstream com menos recursos computacionais."Tarefas downstream" referem-se a tarefas específicas de Processamento de Linguagem Natural (PLN) que são resolvidas utilizando modelos de linguagem pré-treinados. Em um contexto de modelos de linguagem pré-treinados, o termo "downstream" refere-se ao movimento de uma tarefa mais geral (pré-treinamento) para tarefas mais específicas e aplicadas (tarefas downstream). Ex: 
+1. **Generador de Tokens Masked (Geração de Token Mascaramento):**  Diferentemente do BERT, que usa uma abordagem de preenchimento de máscara (MLM) para mascarar aleatoriamente palavras em uma sequência, o ELECTRA usa um gerador de tokens mascarados. Este gerador substitui aleatoriamente palavras reais por [MASK] e treina o modelo para reconhecer essas substituições.
+2. **Discriminador de Tokens Substituídos:**  O ELECTRA introduz um discriminador que é treinado para distinguir tokens reais de tokens gerados pelo gerador de tokens mascarados. Esse componente é crucial para a abordagem de treinamento do ELECTRA.
+3. **Tarefas de Pré-treinamento:**  O modelo é pré-treinado em duas tarefas simultâneas: a tarefa de reconhecimento de tokens mascarados (MLM-like) e a tarefa de discriminação adversarial entre tokens reais e tokens gerados.
+4. **Substituição de Tokens por [MASK]:**  No ELECTRA, uma porcentagem significativa dos tokens é substituída por [MASK] durante o pré-treinamento, em comparação com a pequena fração de tokens mascarados no BERT. Isso cria um sinal de treinamento mais forte para o modelo.
+5. **Treinamento Adversarial:**  O treinamento adversarial entre o gerador e o discriminador é uma parte central do ELECTRA. O gerador tenta gerar tokens mascarados que se assemelham a tokens reais, enquanto o discriminador tenta distinguir entre tokens reais e gerados.
+6. **Estratégia de Substituição Dinâmica:** O ELECTRA utiliza uma estratégia de substituição dinâmica, onde alguns tokens são substituídos por [MASK], alguns permanecem inalterados e outros são substituídos por palavras reais. Essa abordagem permite um treinamento mais eficiente.
+7. **Aproveitamento de Modelos de Linguagem Pré-existentes:** O ELECTRA pode se beneficiar de modelos de linguagem pré-existentes, como o BERT, para inicialização de parâmetros antes do treinamento adversarial.
+8. **Desempenho Eficiente em Tarefas Downstream:** Devido à sua abordagem de treinamento eficiente e ao uso de uma quantidade significativamente menor de parâmetros em comparação com modelos tradicionais, o ELECTRA demonstrou bom desempenho em tarefas downstream com menos recursos computacionais."Tarefas downstream" referem-se a tarefas específicas de Processamento de Linguagem Natural (PLN) que são resolvidas utilizando modelos de linguagem pré-treinados. Em um contexto de modelos de linguagem pré-treinados, o termo "downstream" refere-se ao movimento de uma tarefa mais geral (pré-treinamento) para tarefas mais específicas e aplicadas (tarefas downstream). Ex: 
  - Classificação de Sentimento, Perguntas e Respostas (QA), Named Entity Recognition (NER), Tradução Automátic Geração de Texto, Sumarização de Texto, Análise de Sentimento.
 
 Em resumo, o ELECTRA se destaca pela sua eficiência de treinamento, aproveitando um gerador de tokens mascarados e um discriminador adversarial para pré-treinamento. Essa abordagem adversarial resulta em representações mais ricas e eficazes para várias tarefas de Processamento de Linguagem Natural (NLP).
@@ -519,36 +489,17 @@ Essas são algumas das diferenças fundamentais entre o BERT, RoBERTa e ELECTRA.
 # Seq2seq Models
 Os modelos sequência para sequência, também conhecidos como seq2seq, são uma classe de modelos de aprendizado de máquina que são usados para tarefas onde a entrada e a saída são sequências de dados. Eles são comumente usados em tarefas de Processamento de Linguagem Natural (PNL) e tradução automática. Aqui está uma explicação geral, uma descrição do funcionamento e exemplos de modelos seq2seq:
 
-### Explicação Geral:
-
-1. **Entrada e Saída Sequenciais:**
-   - Os modelos seq2seq são projetados para lidar com entradas e saídas que são sequências, como frases em linguagem natural.
-
-2. **Arquitetura Encoder-Decoder:**
-   - Geralmente, os modelos seq2seq consistem em duas partes principais: um encoder (codificador) e um decoder (decodificador). O encoder processa a entrada sequencial e produz um vetor de contexto. O decoder usa esse vetor de contexto para gerar a saída sequencial.
-
-3. **Representação Vetorial:**
-   - Durante o treinamento, o modelo aprende representações vetoriais que capturam a semântica da sequência de entrada.
+1. **Entrada e Saída Sequenciais:** Os modelos seq2seq são projetados para lidar com entradas e saídas que são sequências, como frases em linguagem natural.
+2. **Arquitetura Encoder-Decoder:** Geralmente, os modelos seq2seq consistem em duas partes principais: um encoder (codificador) e um decoder (decodificador). O encoder processa a entrada sequencial e produz um vetor de contexto. O decoder usa esse vetor de contexto para gerar a saída sequencial.
+3. **Representação Vetorial:** Durante o treinamento, o modelo aprende representações vetoriais que capturam a semântica da sequência de entrada.
 
 ### Funcionamento:
-
-1. **Encoder:**
-   - A sequência de entrada é alimentada ao encoder, que converte cada elemento da sequência em uma representação vetorial.
-
-2. **Vetor de Contexto:**
-   - O encoder produz um vetor de contexto que captura as informações relevantes da sequência de entrada.
-
-3. **Decoder:**
-   - O vetor de contexto é usado como entrada para o decoder, que gera a sequência de saída um elemento de cada vez.
-
-4. **Treinamento com Teacher Forcing:**
-   - Durante o treinamento, o modelo é alimentado com pares de sequências de entrada e saída conhecidas. O decoder é incentivado a gerar a sequência de saída correta em cada etapa.
-
-5. **Inferência:**
-   - Durante a inferência, o modelo é alimentado com uma sequência de entrada e usa o decoder para gerar a sequência de saída.
-
-6. **Exemplos de Modelos Seq2Seq:**
- - Tradução Automática, Geração de Resumo, Diálogos (QA), Geração de Código, Correção de Texto
+1. **Encoder:** A sequência de entrada é alimentada ao encoder, que converte cada elemento da sequência em uma representação vetorial.
+2. **Vetor de Contexto:** O encoder produz um vetor de contexto que captura as informações relevantes da sequência de entrada.
+3. **Decoder:** O vetor de contexto é usado como entrada para o decoder, que gera a sequência de saída um elemento de cada vez.
+4. **Treinamento com Teacher Forcing:** Durante o treinamento, o modelo é alimentado com pares de sequências de entrada e saída conhecidas. O decoder é incentivado a gerar a sequência de saída correta em cada etapa.
+5. **Inferência:** Durante a inferência, o modelo é alimentado com uma sequência de entrada e usa o decoder para gerar a sequência de saída.
+6. **Exemplos de Modelos Seq2Seq:** Tradução Automática, Geração de Resumo, Diálogos (QA), Geração de Código, Correção de Texto
  
 # T5 Core Components 
 O T5 (Text-to-Text Transfer Transformer) é um modelo de linguagem proposto pelo Google Research que segue a abordagem "text-to-text", tratando todas as tarefas de processamento de linguagem natural (PNL) como problemas de conversão de texto para texto. Aqui estão os principais componentes do T5:
@@ -629,7 +580,7 @@ Neste exemplo, o BART seria treinado para gerar automaticamente o resumo da entr
 
 O BART é conhecido por sua eficácia em tarefas de geração de sequência e resumo de texto, e seu treinamento denoising autoencoder contribui para a capacidade do modelo de compreender e gerar sequências coesas.
 
-# Destillation
+# Distillation
 A destilação, no contexto de modelos de aprendizado de máquina, refere-se a uma técnica na qual o conhecimento de um modelo maior e mais complexo é transferido para um modelo menor e mais simples. Esse processo é muitas vezes chamado de "destilação do conhecimento" ou "aprendizado por destilação". O principal objetivo é transferir o conhecimento adquirido por um modelo mais complexo para um modelo mais leve, mantendo ou melhorando o desempenho do modelo menor.
 
 ### Principais Componentes do Processo de Destilação:
