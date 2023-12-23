@@ -292,9 +292,11 @@ Nos modelos que utilizam codificação posicional, é adicionado um vetor posici
 
 ### Formulação Básica do Positional Encoding:
 
-Seja \( PE(\text{{pos}}, 2i) \) o \( 2i \)-ésimo componente do vetor de codificação posicional na posição \( \text{{pos}} \), e \( PE(\text{{pos}}, 2i + 1) \) o \( (2i + 1) \)-ésimo componente. A fórmula básica do positional encoding é geralmente definida como:
+Certamente! Aqui estão as fórmulas usando o caractere especial `$` para inclusão em um arquivo Markdown:
 
-$$ 
+Seja $ PE(\text{{pos}}, 2i) $ o $ 2i $-ésimo componente do vetor de codificação posicional na posição $ \text{{pos}} $, e $ PE(\text{{pos}}, 2i + 1) $ o $ (2i + 1) $-ésimo componente. A fórmula básica do positional encoding é geralmente definida como:
+
+$
 \[
 PE(\text{{pos}}, 2i) = \sin\left(\frac{{\text{{pos}}}}{{10000^{(2i/d)}}}\right)
 \]
@@ -302,14 +304,12 @@ PE(\text{{pos}}, 2i) = \sin\left(\frac{{\text{{pos}}}}{{10000^{(2i/d)}}}\right)
 \[
 PE(\text{{pos}}, 2i + 1) = \cos\left(\frac{{\text{{pos}}}}{{10000^{(2i/d)}}}\right)
 \]
-
-$$
+$ 
 
 onde:
-- \( \text{{pos}} \) é a posição da palavra na sequência.
-- \( i \) é a dimensão do vetor de codificação posicional.
-- \( d \) é a dimensão total do vetor de entrada.
-
+- $ \text{{pos}} $ é a posição da palavra na sequência.
+- $ i $ é a dimensão do vetor de codificação posicional.
+- $ d $ é a dimensão total do vetor de entrada.
 
 ### Propriedades Importantes:
 
