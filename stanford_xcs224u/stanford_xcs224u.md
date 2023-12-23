@@ -95,7 +95,7 @@ Para superar essa limitação, muitas abordagens mais recentes no campo de Proce
 
 A estrutura linguística de frases e a estrutura de modelos referem-se a dois conceitos diferentes.
 
-<img src="model_linguistic_structure.png">
+<img src="./imgs/model_linguistic_structure.png">
 
 ##### Estrutura Linguística de Frases:
 ##### Estrutura Básica:
@@ -341,7 +341,9 @@ O positional encoding é uma abordagem eficaz para lidar com a informação de p
 ### 2.4. GPT (Generative Pre-trained Transformer)
 O GPT (Generative Pre-trained Transformer) é uma arquitetura de modelo de linguagem baseada em transformers e é conhecida por ser uma das mais poderosas para tarefas de processamento de linguagem natural. Aqui estão os principais componentes do GPT:
 
-1. **Transformers:** O GPT é construído com base na arquitetura de transformers, sendo uma versão modificada decoder-only. Cada bloco transformer possui mecanismos de autoatenção (self-attention) que permitem ao modelo capturar relações de longo alcance e contextos complexos.
+<img src="./imgs/gpt_explained.png.png">
+
+1. **Transformers:** O GPT é construído com base na arquitetura de transformers, sendo uma versão modificada **decoder-only**. Cada bloco transformer possui mecanismos de autoatenção (self-attention) que permitem ao modelo capturar relações de longo alcance e contextos complexos.
 2. **Pré-treinamento Não Supervisionado:** O GPT é pré-treinado em uma tarefa não supervisionada de predição da próxima palavra em grandes corpora de texto. Durante esse pré-treinamento, o modelo aprende representações de palavras e contextos sem uma tarefa de supervisão específica.
 3. **Atenção Autoregressiva:** Durante a geração de texto, o GPT utiliza uma abordagem autoregressiva, onde cada palavra é gerada sequencialmente com base nas palavras anteriores. Isso é feito usando amostragem estocástica ou greedy decoding.
 4. **Camadas Empilhadas:** O GPT consiste em várias camadas empilhadas de blocos transformer. Essas camadas permitem ao modelo aprender representações hierárquicas e complexas de texto.
@@ -670,16 +672,26 @@ A Recuperação de Informações Neural refere-se à aplicação de técnicas de
 7. **Avaliação por Embeddings:**
    - *Descrição:* Medidas de avaliação específicas para avaliar a qualidade dos embeddings gerados pelos modelos, como MAP (Mean Average Precision) e NDCG (Normalized Discounted Cumulative Gain).
    - *Exemplo:* Medir a precisão média da ordem de documentos recuperados pela relevância.
+
 8. **Dense Passage Retriever (DPR):**
+
+<img src="./imgs/dpr.png">
+
    - Descrição: O DPR é uma técnica específica de recuperação de passagens que utiliza uma abordagem densa para representar e recuperar passagens relevantes. Em vez de depender apenas de embeddings de palavras ou subpalavras, o DPR emprega embeddings densos para representar
    passagens inteiras, tornando-o eficiente para a recuperação de informações em grandes conjuntos de dados. É escalável mas limitado nas interações entre consulta (query) e documentos
    - Exemplo: Utilizando embeddings densos para representar passagens em artigos científicos, facilitando a recuperação eficiente de passagens relevantes para uma consulta.
 
 9. **Cross-Encoders:**
+
+<img src="./imgs/cross_encoders.png">
+
    - Descrição: Os Cross-Encoders são arquiteturas que processam simultaneamente a consulta e o documento em uma única etapa, permitindo que a rede capture interações complexas entre ambos. Isso é diferente dos modelos que primeiro geram embeddings separados para a consulta e o documento e, em seguida, calculam a similaridade. Isso pode ser feito a partir do fine tuning do BERT, que acaba causando falta de escalabildiade.
    - Exemplo: Um Cross-Encoder processa simultaneamente uma consulta e um documento, gerando uma pontuação de similaridade diretamente.   
 
 10. ColBERT (Contextualized Late Interaction over BERT):
+
+<img src="./imgs/colbert.png">
+
    - ColBERT é um modelo projetado para a recuperação eficiente de documentos em grandes coleções, aproveitando a eficácia do BERT (Bidirectional Encoder Representations from Transformers) para representações contextuais. Ele introduz uma estratégia de interação tardia, onde a interação entre a consulta e o documento é realizada em um estágio posterior, permitindo uma recuperação mais rápida. A inclusão do ColBERT destaca outra inovação notável na Recuperação de Informações Neurais, mostrando como as estratégias de interação e a utilização eficiente de modelos pré-treinados como o BERT podem contribuir para sistemas mais eficazes em ambientes de recuperação de informações.   
    - Representações Contextuais: Utiliza embeddings contextuais do BERT para capturar melhor o significado em contexto de consultas e documentos.
    - Interação Tardia: Diferentemente de outros modelos, adia a interação entre consulta e documento, economizando recursos computacionais durante a fase de recuperação inicial.
@@ -1027,9 +1039,9 @@ Receita para probing:
 4. Treine a sonda supervisionada no(s) local(is) escolhido(s)
 
 ##### Core Method
-<img src="./imgs/probing_core_method.png">
-
 O processo é feito de forma instrutiva com um modelo como o BERT, ele é rodado milhares de vezes, a representação vetorial escolhida é coletada para cada rodada e usada pra construir um pequeno connjunto de dados de aprendizagem supervisionada. Então um pequeno modelo linear é fitado na representação interna (representação vetorial), usando os rótulos da task escolhida. O modelo BERT foi utilizado somente como um "motor" (engine) para gerar as representações vetoriais de cada rodada e criar o dataset com as representações e a task como label.
+
+<img src="./imgs/probing_core_method.png">
 
 O exemplo acima é uma simplificação para fins didáticos.
 
