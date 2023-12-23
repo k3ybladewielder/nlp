@@ -292,11 +292,11 @@ Nos modelos que utilizam codificação posicional, é adicionado um vetor posici
 
 ### Formulação Básica do Positional Encoding:
 
-Seja \( PE(pos, 2i) \) o \( 2i \)-ésimo componente do vetor de codificação posicional na posição \( pos \), e \( PE(pos, 2i + 1) \) o \( (2i + 1) \)-ésimo componente. A fórmula básica do positional encoding é geralmente definida como:
+Seja \( PE(\text{{pos}}, 2i) \) o \( 2i \)-ésimo componente do vetor de codificação posicional na posição \( \text{{pos}} \), e \( PE(\text{{pos}}, 2i + 1) \) o \( (2i + 1) \)-ésimo componente. A fórmula básica do positional encoding é geralmente definida como:
 
-\[ PE(pos, 2i) = \sin\left(\frac{{pos}}{{10000^{(2i/d)}}}\right) \]
+\[ PE(\text{{pos}}, 2i) = \sin\left(\frac{{\text{{pos}}}}{{10000^{(2i/d)}}}\right) \]
 
-\[ PE(pos, 2i + 1) = \cos\left(\frac{{pos}}{{10000^{(2i/d)}}}\right) \]
+\[ PE(\text{{pos}}, 2i + 1) = \cos\left(\frac{{\text{{pos}}}}{{10000^{(2i/d)}}}\right) \]
 
 onde:
 - \( pos \) é a posição da palavra na sequência.
@@ -317,7 +317,20 @@ onde:
 O positional encoding é uma abordagem eficaz para lidar com a informação de posição em modelos que não possuem uma compreensão intrínseca da ordem nas sequências, contribuindo para o desempenho em tarefas que requerem consideração da posição relativa das palavras.
 
 ### 2.4. GPT (Generative Pre-trained Transformer)
+O GPT (Generative Pre-trained Transformer) é uma arquitetura de modelo de linguagem baseada em transformers e é conhecida por ser uma das mais poderosas para tarefas de processamento de linguagem natural. Aqui estão os principais componentes do GPT:
 
+1. **Transformers:** O GPT é construído com base na arquitetura de transformers, que consiste em um codificador e um decodificador. Cada bloco transformer possui mecanismos de autoatenção (self-attention) que permitem ao modelo capturar relações de longo alcance e contextos complexos.
+2. **Pré-treinamento Não Supervisionado:** O GPT é pré-treinado em uma tarefa não supervisionada de predição da próxima palavra em grandes corpora de texto. Durante esse pré-treinamento, o modelo aprende representações de palavras e contextos sem uma tarefa de supervisão específica.
+3. **Atenção Autoregressiva:** Durante a geração de texto, o GPT utiliza uma abordagem autoregressiva, onde cada palavra é gerada sequencialmente com base nas palavras anteriores. Isso é feito usando amostragem estocástica ou greedy decoding.
+4. **Camadas Empilhadas:** O GPT consiste em várias camadas empilhadas de blocos transformer. Essas camadas permitem ao modelo aprender representações hierárquicas e complexas de texto.
+5. **Embeddings Posicionais:** Para levar em conta a ordem das palavras em uma sequência, o GPT utiliza embeddings posicionais. Esses embeddings são adicionados às representações de palavras para codificar informações sobre a posição relativa de cada palavra na sequência.
+6. **Mecanismo de Máscara de Atenção Casual (Masked Self-Attention):** Durante o pré-treinamento, o GPT utiliza um mecanismo de máscara de atenção casual para garantir que cada palavra possa atentar apenas às palavras anteriores, impedindo assim a influência de palavras futuras na predição.
+7. **Normalização por Camada (Layer Normalization):** Cada camada do GPT inclui normalização por camada para estabilizar e acelerar o treinamento.
+8. **Função de Ativação GELU (Gaussian Error Linear Unit):** A função de ativação GELU é comumente utilizada nas camadas ocultas do GPT, proporcionando um comportamento não linear para a transformação das representações.
+9. **Cabeças de Atenção Múltipla (Multi-Head Attention):** O mecanismo de atenção do GPT usa cabeçotes de atenção múltiplos, permitindo que o modelo atenda a diferentes partes do contexto simultaneamente.
+10. **Técnica de Tokenização Subword:** Para lidar com um grande vocabulário, o GPT utiliza uma técnica de tokenização subword, que divide palavras em partes menores para lidar com palavras raras e aumentar a eficiência do modelo.
+
+Esses componentes combinados tornam o GPT um modelo altamente eficaz para diversas tarefas de processamento de linguagem natural, desde geração de texto até tarefas específicas de classificação e tradução.
 
 ### 2.5. BERT (Bidirectional Encoder Representations from Transformers)
 O BERT (Bidirectional Encoder Representations from Transformers) é um modelo de linguagem pré-treinado baseado na arquitetura Transformer. Aqui estão os componentes essenciais do BERT:
@@ -406,18 +419,10 @@ O BART (Bidirectional and Auto-Regressive Transformers) é um modelo de linguage
 2. **Encoder-Decoder Framework:** O BART segue uma estrutura de codificador-decodificador (encoder-decoder), onde o codificador processa a entrada e gera uma representação contextual, e o decodificador usa essa representação para gerar a saída.
 3. **Tokenização:** Assim como outros modelos de linguagem, o BART faz uso de uma estratégia de tokenização para dividir o texto em unidades discretas, como palavras ou subpalavras.
 4. **BART como Modelo Denoising:** O treinamento do BART é formulado como um problema de denoising autoencoder. Ele é treinado para reconstruir a sequência original a partir de uma versão corrompida da sequência, onde partes aleatórias foram mascaradas ou removidas.
-
-### 5. **Masked Language Model (MLM):**
-   - Durante o treinamento, o BART utiliza uma versão modificada da tarefa de preenchimento de máscara (MLM), onde uma parte da sequência é mascarada e o modelo é treinado para prever essas partes mascaradas.
-
-### 6. **Inversão de Sequência no Codificador:**
-   - Uma característica única do BART é a inversão da sequência no codificador. Isso significa que a ordem das palavras na entrada é invertida antes de ser passada para o codificador.
-
-### 7. **Fine-Tuning para Tarefas Específicas:**
-   - Após o pré-treinamento, o BART pode ser ajustado finamente (fine-tuned) para tarefas específicas, como resumo de texto, tradução automática, entre outras.
-
-### 8. **Geração de Sequências de Saída:**
-   - Durante a geração de sequências de saída, o BART é usado para produzir uma sequência de palavras ou subpalavras que representa a resposta desejada.
+5. **Masked Language Model (MLM):** Durante o treinamento, o BART utiliza uma versão modificada da tarefa de preenchimento de máscara (MLM), onde uma parte da sequência é mascarada e o modelo é treinado para prever essas partes mascaradas.
+6. **Inversão de Sequência no Codificador:** Uma característica única do BART é a inversão da sequência no codificador. Isso significa que a ordem das palavras na entrada é invertida antes de ser passada para o codificador.
+7. **Fine-Tuning para Tarefas Específicas:** Após o pré-treinamento, o BART pode ser ajustado finamente (fine-tuned) para tarefas específicas, como resumo de texto, tradução automática, entre outras.
+8. **Geração de Sequências de Saída:** Durante a geração de sequências de saída, o BART é usado para produzir uma sequência de palavras ou subpalavras que representa a resposta desejada.
 
 ### Exemplo de Uso do BART:
 
@@ -1567,4 +1572,6 @@ A interpretação de uma learning curve com intervalos de confiança é uma comb
    - Vários sistemas recentes são indistinguíveis em termos de desempenho bruto, uma vez tida em conta esta fonte de variação.
 4. Relacionado: falha catastrófica como resultado de uma inicialização infeliz.
 5. Em Assessment_methods.ipynb: Uma rede feedforward no problema XOR é bem-sucedida 8 de 10 vezes.
+
+# Fim
 
