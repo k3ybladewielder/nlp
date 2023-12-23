@@ -50,11 +50,235 @@ Playlist com as aulas no [youtube](https://www.youtube.com/playlist?list=PLoROMv
 ## 1. Intro and Evolution of NLP
 ## 2. Natural Language Understanding
 ### 2.1. Contextual Word Representation
+#### Static Vector Representation of Words
+##### 1. Feature-based (sparse):
+   - **Explicação:** Este método baseia-se em representar palavras como vetores de características, onde cada característica representa uma propriedade específica da palavra. Cada palavra é associada a um vetor de dimensões discretas, onde apenas algumas dessas dimensões (ou características) são ativadas, tornando a representação esparsa.
+   - **Exemplo:** Em um contexto de processamento de linguagem natural (NLP), uma palavra poderia ser representada por um vetor de características, onde cada dimensão representa a presença ou ausência de uma característica específica.
+
+##### 2. Count-based methods (sparse):
+   - **Explicação:** Estes métodos baseiam-se na contagem de ocorrências de palavras em documentos. A ideia é construir uma matriz que representa a frequência com que cada palavra ocorre em relação a outras palavras.
+   - **Exemplos:**
+      - **Point-wise Mutual Information (PMI):** Mede a associação entre duas palavras, levando em consideração sua co-ocorrência.
+      - **TF-IDF (Term Frequency-Inverse Document Frequency):** Atribui pesos às palavras com base em sua frequência em um documento específico em relação à frequência em todos os documentos.
+
+##### 3. Classical dimensionality reduction (dense):
+   - **Explicação:** Estes métodos buscam reduzir a dimensionalidade dos dados, preservando as características mais importantes. Isso é feito através de técnicas como a Análise de Componentes Principais (PCA), Singular Value Decomposition (SVD), Latent Semantic Analysis (LSA) e Latent Dirichlet Allocation (LDA).
+   - **Exemplos:**
+      - **PCA (Principal Component Analysis):** Reduz a dimensionalidade dos dados, mantendo as direções principais de variabilidade.
+      - **SVD (Singular Value Decomposition):** Decomposição de uma matriz em três matrizes, permitindo redução de dimensionalidade.
+      - **LDA (Latent Dirichlet Allocation):** Modelagem estatística que atribui tópicos a documentos e palavras a tópicos.
+
+##### 4. Learned dimensionality (dense):
+   - **Explicação:** Esses métodos envolvem a aprendizagem de representações densas de palavras, onde cada palavra é representada por um vetor contínuo de números reais.
+   - **Exemplos:**
+      - **Autoencoders:** Redes neurais que tentam reconstruir a entrada, aprendendo representações latentes no processo.
+      - **Word2Vec:** A técnica que aprende representações distribuídas de palavras usando redes neurais.
+      - **GloVe (Global Vectors for Word Representation):** Uma técnica que utiliza estatísticas globais de co-ocorrência para aprender representações de palavras.
+
+Esses métodos descrevem diferentes abordagens para representar palavras como vetores, seja através de características esparsas ou de representações densas, sendo aplicados em diversas tarefas de processamento de linguagem natural.
+
+#### Word representations and Context
+As representações estáticas possuem o __lack__ de entendimento contextual, já que palavras podem ter significados semânticos diferentes em diferentes contextos.
+
+Quando falamos de representações estáticas de palavras, referimo-nos a técnicas que atribuem a uma palavra um único vetor, independente do contexto em que ela aparece. Isso pode ser problemático porque muitas palavras têm significados polissêmicos, ou seja, podem ter interpretações diferentes dependendo do contexto em que são usadas.
+
+Por exemplo, a palavra "banco" pode se referir a um banco de parque ou a uma instituição financeira. Se utilizarmos uma representação estática, teríamos um único vetor para "banco", ignorando a variação de significado.
+
+A falta de consideração do contexto pode levar a uma perda de nuances semânticas e prejudicar o desempenho em tarefas que exigem compreensão contextual, como análise de sentimentos, tradução automática ou até mesmo resolução de ambiguidades.
+
+Para superar essa limitação, muitas abordagens mais recentes no campo de Processamento de Linguagem Natural (NLP) se concentraram em representações de palavras contextualizadas. Modelos como o BERT (Bidirectional Encoder Representations from Transformers) e o GPT (Generative Pre-trained Transformer) utilizam arquiteturas de transformers para capturar o contexto em que cada palavra aparece, gerando representações mais ricas e sensíveis ao contexto. Isso permite que os modelos compreendam melhor as nuances semânticas e melhorem o desempenho em uma variedade de tarefas linguísticas.
+
+##### Model structure and linguistic structure
+
+A estrutura linguística de frases e a estrutura de modelos referem-se a dois conceitos diferentes.
+
+##### Estrutura Linguística de Frases:
+##### Estrutura Básica:
+1. **Sujeito:** Geralmente, a entidade que realiza ou é afetada pela ação na frase.
+   - Exemplo: "O gato"
+2. **Verbo:** A ação ou estado que a frase expressa.
+   - Exemplo: "corre"
+3. **Objeto:** A entidade ou coisa que recebe a ação.
+   - Exemplo: "no jardim."
+
+##### Estrutura de Exemplo:
+"O gato corre no jardim."
+
+##### Estrutura de Modelos (como em Modelos de Linguagem):
+
+##### Estrutura de Rede Neural (Exemplo com BERT):
+1. **Camada de Entrada:** Recebe a sequência de tokens (palavras ou subpalavras).
+2. **Camadas Intermediárias:** Processam a informação, capturando relações semânticas e contextuais.
+3. **Camada de Saída:** Gera as representações contextualizadas ou realiza tarefas específicas, como classificação de texto.
+
+##### Estrutura de Exemplo:
+- **Entrada:** "O gato corre no jardim."
+- **Processamento:** (Camadas intermediárias processam informações contextuais)
+- **Saída:** Representações contextuais ou resposta para uma tarefa específica.
+
+##### Comparação:
+1. **Natureza:**
+   - **Estrutura Linguística de Frases:** Descreve como as palavras e componentes de uma frase se organizam para formar significado.
+   - **Estrutura de Modelos:** Refere-se à arquitetura e organização de uma rede neural ou modelo de linguagem.
+
+2. **Flexibilidade e Contexto:**
+   - **Estrutura Linguística de Frases:** A estrutura é estática e não leva em consideração o contexto mais amplo.
+   - **Estrutura de Modelos:** Captura informações contextuais, permitindo uma compreensão mais dinâmica e adaptativa.
+
+3. **Aplicação:**
+   - **Estrutura Linguística de Frases:** Aplica-se à análise gramatical e semântica de frases na língua natural.
+   - **Estrutura de Modelos:** Aplica-se a modelos de linguagem, que podem realizar várias tarefas, como tradução automática, geração de texto e compreensão de linguagem natural.
+
+4. **Exemplos:**
+   - **Estrutura Linguística de Frases:** "O gato corre no jardim."
+   - **Estrutura de Modelos:** Entrada e saída de um modelo de linguagem como BERT.
+
+Em resumo, a estrutura linguística de frases lida com a organização de palavras para formar uma unidade significativa, enquanto a estrutura de modelos refere-se à arquitetura e organização de redes neurais ou modelos de linguagem para processar e entender a linguagem natural de maneira mais dinâmica e contextual.
+
+#### 1. GloVe (Global Vectors for Word Representation):
+##### Estrutura:
+- **Tipo:** Modelo de aprendizado não supervisionado para representações de palavras.
+- **Arquitetura:** Não é uma rede neural, mas uma técnica de vetorização de palavras baseada em estatísticas globais de co-ocorrência.
+- **Treinamento:** Utiliza uma matriz de co-ocorrência e técnicas de fatoração para aprender representações distribuídas de palavras.
+
+#### 2. RNN (Redes Neurais Recorrentes):
+##### Estrutura:
+- **Tipo:** Modelo de aprendizado supervisionado, usado principalmente para sequências.
+- **Arquitetura:** Possui células recorrentes que permitem a informação ser persistente ao longo do tempo. Cada unidade recebe uma entrada e a informação da unidade anterior.
+- **Treinamento:** Usa backpropagation através do tempo (BPTT) para ajustar os pesos durante o treinamento.
+
+#### 3. Tree Structure Networks RNN:
+##### Estrutura:
+- **Tipo:** Modelo de aprendizado supervisionado, projetado para processar estruturas de árvores.
+- **Arquitetura:** Utiliza estruturas de árvore para modelar relações hierárquicas entre elementos de uma sequência.
+- **Treinamento:** Semelhante a uma RNN tradicional, mas com considerações especiais para a estrutura de árvore.
+
+#### 4. Bidirectional RNN (RNN Bidirecional):
+##### Estrutura:
+- **Tipo:** Extensão da RNN padrão.
+- **Arquitetura:** Possui duas camadas de células recorrentes, uma processando a sequência da esquerda para a direita e a outra da direita para a esquerda.
+- **Vantagem:** Captura informações contextuais de ambos os lados da sequência, melhorando a compreensão contextual.
+
+Essas estruturas representam diferentes abordagens para lidar com dados sequenciais, como texto. O GloVe é uma técnica baseada em estatísticas, enquanto RNN, Tree Structure Networks RNN e Bidirectional RNN são modelos de aprendizado de máquina que incorporam arquiteturas específicas para lidar com a natureza sequencial ou hierárquica dos dados linguísticos. Cada um tem suas aplicações específicas em tarefas de processamento de linguagem natural (NLP) e pode ser escolhido com base nas características do problema em questão.
+
+#### Attention
+O mecanismo de atenção é uma técnica fundamental em modelos de aprendizado de máquina, especialmente em tarefas de processamento de linguagem natural (NLP), onde é crucial considerar diferentes partes de uma sequência de entrada de maneira ponderada. O mecanismo de atenção permite que o modelo atribua diferentes pesos a diferentes partes da entrada, destacando as informações mais relevantes para a tarefa em questão.
+
+##### Mecanismo de Atenção em NLP:
+1. **Entrada Sequencial:**
+   - Suponha que temos uma sequência de palavras ou vetores de entrada, como uma frase em um problema de NLP.
+
+2. **Representação de Consulta (Query):**
+   - Uma representação da "consulta" é criada. Pode ser um vetor associado a uma palavra ou a uma representação mais abstrata do contexto.
+
+3. **Pontuação de Atenção (Attention Score):**
+   - Calcula-se uma pontuação de atenção para cada elemento da sequência em relação à consulta. Essa pontuação reflete a importância relativa de cada elemento.
+   - A pontuação de atenção é geralmente calculada usando funções de similaridade, como o produto escalar ou uma função de similaridade mais complexa.
+
+4. **Pesos Normalizados:**
+   - As pontuações de atenção são normalizadas usando uma função softmax para obter pesos que somam 1. Esses pesos indicam a importância relativa de cada elemento na sequência.
+
+5. **Atenção Ponderada:**
+   - Os elementos da sequência são ponderados pelos pesos obtidos. Isso cria uma representação ponderada que destaca partes específicas da entrada, com base na consulta.
+
+##### Exemplo Simples:
+
+Considere a frase: "O gato está dormindo no sofá."
+- **Consulta:** Pode ser uma representação contextual, como um vetor que representa o significado de uma palavra específica.
+- **Pontuação de Atenção:** Calcula a similaridade entre a consulta e cada palavra da frase.
+- **Pesos Normalizados:** Aplica a função softmax nas pontuações para obter pesos normalizados.
+- **Atenção Ponderada:** Combina as palavras ponderadas pela atenção para obter uma representação contextualizada.
+
+##### Aplicações:
+- **Tradução Automática:** Destacar palavras relevantes em uma frase de origem para a tradução.
+- **Sumarização de Texto:** Identificar partes importantes de um texto para criar uma sumarização concisa.
+- **Processamento de Perguntas e Respostas:** Focar em partes relevantes do contexto para gerar respostas.
+
+Modelos como o Transformer, que introduziu a atenção multi-cabeça, foram revolucionários em NLP, proporcionando uma capacidade aprimorada de lidar com sequências de maneira mais sofisticada.
+
+#### Subword Modeling in ELMo
+A modelagem de subpalavras no ELMo (Embeddings from Language Models) é uma abordagem que utiliza representações contextuais para palavras, levando em consideração subpalavras ou morfemas, em vez de considerar as palavras como unidades inteiras. Essa técnica visa capturar a riqueza e a flexibilidade da linguagem ao lidar com a variação morfológica e a composição de palavras.
+
+A modelagem de subpalavras no ELMo é alcançada por meio de uma arquitetura de rede neural profunda. Aqui está uma explicação mais detalhada:
+
+##### Estrutura Geral do ELMo:
+
+1. **Rede Neural Bidirecional (Bi-LSTM):**
+   - Utiliza uma arquitetura de LSTM bidirecional para processar a sequência de entrada.
+   - A LSTM bidirecional permite que a rede capture informações contextuais de ambas as direções, à esquerda e à direita da palavra.
+
+2. **Camadas de Projeção Linear:**
+   - Após a camada Bi-LSTM, cada camada oculta é projetada linearmente para reduzir a dimensionalidade e extrair representações mais ricas.
+
+3. **Composição de Camadas:**
+   - A representação de cada palavra é composta por diferentes camadas da rede. Cada camada captura diferentes níveis de complexidade e contexto.
+
+4. **Combinação Ponderada de Representações:**
+   - As representações de cada camada são combinadas ponderadamente para formar a representação final da palavra. Essa combinação é feita usando pesos aprendidos durante o treinamento.
+
+##### Modelagem de Subpalavras:
+
+- **Subpalavras como Unidades:**
+  - Ao contrário de abordagens que tratam palavras como unidades discretas, o ELMo considera as subpalavras ou morfemas como unidades fundamentais.
+  - Isso permite que o modelo capture informações sobre a morfologia e a composição das palavras.
+
+- **Embeddings Contextuais:**
+  - As representações de subpalavras são contextuais, ou seja, dependem do contexto em que a subpalavra aparece na sequência.
+  - Essa contextualização é fundamental para lidar com a polissemia e a composição de palavras em diferentes contextos.
+
+##### Vantagens da Modelagem de Subpalavras no ELMo:
+
+- **Flexibilidade Morfológica:** Permite ao modelo lidar com diferentes formas morfológicas de uma palavra.
+- **Composicionalidade:** Captura a composição semântica de palavras complexas ou raras.
+- **Polissemia:** Lida melhor com palavras que têm significados variados em contextos diferentes.
+
+A modelagem de subpalavras no ELMo contribui para a criação de embeddings mais ricos e contextuais, resultando em representações mais sofisticadas para palavras em tarefas de processamento de linguagem natural.
+
+#### Fine-tuning
+O fine-tuning em Processamento de Linguagem Natural (NLP) é um processo em que um modelo de linguagem pré-treinado, geralmente treinado em uma tarefa de linguagem geral, é ajustado para realizar uma tarefa específica relacionada. Isso é particularmente útil quando se dispõe de dados limitados para a tarefa específica, pois o modelo pré-treinado já adquiriu conhecimento linguístico geral de um conjunto diversificado e extenso de dados.
+
+##### Processo de Fine-Tuning em NLP:
+
+1. **Escolha do Modelo Pré-Treinado:**
+   - Seleção de um modelo pré-treinado bem estabelecido, treinado em grandes quantidades de dados em uma tarefa geral de NLP. Exemplos incluem modelos como BERT, GPT, ELMo, entre outros.
+
+2. **Congelamento e Ajuste de Camadas:**
+   - Congelamento das camadas iniciais do modelo pré-treinado, que capturam conhecimentos linguísticos gerais, para preservar essas informações.
+   - Ajuste das camadas finais, mais próximas da saída, para a nova tarefa específica.
+
+3. **Adição de Camadas Específicas:**
+   - Adição de camadas específicas para a nova tarefa. Por exemplo, na classificação de sentimentos, pode-se adicionar uma camada de classificação no topo do modelo.
+
+4. **Ajuste da Taxa de Aprendizado:**
+   - Redução da taxa de aprendizado para as camadas ajustadas durante o fine-tuning. Isso ajuda a realizar ajustes mais graduais e evitar grandes mudanças nas representações já aprendidas.
+
+5. **Treinamento na Tarefa Específica:**
+   - Treinamento do modelo no conjunto de dados específico da nova tarefa, utilizando a combinação de camadas congeladas e camadas ajustadas.
+
+6. **Ajustes no Conjunto de Dados:**
+   - É possível ajustar o conjunto de dados da nova tarefa, adicionando ou removendo exemplos relevantes para aprimorar o desempenho do fine-tuning.
+
+##### Exemplos de Tarefas em NLP que Usam Fine-Tuning:
+
+1. **Classificação de Sentimentos:**
+   - Fine-tuning de modelos para classificar se um texto expressa um sentimento positivo, negativo ou neutro.
+
+2. **Identificação de Entidades Nomeadas (NER):**
+   - Adaptação de modelos para reconhecer entidades específicas, como nomes de pessoas, organizações ou locais, em textos.
+
+3. **Preenchimento de Lacunas (Cloze Test):**
+   - Ajuste de modelos para preencher lacunas em frases ou parágrafos, onde uma palavra ou trecho é removido.
+
+4. **Tradução Automática:**
+   - Fine-tuning de modelos para tarefas de tradução automática, adaptando modelos de linguagem para pares de idiomas específicos.
+
+O fine-tuning em NLP é uma estratégia poderosa para adaptar modelos pré-treinados a tarefas específicas de linguagem, permitindo uma utilização mais eficiente de recursos computacionais e dados.
+
 ### 2.2. Transformer
 A arquitetura dos modelos Transformers, introduzida por Vaswani et al. em 2017, é uma arquitetura de aprendizado de máquina que se tornou amplamente utilizada em tarefas de Processamento de Linguagem Natural (NLP) e além. A característica distintiva dos modelos Transformers é a atenção, que permite que o modelo atenda simultaneamente a todas as posições de entrada em uma sequência, em vez de depender de uma abordagem sequencial ou recorrente.
 
 1. **Encoder-Decoder Architecture:** Muitos modelos Transformer consistem em uma arquitetura de codificador-decodificador. No caso de tarefas de tradução, por exemplo, o codificador processa a sequência de entrada na língua de origem, e o decodificador gera a sequência de saída na língua de destino.
-2. **Attention Mechanism:**O mecanismo de atenção é central para os Transformers. Ele permite que o modelo "preste atenção" a diferentes partes da entrada ao calcular uma pontuação de atenção para cada posição. Isso é feito por meio de três vetores: consulta (Q), chave (K) e valor (V). A atenção é calculada como uma soma ponderada dos valores, onde os pesos são determinados pela compatibilidade entre a consulta e a chave. **Exemplo:** Considere a frase "The cat sat on the mat." O mecanismo de atenção permite que o modelo dê mais peso a diferentes palavras dependendo do contexto. Por exemplo, ao traduzir para outra língua, o modelo pode dar mais atenção a "cat" ao gerar a palavra correspondente na língua de destino.
+2. **Attention Mechanism:** O mecanismo de atenção é central para os Transformers. Ele permite que o modelo "preste atenção" a diferentes partes da entrada ao calcular uma pontuação de atenção para cada posição. Isso é feito por meio de três vetores: consulta (Q), chave (K) e valor (V). A atenção é calculada como uma soma ponderada dos valores, onde os pesos são determinados pela compatibilidade entre a consulta e a chave. **Exemplo:** Considere a frase "The cat sat on the mat." O mecanismo de atenção permite que o modelo dê mais peso a diferentes palavras dependendo do contexto. Por exemplo, ao traduzir para outra língua, o modelo pode dar mais atenção a "cat" ao gerar a palavra correspondente na língua de destino.
 3. **Multi-Head Attention:** Para melhorar a representação, os modelos Transformers usam atenção multi-cabeça, onde várias cabeças de atenção são calculadas independentemente e, em seguida, concatenadas e linearmente transformadas. Isso permite que o modelo aprenda diferentes representações ponderadas. **Exemplo:** Suponha que estamos analisando uma frase e queremos entender tanto os sujeitos quanto os objetos. Cada cabeça de atenção pode se concentrar em diferentes partes da frase, como sujeitos ou objetos específicos.
 4. **Positional Encoding:** Uma desvantagem dos modelos Transformers é que eles não têm uma noção intrínseca de ordem ou posição nas sequências. Para contornar isso, os modelos incorporam informações de posição através da adição de codificações posicionais às embeddings de entrada. **Exemplo:** Considere as frases "I love transformers" e "Transformers love me." As palavras têm significados diferentes dependendo de sua posição nas frases. As codificações posicionais ajudam o modelo a capturar essas diferenças.
 5. **Feedforward Neural Networks:** Após a camada de atenção, cada posição passa por uma rede neural feedforward, adicionando uma camada de não-linearidade. Isso ajuda o modelo a aprender representações não lineares mais complexas, capturando relações mais abstratas entre as palavras.
@@ -62,25 +286,47 @@ A arquitetura dos modelos Transformers, introduzida por Vaswani et al. em 2017, 
 7. **Self-Attention:** Em muitos casos, como no BERT, os modelos Transformers usam autoatenção, onde a entrada é considerada para calcular as atenções em si mesma. Isso permite que o modelo capture dependências de longo alcance. **Exemplo:** Ao processar uma sequência de palavras, o mecanismo de autoatenção permite que cada palavra considere todas as outras palavras em relação a si mesma. Isso é valioso para entender dependências de longo alcance.
    
 ### 2.3. Positional Encoding
+O positional encoding (codificação posicional) é uma técnica usada em modelos de linguagem, especialmente em arquiteturas como o Transformer, para incorporar informações sobre a posição relativa das palavras em uma sequência. Essa técnica é necessária porque modelos de linguagem, como redes neurais, por si só, não têm uma noção intrínseca de ordem ou posição nas sequências de entrada.
+
+Nos modelos que utilizam codificação posicional, é adicionado um vetor posicional a cada vetor de entrada, representando a posição relativa da palavra na sequência. Dessa forma, a rede neural é capacitada para considerar a posição das palavras, algo essencial em tarefas onde a ordem das palavras é significativa, como em tradução de texto ou análise de sentimento em sequências.
+
+### Formulação Básica do Positional Encoding:
+
+Seja \( PE(pos, 2i) \) o \( 2i \)-ésimo componente do vetor de codificação posicional na posição \( pos \), e \( PE(pos, 2i + 1) \) o \( (2i + 1) \)-ésimo componente. A fórmula básica do positional encoding é geralmente definida como:
+
+\[ PE(pos, 2i) = \sin\left(\frac{{pos}}{{10000^{(2i/d)}}}\right) \]
+
+\[ PE(pos, 2i + 1) = \cos\left(\frac{{pos}}{{10000^{(2i/d)}}}\right) \]
+
+onde:
+- \( pos \) é a posição da palavra na sequência.
+- \( i \) é a dimensão do vetor de codificação posicional.
+- \( d \) é a dimensão total do vetor de entrada.
+
+### Propriedades Importantes:
+
+1. **Ponderação por Dimensão:**
+   - A ponderação na fórmula garante que diferentes dimensões do vetor de codificação posicional capturam padrões em diferentes escalas de posição.
+
+2. **Sinusoides Alternadas:**
+   - A escolha de funções senoidais e cossenoidais alterna entre as dimensões para que elas capturem padrões diferentes e evitem a perda de informação.
+
+3. **Adição ao Vetor de Entrada:**
+   - O positional encoding é somado ao vetor de entrada original, permitindo que a informação de posição seja incorporada à representação da palavra.
+
+O positional encoding é uma abordagem eficaz para lidar com a informação de posição em modelos que não possuem uma compreensão intrínseca da ordem nas sequências, contribuindo para o desempenho em tarefas que requerem consideração da posição relativa das palavras.
+
 ### 2.4. GPT (Generative Pre-trained Transformer)
+
+
 ### 2.5. BERT (Bidirectional Encoder Representations from Transformers)
 O BERT (Bidirectional Encoder Representations from Transformers) é um modelo de linguagem pré-treinado baseado na arquitetura Transformer. Aqui estão os componentes essenciais do BERT:
 
-1. **Arquitetura Transformer:**
-   - BERT utiliza a arquitetura Transformer, composta por um codificador empregado em uma configuração bidirecional. Isso significa que o modelo leva em consideração as palavras anteriores e posteriores para cada palavra em uma frase durante o treinamento.
-
-2. **Camadas de Ativação e Normalização:**
-   - BERT incorpora camadas de ativação (como ReLU) e normalização de camada após as operações de atenção e redes neurais feedforward. Essas camadas contribuem para a estabilidade do treinamento e facilitam o fluxo de gradientes.
-
-3. **Multi-Head Self-Attention:**
-   - O mecanismo de autoatenção é aplicado em várias cabeças (multi-head attention), permitindo que o modelo capture diferentes aspectos de dependências em uma frase de maneira simultânea. Isso ajuda BERT a entender contextos complexos e relações entre palavras.
-
-4. **Embeddings Posicionais:**
-   - Dado que a arquitetura Transformer não leva em conta a ordem das palavras em uma frase, BERT incorpora informações de posição através de embeddings posicionais. Isso permite que o modelo diferencie entre palavras que ocorrem em diferentes posições dentro de uma sequência.
-
-5. **Camada de Token [CLS]:**
-   - BERT adiciona um token especial [CLS] (CLS token) no início de cada sequência de entrada. O vetor de representação associado ao token [CLS] é usado como uma representação agregada da frase inteira para tarefas de classificação.
-
+1. **Arquitetura Transformer:** BERT utiliza a arquitetura Transformer, composta por um codificador empregado em uma configuração bidirecional. Isso significa que o modelo leva em consideração as palavras anteriores e posteriores para cada palavra em uma frase durante o treinamento.
+2. **Camadas de Ativação e Normalização:** BERT incorpora camadas de ativação (como ReLU) e normalização de camada após as operações de atenção e redes neurais feedforward. Essas camadas contribuem para a estabilidade do treinamento e facilitam o fluxo de gradientes.
+3. **Multi-Head Self-Attention:** O mecanismo de autoatenção é aplicado em várias cabeças (multi-head attention), permitindo que o modelo capture diferentes aspectos de dependências em uma frase de maneira simultânea. Isso ajuda BERT a entender contextos complexos e relações entre palavras.
+4. **Embeddings Posicionais:** Dado que a arquitetura Transformer não leva em conta a ordem das palavras em uma frase, BERT incorpora informações de posição através de embeddings posicionais. Isso permite que o modelo diferencie entre palavras que ocorrem em diferentes posições dentro de uma sequência.
+5. **Camada de Token [CLS]:** BERT adiciona um token especial [CLS] (CLS token) no início de cada sequência de entrada. O vetor de representação associado ao token [CLS] é usado como uma representação agregada da frase inteira para tarefas de classificação.
 6. **Pré-treinamento com Masked Language Model (MLM):** Durante a fase de pré-treinamento, BERT treina um modelo de linguagem de forma bidirecional. Uma parte das palavras em cada sequência de entrada é mascarada, e o modelo é treinado para prever essas palavras mascaradas com base no contexto das palavras circundantes.
 7. **Pré-treinamento de Palavras Inteiras (Whole Word Masking):** BERT usa uma abordagem de "Whole Word Masking" durante o pré-treinamento, na qual palavras inteiras são mascaradas de uma vez. Isso ajuda o modelo a entender o contexto e a relação semântica entre palavras completas.
 8. **Fine-Tuning para Tarefas Específicas:** Após o pré-treinamento, BERT pode ser afinado para tarefas específicas, como classificação de sentimentos, perguntas e respostas, ou NER (Reconhecimento de Entidade Nomeada), utilizando camadas adicionais e ajustando parâmetros para a tarefa específica.
@@ -131,6 +377,59 @@ Os modelos sequência para sequência, também conhecidos como seq2seq, são uma
 5. **Inferência:** Durante a inferência, o modelo é alimentado com uma sequência de entrada e usa o decoder para gerar a sequência de saída.
 6. **Exemplos de Modelos Seq2Seq:** Tradução Automática, Geração de Resumo, Diálogos (QA), Geração de Código, Correção de Texto
 
+### T5
+O T5 (Text-to-Text Transfer Transformer) é um modelo de linguagem proposto pelo Google Research que segue a abordagem "text-to-text", tratando todas as tarefas de processamento de linguagem natural (PNL) como problemas de conversão de texto para texto. Aqui estão os principais componentes do T5:
+
+1. **Arquitetura Transformer:** O T5 utiliza a arquitetura Transformer, que é baseada em mecanismos de atenção para capturar relações de longo alcance em sequências.
+2. **Encoder-Decoder Framework:** Assim como muitos modelos seq2seq, o T5 possui uma estrutura de codificador-decodificador (encoder-decoder). O codificador processa a entrada e gera uma representação contextual, enquanto o decodificador usa essa representação para gerar a saída.
+3. **Text-to-Text Paradigm:** A característica distintiva do T5 é a abordagem "text-to-text", onde todas as tarefas são formuladas como problemas de conversão de texto para texto. Isso inclui tarefas de classificação, geração, tradução, entre outras.
+4. **Tokenização Universal:** O T5 utiliza uma tokenização universal, tratando todas as tarefas como tarefas de geração de texto. Cada entrada é prefixada com um rótulo que indica a tarefa específica. 
+5. **Pesos Compartilhados:** O T5 compartilha pesos entre o codificador e o decodificador. Isso contribui para um treinamento eficiente e uma representação mais coerente.
+6. **Treinamento Multi-Tarefa:** O modelo é treinado simultaneamente em várias tarefas usando um único modelo. Isso permite que o T5 generalize melhor em uma ampla variedade de tarefas de PNL.
+7. **Transfer Learning:** O T5 é pré-treinado em grandes conjuntos de dados e, em seguida, ajustado finamente para tarefas específicas. Isso segue a abordagem de transfer learning, onde o conhecimento aprendido em uma tarefa é transferido para melhorar o desempenho em outras tarefas.
+
+#### Exemplo de Uso do T5:
+
+Suponha que temos uma tarefa de tradução de inglês para francês. A entrada seria algo como "translate English to French: 'The cat is on the mat'" e a saída esperada seria a tradução correspondente para o francês.
+
+1. **Entrada:** "translate English to French: 'The cat is on the mat'"
+2. **Saída Esperada:** "Le chat est sur le tapis"
+
+Neste exemplo, a tarefa específica (tradução) é indicada pelo rótulo na entrada, e o modelo é treinado para gerar a saída desejada.
+
+O T5 é conhecido por sua versatilidade e desempenho sólido em uma variedade de tarefas, tornando-o uma escolha popular para abordagens text-to-text em PNL.
+
+### BART
+O BART (Bidirectional and Auto-Regressive Transformers) é um modelo de linguagem proposto pela Facebook AI Research (FAIR) que utiliza a arquitetura Transformer. Ele foi projetado para realizar tarefas de geração de sequência e compressão de texto. Aqui estão os principais componentes do BART:
+
+1. **Arquitetura Transformer:** O BART utiliza a arquitetura Transformer, que é composta por camadas de autoatentividade para processar informações de entrada.
+2. **Encoder-Decoder Framework:** O BART segue uma estrutura de codificador-decodificador (encoder-decoder), onde o codificador processa a entrada e gera uma representação contextual, e o decodificador usa essa representação para gerar a saída.
+3. **Tokenização:** Assim como outros modelos de linguagem, o BART faz uso de uma estratégia de tokenização para dividir o texto em unidades discretas, como palavras ou subpalavras.
+4. **BART como Modelo Denoising:** O treinamento do BART é formulado como um problema de denoising autoencoder. Ele é treinado para reconstruir a sequência original a partir de uma versão corrompida da sequência, onde partes aleatórias foram mascaradas ou removidas.
+
+### 5. **Masked Language Model (MLM):**
+   - Durante o treinamento, o BART utiliza uma versão modificada da tarefa de preenchimento de máscara (MLM), onde uma parte da sequência é mascarada e o modelo é treinado para prever essas partes mascaradas.
+
+### 6. **Inversão de Sequência no Codificador:**
+   - Uma característica única do BART é a inversão da sequência no codificador. Isso significa que a ordem das palavras na entrada é invertida antes de ser passada para o codificador.
+
+### 7. **Fine-Tuning para Tarefas Específicas:**
+   - Após o pré-treinamento, o BART pode ser ajustado finamente (fine-tuned) para tarefas específicas, como resumo de texto, tradução automática, entre outras.
+
+### 8. **Geração de Sequências de Saída:**
+   - Durante a geração de sequências de saída, o BART é usado para produzir uma sequência de palavras ou subpalavras que representa a resposta desejada.
+
+### Exemplo de Uso do BART:
+
+Suponha que temos a seguinte tarefa de resumo de texto:
+
+1. **Entrada:** "O BART é um modelo de linguagem baseado na arquitetura Transformer. Ele é projetado para realizar tarefas de geração de sequência e compressão de texto."
+2. **Saída Esperada:** "O BART, baseado na arquitetura Transformer, é especializado em geração de sequência e compressão de texto."
+
+Neste exemplo, o BART seria treinado para gerar automaticamente o resumo da entrada.
+
+O BART é conhecido por sua eficácia em tarefas de geração de sequência e resumo de texto, e seu treinamento denoising autoencoder contribui para a capacidade do modelo de compreender e gerar sequências coesas.
+
 ### Benchmarks entre os modelos
 
 ### 2.9. Distillation
@@ -169,33 +468,13 @@ Em resumo, a avaliação da performance de modelos destilados é multifacetada e
 ## 3. Information Retrieval
 Em Information Retrieval (Recuperação de Informações), "knowledge-intensive tasks" (tarefas intensivas em conhecimento) referem-se a atividades que requerem um entendimento mais profundo e contextual das informações do que simples processamento de texto bruto. Essas tarefas frequentemente envolvem a aplicação de conhecimento prévio, semântica e compreensão mais avançada das relações entre conceitos. 
 
-1. **Question Answering (QA - Resposta a Perguntas):**
-   - *Descrição:* Esta tarefa envolve o desenvolvimento de modelos capazes de responder a perguntas formuladas em linguagem natural. O objetivo é compreender a pergunta e fornecer uma resposta precisa.
-   - *Exemplo:* Pergunta: "Quem foi o primeiro presidente dos Estados Unidos?" Resposta: "George Washington."
-
-2. **Claim Verification (Verificação de Afirmativas):**
-   - *Descrição:* Nesta tarefa, o objetivo é verificar a veracidade de alegações ou afirmações feitas em documentos. Os modelos devem avaliar se uma afirmação é verdadeira, falsa ou não verificável.
-   - *Exemplo:* Afirmativa: "O aquecimento global é causado principalmente pela atividade humana." Verificação: verdadeiro.
-
-3. **Commonsense Reasoning (Raciocínio de Senso Comum):**
-   - *Descrição:* Envolve a capacidade de raciocinar sobre situações cotidianas usando conhecimento de senso comum. Os modelos precisam inferir conclusões lógicas a partir de informações implícitas.
-   - *Exemplo:* Pergunta: "O que acontece quando alguém joga um objeto para cima?" Resposta: "Ele eventualmente cai de volta devido à gravidade."
-
-4. **Long-form Reading Comprehension (Compreensão de Leitura em Longo Formato):**
-   - *Descrição:* Similar à leitura de curto formato, mas com documentos mais extensos. Os modelos precisam extrair informações relevantes de textos mais longos.
-   - *Exemplo:* Compreender um artigo acadêmico extenso sobre um tópico específico.
-
-5. **Information-Seeking Dialogue (Diálogo em Busca de Informações):**
-   - *Descrição:* Esta tarefa envolve a interação em linguagem natural para buscar informações específicas. Os modelos devem entender as consultas do usuário e fornecer respostas relevantes.
-   - *Exemplo:* Um usuário pergunta: "Quais são os benefícios para a saúde do consumo de chá verde?" O modelo fornece informações sobre os benefícios do chá verde.
-
-6. **Summarization (Sumarização):**
-   - *Descrição:* Envolve condensar informações extensas em um formato mais conciso, mantendo as ideias principais. Pode ser abstrativo (gerando novas frases) ou extrativo (selecionando frases existentes).
-   - *Exemplo:* Resumir um artigo de notícias em alguns parágrafos.
-
-7. **Natural Language Inference (Inferência de Linguagem Natural):**
-   - *Descrição:* Nesta tarefa, os modelos precisam inferir relações lógicas entre pares de sentenças, determinando se uma sentença é uma implicação, contradição ou neutral em relação à outra.
-   - *Exemplo:* Dadas duas sentenças - "O céu é azul" e "Está chovendo" - determinar a relação (por exemplo, contraditório).
+1. **Question Answering (QA - Resposta a Perguntas):** Esta tarefa envolve o desenvolvimento de modelos capazes de responder a perguntas formuladas em linguagem natural. O objetivo é compreender a pergunta e fornecer uma resposta precisa. **Exemplo:** Pergunta: "Quem foi o primeiro presidente dos Estados Unidos?" Resposta: "George Washington."
+2. **Claim Verification (Verificação de Afirmativas):** Nesta tarefa, o objetivo é verificar a veracidade de alegações ou afirmações feitas em documentos. Os modelos devem avaliar se uma afirmação é verdadeira, falsa ou não verificável. **Exemplo:** Afirmativa: "O aquecimento global é causado principalmente pela atividade humana." Verificação: verdadeiro.
+3. **Commonsense Reasoning (Raciocínio de Senso Comum):** Envolve a capacidade de raciocinar sobre situações cotidianas usando conhecimento de senso comum. Os modelos precisam inferir conclusões lógicas a partir de informações implícitas. **Exemplo:** Pergunta: "O que acontece quando alguém joga um objeto para cima?" Resposta: "Ele eventualmente cai de volta devido à gravidade."
+4. **Long-form Reading Comprehension (Compreensão de Leitura em Longo Formato):** Similar à leitura de curto formato, mas com documentos mais extensos. Os modelos precisam extrair informações relevantes de textos mais longos. **Exemplo:** Compreender um artigo acadêmico extenso sobre um tópico específico.
+5. **Information-Seeking Dialogue (Diálogo em Busca de Informações):** Esta tarefa envolve a interação em linguagem natural para buscar informações específicas. Os modelos devem entender as consultas do usuário e fornecer respostas relevantes. **Exemplo:** Um usuário pergunta: "Quais são os benefícios para a saúde do consumo de chá verde?" O modelo fornece informações sobre os benefícios do chá verde.
+6. **Summarization (Sumarização):** Envolve condensar informações extensas em um formato mais conciso, mantendo as ideias principais. Pode ser abstrativo (gerando novas frases) ou extrativo (selecionando frases existentes). **Exemplo:** Resumir um artigo de notícias em alguns parágrafos.
+7. **Natural Language Inference (Inferência de Linguagem Natural):** Nesta tarefa, os modelos precisam inferir relações lógicas entre pares de sentenças, determinando se uma sentença é uma implicação, contradição ou neutral em relação à outra. **Exemplo:** Dadas duas sentenças - "O céu é azul" e "Está chovendo" - determinar a relação (por exemplo, contraditório).
 
 Essas tarefas representam desafios significativos em processamento de linguagem natural, e avanços nelas contribuem para a melhoria de sistemas de recuperação de informação.
 
@@ -273,7 +552,7 @@ A Recuperação de Informações Neural refere-se à aplicação de técnicas de
    - Exemplo: Um Cross-Encoder processa simultaneamente uma consulta e um documento, gerando uma pontuação de similaridade diretamente.   
 
 10. ColBERT (Contextualized Late Interaction over BERT):
-   - Descrição: ColBERT é um modelo projetado para a recuperação eficiente de documentos em grandes coleções, aproveitando a eficácia do BERT (Bidirectional Encoder Representations from Transformers) para representações contextuais. Ele introduz uma estratégia de interação tardia, onde a interação entre a consulta e o documento é realizada em um estágio posterior, permitindo uma recuperação mais rápida. A inclusão do ColBERT destaca outra inovação notável na Recuperação de Informações Neurais, mostrando como as estratégias de interação e a utilização eficiente de modelos pré-treinados como o BERT podem contribuir para sistemas mais eficazes em ambientes de recuperação de informações.   
+   - ColBERT é um modelo projetado para a recuperação eficiente de documentos em grandes coleções, aproveitando a eficácia do BERT (Bidirectional Encoder Representations from Transformers) para representações contextuais. Ele introduz uma estratégia de interação tardia, onde a interação entre a consulta e o documento é realizada em um estágio posterior, permitindo uma recuperação mais rápida. A inclusão do ColBERT destaca outra inovação notável na Recuperação de Informações Neurais, mostrando como as estratégias de interação e a utilização eficiente de modelos pré-treinados como o BERT podem contribuir para sistemas mais eficazes em ambientes de recuperação de informações.   
    - Representações Contextuais: Utiliza embeddings contextuais do BERT para capturar melhor o significado em contexto de consultas e documentos.
    - Interação Tardia: Diferentemente de outros modelos, adia a interação entre consulta e documento, economizando recursos computacionais durante a fase de recuperação inicial.
    - Estrutura Eficiente: Projetado para escalabilidade, permitindo uma recuperação eficaz em grandes conjuntos de dados.
@@ -324,11 +603,9 @@ O aprendizado "in context" tem raízes em teorias linguísticas, modelos de ling
 
 - **Autoregressive Training with Teacher Forcing**: O treinamento autoregressivo com forçamento de professor (autoregressive training with teacher forcing) é uma técnica usada no treinamento de modelos de sequência, especialmente em modelos gerativos de linguagem, como os baseados em arquiteturas de Transformers.
 
-1. **Treinamento Autoregressivo:**
-   - No contexto de modelos de linguagem, **um modelo é considerado autoregressivo quando a previsão de cada elemento em uma sequência depende dos elementos anteriores da sequência**. Em outras palavras, o modelo gera um elemento por vez, levando em consideração os elementos já gerados.
+1. **Treinamento Autoregressivo:** No contexto de modelos de linguagem, **um modelo é considerado autoregressivo quando a previsão de cada elemento em uma sequência depende dos elementos anteriores da sequência**. Em outras palavras, o modelo gera um elemento por vez, levando em consideração os elementos já gerados.
 
-2. **Forçamento de Professor (Teacher Forcing):**
-   - O forçamento de professor é uma técnica durante o treinamento em que, ao ensinar um modelo a gerar sequências, você força o modelo a usar como entrada os elementos verdadeiros (ou seja, corretos) da sequência durante o treinamento, em vez de usar as previsões geradas pelo próprio modelo. Isso é frequentemente utilizado em modelos autoregressivos para acelerar o treinamento e melhorar a estabilidade inicial do modelo.
+2. **Forçamento de Professor (Teacher Forcing):** O forçamento de professor é uma técnica durante o treinamento em que, ao ensinar um modelo a gerar sequências, você força o modelo a usar como entrada os elementos verdadeiros (ou seja, corretos) da sequência durante o treinamento, em vez de usar as previsões geradas pelo próprio modelo. Isso é frequentemente utilizado em modelos autoregressivos para acelerar o treinamento e melhorar a estabilidade inicial do modelo.
 
 Portanto, no "treinamento autoregressivo com forçamento de professor", o modelo é treinado para gerar sequências elemento por elemento, onde cada elemento é condicional aos elementos anteriores, e durante o treinamento, a sequência verdadeira (fornecida pelo "professor") é usada como entrada para o modelo. Essa abordagem ajuda a acelerar a convergência do modelo durante o treinamento, permitindo que ele aprenda mais rapidamente a estrutura e a distribuição dos dados sequenciais. No entanto, durante a geração real (quando o modelo é usado para criar sequências), o forçamento de professor não é utilizado, e o modelo gera cada elemento com base nas previsões anteriores.
 
@@ -336,11 +613,9 @@ Portanto, no "treinamento autoregressivo com forçamento de professor", o modelo
 
 A geração de novos dados por modelos de linguagem congelados ocorre por meio de amostragem ou feixe de busca (beam search):
 
-1. **Amostragem (Sampling):**
-   - Nesse método, o modelo gera cada palavra ou token da sequência de forma estocástica, ou seja, de maneira probabilística. Cada token é amostrado de acordo com as probabilidades preditas pelo modelo. Isso permite uma certa dose de aleatoriedade na geração, resultando em diferentes possíveis continuations para uma dada entrada.
+1. **Amostragem (Sampling):** Nesse método, o modelo gera cada palavra ou token da sequência de forma estocástica, ou seja, de maneira probabilística. Cada token é amostrado de acordo com as probabilidades preditas pelo modelo. Isso permite uma certa dose de aleatoriedade na geração, resultando em diferentes possíveis continuations para uma dada entrada.
 
-2. **Feixe de Busca (Beam Search):**
-   - No método de feixe de busca, o modelo gera várias sequências simultaneamente e mantém um conjunto de "feixes" (beams) das sequências mais prováveis. Em cada passo, o modelo avalia as probabilidades das palavras seguintes para cada feixe, selecionando as melhores opções. Isso ajuda a produzir sequências mais coerentes e fluentes, uma vez que considera uma busca mais ampla no espaço de possíveis continuations.
+2. **Feixe de Busca (Beam Search):** No método de feixe de busca, o modelo gera várias sequências simultaneamente e mantém um conjunto de "feixes" (beams) das sequências mais prováveis. Em cada passo, o modelo avalia as probabilidades das palavras seguintes para cada feixe, selecionando as melhores opções. Isso ajuda a produzir sequências mais coerentes e fluentes, uma vez que considera uma busca mais ampla no espaço de possíveis continuations.
 
 É importante notar que, embora os modelos de linguagem congelados possam gerar novas sequências de texto, a qualidade e a relevância dessas sequências dependerão da qualidade do treinamento prévio do modelo. Além disso, a aleatoriedade introduzida pela amostragem ou as escolhas determinísticas do feixe de busca podem resultar em variações nas sequências geradas a cada vez que o modelo é usado para geração.
 
@@ -488,20 +763,15 @@ A técnica de "Inoculation by Fine-Tuning" refere-se a uma abordagem em aprendiz
 
 Aqui estão alguns aspectos chave dessa técnica:
 
-1. **Identificação de Fraquezas:**
-   - Antes do processo de "Inoculation by Fine-Tuning", é necessário identificar fraquezas específicas nos dados de treinamento ou no modelo. Isso pode incluir problemas como viés, falta de diversidade, ou sensibilidade a determinados tipos de exemplos.
+1. **Identificação de Fraquezas:** Antes do processo de "Inoculation by Fine-Tuning", é necessário identificar fraquezas específicas nos dados de treinamento ou no modelo. Isso pode incluir problemas como viés, falta de diversidade, ou sensibilidade a determinados tipos de exemplos.
 
-2. **Inoculação Controlada:**
-   - Durante a fase de ajuste fino do modelo, exemplos específicos são adicionados deliberadamente ao conjunto de treinamento para "inocular" ou fortalecer o modelo contra as fraquezas identificadas. Esses exemplos são escolhidos para desafiar o modelo de maneira que aborde as limitações conhecidas.
+2. **Inoculação Controlada:** Durante a fase de ajuste fino do modelo, exemplos específicos são adicionados deliberadamente ao conjunto de treinamento para "inocular" ou fortalecer o modelo contra as fraquezas identificadas. Esses exemplos são escolhidos para desafiar o modelo de maneira que aborde as limitações conhecidas.
 
-3. **Ampliação da Diversidade:**
-   - A inoculação pode envolver a inclusão de exemplos que abordem a diversidade, tornando o modelo mais robusto a diferentes contextos e perspectivas. Isso ajuda a mitigar o risco de overfitting a características específicas do conjunto de treinamento original.
+3. **Ampliação da Diversidade:** A inoculação pode envolver a inclusão de exemplos que abordem a diversidade, tornando o modelo mais robusto a diferentes contextos e perspectivas. Isso ajuda a mitigar o risco de overfitting a características específicas do conjunto de treinamento original.
 
-4. **Aprimoramento da Generalização:**
-   - A ideia fundamental é que a introdução controlada de exemplos desafiadores durante o ajuste fino pode levar a um modelo mais robusto, capaz de generalizar melhor para situações diversas, mesmo aquelas que podem não ter sido bem representadas no conjunto de dados original.
+4. **Aprimoramento da Generalização:** A ideia fundamental é que a introdução controlada de exemplos desafiadores durante o ajuste fino pode levar a um modelo mais robusto, capaz de generalizar melhor para situações diversas, mesmo aquelas que podem não ter sido bem representadas no conjunto de dados original.
 
-5. **Detecção de Fraquezas:**
-   - Além de fortalecer o modelo, essa abordagem também pode ser usada para identificar fraquezas residuais. Monitorando o desempenho do modelo em exemplos inoculativos, os desenvolvedores podem avaliar se as fraquezas estão sendo efetivamente abordadas ou se novas fraquezas são descobertas.
+5. **Detecção de Fraquezas:** Além de fortalecer o modelo, essa abordagem também pode ser usada para identificar fraquezas residuais. Monitorando o desempenho do modelo em exemplos inoculativos, os desenvolvedores podem avaliar se as fraquezas estão sendo efetivamente abordadas ou se novas fraquezas são descobertas.
 
 Essa técnica é particularmente relevante em situações em que a robustez do modelo é uma preocupação e onde se deseja mitigar potenciais vieses, falhas ou limitações do conjunto de dados ou do modelo. A "Inoculation by Fine-Tuning" destaca a importância de um ajuste fino estratégico para fortalecer modelos e melhorar seu desempenho em cenários mais desafiadores.
 
@@ -627,8 +897,6 @@ Receita para probing:
 2. Escolha uma tarefa supervisionada que seja uma proxy da estrutura interna de interesse.
 3. Identifique o local do modelo onde você acredita que a estrutura será codificada. Um conjunto de representações vetoriais interna do modelo.
 4. Treine a sonda supervisionada no(s) local(is) escolhido(s)
-
-Conneau et al. 2018; Tenney et al. 2019
 
 ##### Core Method
 <img src="./imgs/probing_core_method.png">
@@ -1299,6 +1567,4 @@ A interpretação de uma learning curve com intervalos de confiança é uma comb
    - Vários sistemas recentes são indistinguíveis em termos de desempenho bruto, uma vez tida em conta esta fonte de variação.
 4. Relacionado: falha catastrófica como resultado de uma inicialização infeliz.
 5. Em Assessment_methods.ipynb: Uma rede feedforward no problema XOR é bem-sucedida 8 de 10 vezes.
-
-## 8. Fantastic Language Models and How to Build Them
 
