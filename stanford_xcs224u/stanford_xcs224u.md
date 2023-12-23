@@ -95,6 +95,8 @@ Para superar essa limitação, muitas abordagens mais recentes no campo de Proce
 
 A estrutura linguística de frases e a estrutura de modelos referem-se a dois conceitos diferentes.
 
+<img src="model_linguistic_structure.png">
+
 ##### Estrutura Linguística de Frases:
 ##### Estrutura Básica:
 1. **Sujeito:** Geralmente, a entidade que realiza ou é afetada pela ação na frase.
@@ -167,6 +169,8 @@ Essas estruturas representam diferentes abordagens para lidar com dados sequenci
 #### Attention
 O mecanismo de atenção é uma técnica fundamental em modelos de aprendizado de máquina, especialmente em tarefas de processamento de linguagem natural (NLP), onde é crucial considerar diferentes partes de uma sequência de entrada de maneira ponderada. O mecanismo de atenção permite que o modelo atribua diferentes pesos a diferentes partes da entrada, destacando as informações mais relevantes para a tarefa em questão.
 
+<img src="./imgs/attention.png">
+
 ##### Mecanismo de Atenção em NLP:
 1. **Entrada Sequencial:**
    - Suponha que temos uma sequência de palavras ou vetores de entrada, como uma frase em um problema de NLP.
@@ -201,6 +205,8 @@ Modelos como o Transformer, que introduziu a atenção multi-cabeça, foram revo
 
 #### Subword Modeling in ELMo
 A modelagem de subpalavras no ELMo (Embeddings from Language Models) é uma abordagem que utiliza representações contextuais para palavras, levando em consideração subpalavras ou morfemas, em vez de considerar as palavras como unidades inteiras. Essa técnica visa capturar a riqueza e a flexibilidade da linguagem ao lidar com a variação morfológica e a composição de palavras.
+
+<img src="./imgs/sub_word_elmo.png">
 
 A modelagem de subpalavras no ELMo é alcançada por meio de uma arquitetura de rede neural profunda. Aqui está uma explicação mais detalhada:
 
@@ -280,9 +286,15 @@ O fine-tuning em NLP é uma estratégia poderosa para adaptar modelos pré-trein
 ### 2.2. Transformer
 A arquitetura dos modelos Transformers, introduzida por Vaswani et al. em 2017, é uma arquitetura de aprendizado de máquina que se tornou amplamente utilizada em tarefas de Processamento de Linguagem Natural (NLP) e além. A característica distintiva dos modelos Transformers é a atenção, que permite que o modelo atenda simultaneamente a todas as posições de entrada em uma sequência, em vez de depender de uma abordagem sequencial ou recorrente.
 
+<img src="./imgs/transformer_core_structure.png">
+<img src="./imgs/transformer_core_structure_repeat.png">
+
 1. **Encoder-Decoder Architecture:** Muitos modelos Transformer consistem em uma arquitetura de codificador-decodificador. No caso de tarefas de tradução, por exemplo, o codificador processa a sequência de entrada na língua de origem, e o decodificador gera a sequência de saída na língua de destino.
 2. **Attention Mechanism:** O mecanismo de atenção é central para os Transformers. Ele permite que o modelo "preste atenção" a diferentes partes da entrada ao calcular uma pontuação de atenção para cada posição. Isso é feito por meio de três vetores: consulta (Q), chave (K) e valor (V). A atenção é calculada como uma soma ponderada dos valores, onde os pesos são determinados pela compatibilidade entre a consulta e a chave. **Exemplo:** Considere a frase "The cat sat on the mat." O mecanismo de atenção permite que o modelo dê mais peso a diferentes palavras dependendo do contexto. Por exemplo, ao traduzir para outra língua, o modelo pode dar mais atenção a "cat" ao gerar a palavra correspondente na língua de destino.
 3. **Multi-Head Attention:** Para melhorar a representação, os modelos Transformers usam atenção multi-cabeça, onde várias cabeças de atenção são calculadas independentemente e, em seguida, concatenadas e linearmente transformadas. Isso permite que o modelo aprenda diferentes representações ponderadas. **Exemplo:** Suponha que estamos analisando uma frase e queremos entender tanto os sujeitos quanto os objetos. Cada cabeça de atenção pode se concentrar em diferentes partes da frase, como sujeitos ou objetos específicos.
+
+<img src="./imgs/multi_head_attention.png">
+
 4. **Positional Encoding:** Uma desvantagem dos modelos Transformers é que eles não têm uma noção intrínseca de ordem ou posição nas sequências. Para contornar isso, os modelos incorporam informações de posição através da adição de codificações posicionais às embeddings de entrada. **Exemplo:** Considere as frases "I love transformers" e "Transformers love me." As palavras têm significados diferentes dependendo de sua posição nas frases. As codificações posicionais ajudam o modelo a capturar essas diferenças.
 5. **Feedforward Neural Networks:** Após a camada de atenção, cada posição passa por uma rede neural feedforward, adicionando uma camada de não-linearidade. Isso ajuda o modelo a aprender representações não lineares mais complexas, capturando relações mais abstratas entre as palavras.
 6. **Layer Normalization and Residual Connections:** Cada subcamada (atualmente, subcamadas são atenção e feedforward) é seguida por uma camada de normalização e uma conexão residual. Isso ajuda na estabilidade do treinamento e facilita o fluxo de gradientes. **Exemplo:** A normalização de camada e as conexões residuais são usadas para melhorar a estabilidade do treinamento e facilitar o fluxo de gradientes. Isso é particularmente útil em modelos profundos como os Transformers.
@@ -292,6 +304,8 @@ A arquitetura dos modelos Transformers, introduzida por Vaswani et al. em 2017, 
 O positional encoding (codificação posicional) é uma técnica usada em modelos de linguagem, especialmente em arquiteturas como o Transformer, para incorporar informações sobre a posição relativa das palavras em uma sequência. Essa técnica é necessária porque modelos de linguagem, como redes neurais, por si só, não têm uma noção intrínseca de ordem ou posição nas sequências de entrada.
 
 Nos modelos que utilizam codificação posicional, é adicionado um vetor posicional a cada vetor de entrada, representando a posição relativa da palavra na sequência. Dessa forma, a rede neural é capacitada para considerar a posição das palavras, algo essencial em tarefas onde a ordem das palavras é significativa, como em tradução de texto ou análise de sentimento em sequências.
+
+<img src="./imgs/positional_encoding.png">
 
 Existem diferentes abordagens para implementar o Posicional Encoding, incluindo o Posicional Encoding Absoluto, Baseado em Frequência e Relativo.
 
