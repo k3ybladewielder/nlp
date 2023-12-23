@@ -341,7 +341,7 @@ O positional encoding é uma abordagem eficaz para lidar com a informação de p
 ### 2.4. GPT (Generative Pre-trained Transformer)
 O GPT (Generative Pre-trained Transformer) é uma arquitetura de modelo de linguagem baseada em transformers e é conhecida por ser uma das mais poderosas para tarefas de processamento de linguagem natural. Aqui estão os principais componentes do GPT:
 
-1. **Transformers:** O GPT é construído com base na arquitetura de transformers, que consiste em um codificador e um decodificador. Cada bloco transformer possui mecanismos de autoatenção (self-attention) que permitem ao modelo capturar relações de longo alcance e contextos complexos.
+1. **Transformers:** O GPT é construído com base na arquitetura de transformers, sendo uma versão modificada decoder-only. Cada bloco transformer possui mecanismos de autoatenção (self-attention) que permitem ao modelo capturar relações de longo alcance e contextos complexos.
 2. **Pré-treinamento Não Supervisionado:** O GPT é pré-treinado em uma tarefa não supervisionada de predição da próxima palavra em grandes corpora de texto. Durante esse pré-treinamento, o modelo aprende representações de palavras e contextos sem uma tarefa de supervisão específica.
 3. **Atenção Autoregressiva:** Durante a geração de texto, o GPT utiliza uma abordagem autoregressiva, onde cada palavra é gerada sequencialmente com base nas palavras anteriores. Isso é feito usando amostragem estocástica ou greedy decoding.
 4. **Camadas Empilhadas:** O GPT consiste em várias camadas empilhadas de blocos transformer. Essas camadas permitem ao modelo aprender representações hierárquicas e complexas de texto.
@@ -357,7 +357,7 @@ Esses componentes combinados tornam o GPT um modelo altamente eficaz para divers
 ### 2.5. BERT (Bidirectional Encoder Representations from Transformers)
 O BERT (Bidirectional Encoder Representations from Transformers) é um modelo de linguagem pré-treinado baseado na arquitetura Transformer. Aqui estão os componentes essenciais do BERT:
 
-1. **Arquitetura Transformer:** BERT utiliza a arquitetura Transformer, composta por um codificador empregado em uma configuração bidirecional. Isso significa que o modelo leva em consideração as palavras anteriores e posteriores para cada palavra em uma frase durante o treinamento.
+1. **Arquitetura Transformer:** BERT utiliza a arquitetura Transformer, composta por um codificador (encoder) empregado em uma configuração bidirecional, ou seja, **encoder-only**. Isso significa que o modelo leva em consideração as palavras anteriores e posteriores para cada palavra em uma frase durante o treinamento.
 2. **Camadas de Ativação e Normalização:** BERT incorpora camadas de ativação (como ReLU) e normalização de camada após as operações de atenção e redes neurais feedforward. Essas camadas contribuem para a estabilidade do treinamento e facilitam o fluxo de gradientes.
 3. **Multi-Head Self-Attention:** O mecanismo de autoatenção é aplicado em várias cabeças (multi-head attention), permitindo que o modelo capture diferentes aspectos de dependências em uma frase de maneira simultânea. Isso ajuda BERT a entender contextos complexos e relações entre palavras.
 4. **Embeddings Posicionais:** Dado que a arquitetura Transformer não leva em conta a ordem das palavras em uma frase, BERT incorpora informações de posição através de embeddings posicionais. Isso permite que o modelo diferencie entre palavras que ocorrem em diferentes posições dentro de uma sequência.
@@ -384,6 +384,8 @@ Esses componentes fazem do ROBERTA uma extensão e otimização do BERT, resulta
 
 ### 2.7. ELECTRA
 O ELECTRA (Efficiently Learning an Encoder that Classifies Token Replacements Accurately) é um modelo de linguagem pré-treinado que se destaca por sua eficiência de treinamento e bom desempenho em tarefas downstream*. Aqui estão os principais componentes do ELECTRA:
+
+<img src="./imgs/electra.png">
 
 1. **Generador de Tokens Masked (Geração de Token Mascaramento):**  Diferentemente do BERT, que usa uma abordagem de preenchimento de máscara (MLM) para mascarar aleatoriamente palavras em uma sequência, o ELECTRA usa um gerador de tokens mascarados. Este gerador substitui aleatoriamente palavras reais por [MASK] e treina o modelo para reconhecer essas substituições.
 2. **Discriminador de Tokens Substituídos:**  O ELECTRA introduz um discriminador que é treinado para distinguir tokens reais de tokens gerados pelo gerador de tokens mascarados. Esse componente é crucial para a abordagem de treinamento do ELECTRA.
@@ -415,6 +417,8 @@ Os modelos sequência para sequência, também conhecidos como seq2seq, são uma
 ### 2.9. T5
 O T5 (Text-to-Text Transfer Transformer) é um modelo de linguagem proposto pelo Google Research que segue a abordagem "text-to-text", tratando todas as tarefas de processamento de linguagem natural (PNL) como problemas de conversão de texto para texto. Aqui estão os principais componentes do T5:
 
+<img src="./imgs/t5.png">
+
 1. **Arquitetura Transformer:** O T5 utiliza a arquitetura Transformer, que é baseada em mecanismos de atenção para capturar relações de longo alcance em sequências.
 2. **Encoder-Decoder Framework:** Assim como muitos modelos seq2seq, o T5 possui uma estrutura de codificador-decodificador (encoder-decoder). O codificador processa a entrada e gera uma representação contextual, enquanto o decodificador usa essa representação para gerar a saída.
 3. **Text-to-Text Paradigm:** A característica distintiva do T5 é a abordagem "text-to-text", onde todas as tarefas são formuladas como problemas de conversão de texto para texto. Isso inclui tarefas de classificação, geração, tradução, entre outras.
@@ -436,6 +440,8 @@ O T5 é conhecido por sua versatilidade e desempenho sólido em uma variedade de
 
 ### 2.10. BART
 O BART (Bidirectional and Auto-Regressive Transformers) é um modelo de linguagem proposto pela Facebook AI Research (FAIR) que utiliza a arquitetura Transformer. Ele foi projetado para realizar tarefas de geração de sequência e compressão de texto. Aqui estão os principais componentes do BART:
+
+<img src="./imgs/bart.png">
 
 1. **Arquitetura Transformer:** O BART utiliza a arquitetura Transformer, que é composta por camadas de autoatentividade para processar informações de entrada.
 2. **Encoder-Decoder Framework:** O BART segue uma estrutura de codificador-decodificador (encoder-decoder), onde o codificador processa a entrada e gera uma representação contextual, e o decodificador usa essa representação para gerar a saída.
@@ -551,6 +557,8 @@ Essas comparações adicionais abrangem uma variedade de aspectos, destacando as
 ### 2.12. Distillation
 A destilação, no contexto de modelos de aprendizado de máquina, refere-se a uma técnica na qual o conhecimento de um modelo maior e mais complexo é transferido para um modelo menor e mais simples. Esse processo é muitas vezes chamado de "destilação do conhecimento" ou "aprendizado por destilação". O principal objetivo é transferir o conhecimento adquirido por um modelo mais complexo para um modelo mais leve, mantendo ou melhorando o desempenho do modelo menor.
 
+<img src="./imgs/teach_student_model.png">
+
 #### Principais Componentes do Processo de Destilação:
 1. **Modelo Professor (Complexo):** Um modelo maior e mais complexo (professor) é treinado em uma tarefa específica. Esse modelo geralmente tem uma capacidade de representação mais rica e é capaz de aprender padrões complexos nos dados.
 2. **Modelo Aluno (Simplificado):** Um modelo menor e mais simples (aluno) é criado para realizar a mesma tarefa. Este modelo é mais leve em termos de parâmetros e complexidade.
@@ -597,6 +605,8 @@ Essas tarefas representam desafios significativos em processamento de linguagem 
 ### 3.1. Classical Information Retrieval
 A Recuperação Clássica de Informações (IR) refere-se aos métodos tradicionais e abordagens utilizados para encontrar informações relevantes a partir de grandes conjuntos de dados, geralmente textuais. Essa disciplina é fundamental em sistemas que buscam organizar, armazenar e recuperar informações de maneira eficiente. Aqui estão alguns dos principais conceitos e componentes da Recuperação Clássica de Informações:
 
+<img src="./imgs/classical_ir.png">
+
 1. **Modelo Booleano:**
    - *Descrição:* Baseado na lógica booleana, este modelo trata a informação como sendo representada por conjuntos de termos e utiliza operadores lógicos (AND, OR, NOT) para expressar relações entre esses termos.
    - *Exemplo:* Busca por "informação AND retrieval" para encontrar documentos que contenham ambas as palavras.
@@ -630,6 +640,8 @@ A Recuperação Clássica de Informações estabeleceu os fundamentos para muito
 ### 3.2. IR Metrics
 ### 3.3. Neural IR
 A Recuperação de Informações Neural refere-se à aplicação de técnicas de redes neurais no contexto da recuperação de informações. Essa abordagem tem ganhado destaque devido à capacidade das redes neurais de aprender representações complexas e contextuais a partir de dados brutos. Aqui estão alguns conceitos e componentes-chave da Recuperação de Informações Neural:
+
+<img src="./imgs/neural_ir.png">
 
 1. **Embedding de Consulta e Documento:**
    - *Descrição:* Representação vetorial densa de consultas e documentos usando técnicas de embedding. Essas representações aprendidas capturam semântica e relações semânticas entre termos.
