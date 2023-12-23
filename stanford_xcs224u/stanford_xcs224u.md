@@ -18,7 +18,10 @@ Playlist com as aulas no [youtube](https://www.youtube.com/playlist?list=PLoROMv
    - 2.6. [RoBERTa](#26-roberta)
    - 2.7. [ELECTRA](#27-electra)
    - 2.8. [Seq2seq Architectures](#28-seq2seq-architectures)
-   - 2.9. [Distillation](#29-distillation)
+   - 2.9. [T5](#29-t5)   
+   - 2.10. [BART](#210-bart)
+   - 2.11. [Benchmarks](#211-benchmarks-entre-os-modelos)   
+   - 2.12. [Distillation](#212-distillation)
 3. [**Information Retrieval**](#3-information-retrieval)
    - 3.1. [Classical Information Retrieval](#31-classical-information-retrieval)
    - 3.2. [IR Metrics](#32-ir-metrics)
@@ -395,7 +398,7 @@ Os modelos sequência para sequência, também conhecidos como seq2seq, são uma
 5. **Inferência:** Durante a inferência, o modelo é alimentado com uma sequência de entrada e usa o decoder para gerar a sequência de saída.
 6. **Exemplos de Modelos Seq2Seq:** Tradução Automática, Geração de Resumo, Diálogos (QA), Geração de Código, Correção de Texto
 
-### T5
+### 2.9. T5
 O T5 (Text-to-Text Transfer Transformer) é um modelo de linguagem proposto pelo Google Research que segue a abordagem "text-to-text", tratando todas as tarefas de processamento de linguagem natural (PNL) como problemas de conversão de texto para texto. Aqui estão os principais componentes do T5:
 
 1. **Arquitetura Transformer:** O T5 utiliza a arquitetura Transformer, que é baseada em mecanismos de atenção para capturar relações de longo alcance em sequências.
@@ -417,7 +420,7 @@ Neste exemplo, a tarefa específica (tradução) é indicada pelo rótulo na ent
 
 O T5 é conhecido por sua versatilidade e desempenho sólido em uma variedade de tarefas, tornando-o uma escolha popular para abordagens text-to-text em PNL.
 
-### BART
+### 2.10. BART
 O BART (Bidirectional and Auto-Regressive Transformers) é um modelo de linguagem proposto pela Facebook AI Research (FAIR) que utiliza a arquitetura Transformer. Ele foi projetado para realizar tarefas de geração de sequência e compressão de texto. Aqui estão os principais componentes do BART:
 
 1. **Arquitetura Transformer:** O BART utiliza a arquitetura Transformer, que é composta por camadas de autoatentividade para processar informações de entrada.
@@ -440,9 +443,98 @@ Neste exemplo, o BART seria treinado para gerar automaticamente o resumo da entr
 
 O BART é conhecido por sua eficácia em tarefas de geração de sequência e resumo de texto, e seu treinamento denoising autoencoder contribui para a capacidade do modelo de compreender e gerar sequências coesas.
 
-### Benchmarks entre os modelos
+### 2.11. Benchmarks entre os modelos
+Vamos comparar algumas das diferenças entre BERT, RoBERTa, ELECTRA, GPT e seq2seq, considerando suas características e abordagens:
 
-### 2.9. Distillation
+1. **BERT (Bidirectional Encoder Representations from Transformers):**
+   - **Característica Distintiva:** BERT introduziu a ideia de pré-treinamento bidirecional, onde o modelo é treinado para prever palavras em uma sequência de texto tanto à esquerda quanto à direita.
+   - **Máscara de Preenchimento (MLM):** BERT utiliza uma tarefa de máscara de preenchimento (Masked Language Model) durante o pré-treinamento, onde algumas palavras em uma sequência são mascaradas, e o modelo é treinado para prever essas palavras mascaradas.
+
+2. **RoBERTa (Robustly optimized BERT approach):**
+   - **Melhorias:** RoBERTa é uma versão otimizada do BERT que faz algumas modificações no pré-treinamento, incluindo a remoção da tarefa de MLM e aumentando o tamanho do conjunto de dados. Isso resulta em melhorias significativas no desempenho.
+
+3. **ELECTRA (Efficiently Learning an Encoder that Classifies Token Replacements Accurately):**
+   - **Abordagem Adversarial:** ELECTRA utiliza uma abordagem adversarial, onde uma pequena porcentagem de palavras em uma sequência é substituída por palavras geradas adversarialmente. O modelo é treinado para discriminar entre palavras reais e substituídas.
+
+4. **GPT (Generative Pre-trained Transformer):**
+   - **Modelagem Generativa:** Diferentemente do BERT, GPT é um modelo de linguagem generativa. Ele é treinado para prever a próxima palavra em uma sequência, tornando-se mais adequado para geração de texto.
+
+5. **Seq2Seq (Sequence-to-Sequence):**
+   - **Arquitetura Encoder-Decoder:** Seq2Seq refere-se a uma arquitetura de modelo onde uma sequência de entrada é transformada em uma sequência de saída. É frequentemente utilizado para tarefas de tradução automática e resumo de texto.
+   - **Exemplo de Uso:** Um exemplo de aplicação do Seq2Seq é o modelo Transformer no qual BERT é baseado. A diferença é que, enquanto BERT é projetado para tarefas de compreensão de linguagem, o Seq2Seq é mais geral e pode ser aplicado a várias tarefas de sequência para sequência.
+
+**Principais Diferenças Gerais:**
+- **Pré-treinamento Bidirecional vs. Generativo:** BERT e RoBERTa são modelos pré-treinados bidirecionais, enquanto GPT é generativo.
+- **Discriminação vs. Generação:** ELECTRA se concentra em discriminação adversarial, enquanto GPT se concentra na geração de texto.
+- **Tarefas Específicas vs. Uso Geral:** BERT, RoBERTa e ELECTRA são frequentemente usados para tarefas específicas de PLN, enquanto GPT e Seq2Seq são mais generalistas.
+
+Essas são apenas algumas das diferenças e características distintivas entre esses modelos. A escolha entre eles dependerá da tarefa específica e dos requisitos do projeto.
+
+1. **Treinamento Escalonado (Layer-wise Training):**
+   - **BERT:** Treina todas as camadas simultaneamente.
+   - **RoBERTa:** Utiliza treinamento escalonado, treinando camadas mais profundas com tamanhos de lote maiores.
+   - **ELECTRA:** Introduz treinamento adversarial, mas não utiliza treinamento escalonado.
+   - **GPT:** Treina todas as camadas simultaneamente durante o pré-treinamento.
+   - **Seq2Seq:** Dependendo da arquitetura, pode envolver treinamento escalonado em modelos de codificador e decodificador.
+
+2. **Tamanho do Lote Dinâmico:**
+   - **BERT:** Usa um tamanho de lote constante durante o treinamento.
+   - **RoBERTa:** Adapta dinamicamente o tamanho do lote, aumentando-o para camadas mais profundas.
+   - **ELECTRA:** Não é especificamente mencionado, mas a abordagem adversarial pode afetar a dinâmica do tamanho do lote.
+   - **GPT:** Sensível ao tamanho do lote, mas geralmente usa tamanhos fixos.
+   - **Seq2Seq:** Pode usar tamanhos de lote variáveis dependendo da implementação.
+
+3. **Pré-treinamento de Sentença (NSP):**
+   - **BERT:** Inclui a tarefa NSP (Next Sentence Prediction) no pré-treinamento.
+   - **RoBERTa:** Remove a tarefa NSP e foca apenas na tarefa de preenchimento de máscara (MLM).
+   - **ELECTRA:** Não incorpora explicitamente a tarefa NSP, mas introduz uma tarefa adversarial.
+   - **GPT:** Não utiliza NSP, pois é um modelo generativo que treina para prever a próxima palavra em uma sequência.
+   - **Seq2Seq:** Não é aplicável da mesma forma, pois envolve tarefas de codificação e decodificação.
+
+4. **Tamanho do Modelo:**
+   - **BERT:** Tamanho de modelo padrão.
+   - **RoBERTa:** Aumenta o tamanho do modelo para melhorar a capacidade de representação.
+   - **ELECTRA:** Usa uma quantidade significativamente menor de parâmetros em comparação com modelos tradicionais.
+   - **GPT:** GPT-3, por exemplo, é conhecido por ter modelos muito grandes, com bilhões de parâmetros.
+   - **Seq2Seq:** O tamanho do modelo pode variar dependendo da arquitetura e da tarefa específica.
+
+5. **Tokenização Dinâmica:**
+   - **BERT:** Usa um vocabulário estático durante todo o treinamento.
+   - **RoBERTa:** Incorpora uma abordagem de tokenização dinâmica, permitindo a expansão do vocabulário durante o treinamento.
+   - **ELECTRA:** Não é mencionado explicitamente, mas pode ter implicações devido à substituição dinâmica de tokens.
+   - **GPT:** Também utiliza tokenização dinâmica.
+   - **Seq2Seq:** Depende da implementação específica e do tipo de tokenização usada.
+
+6. **Quantidade de Dados de Treinamento:**
+   - **BERT:** Treinado com um conjunto de dados específico.
+   - **RoBERTa:** Treinado com uma quantidade significativamente maior de dados.
+   - **ELECTRA:** Utiliza uma abordagem de treinamento adversarial para melhorar a eficiência.
+   - **GPT:** Treinado em uma quantidade substancial de dados para modelos maiores.
+   - **Seq2Seq:** Pode variar dependendo da tarefa específica e dos dados disponíveis.
+
+7. **Atenção Contínua em Segmentos (Causal Language Modeling):**
+   - **BERT:** Não inclui atenção contínua em segmentos.
+   - **RoBERTa:** Não é mencionado explicitamente, mas pode não incluir atenção contínua em segmentos.
+   - **ELECTRA:** Não é mencionado explicitamente.
+   - **GPT:** Usa atenção contínua em segmentos para modelos generativos.
+   - **Seq2Seq:** A atenção contínua em segmentos pode ser relevante dependendo da arquitetura.
+
+8. **Utilização de Stop Words no Pré-treinamento:**
+   - **BERT:** Não especificamente projetado para incluir stop words no pré-treinamento.
+   - **RoBERTa:** Faz uso de stop words no pré-treinamento para melhorar a compreensão e generalização.
+   - **ELECTRA:** Não é mencionado explicitamente.
+   - **GPT:** Não utiliza explicitamente stop words no pré-treinamento.
+   - **Seq2Seq:** A abordagem pode depender da tarefa específica e da necessidade de incluir ou excluir stop words.
+
+9. **Redução de Memória e Processamento Eficiente:**
+   - **ELECTRA:** Destaca-se por sua eficiência, pois utiliza uma abordagem de subpalavra (subword) mais eficiente durante o treinamento adversarial.
+   - **RoBERTa:** Também otimizado para eficiência, eliminando a tarefa NSP e utilizando técnicas de treinamento escalonado.
+   - **GPT:** Não é mencionado explicitamente, mas modelos grandes podem exigir considerável capacidade computacional.
+   - **Seq2Seq:** Eficiência depende da arquitetura específica e das otimizações implementadas.
+
+Essas comparações adicionais abrangem uma variedade de aspectos, destacando as diferentes abordagens e características de BERT, RoBERTa, ELECTRA, GPT e Seq2Seq. A escolha entre esses modelos dependerá das necessidades específicas da tarefa e dos recursos disponíveis.
+
+### 2.12. Distillation
 A destilação, no contexto de modelos de aprendizado de máquina, refere-se a uma técnica na qual o conhecimento de um modelo maior e mais complexo é transferido para um modelo menor e mais simples. Esse processo é muitas vezes chamado de "destilação do conhecimento" ou "aprendizado por destilação". O principal objetivo é transferir o conhecimento adquirido por um modelo mais complexo para um modelo mais leve, mantendo ou melhorando o desempenho do modelo menor.
 
 #### Principais Componentes do Processo de Destilação:
