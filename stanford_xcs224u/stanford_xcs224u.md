@@ -290,26 +290,23 @@ O positional encoding (codificação posicional) é uma técnica usada em modelo
 
 Nos modelos que utilizam codificação posicional, é adicionado um vetor posicional a cada vetor de entrada, representando a posição relativa da palavra na sequência. Dessa forma, a rede neural é capacitada para considerar a posição das palavras, algo essencial em tarefas onde a ordem das palavras é significativa, como em tradução de texto ou análise de sentimento em sequências.
 
-### Formulação Básica do Positional Encoding:
+Existem diferentes abordagens para implementar o Posicional Encoding, incluindo o Posicional Encoding Absoluto, Baseado em Frequência e Relativo.
 
-Certamente! Aqui estão as fórmulas usando o caractere especial `$` para inclusão em um arquivo Markdown:
+1. **Posicional Encoding Absoluto:**
+   - No Posicional Encoding Absoluto, cada posição em uma sequência recebe uma representação de posição única. Isso geralmente é feito por meio da adição de vetores de posição diretamente aos embeddings de palavra. Cada posição tem um vetor posicional exclusivo associado, e essa informação é adicionada ao embedding da palavra correspondente. No entanto, essa abordagem pode ter limitações ao lidar com sequências mais longas ou generalização para tamanhos de sequência fora do conjunto de treinamento.
 
-Seja $ PE(\text{{pos}}, 2i) $ o $ 2i $-ésimo componente do vetor de codificação posicional na posição $ \text{{pos}} $, e $ PE(\text{{pos}}, 2i + 1) $ o $ (2i + 1) $-ésimo componente. A fórmula básica do positional encoding é geralmente definida como:
+2. **Posicional Encoding Baseado em Frequência:**
+   - O Posicional Encoding Baseado em Frequência aborda a limitação do Posicional Encoding Absoluto, introduzindo uma abordagem mais generalizável. Nessa técnica, os vetores de posição são gerados com base em funções seno e cosseno de diferentes frequências. A ideia é usar funções seno e cosseno para criar padrões que sejam generalizáveis para diferentes tamanhos de sequência. A fórmula geral para calcular o Posicional Encoding com base em frequência é: $\( PE(pos, 2i) = \sin(pos / 10000^{2i/d}) \)$ e $\( PE(pos, 2i+1) = \cos(pos / 10000^{2i/d}) \)$, onde $\( pos \)$ é a posição e $\( i \)$ é a dimensão do vetor.
 
-$
-\[
-PE(\text{{pos}}, 2i) = \sin\left(\frac{{\text{{pos}}}}{{10000^{(2i/d)}}}\right)
-\]
+3. **Posicional Encoding Relativo:**
+   - O Posicional Encoding Relativo leva em consideração as relações entre as posições em vez de depender exclusivamente de valores absolutos. Ele é particularmente útil em modelos que lidam com relações dentro de sequências, como em tarefas de tradução ou resolução de ambiguidades. O Posicional Encoding Relativo considera a diferença entre as posições para criar representações posicionais que refletem a relação entre as palavras em uma sequência.
 
-\[
-PE(\text{{pos}}, 2i + 1) = \cos\left(\frac{{\text{{pos}}}}{{10000^{(2i/d)}}}\right)
-\]
-$ 
+**Diferenças e Melhorias:**
+- **Absoluto vs. Baseado em Frequência:** O Posicional Encoding Baseado em Frequência é mais flexível e generalizável do que o Absoluto, pois funciona bem para sequências de diferentes tamanhos. Ele reduz a necessidade de ajustes específicos de hiperparâmetros para diferentes comprimentos de sequência.
 
-onde:
-- $ \text{{pos}} $ é a posição da palavra na sequência.
-- $ i $ é a dimensão do vetor de codificação posicional.
-- $ d $ é a dimensão total do vetor de entrada.
+- **Baseado em Frequência vs. Relativo:** O Posicional Encoding Relativo leva em consideração a diferença relativa entre posições, permitindo que o modelo capture melhor as relações de longo alcance em uma sequência. Isso é especialmente útil em tarefas em que a posição relativa é crucial, como tradução.
+
+Em geral, a escolha entre essas abordagens pode depender da tarefa específica em questão. Cada método tem suas vantagens e desvantagens, e a eficácia pode variar dependendo das características da tarefa e do conjunto de dados.
 
 ### Propriedades Importantes:
 
