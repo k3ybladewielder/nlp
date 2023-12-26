@@ -16,6 +16,29 @@ Natural Language Processing (NLP) Course Notes, resources and exercises.
   - [Stanford XCS224U: Natural Language Understanding](https://github.com/k3ybladewielder/nlp/blob/main/stanford_xcs224u/stanford_xcs224u.md)
   - Stanford CS25 - Transformers United
   
+## Conferences
+### NLP Focused  
+  - ACL
+  - NAACL
+  - EMNLP
+  - AACL
+  - EACL
+  - COLING
+  - CoNLL
+### WEB, Knowledge bases and IA focused
+  - WWW
+  - WSDM
+  - KDD
+  - ICWSM
+  - IJCAI
+  - AAAI
+  - CogSci
+  - SCiL
+### Machine Learning focused
+  - ICML
+  - NeurIPS
+  - ICLR
+  
 ## Resources
 - Datacamp Spacy Cheatsheet [(blog post)](https://www.datacamp.com/cheat-sheet/spacy-cheat-sheet-advanced-nlp-in-python) and [(pdf)](spacy_cheatsheet.pdf)
 - [Prompt Engineering Guide](https://www.promptingguide.ai/)
