@@ -10,7 +10,7 @@ Natural Language Processing (NLP) Course Notes, resources and exercises.
   - Natural Language Processing with Probabilistic Models @ DeeplearningAI
   - Natural Language Processing with Sequence Models @ DeeplearningAI
   - Natural Language Processing with Attention Models @ DeeplearningAI
-  - [Processamento Neural de Linguagem Natural em Português @ USP]()
+  - [Processamento Neural de Linguagem Natural em Português @ USP]((https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/nlp_usp.md))
   - [HuggingFace NLP Course](https://github.com/k3ybladewielder/nlp/blob/main/huggingface_course/nlp_course.ipynb)
   - [Stanford CS224N: NLP with Deep Learning](https://github.com/k3ybladewielder/nlp/blob/main/stanford_cs224n/stanford_cs224n.md)
   - [Stanford XCS224U: Natural Language Understanding](https://github.com/k3ybladewielder/nlp/blob/main/stanford_xcs224u/stanford_xcs224u.md)
