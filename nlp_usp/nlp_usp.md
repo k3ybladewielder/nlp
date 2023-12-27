@@ -529,7 +529,7 @@ O alinhamento de textos paralelos refere-se ao processo de relacionar correspond
 
 Em resumo, o alinhamento de textos paralelos é uma etapa crucial em muitas aplicações de processamento de linguagem natural, proporcionando uma correspondência eficaz entre textos em diferentes idiomas para facilitar a tradução e análise multilíngue.
 
-### Problemas Típicos em PLN: Problemas Básicos e de Morfosintáxe
+### Problemas Típicos em PLN: Problemas Básicos e de Morfossintaxe
 ### Problemas Típicos em PLN: Sintaxe, Semântica e Pragmática
 ### Lista 01 (Colab)
 
