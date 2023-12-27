@@ -45,7 +45,7 @@
 
 ## Semana 1
 ### Introdução ao Processamento de Linguagem Natural
-**Elementos da língua** e áreas que as estudam:
+#### Elementos da língua e áreas que as estudam:
 1. **Sons (Acústica):**
    - **Descrição:** Esta área lida com os sons produzidos na fala humana e como são percebidos.
    - **Exemplo:** O som "p" em "palavra" é produzido fechando os lábios e liberando o ar.
@@ -77,17 +77,13 @@
 Essas áreas representam diferentes aspectos do estudo da linguagem, fornecendo uma compreensão abrangente dos elementos que compõem a comunicação linguística.
 
 ### Processamento Baseado em Regras
-O Processamento de Linguagem Natural (PLN) baseado em regras gramaticais envolve o uso de um conjunto predefinido de regras linguísticas para analisar e compreender a linguagem. Ao contrário de abordagens mais modernas baseadas em aprendizado de máquina, o PLN baseado em regras depende de regras gramaticais explicitamente definidas para realizar tarefas específicas. Aqui está uma explicação mais detalhada, juntamente com exemplos:
+O Processamento de Linguagem Natural (PLN) baseado em regras gramaticais envolve o uso de um conjunto predefinido de regras linguísticas para analisar e compreender a linguagem. Ao contrário de abordagens mais modernas baseadas em aprendizado de máquina, o PLN baseado em regras depende de regras gramaticais explicitamente definidas para realizar tarefas específicas. 
 
-1. **Explicação:**
-   - Nesse método, especialistas em linguística ou programadores definem regras gramaticais que descrevem a estrutura e as relações entre as palavras em uma língua.
-   - Essas regras são usadas para analisar a sintaxe e a semântica de frases, identificar partes da fala e realizar outras tarefas de processamento de linguagem.
+Nesse método, especialistas em linguística ou programadores definem regras gramaticais que descrevem a estrutura e as relações entre as palavras em uma língua. Essas regras são usadas para analisar a sintaxe e a semântica de frases, identificar partes da fala e realizar outras tarefas de processamento de linguagem.
 
-2. **Descrição:**
-   - As regras gramaticais geralmente incluem padrões sintáticos, estruturas de frase, relações gramaticais e significados associados a determinadas construções linguísticas.
-   - A análise é realizada seguindo rigorosamente essas regras, muitas vezes usando uma abordagem de análise sintática.
+As regras gramaticais geralmente incluem padrões sintáticos, estruturas de frase, relações gramaticais e significados associados a determinadas construções linguísticas. A análise é realizada seguindo rigorosamente essas regras, muitas vezes usando uma abordagem de análise sintática.
 
-3. **Exemplos:**
+**Exemplos:**
    - *Análise Sintática:* Uma regra gramatical pode ser definida para identificar sujeito, verbo e objeto em uma frase. Por exemplo, a regra pode indicar que um sujeito é geralmente seguido por um verbo e um objeto, e isso pode ser usado para analisar a estrutura da frase.
    
    - *Extração de Informações:* Se uma regra gramatical estabelece que certos padrões de palavras indicam a presença de informações específicas (por exemplo, "Nome: [nome]" ou "Data de nascimento: [data]"), o sistema pode seguir essas regras para extrair essas informações de um texto.
@@ -96,7 +92,7 @@ O Processamento de Linguagem Natural (PLN) baseado em regras gramaticais envolve
 
 Embora o PLN baseado em regras tenha sido uma abordagem inicial no desenvolvimento de sistemas de processamento de linguagem, ela tem limitações, especialmente em lidar com ambiguidades e variações na linguagem. Muitas abordagens modernas incorporam técnicas de aprendizado de máquina para lidar com essas complexidades.
 
-**Modelagem Matemática da Linguagem: Modelos Simbólicos, Não-Numéricos ou Qualitativos:**
+#### Modelagem Matemática da Linguagem: Modelos Simbólicos, Não-Numéricos ou Qualitativos:
 
 1. **Morfologia e Sintaxe: Linguagens Formais e Autômatos:**
    - **Explicação:** A modelagem matemática de morfologia e sintaxe envolve o uso de linguagens formais para descrever a estrutura das palavras (morfologia) e a composição das frases (sintaxe).
@@ -112,11 +108,9 @@ Embora o PLN baseado em regras tenha sido uma abordagem inicial no desenvolvimen
 
 Essas abordagens matemáticas fornecem estruturas formais para entender e representar a linguagem. Elas são fundamentais em disciplinas como a teoria da computação, linguística computacional e processamento de linguagem natural, onde a formalização da linguagem permite a criação de modelos precisos e eficientes para análise e processamento automático.
 
-As gramáticas livres de contexto são uma classe específica de gramáticas formais utilizadas para descrever a estrutura sintática de linguagens formais. Elas desempenham um papel fundamental na teoria da computação, linguística computacional e no desenvolvimento de compiladores.
+#### Gramática livre de contexto
 
-**Gramática livre de contexto**
-
-A definição formal de uma gramática livre de contexto inclui quatro componentes principais:
+As gramáticas livres de contexto são uma classe específica de gramáticas formais utilizadas para descrever a estrutura sintática de linguagens formais. Elas desempenham um papel fundamental na teoria da computação, linguística computacional e no desenvolvimento de compiladores. A definição formal de uma gramática livre de contexto inclui quatro componentes principais:
 
 1. **Conjunto de Símbolos Terminais (T):**
    - São os símbolos que aparecem nas cadeias finais derivadas pela gramática. Em uma gramática para a linguagem de programação, por exemplo, os símbolos terminais podem representar palavras-chave, operadores e identificadores.
@@ -144,19 +138,11 @@ Neste exemplo, "Expr" representa uma expressão aritmética, "Term" um termo e "
 
 Gramáticas livres de contexto são fundamentais em compiladores para análise sintática, na representação de linguagens de programação e no desenvolvimento de parsers para processamento de linguagem natural. Elas possuem uma estrutura poderosa e são amplamente utilizadas em diversos campos da ciência da computação.
 
-**Gramática e Estrutura da Frase**
+#### Gramática e Estrutura da Frase
 
-A gramática e a estrutura da frase são elementos essenciais na compreensão da linguagem. Vamos explorar esses conceitos, fornecendo uma explicação geral e exemplos:
-
-**Gramática:**
-A gramática é o conjunto de regras que governa a estrutura e o uso de uma língua. Ela inclui regras sintáticas (estrutura de frases), regras morfológicas (formação de palavras) e regras semânticas (significado das palavras e frases).
-
-**Estrutura da Frase:**
-A estrutura da frase refere-se à organização gramatical das palavras em uma sentença para expressar uma ideia completa. Envolve a disposição de elementos como sujeito, verbo, objeto, adjetivos e advérbios de maneira coerente.
+A gramática e a estrutura da frase são elementos essenciais na compreensão da linguagem. A **gramática** é o conjunto de regras que governa a estrutura e o uso de uma língua. Ela inclui regras sintáticas (estrutura de frases), regras morfológicas (formação de palavras) e regras semânticas (significado das palavras e frases). Já a **Estrutura da Frase** refere-se à organização gramatical das palavras em uma sentença para expressar uma ideia completa. Envolve a disposição de elementos como sujeito, verbo, objeto, adjetivos e advérbios de maneira coerente.
 
 **Exemplos:**
-Vamos analisar a estrutura de uma frase simples:
-
 1. **Frase Simples:**
    - **Exemplo:** "O gato caçou um rato."
    - **Estrutura:**
@@ -187,7 +173,7 @@ Vamos analisar a estrutura de uma frase simples:
 
 Estes exemplos ilustram diferentes aspectos da estrutura da frase, incluindo a presença de sujeito, verbo, objeto, modificadores e a formação de frases interrogativas. A compreensão da gramática e da estrutura da frase é fundamental para a comunicação eficaz e a interpretação correta da linguagem.
 
-**Categorias Morfosintáticas**
+#### Categorias Morfosintáticas
 
 As categorias morfosintáticas referem-se às classes gramaticais ou categorias sintáticas que as palavras de uma língua podem ocupar em uma frase. Elas combinam elementos morfológicos (relativos à forma ou estrutura da palavra) e elementos sintáticos (relativos à função da palavra em uma sentença). As principais categorias morfosintáticas incluem:
 
@@ -225,11 +211,8 @@ As categorias morfosintáticas referem-se às classes gramaticais ou categorias 
 
 Essas categorias são fundamentais para a análise sintática e semântica de uma sentença. Além disso, elas contribuem para a estruturação e compreensão da língua. Em muitas línguas, as palavras podem pertencer a diferentes categorias, dependendo do contexto ou da função que desempenham em uma frase específica. A categorização morfosintática é uma ferramenta crucial para a descrição e análise linguística.
 
-**Regras Lexicais e Regras Gramaticais**
-
-**Regras Lexicais:**
-
-As regras lexicais lidam com a estrutura e a formação de palavras, incluindo morfemas (unidades mínimas de significado) e a maneira como as palavras são formadas e modificadas.
+#### Regras Lexicais e Regras Gramaticais
+As **regras lexicais** lidam com a estrutura e a formação de palavras, incluindo morfemas (unidades mínimas de significado) e a maneira como as palavras são formadas e modificadas.
 
 1. **Exemplo:**
    - Na língua inglesa, a adição do sufixo "-ly" a um adjetivo forma um advérbio. Exemplo: "quick" (adjetivo) -> "quickly" (advérbio).
@@ -237,9 +220,7 @@ As regras lexicais lidam com a estrutura e a formação de palavras, incluindo m
 2. **Função:**
    - Estabelecem padrões para a construção e derivação de palavras, determinando como radicais, prefixos e sufixos podem ser combinados.
 
-**Regras Gramaticais:**
-
-As regras gramaticais governam a estrutura e a organização de frases, especificando como as palavras devem ser combinadas para formar unidades significativas.
+As **regras gramaticais** governam a estrutura e a organização de frases, especificando como as palavras devem ser combinadas para formar unidades significativas.
 
 1. **Exemplo:**
    - Em uma gramática simples, a regra para uma frase pode ser expressa como "Sujeito + Verbo + Objeto". Exemplo: "O gato (Sujeito) caçou (Verbo) um rato (Objeto)."
@@ -263,41 +244,32 @@ As regras gramaticais governam a estrutura e a organização de frases, especifi
 
 Em resumo, as regras lexicais e gramaticais trabalham juntas para formar uma base sólida na compreensão e na produção da linguagem, abrangendo desde a construção de palavras até a organização de frases em contextos gramaticalmente corretos.
 
-**Gramática Livre de Contexto (GLC):**
+#### Gramática Livre de Contexto (GLC)
+Uma Gramática Livre de Contexto é um tipo específico de gramática formal que descreve a estrutura sintática de uma linguagem. Ela consiste em um conjunto de regras de produção que especificam como as cadeias de símbolos podem ser formadas.
 
-1. **Explicação:**
-   - Uma Gramática Livre de Contexto é um tipo específico de gramática formal que descreve a estrutura sintática de uma linguagem. Ela consiste em um conjunto de regras de produção que especificam como as cadeias de símbolos podem ser formadas.
+Considere a regra para uma frase simples em inglês: `S -> SN SV`. Isso significa que uma sentença (S) pode ser formada por um sintagma nominal (SN) seguido por um sintagma verbal (SV).
 
-2. **Exemplo de Regra de Produção:**
-   - Considere a regra para uma frase simples em inglês: `S -> NP VP`. Isso significa que uma sentença (S) pode ser formada por um sintagma nominal (NP) seguido por um sintagma verbal (VP).
+#### Derivação Sintática
 
-**Derivação Sintática:**
+A derivação sintática é o processo de aplicar as regras de produção de uma gramática para gerar uma sequência de símbolos que forma uma sentença na linguagem.
 
-1. **Explicação:**
-   - A derivação sintática é o processo de aplicar as regras de produção de uma gramática para gerar uma sequência de símbolos que forma uma sentença na linguagem.
-
-2. **Exemplo de Derivação:**
-   - Dada a regra `S -> NP VP`, poderíamos derivar a sentença "O gato caçou" da seguinte maneira:
+**Exemplo de Derivação:**
+   - Dada a regra `S -> SN SV`, poderíamos derivar a sentença "O gato caçou" da seguinte maneira:
      1. `S` (inicial)
-     2. `NP VP` (aplicando a regra `S -> NP VP`)
-     3. `Det N VP` (selecionando "O" para NP)
-     4. `O N VP` (selecionando "gato" para N)
-     5. `O gato VP` (aplicando regras adicionais para VP)
+     2. `SN SV` (aplicando a regra `S -> SN SV`)
+     3. `Det N SV` (selecionando "O" para SN)
+     4. `O N SV` (selecionando "gato" para N)
+     5. `O gato SV` (aplicando regras adicionais para SV)
      6. `O gato V` (selecionando "caçou" para V)
      7. `O gato caçou` (aplicando regras adicionais se necessário)
 
-**Árvore de Derivação Sintática:**
-
-1. **Explicação:**
-   - Uma árvore de derivação sintática é uma representação gráfica da derivação sintática, mostrando como as regras de produção são aplicadas para gerar a sentença.
-
-2. **Exemplo de Árvore de Derivação:**
-   - Usando o exemplo anterior, a árvore de derivação pode ser representada assim:
+#### Árvore de Derivação Sintática
+Uma árvore de derivação sintática é uma representação gráfica da derivação sintática, mostrando como as regras de produção são aplicadas para gerar a sentença. Usando o exemplo anterior, a árvore de derivação pode ser representada assim:
 
 ```
        S
       / \
-     NP  VP
+     SN  SV
     /  |   \
  Det   N    V
   |    |    |
@@ -308,20 +280,18 @@ Nesta árvore, cada nó representa um símbolo da gramática e as arestas indica
 
 Esses conceitos são fundamentais na análise sintática de linguagens formais e são amplamente utilizados em linguística computacional, processamento de linguagem natural e design de compiladores. A Gramática Livre de Contexto, a derivação sintática e as árvores de derivação são ferramentas poderosas para descrever e analisar a estrutura sintática das linguagens.
 
-**Gramática Ambígua:**
+#### Gramática Ambígua
 Uma gramática é considerada ambígua quando uma determinada sentença pode ser analisada de maneiras diferentes, resultando em mais de uma árvore sintática possível para a mesma sequência de palavras. A ambiguidade pode surgir quando as regras gramaticais permitem mais de uma interpretação válida.
 
 **Exemplo: "Eu vi o menino com o telescópio":**
    - Nesta sentença, a ambiguidade surge devido à possível interpretação dupla da preposição "com". A frase pode ser entendida como "Eu vi o menino usando o telescópio" ou "Eu vi o menino que tinha o telescópio".
-
-**Árvores Sintáticas Ambíguas:**
 
 1. **Primeira Interpretação (usando o telescópio):**
    
    ```
          S
         / \
-      NP   VP
+      SN   SV
       |   / | \
       N  V  Det N
       |   |    |
@@ -341,7 +311,7 @@ Uma gramática é considerada ambígua quando uma determinada sentença pode ser
    ```
          S
         / \
-      NP   VP
+      SN   SV
       |   / | \
       N  V  Det N
       |   |    |
@@ -360,7 +330,7 @@ Nas duas árvores, a estrutura geral da sentença é a mesma, mas a interpretaç
 
 A ambiguidade em gramáticas pode causar problemas de interpretação e é um desafio para sistemas de processamento de linguagem natural, pois eles precisam ser capazes de escolher a interpretação mais apropriada em contextos específicos.
 
-**A Hierarquia de Chomsky**
+#### A Hierarquia de Chomsky
 
 A Hierarquia de Chomsky é uma classificação de gramáticas formais proposta pelo linguista Noam Chomsky. Essa hierarquia organiza as gramáticas em quatro níveis, cada um representando um conjunto diferente de linguagens. As quatro classes na Hierarquia de Chomsky, em ordem crescente de complexidade, são:
 
@@ -382,11 +352,183 @@ A Hierarquia de Chomsky é uma classificação de gramáticas formais proposta p
 
 Essa hierarquia é significativa porque mostra a relação entre diferentes tipos de gramáticas e as classes de linguagens que elas podem gerar. À medida que se move de um tipo para outro, as gramáticas tornam-se mais expressivas, mas também mais difíceis de analisar e processar automaticamente. A Hierarquia de Chomsky é fundamental no estudo da teoria da computação e fornece uma estrutura para entender a complexidade das linguagens formais.
 
-
-
-
-
 ### Modelos Probabilísticos de Linguagem
+#### Cadeias de Markov em Processamento de Linguagem Natural (PLN)
+
+Cadeias de Markov são modelos probabilísticos que representam sequências de eventos onde a probabilidade de um evento depende apenas do evento anterior. No contexto do PLN, esses modelos podem ser aplicados para modelar padrões de transição entre estados em uma sequência de palavras ou símbolos em uma sentença.
+
+1. **Cadeias de Markov de Ordem 1:**
+   - Nesse modelo, a probabilidade de um determinado estado (palavra) depende apenas do estado imediatamente anterior. Isso é conhecido como uma cadeia de Markov de ordem 1.
+
+2. **Exemplo:**
+   - Considere a frase: "O gato caçou o rato." Se estivermos modelando a probabilidade de cada palavra com base na palavra anterior, teríamos transições como:
+     - P(caçou | O) = P(caçou | gato)
+     - P(rato | caçou) = P(rato | O)
+
+3. **Cadeias de Markov de Ordem n:**
+   - Podemos aumentar a ordem da cadeia de Markov para levar em consideração um histórico mais longo de estados anteriores. Isso permite modelar dependências mais complexas.
+
+4. **Exemplo de Ordem 2:**
+   - P(rato | O, caçou) = P(rato | gato, caçou)
+
+5. **Treinamento do Modelo:**
+   - Os parâmetros do modelo, como as probabilidades de transição, são estimados a partir de dados de treinamento, ou seja, de corpus de texto anotado.
+
+6. **Aplicações em PLN:**
+   - Cadeias de Markov são utilizadas em várias tarefas de PLN, como correção ortográfica, reconhecimento de fala, geração de texto e análise de sentimento. Elas são especialmente úteis quando a probabilidade de um evento depende fortemente do contexto imediato.
+
+7. **Limitações:**
+   - Um desafio comum é a chamada "maldição da dimensionalidade," onde o número de parâmetros a serem estimados cresce exponencialmente com a ordem da cadeia de Markov, tornando difícil treinar modelos com uma ordem muito alta.
+
+8. **Transições Estado-Observação:**
+   - Em alguns casos, cada estado pode estar associado a uma observação (palavra), e a transição não é entre estados, mas entre estados-observação.
+
+**Exemplo de Uso - Geração de Texto:**
+   - Dado o início da frase "O tempo está", um modelo de cadeia de Markov pode gerar probabilisticamente as palavras seguintes com base nas transições observadas no conjunto de treinamento, resultando em diferentes continuções, como "O tempo está bom" ou "O tempo está passando."
+
+Os modelos de cadeias de Markov oferecem uma abordagem probabilística eficiente para modelar dependências sequenciais em texto, permitindo a captura de padrões de transição que são úteis em várias tarefas de processamento de linguagem natural.
+
+#### n-grams em Processamento de Linguagem Natural (PLN)
+O modelo n-gram é uma abordagem probabilística que representa a probabilidade de ocorrência de uma palavra com base nas n palavras anteriores em uma sequência de texto. Ele é uma simplificação do modelo de Markov de ordem n e é amplamente utilizado em tarefas de processamento de linguagem natural. Um n-gram é uma sequência contígua de n itens em uma amostra de texto ou fala. No contexto do PLN, esses itens geralmente são palavras.
+
+1. **Exemplo de n-gram:**
+   - Considere a frase: "O gato caçou o rato."
+   - 1-gram (unigrama): {"O", "gato", "caçou", "o", "rato"}
+   - 2-gram (bigrama): {"O gato", "gato caçou", "caçou o", "o rato"}
+   - 3-gram (trigrama): {"O gato caçou", "gato caçou o", "caçou o rato"}
+
+2. **Probabilidade Condicional:**
+   - O modelo n-gram usa a probabilidade condicional para calcular a probabilidade de uma palavra dado um histórico de n-1 palavras. Isso é expresso como P(w | w₁, w₂, ..., wₙ₋₁), onde w representa a palavra atual.
+
+3. **Estimativa de Probabilidades:**
+   - As probabilidades condicionais são estimadas a partir de um conjunto de treinamento, contando o número de ocorrências de n-grams. A probabilidade de uma palavra é então calculada dividindo o número de ocorrências pelo número total de ocorrências do histórico.
+
+4. **Exemplo de Estimação de Probabilidades:**
+   - Se "O gato" ocorre 10 vezes no conjunto de treinamento e "O gato caçou" ocorre 5 vezes, a probabilidade condicional de "caçou" dado "O gato" seria P("caçou" | "O gato") = 5/10.
+
+5. **Aplicações em PLN:**
+   - O modelo n-gram é amplamente utilizado em tarefas como correção ortográfica, previsão de texto, reconhecimento de fala e tradução automática. Ele fornece uma maneira eficiente de modelar a dependência sequencial em dados linguísticos.
+
+6. **Problema da Esparsidade:**
+   - Um desafio comum é a esparsidade dos dados, especialmente para grandes valores de n. Em muitos casos, algumas combinações de palavras podem não estar presentes no conjunto de treinamento, resultando em probabilidades estimadas como zero.
+
+7. **Interpolação e Suavização:**
+   - Técnicas como interpolação e suavização são frequentemente aplicadas para lidar com a esparsidade, ajustando as probabilidades de n-grams com base em n-grams de ordens inferiores ou introduzindo fatores de suavização.
+
+**Exemplo de Uso - Previsão de Texto:**
+   - Dado o histórico "O tempo está", um modelo trigram pode calcular probabilisticamente a próxima palavra, ajudando na previsão, como "O tempo está bom" ou "O tempo está passando."
+
+Os modelos n-grams fornecem uma abordagem eficaz e computacionalmente eficiente para modelar a dependência sequencial em dados linguísticos e são uma ferramenta valiosa em diversas tarefas de processamento de linguagem natural.
+
+#### Aprendizado Supervisionado com Modelos Probabilísticos (Exemplo: Bigrama)
+
+**1. Aprendizado Supervisionado:**
+   - No aprendizado supervisionado, um modelo é treinado usando um conjunto de dados rotulado, onde as entradas estão associadas a rótulos conhecidos. O objetivo é que o modelo generalize para fazer previsões precisas em dados não rotulados.
+
+**2. Modelos Probabilísticos:**
+   - Modelos probabilísticos atribuem probabilidades a eventos ou resultados. No contexto do processamento de linguagem natural (PLN), um exemplo é o modelo de bigrama, que calcula a probabilidade de uma palavra condicionada à palavra anterior.
+
+**3. Bigramas e Probabilidade Condicional:**
+   - Um bigrama é uma sequência de duas palavras consecutivas em um texto. A probabilidade condicional de uma palavra dada a palavra anterior (um bigrama) é usada para estimar a probabilidade de uma sequência de palavras.
+
+**4. Exemplo:**
+   - Considere a frase: "O gato caçou o rato." e a tarefa de prever a próxima palavra após "O". Se usarmos bigramas, queremos calcular P(w | "O"), onde w representa a próxima palavra.
+
+**5. Treinamento do Modelo:**
+   - Durante o treinamento, contamos o número de ocorrências de cada bigrama no conjunto de treinamento. Por exemplo, contamos quantas vezes a sequência "O gato" ocorre.
+
+**6. Cálculo de Probabilidades:**
+   - A probabilidade condicional P(w | "O") para uma palavra específica w é calculada como o número de ocorrências do bigrama "O w" dividido pelo número total de ocorrências da palavra "O".
+
+**7. Exemplo Numérico:**
+   - Suponha que em nosso conjunto de treinamento, "O gato" ocorre 5 vezes e "O rato" ocorre 3 vezes. A probabilidade condicional de "caçou" dado "O" seria P("caçou" | "O") = 5 / (5 + 3) = 5/8.
+
+**8. Previsão:**
+   - Durante a fase de teste, o modelo pode ser usado para prever a próxima palavra. Dada a entrada "O", o modelo selecionaria a palavra seguinte com base na probabilidade condicional mais alta.
+
+**9. Aplicações:**
+   - O modelo de bigrama e abordagens similares são amplamente utilizados em aplicações como correção ortográfica, previsão de texto, reconhecimento de fala e sugestões de palavras em teclados preditivos.
+
+**10. Limitações:**
+   - Modelos de bigrama têm limitações, especialmente quando se trata de capturar dependências a longo prazo ou contextos mais amplos. Modelos mais avançados, como trigramas, n-gramas ou modelos de linguagem mais complexos, podem ser usados para lidar com essas limitações.
+
+Em resumo, o aprendizado supervisionado com modelos probabilísticos, como bigramas, é uma abordagem eficaz no processamento de linguagem natural, permitindo a previsão de palavras ou sequências com base em probabilidades condicionais aprendidas a partir de dados rotulados.
+
+#### Aprendizado de Gramáticas Probabilísticas
+
+O aprendizado de gramáticas probabilísticas envolve a estimação de probabilidades associadas a regras gramaticais. Essas gramáticas são frequentemente usadas em processamento de linguagem natural (PLN) para modelar a estrutura e a probabilidade de sequências de palavras em texto. Vamos explorar esse conceito com mais detalhes:
+
+**1. Gramáticas Probabilísticas:**
+   - Em vez de lidar apenas com a estrutura gramatical, as gramáticas probabilísticas atribuem probabilidades a diferentes regras de produção. Isso é útil para modelar a variabilidade na ocorrência de diferentes estruturas gramaticais.
+
+**2. Exemplo de Regra Probabilística:**
+   - Considere uma regra de produção em uma gramática livre de contexto (GLC): `S -> NP VP`. Podemos atribuir uma probabilidade a essa regra, indicando a chance de ocorrer em comparação com outras regras de produção possíveis.
+
+**3. Estimação de Probabilidades:**
+   - Durante o treinamento, as probabilidades associadas a diferentes regras são estimadas a partir de um conjunto de dados rotulado. Isso geralmente envolve contar a frequência de ocorrência de cada regra.
+
+**4. Exemplo Numérico:**
+   - Suponha que temos a regra `S -> NP VP` e ela ocorre 50 vezes em nosso conjunto de treinamento, enquanto a regra `S -> VP` ocorre 20 vezes. A probabilidade de `S -> NP VP` seria estimada como 50 / (50 + 20) = 50/70.
+
+**5. Modelos de Linguagem:**
+   - As gramáticas probabilísticas podem ser usadas para construir modelos de linguagem probabilísticos mais avançados. Por exemplo, modelos n-gram atribuem probabilidades a sequências de palavras com base em n-1 palavras anteriores.
+
+**6. Aplicações em PLN:**
+   - Esses modelos são úteis em tarefas como reconhecimento de fala, correção automática de texto, tradução automática e geração de texto. A probabilidade associada a diferentes estruturas ajuda a escolher a interpretação mais provável em contextos ambíguos.
+
+**7. Limitações:**
+   - Gramáticas probabilísticas, especialmente aquelas baseadas em modelos n-gram, podem ter dificuldades em capturar dependências a longo prazo ou contextos mais amplos. Modelos mais complexos, como modelos de linguagem neurais, foram desenvolvidos para lidar com essas limitações.
+
+**Exemplo de Uso - Modelo de Linguagem Probabilístico:**
+   - Dado um conjunto de treinamento, podemos estimar a probabilidade de diferentes sequências de palavras. Por exemplo, em uma frase como "O gato caçou o rato", o modelo atribuiria probabilidades a diferentes estruturas sintáticas e escolheria a interpretação mais provável.
+
+O aprendizado de gramáticas probabilísticas é uma abordagem valiosa para modelar a incerteza na linguagem e escolher entre diferentes interpretações em tarefas de PLN. Essa abordagem é uma peça fundamental em muitos sistemas de processamento de linguagem natural que buscam compreender e gerar texto de maneira mais precisa.
+
+#### Alinhamento de Textos Paralelos
+
+O alinhamento de textos paralelos refere-se ao processo de relacionar correspondências entre sentenças ou partes de sentenças em textos que são traduções ou equivalentes em diferentes idiomas. Essa técnica é fundamental em tarefas como tradução automática e comparação de documentos multilíngues. Vamos explorar os conceitos associados ao alinhamento de textos paralelos:
+
+**1. Alinhamento de Sentenças:**
+   - O alinhamento de sentenças é uma forma comum de alinhamento de textos paralelos. Envolve relacionar cada sentença em um texto-fonte com sua correspondente no texto de destino.
+
+**2. Exemplo Simples:**
+   - Texto-fonte (inglês): "Hello, how are you?"
+   - Texto de destino (francês): "Bonjour, comment ça va ?"
+   - Alinhamento de sentenças: "Hello" -> "Bonjour", "how are you?" -> "comment ça va ?"
+
+**3. Alinhamento de Fragmentos:**
+   - Em vez de alinhar apenas sentenças inteiras, pode-se realizar alinhamento de fragmentos para lidar com diferenças estruturais ou para identificar partes correspondentes de sentenças.
+
+**4. Exemplo de Alinhamento de Fragmentos:**
+   - Texto-fonte: "A água é essencial para a vida."
+   - Texto de destino: "Water is essential for life."
+   - Alinhamento de fragmentos: "água" -> "Water", "essencial para a vida" -> "essential for life."
+
+**5. Modelos de Alinhamento:**
+   - Existem diferentes modelos de alinhamento, incluindo modelos baseados em regras, modelos estatísticos e modelos neurais. Cada abordagem tem suas vantagens e desvantagens.
+
+**6. Modelos Estatísticos:**
+   - Modelos estatísticos podem ser treinados usando métodos probabilísticos para aprender padrões de alinhamento com base em dados de treinamento que contenham textos alinhados.
+
+**7. Alinhamento de Palavras:**
+   - O alinhamento de palavras é uma forma mais granular de alinhamento, onde cada palavra em uma sentença é relacionada à sua equivalente na sentença de destino.
+
+**8. Exemplo de Alinhamento de Palavras:**
+   - Texto-fonte: "O gato está dormindo."
+   - Texto de destino: "The cat is sleeping."
+   - Alinhamento de palavras: "O" -> "The", "gato" -> "cat", "está" -> "is", "dormindo" -> "sleeping."
+
+**9. Alinhamento Bidirecional:**
+   - O alinhamento pode ser bidirecional, onde não apenas as sentenças ou palavras no texto-fonte são alinhadas com o texto de destino, mas também vice-versa.
+
+**10. Aplicações:**
+   - Além da tradução automática, o alinhamento de textos paralelos é útil em tarefas como extração de terminologia, resumo automático e comparação de documentos multilíngues.
+
+**11. Desafios:**
+   - Alinhar textos paralelos pode ser desafiador em casos de diferenças sintáticas, palavras ausentes ou adicionadas, e quando há ambiguidades na correspondência entre idiomas.
+
+Em resumo, o alinhamento de textos paralelos é uma etapa crucial em muitas aplicações de processamento de linguagem natural, proporcionando uma correspondência eficaz entre textos em diferentes idiomas para facilitar a tradução e análise multilíngue.
+
 ### Problemas Típicos em PLN: Problemas Básicos e de Morfosintáxe
 ### Problemas Típicos em PLN: Sintaxe, Semântica e Pragmática
 ### Lista 01 (Colab)
