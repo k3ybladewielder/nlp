@@ -18,26 +18,11 @@ Natural Language Processing (NLP) Course Notes, resources and exercises.
   
 ## Conferences
 ### NLP Focused  
-  - ACL
-  - NAACL
-  - EMNLP
-  - AACL
-  - EACL
-  - COLING
-  - CoNLL
+  - ACL, NAACL, EMNLP, AACL, EACL, COLING, CoNLL
 ### WEB, Knowledge bases and IA focused
-  - WWW
-  - WSDM
-  - KDD
-  - ICWSM
-  - IJCAI
-  - AAAI
-  - CogSci
-  - SCiL
+  - WWW, WSDM, KDD, ICWSM, IJCAI, AAAI, CogSci, SCiL
 ### Machine Learning focused
-  - ICML
-  - NeurIPS
-  - ICLR
+  - ICML, NeurIPS ICLR
   
 ## Resources
 - Datacamp Spacy Cheatsheet [(blog post)](https://www.datacamp.com/cheat-sheet/spacy-cheat-sheet-advanced-nlp-in-python) and [(pdf)](spacy_cheatsheet.pdf)
