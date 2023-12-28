@@ -731,7 +731,8 @@ Esses **problemas semânticos** são fundamentais para compreender o significado
 
 Esses **problemas pragmáticos** são complexos e envolvem a compreensão mais profunda do contexto e da intenção do usuário. Solucionar esses desafios é crucial para a criação de sistemas de PLN que possam interagir de forma mais natural e eficaz com os usuários, especialmente em aplicações como assistentes virtuais, sistemas de chatbots avançados e sistemas de resposta automática. O progresso na pragmática requer abordagens avançadas que considerem não apenas a estrutura gramatical e semântica, mas também as nuances do uso da linguagem na comunicação humana.
 
-### [Lista 01 (Colab)](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/01_Spacy.ipynb)
+### Lista 01 (Colab)
+- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/01_Spacy.ipynb)
 
 ## Semana 2
 ### Introdução às Redes Neurais
