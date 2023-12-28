@@ -874,7 +874,7 @@ O treinamento de redes neurais é um processo crucial no desenvolvimento de mode
 2. **Propagação Direta (Forward Propagation):**
    - Durante a propagação direta, os dados de entrada passam pelas camadas da rede, com os pesos e bias aplicados em cada camada. A saída é calculada e comparada com as etiquetas reais para calcular a perda.
 
-3. **Função de Perda (Loss Function):**
+3. **Função de Perda ou Custo (Loss Function):**
    - A função de perda mede a discrepância entre as previsões do modelo e os rótulos reais. Ela fornece uma medida de quão bem o modelo está realizando a tarefa desejada.
 
 4. **Retropropagação (Backpropagation):**
@@ -907,7 +907,7 @@ O treinamento de redes neurais é um processo crucial no desenvolvimento de mode
 O treinamento de redes neurais é um processo iterativo e intensivo em computação. O avanço contínuo na área inclui o desenvolvimento de técnicas mais eficientes de otimização, arquiteturas de redes neurais mais avançadas e estratégias de regularização para melhorar o desempenho e a generalização dos modelos.
 
 ### Lista 02 (Colab)
-- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/01_Spacy.ipynb)
+- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/02_NN_&_Backpropagation.ipynb)
 
 ## Semana 3
 ### Representação de Palavras: Modelo one-hot
