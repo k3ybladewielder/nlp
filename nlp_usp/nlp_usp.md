@@ -529,7 +529,208 @@ O alinhamento de textos paralelos refere-se ao processo de relacionar correspond
 
 Em resumo, o alinhamento de textos paralelos é uma etapa crucial em muitas aplicações de processamento de linguagem natural, proporcionando uma correspondência eficaz entre textos em diferentes idiomas para facilitar a tradução e análise multilíngue.
 
-### Problemas Típicos em PLN: Problemas Básicos e de Morfossintaxe
+### Problemas Típicos em PLN
+#### Pré-processamento
+1. **Tokenização:**
+   - **Descrição:** A tokenização envolve dividir um texto em unidades menores, chamadas tokens, que podem ser palavras, subpalavras ou caracteres.
+   - **Exemplo:** 
+     - Texto: "Processamento de Linguagem Natural."
+     - Tokens: ["Processamento", "de", "Linguagem", "Natural", "."]
+
+2. **Filtragem (Exemplo: Etiquetas HTML):**
+   - **Descrição:** Filtragem refere-se à remoção de elementos indesejados, como etiquetas HTML, para extrair apenas o texto relevante.
+   - **Exemplo:** 
+     - Texto: "<p>Texto relevante</p>"
+     - Texto filtrado: "Texto relevante"
+
+3. **Identificação de Ponto Final:**
+   - **Descrição:** Identificar corretamente os pontos finais em um texto é crucial para segmentar o texto em sentenças.
+   - **Exemplo:** 
+     - Texto: "Isso é um exemplo. Outra frase."
+     - Sentenças identificadas: ["Isso é um exemplo.", "Outra frase."]
+
+4. **Expansão de Abreviações:**
+   - **Descrição:** Expansão de abreviações é o processo de substituir abreviações por suas formas completas para melhor compreensão.
+   - **Exemplo:** 
+     - Texto: "O prof. Smith deu uma palestra."
+     - Texto expandido: "O professor Smith deu uma palestra."
+
+5. **Separação de Sentenças:**
+   - **Descrição:** Separação de sentenças é a identificação e delimitação correta de sentenças em um texto.
+   - **Exemplo:** 
+     - Texto: "Primeira frase. Segunda frase."
+     - Sentenças separadas: ["Primeira frase.", "Segunda frase."]
+
+6. **Extração de Stop-Words:**
+   - **Descrição:** Stop-words são palavras comuns que geralmente são removidas durante o pré-processamento, pois não contribuem significativamente para a análise.
+   - **Exemplo:** 
+     - Texto: "O processamento de linguagem natural é fascinante."
+     - Texto sem stop-words: "Processamento linguagem natural fascinante."
+
+Esses problemas são exemplos comuns enfrentados durante o **pré-processamento** em tarefas de PLN. Soluções eficazes para esses problemas contribuem significativamente para a qualidade do processamento e análise de texto. Cada etapa do pré-processamento tem o objetivo de preparar o texto para análises mais avançadas, como modelagem de tópicos, classificação de sentimentos ou tradução automática.
+
+#### Morfologia
+1. **Separação de Junções:**
+   - **Descrição:** Em alguns idiomas, as palavras podem ser formadas pela junção de várias unidades. Separar essas junções corretamente é essencial para uma análise morfológica precisa.
+   - **Exemplo:** 
+     - Palavra: "porta-malas"
+     - Separação correta: ["porta", "malas"]
+
+2. **Expressões Multipalavras:**
+   - **Descrição:** Algumas expressões consistem em várias palavras que têm um significado específico quando combinadas, e sua identificação é crucial para a compreensão correta.
+   - **Exemplo:** 
+     - Expressão: "de vez em quando"
+     - Identificação: ["de", "vez", "em", "quando"]
+
+3. **Lematização:**
+   - **Descrição:** A lematização envolve reduzir uma palavra à sua forma base ou lema, geralmente removendo sufixos e prefixos, para facilitar a análise.
+   - **Exemplo:** 
+     - Palavra: "correndo"
+     - Lematização: "correr"
+
+4. **Stemmatização:**
+   - **Descrição:** Similar à lematização, a stemmatização envolve cortar sufixos e prefixos para reduzir uma palavra à sua raiz, mesmo que essa raiz não seja um lema.
+   - **Exemplo:** 
+     - Palavra: "corrida"
+     - Stemmatização: "corr"
+
+5. **Etiquetagem Morfossintática (Classe Gramatical):**
+   - **Descrição:** A etiquetagem morfossintática atribui rótulos a cada palavra indicando sua classe gramatical, gênero, número, tempo verbal, entre outros.
+   - **Exemplo:** 
+     - Palavra: "correndo"
+     - Etiqueta: Verbo, Gerúndio
+
+6. **Problemas com Flexões:**
+   - **Descrição:** Em línguas com muitas flexões, identificar a forma base da palavra pode ser desafiador devido a variações na conjugação e declinação.
+   - **Exemplo:** 
+     - Palavra: "falamos"
+     - Lematização: "falar"
+
+7. **Problemas com Palavras Irregulares:**
+   - **Descrição:** Algumas palavras têm formas irregulares que não seguem padrões regulares de flexão, tornando a análise morfológica mais complexa.
+   - **Exemplo:** 
+     - Palavra: "ser"
+     - Formas conjugadas: ["sou", "é", "somos", ...]
+
+8. **Ambiguidade Morfológica:**
+   - **Descrição:** Palavras com formas idênticas podem ter significados diferentes dependendo do contexto, introduzindo ambiguidade.
+   - **Exemplo:** 
+     - Palavra: "correu"
+     - Significados possíveis: [correr, passado do verbo], [correr, adjetivo]
+
+Esses problemas são exemplos de **desafios enfrentados ao lidar com a morfologia** em PLN. Abordagens eficazes para resolver esses problemas são fundamentais para análises mais precisas e compreensivas da estrutura linguística em textos. O uso de técnicas avançadas, como modelos de linguagem neurais, pode ajudar a enfrentar esses desafios de maneira mais robusta e contextual.
+
+#### Sintaxe
+1. **Segmentação (Chunking) para Identificar Unidades Sintáticas:**
+   - **Descrição:** Segmentação envolve agrupar palavras em unidades sintáticas maiores, como sintagmas verbais (SV) e nominais (SN), para entender a estrutura gramatical de uma sentença.
+   - **Exemplo:** 
+     - Sentença: "O gato está dormindo."
+     - Sintagma verbal (SV): ["está dormindo"]
+     - Sintagma nominal (SN): ["O gato"]
+
+2. **Parseamento Raso (Shallow Parsing):**
+   - **Descrição:** O parseamento raso foca na identificação de estruturas sintáticas mais superficiais, como grupos nominais e verbais, sem analisar a estrutura interna completa da sentença.
+   - **Exemplo:** 
+     - Sentença: "O homem que vi ontem é meu amigo."
+     - Parseamento raso: ["O homem", "que vi ontem", "é meu amigo"]
+
+3. **Parseamento Profundo (Deep Parsing):**
+   - **Descrição:** O parseamento profundo busca uma análise mais aprofundada da estrutura sintática, incluindo relações gramaticais mais complexas e dependências entre as palavras.
+   - **Exemplo:** 
+     - Sentença: "A casa que João comprou está à venda."
+     - Parseamento profundo: Relações específicas entre as palavras, como "casa" sendo o sujeito de "está à venda".
+
+4. **Reconhecimento de Entidades Mencionadas (NER):**
+   - **Descrição:** NER envolve identificar e classificar entidades mencionadas em um texto, como nomes de pessoas, locais, organizações, datas, etc.
+   - **Exemplo:** 
+     - Texto: "Bill Gates fundou a Microsoft em 1975."
+     - Entidades reconhecidas: [Bill Gates - Pessoa, Microsoft - Organização, 1975 - Data]
+
+5. **Resolução de Anáforas (Deixis):**
+   - **Descrição:** A resolução de anáforas aborda o problema de vincular pronomes ou outras expressões anafóricas de volta aos seus antecedentes para compreender quem ou o que eles representam. Em NLP, é mais comum ser chamado de **coreferencia**. Coreferencia é um tipo de anáfora, em que duas ou mais expressões no texto se referem ao mesmo referente ou entidade.
+   - **Exemplo:** 
+     - Texto: "João comprou um carro. Ele é vermelho."
+     - Resolução de anáfora: "Ele" se refere a "um carro."
+
+Esses **problemas sintáticos** são cruciais para a compreensão semântica e o processamento avançado em PLN. Resolver esses desafios envolve o uso de técnicas e ferramentas específicas, como análise sintática, modelos de dependência, e algoritmos de resolução de anáforas. O avanço em parseamento e análise sintática é vital para aplicações como tradução automática, resumo de texto, e sistemas de pergunta e resposta automáticos.
+
+#### Semântica
+1. **Detecção de Relações Semânticas:**
+   - **Descrição:** Envolve identificar e categorizar relações semânticas entre palavras ou conceitos, como sinonímia (relação de significado similar), antonímia (relação de significado oposto), e hiperonímia (relação entre termos gerais e específicos).
+   - **Exemplo:** 
+     - Sinonímia: "comprar" e "adquirir"
+     - Antonímia: "feliz" e "triste"
+     - Hiperonímia: "fruta" e "maçã"
+
+2. **Embedding/Inserção em Espaço n-dimensional:**
+   - **Descrição:** O embedding refere-se à representação de palavras ou frases em um espaço n-dimensional, onde palavras semelhantes estão próximas umas das outras. Essa representação vetorial captura relações semânticas.
+   - **Exemplo:** 
+     - Palavras semelhantes teriam vetores próximos no espaço n-dimensional. "Rei" e "Rainha" podem estar próximos, indicando uma relação semântica.
+
+3. **Embedding sem Semântica Conhecida para Posições dos Vetores (Word2Vec):**
+   - **Descrição:** Métodos como Word2Vec são capazes de criar embeddings semânticos de palavras, mesmo sem conhecimento prévio da semântica. As posições nos vetores são aprendidas com base nas coocorrências em grandes conjuntos de dados.
+   - **Exemplo:** 
+     - "Vetor(Rei) - Vetor(Homem) + Vetor(Mulher)" pode resultar em um vetor próximo de "Rainha", sugerindo uma compreensão semântica das relações entre essas palavras.
+
+4. **Resolução de Ambiguidade Semântica:**
+   - **Descrição:** Trata da ambiguidade que surge quando uma palavra pode ter múltiplos significados em um contexto. O objetivo é determinar qual significado é mais apropriado com base no contexto.
+   - **Exemplo:** 
+     - "Banco" pode se referir a uma instituição financeira ou a um assento. A resolução de ambiguidade semântica determinaria o significado apropriado em uma frase específica.
+
+5. **Análise de Sentimento:**
+   - **Descrição:** Envolvendo a compreensão da polaridade emocional expressa em um texto, a análise de sentimento busca identificar se o texto transmite emoções positivas, negativas ou neutras.
+   - **Exemplo:** 
+     - "Eu amo esse produto!" indica uma emoção positiva, enquanto "Estou muito insatisfeito com o serviço" indica uma emoção negativa.
+
+6. **Extração de Informação Semântica:**
+   - **Descrição:** Consiste em extrair informações específicas ou conhecimento semântico de um texto, como identificar eventos, relações entre entidades e fatos relevantes.
+   - **Exemplo:** 
+     - "Bill Gates fundou a Microsoft em 1975." A extração de informação semântica identificaria a relação "fundou" entre "Bill Gates" e "Microsoft" e a data "1975".
+
+Esses **problemas semânticos** são fundamentais para compreender o significado subjacente em textos e são cruciais em várias aplicações de PLN, como sistemas de busca semântica, resumo automático de textos, tradução automática avançada e assistentes virtuais. O uso de embeddings e modelos semânticos avançados, como BERT (Bidirectional Encoder Representations from Transformers), tem impulsionado significativamente o progresso na resolução desses desafios semânticos.
+
+#### Pragmática
+1. **Desambiguação de Palavras:**
+   - **Descrição:** A desambiguação de palavras envolve a identificação do significado correto de uma palavra em um contexto específico, especialmente quando a palavra tem múltiplos significados.
+   - **Exemplo:** 
+     - A palavra "banco" pode significar uma instituição financeira ou um assento, e a desambiguação dependerá do contexto.
+
+2. **Desambiguação de Sentenças:**
+   - **Descrição:** Similar à desambiguação de palavras, a desambiguação de sentenças lida com casos em que uma sentença pode ter interpretações diferentes, e é necessário determinar a interpretação correta.
+   - **Exemplo:** 
+     - "Vi o homem com o telescópio." A desambiguação depende de saber se o telescópio está associado ao "homem" ou ao ato de ver.
+
+3. **Parseamento Semântico (Semantic Parsing):**
+   - **Descrição:** Semantic parsing envolve converter uma sentença ou expressão linguística em uma representação semântica estruturada, como uma consulta SQL ou uma árvore semântica.
+   - **Exemplo:** 
+     - Sentença: "Encontre restaurantes italianos perto de mim."
+     - Parseamento semântico: {ação: "encontrar", entidade: "restaurantes", tipo: "italiano", localização: "perto de mim"}
+
+4. **Tradução:**
+   - **Descrição:** A tradução envolve a conversão de texto de uma língua para outra, considerando não apenas a correspondência de palavras, mas também a expressão do significado.
+   - **Exemplo:** 
+     - "Hello, how are you?" traduzido para "Olá, como você está?"
+
+5. **Reconhecimento e Geração de Entidades:**
+   - **Descrição:** Identificar entidades mencionadas em um texto e gerar respostas ou ações adequadas com base nesse reconhecimento.
+   - **Exemplo:** 
+     - Pergunta: "Quem é o presidente dos Estados Unidos?"
+     - Reconhecimento de entidade: "presidente dos Estados Unidos"
+     - Resposta gerada: "Joe Biden é o presidente dos Estados Unidos."
+
+6. **Resolução de Discurso (Discurso Coerente):**
+   - **Descrição:** Garantir que um texto seja coerente em termos de estrutura e significado, considerando a continuidade do discurso.
+   - **Exemplo:** 
+     - Transição coerente entre parágrafos em um texto narrativo.
+
+7. **Preservação de Intenção:**
+   - **Descrição:** Assegurar que a intenção original do falante seja mantida em situações de processamento automático de linguagem natural.
+   - **Exemplo:** 
+     - Intenção: "Por favor, não faça isso."
+     - Preservação: A tradução ou interpretação mantém o tom de pedido ou solicitação.
+
+Esses **problemas pragmáticos** são complexos e envolvem a compreensão mais profunda do contexto e da intenção do usuário. Solucionar esses desafios é crucial para a criação de sistemas de PLN que possam interagir de forma mais natural e eficaz com os usuários, especialmente em aplicações como assistentes virtuais, sistemas de chatbots avançados e sistemas de resposta automática. O progresso na pragmática requer abordagens avançadas que considerem não apenas a estrutura gramatical e semântica, mas também as nuances do uso da linguagem na comunicação humana.
+
 ### Problemas Típicos em PLN: Sintaxe, Semântica e Pragmática
 ### Lista 01 (Colab)
 
