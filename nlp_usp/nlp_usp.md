@@ -805,9 +805,9 @@ O perceptron tradicional é um modelo de aprendizado de máquina que produz uma 
 
 Se quisermos adicionar uma interpretação probabilística ao perceptron, poderíamos considerar a introdução de uma função de ativação que gera uma saída no intervalo de 0 a 1. Uma escolha comum para isso é a função logística (também conhecida como sigmoid), que transforma a soma ponderada das entradas em uma probabilidade:
 
-\[ P(y=1) = \frac{1}{1 + e^{-z}} \]
+$\[ P(y=1) = \frac{1}{1 + e^{-z}} \]$
 
-Onde \( z \) é a soma ponderada das entradas.
+Onde $\( z \)$ é a soma ponderada das entradas.
 
 Nesse contexto, o perceptron probabilístico poderia ser interpretado como um perceptron modificado para gerar probabilidades de pertencimento a uma classe, sendo comumente usado em problemas de classificação binária.
 
