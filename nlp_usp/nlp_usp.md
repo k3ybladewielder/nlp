@@ -5,8 +5,7 @@
    - [Introdução ao Processamento de Linguagem Natural](#introdução-ao-processamento-de-linguagem-natural)
    - [Processamento Baseado em Regras](#processamento-baseado-em-regras)
    - [Modelos Probabilísticos de Linguagem](#modelos-probabilísticos-de-linguagem)
-   - [Problemas Típicos em PLN: Problemas Básicos e de Morfosintáxe](#problemas-típicos-em-pln-problemas-básicos-e-de-morfosintáxe)
-   - [Problemas Típicos em PLN: Sintaxe, Semântica e Pragmática](#problemas-típicos-em-pln-sintaxe-semântica-e-pragmática)
+   - [Problemas Típicos em PLN](#problemas-típicos-em-pln)
    - [Lista 01 (Colab)](#lista-01-colab)
 
 2. [Semana 2](#semana-2)
@@ -736,7 +735,98 @@ Esses **problemas pragmáticos** são complexos e envolvem a compreensão mais p
 
 ## Semana 2
 ### Introdução às Redes Neurais
+
+<img src="perceptron.png">
+
+O perceptron é um tipo simples de neurônio artificial que serve como unidade básica em redes neurais. Foi proposto por Frank Rosenblatt em 1957 e é um dos primeiros modelos de aprendizado de máquina. O perceptron é fundamental para entender o conceito de redes neurais e serviu como ponto de partida para o desenvolvimento de arquiteturas mais complexas.
+
+**Características Principais do Perceptron:**
+
+1. **Estrutura Básica:**
+   - Um perceptron consiste em uma única camada de entrada de dados, com pesos associados a cada entrada. Cada entrada é multiplicada pelo peso correspondente, e a soma ponderada é passada por uma função de ativação.
+
+2. **Função de Ativação:**
+   - A saída do perceptron é determinada pela aplicação de uma função de ativação ao resultado da soma ponderada das entradas. A função de ativação introduz não linearidades na resposta do perceptron, permitindo que ele aprenda padrões mais complexos.
+
+3. **Treinamento:**
+   - O treinamento de um perceptron envolve ajustar os pesos associados às entradas para minimizar a diferença entre a saída do perceptron e o resultado desejado. Isso é feito utilizando um algoritmo de aprendizado, como o Perceptron Learning Algorithm (PLA), que ajusta os pesos com base nos erros de classificação.
+
+4. **Aplicações Iniciais:**
+   - O perceptron foi inicialmente proposto para resolver problemas de classificação binária. Ele pode ser usado para criar um classificador linear, onde os dados de entrada são atribuídos a uma de duas classes com base em uma fronteira de decisão linear.
+
+**Limitações do Perceptron:**
+
+1. **Linearidade:**
+   - O perceptron é limitado a aprender padrões lineares. Isso significa que, se os dados não puderem ser separados por uma linha ou hiperplano, o perceptron não conseguirá aprender a relação.
+
+2. **Problema do XOR:**
+   - O perceptron não pode resolver o problema do XOR, que é um problema não linear. Isso levou a uma percepção inicialmente negativa em relação aos perceptrons, mas as redes neurais mais complexas, como multilayer perceptrons (MLPs), superaram essa limitação.
+
+**Extensões do Perceptron:**
+
+1. **Multilayer Perceptrons (MLPs):**
+   - Para superar as limitações do perceptron, foram propostas arquiteturas mais complexas, como MLPs, que consistem em múltiplas camadas de neurônios. Isso permite a modelagem de relações não lineares mais sofisticadas.
+
+2. **Redes Neurais Profundas:**
+   - O perceptron é um bloco de construção fundamental para redes neurais profundas. Modelos como redes neurais convolucionais (CNNs) e redes neurais recorrentes (RNNs) incorporam princípios do perceptron em camadas mais profundas, permitindo aprendizado hierárquico e contextual.
+
+Apesar de suas limitações em resolver problemas não lineares, o perceptron teve um papel crucial no desenvolvimento de modelos de aprendizado de máquina e redes neurais mais avançados. Ele representa um marco histórico e conceitual no campo da inteligência artificial e aprendizado de máquina.
+
+As redes neurais desempenham um papel fundamental no avanço das aplicações de Processamento de Linguagem Natural (PLN). Elas são uma classe de algoritmos de aprendizado de máquina inspirados no funcionamento do cérebro humano, projetados para extrair padrões complexos e representações significativas a partir de dados. Quando aplicadas em PLN, essas redes são conhecidas como Redes Neurais para Processamento de Linguagem Natural (NNPLN) ou Redes Neurais para NLP. As redes neurais proporcionaram um avanço significativo nas capacidades de PLN devido à sua capacidade de aprender representações distribuídas e hierárquicas de dados textuais. Abaixo estão alguns dos principais tópicos associados à aplicação de redes neurais em PLN:
+
+1. **Embeddings de Palavras:**
+   - Redes neurais são frequentemente usadas para aprender embeddings de palavras, representações vetoriais que capturam semântica e relações entre palavras. Exemplos incluem Word2Vec, GloVe e embeddings contextuais como BERT.
+
+2. **Modelos de Linguagem Recorrentes (RNNs):**
+   - RNNs são adequadas para processar sequências de dados, tornando-as úteis para tarefas que envolvem texto, como previsão de palavras seguintes, tradução automática e análise de sentimento.
+
+3. **LSTM (Long Short-Term Memory) e GRU (Gated Recurrent Unit):**
+   - São variantes de RNNs projetadas para superar o problema do desaparecimento do gradiente. Elas permitem que a rede capture dependências a longo prazo em sequências de texto.
+
+4. **Redes Neurais Convolucionais (CNNs) em NLP:**
+   - CNNs, inicialmente projetadas para processamento de imagem, também mostraram eficácia em tarefas de PLN, como classificação de texto, extração de características e análise de sentimento.
+
+5. **Modelos de Ativação Transformer:**
+   - A arquitetura Transformer, introduzida pelo modelo BERT, revolucionou a PLN. Esses modelos baseados em autoatentção permitem uma compreensão contextual rica e têm sido amplamente adotados em tarefas como tradução automática, sumarização e questionamento e resposta.
+
+6. **Transferência de Aprendizado:**
+   - Redes neurais facilitam a transferência de aprendizado em PLN. Modelos pré-treinados, como GPT (Generative Pre-trained Transformer) e BERT, podem ser ajustados para tarefas específicas, economizando recursos computacionais e melhorando o desempenho.
+
+7. **Geração de Texto:**
+   - Redes neurais são empregadas na geração de texto, permitindo a criação de conteúdo novo e coerente. Modelos como GPT-3 são notáveis por suas habilidades de geração de linguagem natural.
+
+8. **Análise de Sentimento, Named Entity Recognition (NER) e Tarefas Específicas:**
+   - Redes neurais são usadas com sucesso em tarefas específicas de PLN, incluindo análise de sentimentos, identificação de entidades nomeadas, classificação de texto e muitas outras.
+
+A aplicação de redes neurais em PLN permitiu avanços significativos em uma variedade de domínios, desde assistentes virtuais e chatbots até tradução automática e análise avançada de texto. O campo continua a evoluir, impulsionado pelo desenvolvimento de arquiteturas mais avançadas, grandes conjuntos de dados e inovações em técnicas de treinamento.
+
 ### Perceptron Probabilísticos
+O perceptron tradicional é um modelo de aprendizado de máquina que produz uma saída binária (0 ou 1) com base em uma combinação linear de entradas ponderadas. Ele não fornece uma probabilidade associada à sua decisão e é mais frequentemente utilizado para problemas de classificação binária.
+
+Se quisermos adicionar uma interpretação probabilística ao perceptron, poderíamos considerar a introdução de uma função de ativação que gera uma saída no intervalo de 0 a 1. Uma escolha comum para isso é a função logística (também conhecida como sigmoid), que transforma a soma ponderada das entradas em uma probabilidade:
+
+\[ P(y=1) = \frac{1}{1 + e^{-z}} \]
+
+Onde \( z \) é a soma ponderada das entradas.
+
+Nesse contexto, o perceptron probabilístico poderia ser interpretado como um perceptron modificado para gerar probabilidades de pertencimento a uma classe, sendo comumente usado em problemas de classificação binária.
+
+**Características do Perceptron Probabilístico:**
+
+1. **Função de Ativação Sigmóide:**
+   - A função de ativação logística (sigmóide) é frequentemente usada para transformar a soma ponderada em uma probabilidade.
+
+2. **Interpretação Probabilística:**
+   - A saída do perceptron probabilístico pode ser interpretada como a probabilidade de pertencimento à classe positiva. Por exemplo, se a saída for 0.8, poderíamos interpretar isso como uma probabilidade de 80% de pertencer à classe positiva.
+
+3. **Limiar de Decisão:**
+   - O perceptron probabilístico ainda toma decisões com base em um limiar, mas a saída está no intervalo [0, 1], permitindo uma interpretação probabilística.
+
+4. **Treinamento:**
+   - O treinamento do perceptron probabilístico geralmente envolve a minimização de uma função de perda que penaliza as previsões incorretas em termos de probabilidades estimadas.
+
+Em resumo, um perceptron probabilístico seria um perceptron tradicional com a introdução de uma função de ativação que permite interpretar sua saída como uma probabilidade. Essa modificação é frequentemente útil em cenários onde se deseja obter uma medida de confiança associada à decisão do modelo.
+
 ### Redes Multicamadas
 ### Treinamento de Redes Neurais
 ### Lista 02 (Colab)
