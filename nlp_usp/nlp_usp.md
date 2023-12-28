@@ -805,9 +805,9 @@ O perceptron tradicional é um modelo de aprendizado de máquina que produz uma 
 
 Se quisermos adicionar uma interpretação probabilística ao perceptron, poderíamos considerar a introdução de uma função de ativação que gera uma saída no intervalo de 0 a 1. Uma escolha comum para isso é a função logística (também conhecida como sigmoid), que transforma a soma ponderada das entradas em uma probabilidade:
 
-$\[ P(y=1) = \frac{1}{1 + e^{-z}} \]$
+$\ P(y=1) = \frac{1}{1 + e^{-z}} \$
 
-Onde $\( z \)$ é a soma ponderada das entradas.
+Onde $\ z \$ é a soma ponderada das entradas.
 
 Nesse contexto, o perceptron probabilístico poderia ser interpretado como um perceptron modificado para gerar probabilidades de pertencimento a uma classe, sendo comumente usado em problemas de classificação binária.
 
@@ -828,8 +828,86 @@ Nesse contexto, o perceptron probabilístico poderia ser interpretado como um pe
 Em resumo, um perceptron probabilístico seria um perceptron tradicional com a introdução de uma função de ativação que permite interpretar sua saída como uma probabilidade. Essa modificação é frequentemente útil em cenários onde se deseja obter uma medida de confiança associada à decisão do modelo.
 
 ### Redes Multicamadas
+
+<img src="mlp.png">
+
+As Redes Multicamadas (Multilayer Perceptron - MLP) são uma extensão dos perceptrons simples, projetadas para superar as limitações associadas à resolução de problemas não lineares e para permitir o aprendizado de representações mais complexas. Elas constituem uma forma fundamental de arquitetura de redes neurais artificiais e são usadas em uma variedade de tarefas de aprendizado de máquina, incluindo classificação, regressão, e reconhecimento de padrões.
+
+**Principais Características das MLPs:**
+
+1. **Arquitetura de Múltiplas Camadas:**
+   - MLPs consistem em várias camadas de neurônios, organizadas em uma camada de entrada, uma ou mais camadas ocultas e uma camada de saída. Cada camada oculta contém neurônios (também chamados de unidades) que processam informações intermediárias.
+
+2. **Conceito de Neurônio ou Unidade:**
+   - Cada neurônio em uma MLP opera de maneira semelhante a um perceptron, recebendo entradas ponderadas, aplicando uma função de ativação e gerando uma saída. No entanto, em MLPs, são comuns funções de ativação não lineares, como a função sigmóide, tangente hiperbólica (tanh) ou funções de ativação ReLU (Rectified Linear Unit).
+
+3. **Feedforward (Propagação Direta):**
+   - O processamento de informações em uma MLP ocorre no sentido direto (feedforward), passando da camada de entrada, através das camadas ocultas, até a camada de saída. Cada camada oculta realiza transformações não lineares nas informações.
+
+4. **Treinamento com Retropropagação (Backpropagation):**
+   - A técnica de treinamento mais comum para MLPs é a retropropagação (backpropagation). Durante o treinamento, os pesos da rede são ajustados iterativamente para minimizar uma função de perda, que mede a diferença entre as previsões da rede e os rótulos reais.
+
+5. **Funções de Ativação Não Lineares:**
+   - As funções de ativação não lineares nas camadas ocultas permitem que a MLP aprenda relações não lineares nos dados, tornando-a capaz de modelar tarefas mais complexas do que perceptrons ou modelos lineares.
+
+6. **Universalidade Aproximada:**
+   - MLPs, com uma quantidade suficientemente grande de neurônios e camadas ocultas, são universalmente aproximadores de funções. Isso significa que, teoricamente, podem representar qualquer função, tornando-os modelos poderosos.
+
+7. **Regularização e Prevenção de Overfitting:**
+   - MLPs podem ser suscetíveis ao overfitting, especialmente em conjuntos de dados pequenos. Técnicas de regularização, como dropout, weight decay e early stopping, são frequentemente empregadas para mitigar esse problema.
+
+8. **Aplicações:**
+   - MLPs são aplicadas em uma ampla variedade de tarefas, incluindo reconhecimento de padrões, classificação de imagens, processamento de linguagem natural, previsão de séries temporais, entre outras.
+
+As Redes Multicamadas são uma arquitetura versátil e formam a base para muitas das redes neurais mais avançadas usadas atualmente, como redes neurais convolucionais (CNNs) e redes neurais recorrentes (RNNs). Seu design modular e capacidade de aprender representações hierárquicas fazem delas uma escolha poderosa em uma variedade de domínios de aplicação.
+
 ### Treinamento de Redes Neurais
+
+<img src="feed_forward.png">
+<img src="backpropagation.png">
+
+O treinamento de redes neurais é um processo crucial no desenvolvimento de modelos de aprendizado profundo. Ele envolve ajustar os pesos e os bias (viés) da rede para minimizar uma função de perda em relação aos dados de treinamento. O objetivo é capacitar a rede a fazer previsões precisas em dados não vistos. Aqui estão os principais aspectos do treinamento de redes neurais:
+
+1. **Inicialização de Pesos:**
+   - Os pesos e bias da rede precisam ser inicializados antes do treinamento. Estratégias comuns incluem inicialização aleatória ou métodos mais avançados, como a inicialização de He ou a inicialização de Xavier, que buscam evitar problemas como o desaparecimento ou explosão do gradiente.
+
+2. **Propagação Direta (Forward Propagation):**
+   - Durante a propagação direta, os dados de entrada passam pelas camadas da rede, com os pesos e bias aplicados em cada camada. A saída é calculada e comparada com as etiquetas reais para calcular a perda.
+
+3. **Função de Perda (Loss Function):**
+   - A função de perda mede a discrepância entre as previsões do modelo e os rótulos reais. Ela fornece uma medida de quão bem o modelo está realizando a tarefa desejada.
+
+4. **Retropropagação (Backpropagation):**
+   - A retropropagação é o algoritmo fundamental para otimizar os pesos da rede. Ela calcula os gradientes da função de perda em relação aos pesos, usando a regra da cadeia, e ajusta esses pesos para minimizar a perda.
+
+5. **Otimização de Pesos (Weight Optimization):**
+   - Algoritmos de otimização, como o Gradiente Descendente, são usados para ajustar os pesos da rede com base nos gradientes calculados durante a retropropagação. Variações, como Gradiente Descendente Estocástico (SGD), Adam, RMSprop, são frequentemente usadas para acelerar a convergência.
+
+6. **Taxa de Aprendizado (Learning Rate):**
+   - A taxa de aprendizado controla o tamanho do passo que a otimização dá em direção à minimização da função de perda. A escolha adequada da taxa de aprendizado é crítica e pode afetar a convergência do modelo.
+
+7. **Validação Cruzada e Conjunto de Validação:**
+   - Conjuntos de validação são usados para monitorar o desempenho do modelo em dados não vistos durante o treinamento. Isso ajuda a evitar overfitting. Técnicas como validação cruzada ou divisão em conjunto de treinamento, validação e teste são comuns.
+
+8. **Regularização:**
+   - Técnicas de regularização, como dropout, normalização de lote (batch normalization) e regularização L1/L2, são empregadas para evitar overfitting, melhorar a generalização e estabilizar o treinamento.
+
+9. **Épocas e Lotes:**
+   - O treinamento ocorre ao longo de épocas, onde uma época é uma passagem completa pelos dados de treinamento. Os dados são frequentemente divididos em lotes (batches) para processamento mais eficiente.
+
+10. **Monitoramento do Desempenho:**
+    - Métricas de desempenho, como precisão, acurácia ou erro, são monitoradas ao longo do treinamento para avaliar o quão bem o modelo está se saindo nas tarefas.
+
+11. **Convergência:**
+    - O treinamento é considerado completo quando o modelo converge para um estado onde a função de perda é minimizada, ou quando um critério de parada, como número máximo de épocas ou desempenho suficientemente bom, é atingido.
+
+12. **Transferência de Aprendizado:**
+    - Em alguns casos, é possível utilizar o conhecimento prévio de modelos treinados em conjuntos de dados grandes (pré-treinamento) e ajustar esses modelos para tarefas específicas (afinamento ou fine-tuning) com conjuntos de dados menores.
+
+O treinamento de redes neurais é um processo iterativo e intensivo em computação. O avanço contínuo na área inclui o desenvolvimento de técnicas mais eficientes de otimização, arquiteturas de redes neurais mais avançadas e estratégias de regularização para melhorar o desempenho e a generalização dos modelos.
+
 ### Lista 02 (Colab)
+- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/01_Spacy.ipynb)
 
 ## Semana 3
 ### Representação de Palavras: Modelo one-hot
