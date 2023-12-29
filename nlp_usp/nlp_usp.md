@@ -733,12 +733,12 @@ Esses **problemas semânticos** são fundamentais para compreender o significado
 Esses **problemas pragmáticos** são complexos e envolvem a compreensão mais profunda do contexto e da intenção do usuário. Solucionar esses desafios é crucial para a criação de sistemas de PLN que possam interagir de forma mais natural e eficaz com os usuários, especialmente em aplicações como assistentes virtuais, sistemas de chatbots avançados e sistemas de resposta automática. O progresso na pragmática requer abordagens avançadas que considerem não apenas a estrutura gramatical e semântica, mas também as nuances do uso da linguagem na comunicação humana.
 
 ### Lista 01 (Colab)
-- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/01_Spacy.ipynb)
+- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/notebooks/01_Spacy.ipynb)
 
 ## Semana 2
 ### Introdução às Redes Neurais
 
-<img src="perceptron.png">
+<img src="./imgs/perceptron.png">
 
 O perceptron é um tipo simples de neurônio artificial que serve como unidade básica em redes neurais. Foi proposto por Frank Rosenblatt em 1957 e é um dos primeiros modelos de aprendizado de máquina. O perceptron é fundamental para entender o conceito de redes neurais e serviu como ponto de partida para o desenvolvimento de arquiteturas mais complexas.
 
@@ -831,7 +831,7 @@ Em resumo, um perceptron probabilístico seria um perceptron tradicional com a i
 
 ### Redes Multicamadas
 
-<img src="mlp.png">
+<img src="./imgs/mlp.png">
 
 As Redes Multicamadas (Multilayer Perceptron - MLP) são uma extensão dos perceptrons simples, projetadas para superar as limitações associadas à resolução de problemas não lineares e para permitir o aprendizado de representações mais complexas. Elas constituem uma forma fundamental de arquitetura de redes neurais artificiais e são usadas em uma variedade de tarefas de aprendizado de máquina, incluindo classificação, regressão, e reconhecimento de padrões.
 
@@ -865,8 +865,8 @@ As Redes Multicamadas são uma arquitetura versátil e formam a base para muitas
 
 ### Treinamento de Redes Neurais
 
-<img src="feed_forward.png">
-<img src="backpropagation.png">
+<img src="./imgs/feed_forward.png">
+<img src="./imgs/backpropagation.png">
 
 O treinamento de redes neurais é um processo crucial no desenvolvimento de modelos de aprendizado profundo. Ele envolve ajustar os pesos e os bias (viés) da rede para minimizar uma função de perda em relação aos dados de treinamento. O objetivo é capacitar a rede a fazer previsões precisas em dados não vistos. Aqui estão os principais aspectos do treinamento de redes neurais:
 
@@ -909,7 +909,7 @@ O treinamento de redes neurais é um processo crucial no desenvolvimento de mode
 O treinamento de redes neurais é um processo iterativo e intensivo em computação. O avanço contínuo na área inclui o desenvolvimento de técnicas mais eficientes de otimização, arquiteturas de redes neurais mais avançadas e estratégias de regularização para melhorar o desempenho e a generalização dos modelos.
 
 ### Lista 02 (Colab)
-- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/02_NN_&_Backpropagation.ipynb)
+- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/notebooks/02_NN_&_Backpropagation.ipynb)
 
 ## Semana 3
 ### Representação de Palavras
@@ -1179,7 +1179,7 @@ A escolha do `output_mode` depende do contexto da aplicação e do tipo de infor
 
 #### Representação Vetorial de Palavras
 
-<img src="vector_representation.png">
+<img src="./imgs/vector_representation.png">
 
 A semântica vetorial refere-se à representação de palavras, frases ou documentos em um espaço vetorial, onde palavras ou conceitos semelhantes são mapeados para pontos próximos nesse espaço. Isso é comumente usado em processamento de linguagem natural (PLN) para capturar relações semânticas entre palavras e construir modelos que podem entender significados e contextos.
 
@@ -1207,7 +1207,7 @@ A atribuição de significado a uma árvore sintática usando vetores geralmente
 ##### Aplicações:
 
 1. **Similaridade Semântica:**
-   - Com representações vetoriais, é possível medir a similaridade semântica entre palavras, frases ou até mesmo árvores sintáticas. Isso é útil em tarefas como busca semântica ou recuperação de informações.
+   - Com representações vetoriais, é possível medir a similaridade semântica entre palavras (ex similaridade de cosseno), frases ou até mesmo árvores sintáticas. Isso é útil em tarefas como busca semântica ou recuperação de informações.
 
 2. **Tarefas de PLN:**
    - Essas representações vetoriais são amplamente utilizadas em tarefas de PLN, como classificação de sentimentos, tradução automática, resumo de texto, entre outras, onde a compreensão do significado é essencial.
@@ -1215,6 +1215,7 @@ A atribuição de significado a uma árvore sintática usando vetores geralmente
 Ao aplicar a semântica vetorial a uma árvore sintática, o objetivo é capturar as relações semânticas entre as palavras na árvore, permitindo que o modelo entenda o significado da estrutura sintática. Esse tipo de abordagem é valioso para a construção de sistemas de PLN mais avançados e contextualmente ricos.
 
 ### Lista 03 (Colab)
+- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/notebooks/03_Embeddings.ipynb)
 
 ## Semana 4
 ### Modelo Word2vec Básico de Embedding
@@ -1222,6 +1223,8 @@ Ao aplicar a semântica vetorial a uma árvore sintática, o objetivo é captura
 ### O Modelo Completo
 ### Avaliação do Modelo word2vec
 ### Lista 04 (Colab)
+- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/notebooks/nome.ipynb)
+
 ### Entrega 01 - Implementando word2vec
 
 ## Semana 5
@@ -1230,9 +1233,12 @@ Ao aplicar a semântica vetorial a uma árvore sintática, o objetivo é captura
 ### Modelo Sequência para Sequência
 ### Problemas de Recorrência e Redes Profundas
 ### Lista 05 (Colab)
+- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/notebooks/nome.ipynb)
 
 ## Semana 6
 ### Redes LSTM
 ### Redes Recorrentes GRU e Redes Recorrentes Bidirecionais
 ### Lista 06 (Colab)
+- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/notebooks/nome.ipynb)
+
 ### Entrega 02 - RNNs Bidirecionais LSTM e GRU
