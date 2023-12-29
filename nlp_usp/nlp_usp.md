@@ -16,7 +16,7 @@
    - [Lista 02 (Colab)](#lista-02-colab)
 
 3. [Semana 3](#semana-3)
-   - [Representação de Palavras: Modelo one-hot](#representação-de-palavras-modelo-one-hot)
+   - [Representação de Palavras](#representação-de-palavras)
    - [Representações Alternativas](#representações-alternativas)
    - [Representação Vetorial de Palavras](#representação-vetorial-de-palavras)
    - [Lista 03 (Colab)](#lista-03-colab)
@@ -910,8 +910,225 @@ O treinamento de redes neurais é um processo iterativo e intensivo em computaç
 - Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/02_NN_&_Backpropagation.ipynb)
 
 ## Semana 3
-### Representação de Palavras: Modelo one-hot
+### Representação de Palavras
+As representações numéricas de palavras são uma parte fundamental do processamento de linguagem natural (PLN) e são utilizadas para converter palavras ou tokens de um texto em vetores numéricos. Esses vetores são usados como entrada para algoritmos de aprendizado de máquina, permitindo que os modelos compreendam e processem o significado semântico das palavras. Aqui estão alguns tipos comuns de representação numérica de palavras:
+
+1. **One-Hot Encoding:**
+   - Cada palavra é representada por um vetor binário, onde apenas uma posição corresponde à palavra e é marcada como 1, enquanto as outras posições são 0. Esse método cria vetores esparsos e não captura relações semânticas entre palavras.
+
+2. **Word Embeddings (Incorporação de Palavras):**
+   - Word embeddings são representações densas e vetoriais de palavras. Cada palavra é mapeada para um vetor de números reais, onde a proximidade no espaço vetorial reflete a semelhança semântica. Modelos populares de word embeddings incluem Word2Vec, GloVe e FastText.
+
+3. **Embeddings Contextuais:**
+   - Modelos de embeddings contextuais, como ELMo (Embeddings from Language Models) e BERT (Bidirectional Encoder Representations from Transformers), geram representações que levam em consideração o contexto das palavras em uma sentença. Isso permite que as representações variem com base no contexto específico de uso.
+
+4. **TF-IDF (Term Frequency-Inverse Document Frequency):**
+   - Embora mais comumente usado em modelos de recuperação de informações, o TF-IDF pode ser considerado uma forma de representação numérica de palavras. Ele calcula um peso para cada palavra com base em sua frequência em um documento específico em comparação com sua frequência em todo o corpus.
+
+5. **N-grams:**
+   - Representação que considera sequências contíguas de n palavras. N-grams capturam relações de ordem superior entre palavras e são usados para criar características mais complexas.
+
+6. **Doc2Vec (Paragraph Vector):**
+   - Expansão do conceito de word embeddings para documentos inteiros. Doc2Vec atribui vetores a documentos, considerando o contexto em que as palavras aparecem.
+
+7. **Subword Embeddings:**
+   - Representações que consideram partes menores de palavras, como caracteres ou subpalavras. Esse método é útil para lidar com palavras desconhecidas ou variações linguísticas.
+
+A escolha da representação numérica depende do contexto do problema, do tamanho do conjunto de dados e dos requisitos computacionais. Modelos mais recentes, como BERT, geralmente superam métodos mais tradicionais, mas a escolha também pode depender dos recursos disponíveis e do domínio específico de aplicação.
+
+
+### Frameworks
+TensorFlow e PyTorch, dois dos principais frameworks de aprendizado profundo, utilizam diferentes abordagens para representar numericamente as palavras em tarefas de processamento de linguagem natural (PLN). Vou abordar brevemente como cada um desses frameworks lida com essa representação:
+
+#### TensorFlow:
+
+1. **Embeddings no TensorFlow:**
+   - No TensorFlow, as representações numéricas de palavras geralmente são realizadas por meio de camadas de embeddings. A camada `Embedding` é usada para mapear palavras para vetores densos. Esses embeddings podem ser treinados juntamente com o restante do modelo ou inicializados com embeddings preexistentes, como os do Word2Vec, GloVe ou FastText.
+
+   Exemplo de uso da camada `Embedding` no TensorFlow:
+
+   ```python
+   import tensorflow as tf
+
+   # Tamanho do vocabulário e dimensão dos embeddings
+   vocab_size = 10000
+   embedding_dim = 100
+
+   # Criar camada de embedding
+   embedding_layer = tf.keras.layers.Embedding(input_dim=vocab_size, output_dim=embedding_dim)
+   ```
+
+2. **Uso de Modelos Pré-Treinados:**
+   - TensorFlow permite o uso de modelos pré-treinados específicos para PLN, como BERT, GPT, e outros. Esses modelos geralmente já incluem camadas de embeddings que foram treinadas em grandes quantidades de dados textuais.
+
+   Exemplo de uso de BERT no TensorFlow:
+
+   ```python
+   from transformers import TFBertModel, BertTokenizer
+
+   # Carregar modelo e tokenizador BERT
+   model = TFBertModel.from_pretrained("bert-base-uncased")
+   tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+
+   # Tokenizar e obter embeddings
+   inputs = tokenizer("Hello, how are you?", return_tensors="tf")
+   outputs = model(**inputs)
+   embeddings = outputs.last_hidden_state
+   ```
+
+#### PyTorch:
+
+1. **Embeddings no PyTorch:**
+   - Da mesma forma que no TensorFlow, o PyTorch usa camadas de embeddings para representar numericamente palavras. A classe `nn.Embedding` é usada para criar essas camadas.
+
+   Exemplo de uso da camada `nn.Embedding` no PyTorch:
+
+   ```python
+   import torch
+   import torch.nn as nn
+
+   # Tamanho do vocabulário e dimensão dos embeddings
+   vocab_size = 10000
+   embedding_dim = 100
+
+   # Criar camada de embedding
+   embedding_layer = nn.Embedding(num_embeddings=vocab_size, embedding_dim=embedding_dim)
+   ```
+
+2. **Uso de Modelos Pré-Treinados:**
+   - Assim como no TensorFlow, o PyTorch suporta modelos pré-treinados para PLN. Modelos como BERT, GPT e outros podem ser facilmente integrados ao PyTorch para realizar tarefas específicas.
+
+   Exemplo de uso de BERT no PyTorch:
+
+   ```python
+   from transformers import BertModel, BertTokenizer
+
+   # Carregar modelo e tokenizador BERT
+   model = BertModel.from_pretrained("bert-base-uncased")
+   tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+
+   # Tokenizar e obter embeddings
+   inputs = tokenizer("Hello, how are you?", return_tensors="pt")
+   outputs = model(**inputs)
+   embeddings = outputs.last_hidden_state
+   ```
+
+Ambos os frameworks oferecem flexibilidade na escolha da abordagem de representação numérica de palavras, seja por meio de embeddings treinados junto com o modelo ou utilizando modelos pré-treinados que já incorporam representações contextuais e semânticas avançadas. A escolha depende do contexto da aplicação, dos recursos disponíveis e da quantidade de dados disponíveis para treinamento.
+
+O `TextVectorization` é uma camada fornecida no TensorFlow que facilita a tokenização e vetorização de textos em modelos de aprendizado de máquina. Essa camada é frequentemente usada para converter sequências de texto em representações numéricas, que podem ser usadas como entrada para modelos de aprendizado profundo.
+
+A camada `TextVectorization` tem um parâmetro crucial chamado `output_mode`, que determina a forma como as palavras ou tokens são representados numericamente. Vou explicar as opções de `output_mode` e como elas afetam a escolha da representação de palavras:
+
+#### Opções do `output_mode`:
+
+1. **'int' (OHE):**
+   - Neste modo, cada token é representado por um número inteiro único. Cada palavra recebe um índice único inteiro com base na ordem em que aparece no vocabulário construído.
+
+   ```python
+   from tensorflow.keras.layers import TextVectorization
+
+   # Exemplo de uso com output_mode='int'
+   vectorizer = TextVectorization(output_mode='int')
+   ```
+
+2. **'binary' (bag of words):**
+   - Neste modo, cada token é representado por um vetor binário, indicando se o token está presente ou ausente no texto.
+
+   ```python
+   from tensorflow.keras.layers import TextVectorization
+
+   # Exemplo de uso com output_mode='binary'
+   vectorizer = TextVectorization(output_mode='binary')
+   ```
+
+3. **'count':**
+   - Neste modo, cada token é representado pelo número de vezes que ocorre no texto.
+
+   ```python
+   from tensorflow.keras.layers import TextVectorization
+
+   # Exemplo de uso com output_mode='count'
+   vectorizer = TextVectorization(output_mode='count')
+   ```
+
+4. **'tf-idf':**
+   - Neste modo, cada token é representado pelo peso TF-IDF, que leva em consideração a frequência do token no documento e sua frequência inversa no conjunto de dados.
+
+   ```python
+   from tensorflow.keras.layers import TextVectorization
+
+   # Exemplo de uso com output_mode='tf-idf'
+   vectorizer = TextVectorization(output_mode='tf-idf')
+   ```
+
+#### Use case
+
+```python
+import tensorflow as tf
+from tensorflow.keras.layers import TextVectorization
+from sklearn.model_selection import train_test_split
+import numpy as np
+
+# Dados de exemplo
+texts = ["Isso é um exemplo de texto.", "Vetorizando sequências de texto é útil.", "Aprendizado de máquina com TensorFlow."]
+
+labels = np.array([0, 1, 1])  # Rótulos fictícios (0 ou 1)
+
+# Dividir os dados em conjuntos de treinamento e teste
+texts_train, texts_test, labels_train, labels_test = train_test_split(texts, labels, test_size=0.2, random_state=42)
+
+# Criar a camada TextVectorization
+vectorizer = TextVectorization(output_mode='int', output_sequence_length=5)  # Limitando o comprimento da sequência para 5 tokens
+
+# Adaptar o vetorizador aos dados de treinamento
+vectorizer.adapt(texts_train)
+
+# Verificar o vocabulário criado pelo vetorizador
+vocab = vectorizer.get_vocabulary()
+print("Vocabulário:", vocab)
+
+# Vetorizar os dados de treinamento
+vectorized_train_data = vectorizer(texts_train).numpy()
+
+# Criar um modelo simples
+model = tf.keras.Sequential([
+    tf.keras.layers.Embedding(input_dim=len(vocab), output_dim=16, input_length=5),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(1, activation='sigmoid')
+])
+
+# Compilar o modelo
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+# Treinar o modelo
+model.fit(vectorized_train_data, labels_train, epochs=5)
+
+# Avaliar o modelo
+vectorized_test_data = vectorizer(texts_test).numpy()
+accuracy = model.evaluate(vectorized_test_data, labels_test)[1]
+print(f"Acurácia do modelo nos dados de teste: {accuracy}")
+```
+Este exemplo cria um modelo simples que usa a camada TextVectorization para vetorizar sequências de texto. Note que neste exemplo estamos limitando o comprimento da sequência para 5 tokens e utilizando um modelo básico com uma camada de embedding e uma camada densa com ativação sigmoid para tarefas de classificação binária. Em uma aplicação prática, você ajustaria o modelo e a configuração do vetorizador conforme necessário para o seu problema específico.
+
+#### Como o `output_mode` afeta a escolha da representação:
+
+- **'int':**
+  - Útil quando a ordem das palavras é importante, mas não captura informações semânticas.
+
+- **'binary':**
+  - Pode ser útil para representar a presença ou ausência de palavras em um texto. É útil em modelos que não lidam bem com valores contínuos.
+
+- **'count':**
+  - Captura a frequência absoluta das palavras. Pode ser útil quando a quantidade absoluta de ocorrências é importante.
+
+- **'tf-idf':**
+  - Leva em consideração a importância relativa das palavras no contexto de todo o conjunto de dados. É útil quando se deseja ponderar a importância de palavras específicas.
+
+A escolha do `output_mode` depende do contexto da aplicação e do tipo de informações que você deseja capturar. Experimentar diferentes modos pode ajudar a determinar qual é o mais apropriado para o seu caso específico.
+
 ### Representações Alternativas
+fale sobre bag of words
+
 ### Representação Vetorial de Palavras
 ### Lista 03 (Colab)
 
