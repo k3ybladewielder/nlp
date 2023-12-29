@@ -1,4 +1,7 @@
 # Processamento Neural de Linguagem Natural em Português
+O curso de Processamento Neural de Linguagem Natural em Português I é oferecido pelo Departamento de Ciência da Computação do Instituto de Matemática e Estatistica da USP, com apoio do C4AI – USP-IBM-Fapesp Center for Artificial Intelligence e com apoio da Google no Coursera ([acesse aqui](https://www.coursera.org/learn/processamento-neural-linguagem-natural-em-portugues-i)).
+
+Este repositório contêm anotações pessoais sobre os assuntos abordados no curso. 
 
 # Summary
 1. [Semana 1](#semana-1)
@@ -17,7 +20,6 @@
 
 3. [Semana 3](#semana-3)
    - [Representação de Palavras](#representação-de-palavras)
-   - [Representações Alternativas](#representações-alternativas)
    - [Representação Vetorial de Palavras](#representação-vetorial-de-palavras)
    - [Lista 03 (Colab)](#lista-03-colab)
 
@@ -937,8 +939,8 @@ As representações numéricas de palavras são uma parte fundamental do process
 A escolha da representação numérica depende do contexto do problema, do tamanho do conjunto de dados e dos requisitos computacionais. Modelos mais recentes, como BERT, geralmente superam métodos mais tradicionais, mas a escolha também pode depender dos recursos disponíveis e do domínio específico de aplicação.
 
 
-### Frameworks
-TensorFlow e PyTorch, dois dos principais frameworks de aprendizado profundo, utilizam diferentes abordagens para representar numericamente as palavras em tarefas de processamento de linguagem natural (PLN). Vou abordar brevemente como cada um desses frameworks lida com essa representação:
+### Representação de palavras com Tensorflow e Pytorch
+TensorFlow e PyTorch, dois dos principais frameworks de aprendizado profundo, utilizam diferentes abordagens para **representar numericamente** as palavras em tarefas de processamento de linguagem natural (PLN). Vou abordar brevemente como cada um desses frameworks lida com essa representação:
 
 #### TensorFlow:
 
@@ -1019,7 +1021,7 @@ O `TextVectorization` é uma camada fornecida no TensorFlow que facilita a token
 
 A camada `TextVectorization` tem um parâmetro crucial chamado `output_mode`, que determina a forma como as palavras ou tokens são representados numericamente. Vou explicar as opções de `output_mode` e como elas afetam a escolha da representação de palavras:
 
-#### Opções do `output_mode`:
+#### Opções de representações no Tensorflow:
 
 1. **'int' (OHE):**
    - Neste modo, cada token é representado por um número inteiro único. Cada palavra recebe um índice único inteiro com base na ordem em que aparece no vocabulário construído.
@@ -1060,6 +1062,55 @@ A camada `TextVectorization` tem um parâmetro crucial chamado `output_mode`, qu
    # Exemplo de uso com output_mode='tf-idf'
    vectorizer = TextVectorization(output_mode='tf-idf')
    ```
+#### Opções de representações no Pytorch:
+No PyTorch, a representação numérica de palavras ou tokens é geralmente realizada usando uma camada de incorporação (`Embedding`). Ao contrário do TensorFlow, o PyTorch não possui uma configuração direta equivalente ao `output_mode` do `TextVectorization` no TensorFlow. Em vez disso, você tem mais controle direto sobre a criação e uso das camadas de embedding.
+
+Aqui está um exemplo simples de como criar uma camada de embedding no PyTorch:
+
+```python
+import torch
+import torch.nn as nn
+
+# Tamanho do vocabulário e dimensão dos embeddings
+vocab_size = 10000
+embedding_dim = 100
+
+# Criar camada de embedding
+embedding_layer = nn.Embedding(num_embeddings=vocab_size, embedding_dim=embedding_dim)
+```
+
+Neste exemplo, `num_embeddings` é o tamanho do vocabulário (o número total de palavras únicas) e `embedding_dim` é a dimensão dos embeddings.
+
+Ao utilizar a camada de embedding no PyTorch, você tem flexibilidade para decidir como deseja representar as palavras. Aqui estão algumas opções comuns:
+
+Se você possui **embeddings pré-treinados** (por exemplo, Word2Vec, GloVe), você pode inicializar a camada de embedding com esses embeddings. Isso é especialmente útil quando você deseja aproveitar as representações aprendidas em grandes corpora de texto.
+
+```python
+# Carregar embeddings pré-treinados (substitua 'embedding_matrix' pelo seu próprio)
+embedding_matrix = ...
+
+# Criar camada de embedding com embeddings pré-treinados
+embedding_layer = nn.Embedding.from_pretrained(torch.FloatTensor(embedding_matrix), freeze=True)
+```
+
+Se deseja **treinar os embeddings** juntamente com o restante do modelo, você pode simplesmente criar uma camada de embedding sem inicialização de pesos pré-treinados.
+
+```python
+# Criar camada de embedding para treinamento
+embedding_layer = nn.Embedding(num_embeddings=vocab_size, embedding_dim=embedding_dim)
+```
+
+Você também pode ajustar manualmente os vetores de embedding se desejar um controle mais granular sobre a representação das palavras.
+
+```python
+# Criar camada de embedding com inicialização personalizada
+embedding_layer = nn.Embedding(num_embeddings=vocab_size, embedding_dim=embedding_dim)
+
+# Inicializar manualmente embeddings para palavras específicas (substitua 'word_index' e 'custom_embedding' pelos seus próprios)
+embedding_layer.weight.data[word_index] = torch.FloatTensor(custom_embedding)
+```
+
+Em resumo, no PyTorch, a escolha sobre como representar palavras usando embeddings é mais explicitamente controlada durante a criação da camada de embedding. Você pode optar por embeddings pré-treinados, treinar embeddings junto com o modelo ou ajustar manualmente os embeddings para atender às suas necessidades específicas.
 
 #### Use case
 
@@ -1126,10 +1177,43 @@ Este exemplo cria um modelo simples que usa a camada TextVectorization para veto
 
 A escolha do `output_mode` depende do contexto da aplicação e do tipo de informações que você deseja capturar. Experimentar diferentes modos pode ajudar a determinar qual é o mais apropriado para o seu caso específico.
 
-### Representações Alternativas
-fale sobre bag of words
+#### Representação Vetorial de Palavras
 
-### Representação Vetorial de Palavras
+<img src="vector_representation.png">
+
+A semântica vetorial refere-se à representação de palavras, frases ou documentos em um espaço vetorial, onde palavras ou conceitos semelhantes são mapeados para pontos próximos nesse espaço. Isso é comumente usado em processamento de linguagem natural (PLN) para capturar relações semânticas entre palavras e construir modelos que podem entender significados e contextos.
+
+A atribuição de significado a uma árvore sintática usando vetores geralmente envolve técnicas de incorporação (embedding) de palavras, que são métodos para representar palavras como vetores densos em um espaço contínuo. Aqui estão algumas abordagens comuns:
+
+##### Word Embeddings:
+
+1. **Word2Vec:**
+   - O Word2Vec é um modelo que aprende representações vetoriais de palavras. Ele captura a semântica distribucional, ou seja, palavras com significados semelhantes terão representações vetoriais próximas.
+   - Ao treinar modelos Word2Vec em grandes conjuntos de texto, você pode atribuir vetores a palavras, e esses vetores podem ser usados para representar palavras em uma árvore sintática.
+
+2. **GloVe (Global Vectors for Word Representation):**
+   - O GloVe é outro método para aprender representações vetoriais de palavras. Ele utiliza estatísticas globais sobre a co-ocorrência de palavras em um corpus para gerar os vetores.
+   - Assim como o Word2Vec, os vetores do GloVe podem ser usados para atribuir significado às palavras em uma árvore sintática.
+
+##### Representação de Frases ou Árvores:
+
+1. **Inferência de Sentenças:**
+   - Ao ter representações vetoriais para palavras, você pode inferir vetores para frases ou árvores sintáticas. Isso pode ser feito agregando ou combinando os vetores de palavras.
+   - Uma abordagem simples é calcular a média ou soma dos vetores de palavras em uma frase ou árvore.
+
+2. **Redes Neurais para Representação de Sentenças:**
+   - Redes neurais podem ser usadas para aprender representações vetoriais de sentenças ou árvores sintáticas diretamente. Modelos como o Universal Sentence Encoder ou InferSent são exemplos de arquiteturas que aprendem representações de sentenças.
+
+##### Aplicações:
+
+1. **Similaridade Semântica:**
+   - Com representações vetoriais, é possível medir a similaridade semântica entre palavras, frases ou até mesmo árvores sintáticas. Isso é útil em tarefas como busca semântica ou recuperação de informações.
+
+2. **Tarefas de PLN:**
+   - Essas representações vetoriais são amplamente utilizadas em tarefas de PLN, como classificação de sentimentos, tradução automática, resumo de texto, entre outras, onde a compreensão do significado é essencial.
+
+Ao aplicar a semântica vetorial a uma árvore sintática, o objetivo é capturar as relações semânticas entre as palavras na árvore, permitindo que o modelo entenda o significado da estrutura sintática. Esse tipo de abordagem é valioso para a construção de sistemas de PLN mais avançados e contextualmente ricos.
+
 ### Lista 03 (Colab)
 
 ## Semana 4
