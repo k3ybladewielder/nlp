@@ -28,7 +28,6 @@ Este repositório contêm anotações pessoais sobre os assuntos abordados no cu
    - [Detalhamento do Modelo Básico](#detalhamento-do-modelo-básico)
    - [Avaliação do Modelo word2vec](#avaliação-do-modelo-word2vec)
    - [Lista 04 (Colab)](#lista-04-colab)
-   - [Entrega 01 - Implementando word2vec](#entrega-01-implementando-word2vec)
 
 5. [Semana 5](#semana-5)
    - [Recorrencia Neural](#recorrencia-neural)
@@ -41,7 +40,6 @@ Este repositório contêm anotações pessoais sobre os assuntos abordados no cu
    - [Redes LSTM](#redes-lstm)
    - [Redes Recorrentes GRU e Redes Recorrentes Bidirecionais](#redes-recorrentes-gru-e-redes-recorrentes-bidirecionais)
    - [Lista 06 (Colab)](#lista-06-colab)
-   - [Entrega 02 - RNNs Bidirecionais LSTM e GRU](#entrega-02-rnns-bidirecionais-lstm-e-gru)
 
 ## Semana 1
 ### Introdução ao Processamento de Linguagem Natural
@@ -1397,23 +1395,315 @@ Considere a seguinte frase:
 Esse processo é repetido para várias palavras de destino em todo o corpus de texto durante o treinamento. Após o treinamento, os vetores resultantes representam semanticamente as palavras no espaço vetorial, onde palavras com contextos semelhantes têm vetores próximos uns aos outros.
 
 ### Avaliação do Modelo word2vec
-### Lista 04 (Colab)
-- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/notebooks/nome.ipynb)
+A avaliação de modelos Word2Vec pode ser realizada de duas maneiras: intrínseca e extrínseca.
 
-### Entrega 01 - Implementando word2vec
+#### Avaliação Intrínseca:
+
+1. **Similaridade de Palavras:**
+   - **Método:** Calcula a similaridade semântica entre pares de palavras e compara com avaliações humanas.
+   - **Exemplo:** Pares de palavras como "rei" e "rainha" devem ter uma alta similaridade semântica.
+
+2. **Analogia de Palavras:**
+   - **Método:** Testa a capacidade do modelo em resolver analogias, como "homem é para mulher como rei é para rainha".
+   - **Exemplo:** Se o modelo pode inferir corretamente "rainha" dada "rei" e "mulher", isso é considerado um sucesso.
+
+3. **Relações Semânticas:**
+   - **Método:** Verifica se o modelo captura relações semânticas corretas, como "capital do país".
+   - **Exemplo:** O modelo deve ser capaz de inferir "Paris" para "França" da mesma forma que "Tóquio" para "Japão".
+
+#### Avaliação Extrínseca:
+
+1. **Tarefas Específicas:**
+   - **Método:** Avalia o desempenho do Word2Vec em tarefas específicas para as quais os embeddings são aplicados.
+   - **Exemplo:** Classificação de texto, tradução automática, análise de sentimentos, etc.
+
+2. **Impacto no Desempenho do Modelo Final:**
+   - **Método:** Integra os embeddings Word2Vec em um modelo maior e avalia como isso impacta o desempenho final.
+   - **Exemplo:** Treina um modelo de classificação de sentimento usando embeddings Word2Vec e avalia a precisão em um conjunto de dados de teste.
+
+#### Considerações:
+
+- **Intrínseca:**
+  - Métricas mais diretas sobre as propriedades dos embeddings.
+  - Não depende do contexto específico de aplicação.
+
+- **Extrínseca:**
+  - Avalia o impacto real dos embeddings em tarefas práticas.
+  - Mais próximo das condições reais de uso.
+
+Ambas as abordagens são úteis para entender diferentes aspectos do desempenho do Word2Vec. A avaliação intrínseca é valiosa para entender a qualidade dos embeddings em um nível mais abstrato, enquanto a avaliação extrínseca fornece insights sobre como esses embeddings realmente contribuem para tarefas específicas do mundo real.
+
+### Lista 04 (Colab)
+- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/notebooks/04_Word2Vec.ipynb)
 
 ## Semana 5
 ### Recorrencia Neural
+
+<img src="./imgs/unfolded_RNN.png">
+
+A Recorrência Neural (RN), ou Recurrent Neural Network (RNN), é uma arquitetura de rede neural amplamente utilizada em Processamento de Linguagem Natural (PLN) para lidar com dados sequenciais. Diferentemente das redes neurais tradicionais, as RNNs possuem loops, permitindo que a informação seja persistente ao longo das iterações. Isso as torna especialmente eficazes para modelar sequências de dados, como texto.
+
+A implementação de uma RNN em PLN envolve a definição da arquitetura da rede, o treinamento usando dados rotulados e a aplicação para tarefas específicas, como classificação de texto, tradução automática, geração de texto, entre outras. Aqui estão alguns passos comuns na implementação de uma RNN em NLP:
+
+1. **Pré-processamento de Dados:**
+   - Tokenização: Dividir o texto em unidades menores, como palavras ou subpalavras.
+   - Sequência de Vetores: Converter as sequências de palavras em vetores numéricos usando embeddings pré-treinados ou aprendendo embeddings durante o treinamento.
+
+2. **Construção da Arquitetura RNN:**
+   - Escolher o tipo de camada recorrente: As RNNs podem ter diferentes arquiteturas, como Simple RNN, Long Short-Term Memory (LSTM) ou Gated Recurrent Unit (GRU).
+   - Configurar hiperparâmetros: Definir o número de unidades recorrentes, a dimensionalidade dos embeddings, entre outros.
+
+3. **Treinamento da RNN:**
+   - Definir a função de perda: Escolher uma função de perda apropriada para a tarefa, como a entropia cruzada para classificação.
+   - Otimização: Selecionar um otimizador, como o Gradiente Descendente Estocástico (SGD) ou Adam.
+   - Treinamento: Apresentar os dados sequencialmente à RNN, calculando gradientes e ajustando os pesos durante o processo de retropropagação.
+
+4. **Validação e Ajuste de Hiperparâmetros:**
+   - Avaliar o desempenho da RNN em um conjunto de validação.
+   - Ajustar hiperparâmetros, se necessário, para evitar overfitting ou melhorar o desempenho.
+
+5. **Aplicação e Inferência:**
+   - Usar a RNN treinada para fazer inferências em novos dados.
+   - Ajustar a saída conforme necessário para a tarefa específica, como softmax para classificação ou geração de texto.
+
+6. **Aprimoramentos e Considerações Específicas:**
+   - Utilizar técnicas avançadas, como RNNs bidirecionais, atenção, ou camadas empilhadas, dependendo dos requisitos da tarefa.
+   - Considerar problemas como o desaparecimento do gradiente ao usar RNNs mais profundas e escolher arquiteturas mais avançadas, como LSTMs e GRUs, para mitigar esses problemas.
+
+É importante notar que, apesar de sua eficácia, as RNNs tradicionais podem ter dificuldades em lidar com dependências de longo prazo. Em alguns casos, arquiteturas mais avançadas, como Transformers, tornaram-se populares em PLN devido à sua capacidade de lidar com sequências de maneira mais eficaz.
+
+As redes neurais feedforward (FNNs) e as redes neurais recorrentes (RNNs) são duas arquiteturas fundamentais em aprendizado profundo, cada uma adequada para diferentes tipos de dados e tarefas. Vamos explorar as diferenças entre essas duas arquiteturas:
+
+1. **Estrutura de Processamento:**
+   - **Feedforward (FNN):** As FNNs são estruturas diretas, onde a informação se move apenas em uma direção, da camada de entrada para a camada de saída, sem ciclos. Não há memória das entradas anteriores durante o processo de treinamento ou inferência.
+   - **Recorrente (RNN):** As RNNs têm conexões recorrentes que formam loops, permitindo que a informação seja persistente ao longo do tempo. Elas são projetadas para lidar com dados sequenciais, como séries temporais ou texto, mantendo um estado interno que é atualizado a cada passo temporal.
+
+2. **Manuseio de Sequências:**
+   - **FNN:** Melhores para dados tabulares fixos ou dados sem uma ordem sequencial específica. Cada entrada é processada independentemente das outras.
+   - **RNN:** Especialmente eficazes em tarefas que envolvem sequências temporais, como previsão de séries temporais, processamento de linguagem natural (PLN) e tradução automática.
+
+3. **Memória:**
+   - **FNN:** Não possui memória de estados anteriores durante o processamento. Cada entrada é tratada de maneira independente.
+   - **RNN:** Mantém uma memória interna que pode armazenar informações de etapas temporais anteriores. Isso torna as RNNs capazes de lidar com dependências de longo prazo em dados sequenciais.
+
+4. **Aplicações Típicas:**
+   - **FNN:** Classificação de imagens, reconhecimento de padrões em dados tabulares, tarefas em que não há dependência temporal.
+   - **RNN:** Tradução automática, análise de sentimentos em texto, previsão de séries temporais, onde a ordem e a dependência temporal são cruciais.
+
+5. **Desafios:**
+   - **FNN:** Pode ter dificuldade em lidar com dados sequenciais devido à falta de contexto temporal.
+   - **RNN:** Pode enfrentar problemas de desvanecimento ou explosão do gradiente ao lidar com sequências muito longas, levando a dificuldades no aprendizado de dependências de longo prazo.
+
+6. **Treinamento e Processamento Paralelo:**
+   - **FNN:** Pode ser treinado e processado em paralelo, o que é benéfico para eficiência computacional.
+   - **RNN:** A natureza sequencial das RNNs pode tornar o treinamento mais lento, e o processamento em lote pode ser desafiador devido à dependência temporal.
+
+Ambas as arquiteturas têm suas vantagens e desvantagens, e a escolha entre FNNs e RNNs depende da natureza da tarefa em questão e das características dos dados. Arquiteturas mais recentes, como Transformers, têm se destacado em muitos cenários de PLN devido à sua capacidade de lidar eficientemente com sequências.
+
 ### Treinamento Recorrente
+O treinamento de redes neurais recorrentes (RNNs) envolve o uso do algoritmo de retropropagação através do tempo (Backpropagation Through Time - BPTT). As RNNs são projetadas para lidar com sequências de dados, onde a ordem das entradas é crucial, como em tarefas de processamento de linguagem natural (NLP) e séries temporais.
+
+Aqui estão os passos do treinamento BPTT para uma RNN:
+
+1. **Propagação Direta (Forward Pass):**
+   - A entrada é alimentada na rede uma etapa de tempo de cada vez.
+   - A cada etapa de tempo, a RNN calcula a saída com base na entrada atual e no estado oculto anterior.
+   - A saída é comparada com a saída desejada usando uma função de perda para calcular o erro.
+
+2. **Retropropagação (Backpropagation):**
+   - O gradiente do erro em relação aos parâmetros é calculado usando a retropropagação padrão, considerando a sequência até o ponto atual.
+   - O gradiente é propagado de volta através do tempo, atualizando os pesos da rede.
+
+3. **Atualização de Parâmetros:**
+   - Os parâmetros da rede (pesos e viés) são atualizados usando um otimizador de gradiente descendente, como o Gradiente Descendente Estocástico (SGD) ou algoritmos mais avançados como o Adam ou RMSprop.
+   - A taxa de aprendizado é um hiperparâmetro importante que controla a magnitude das atualizações de peso.
+
+4. **Repetição:**
+   - Os passos 1 a 3 são repetidos para cada etapa de tempo da sequência.
+   - O treinamento geralmente é realizado por várias épocas, onde uma época é um ciclo completo por todas as sequências de treinamento.
+
+5. **Vanishing and Exploding Gradients:**
+   - RNNs podem sofrer de problemas de gradientes que desaparecem ou explodem durante o treinamento de sequências longas. Isso ocorre porque o gradiente é multiplicado sucessivamente por matrizes de pesos em retropropagações sucessivas. Mecanismos como Unidades de Memória de Curto Prazo (LSTM) ou Gated Recurrent Units (GRU) foram desenvolvidos para mitigar esses problemas.
+
+O BPTT é uma extensão do algoritmo de retropropagação tradicional, adaptado para lidar com a natureza sequencial e recorrente das RNNs. Ele permite que a rede aprenda padrões temporais e dependências de longo prazo nos dados.
+
 ### Modelo Sequência para Sequência
+Os modelos Sequência a Sequência (Seq2Seq) são uma arquitetura de rede neural projetada para lidar com tarefas em que uma sequência de entrada é mapeada para uma sequência de saída. Essa arquitetura é amplamente utilizada em aplicações de processamento de linguagem natural (NLP), tradução automática, conversão de texto para fala, resumo automático, entre outros.
+
+A estrutura básica de um modelo Seq2Seq consiste em duas partes principais: o codificador (encoder) e o decodificador (decoder).
+
+1. **Codificador (Encoder):**
+   - O codificador processa a sequência de entrada e produz um contexto ou representação compacta.
+   - Cada elemento da sequência de entrada é mapeado para um vetor no espaço latente através de camadas recorrentes, como LSTM (Long Short-Term Memory) ou GRU (Gated Recurrent Unit).
+   - O estado final do codificador é usado como o contexto que encapsula toda a informação relevante da sequência de entrada.
+
+2. **Decodificador (Decoder):**
+   - O decodificador recebe o contexto gerado pelo codificador e o utiliza para gerar a sequência de saída.
+   - Inicia-se com um token especial de início e, a cada passo de tempo, prediz o próximo token na sequência de saída.
+   - O estado oculto do decodificador é atualizado a cada predição, incorporando informações do contexto e das predições anteriores.
+   - O processo continua até que um token especial de fim seja predito ou até que um comprimento máximo seja atingido.
+
+3. **Atenção (Attention):**
+   - Em muitos casos, é incorporada uma camada de atenção ao modelo Seq2Seq para permitir que o decodificador se concentre em partes específicas do contexto do codificador durante a geração da saída. Isso é particularmente útil para lidar com sequências de entrada de comprimentos variáveis.
+
+4. **Treinamento:**
+   - Durante o treinamento, a rede é alimentada com pares de sequências de entrada e saída.
+   - A função de perda é calculada com base na diferença entre as saídas preditas e as saídas reais.
+   - O algoritmo de otimização, como Gradiente Descendente Estocástico (SGD) ou algoritmos mais avançados, é usado para ajustar os pesos da rede para minimizar a perda.
+
+Exemplos de aplicações práticas de modelos Seq2Seq incluem tradução automática, resumo automático de texto, diálogo de máquinas de resposta e muitas outras tarefas em que a correspondência entre sequências é essencial.
+
 ### Problemas de Recorrência e Redes Profundas
+Problemas de gradiente vanishing (desaparecimento) e exploding (explosão) são desafios comuns em redes neurais recorrentes (RNNs) e podem dificultar o treinamento eficaz desses modelos. Vamos discutir cada um desses problemas e algumas soluções associadas:
+
+#### 1. Gradiente Vanishing:
+- **Descrição:** Durante o treinamento de RNNs, os gradientes podem diminuir exponencialmente à medida que são propagados para trás ao longo das etapas de tempo. Isso pode resultar em atualizações de peso muito pequenas, tornando difícil para a rede aprender dependências de longo prazo.
+
+- **Soluções:**
+  - **Unidades de Memória de Longo Prazo (LSTM) e Unidades de Porta Recorrente (GRU):** Essas arquiteturas de célula foram projetadas para mitigar o problema de gradiente vanishing, permitindo que as informações relevantes sejam mantidas por mais tempo.
+  - **Inicialização de Pesos Adequada:** Inicializações específicas de pesos, como a inicialização de Xavier/Glorot, podem ajudar a manter gradientes em uma faixa mais apropriada.
+  - **Uso de outras funções de ativação**: Uso de outras funções de ativação, como a ReLU. Ela não satura devido a seu formato, de zero a x.
+
+#### 2. Gradiente Exploding:
+- **Descrição:** Em contraste com o gradiente vanishing, o gradiente exploding ocorre quando os gradientes tornam-se muito grandes durante a retropropagação. Isso pode levar a atualizações de peso excessivamente grandes e instabilidade no treinamento.
+
+- **Soluções:**
+  - **Clipping de Gradientes:** Limitar os gradientes durante o treinamento, por exemplo, definindo um limite máximo para o valor do gradiente (Gradient Clipping), pode evitar explosões.
+  - **Inicialização de Pesos Adequada:** Uma inicialização cuidadosa dos pesos também pode ajudar a prevenir gradientes muito grandes.
+  - **Regularização:** Técnicas de regularização, como dropout aplicado a unidades de recorrência, podem ajudar a controlar a propagação de gradientes.
+
+#### 3. Redes Neurais Residuais (ResNets) e Gated Recurrent Units (GRUs):
+- **Descrição:** Arquiteturas como ResNets e GRUs são projetadas com conexões diretas ou mecanismos de portas que facilitam a passagem de gradientes ao longo do tempo.
+
+- **Soluções:**
+  - **Redes Neurais Residuais (ResNets):** Introduzem conexões de atalho que permitem que os gradientes fluam mais facilmente através das camadas.
+  - **Unidades de Porta Recorrente (GRUs):** Têm mecanismos de portas que regulam o fluxo de informações, ajudando a evitar problemas de gradiente vanishing.
+
+#### 4. Aprendizado em Camadas:
+- **Descrição:** Treinar RNNs com múltiplas camadas pode agravar problemas de gradiente vanishing e exploding.
+
+- **Soluções:**
+  - **Empilhamento de Camadas Cuidadoso:** Adicionar mais camadas às RNNs requer um cuidado especial na escolha de arquiteturas (por exemplo, LSTMs) e métodos de inicialização de pesos.
+
+Essas soluções ajudam a mitigar os desafios relacionados a gradientes vanishing e exploding em RNNs, tornando-as mais eficazes para aprender dependências temporais em dados sequenciais.
+
 ### Lista 05 (Colab)
 - Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/notebooks/nome.ipynb)
 
 ## Semana 6
 ### Redes LSTM
+Long Short-Term Memory (LSTM) é uma arquitetura de célula de memória projetada para superar os desafios de aprendizado de longo prazo e mitigar o problema de gradiente vanishing em Redes Neurais Recorrentes (RNNs). Ela foi introduzida por Sepp Hochreiter e Jürgen Schmidhuber em 1997.
+
+#### Teoria da LSTM:
+
+1. **Célula de Memória:**
+   - A unidade básica de uma LSTM é a célula de memória, que mantém uma memória de longo prazo e é controlada por três portas: porta de entrada (input gate), porta de esquecimento (forget gate) e porta de saída (output gate).
+
+2. **Porta de Entrada (Input Gate):**
+   - Decide quais informações novas serão armazenadas na célula de memória.
+   - Calcula um vetor de candidato para atualizar a célula de memória.
+
+3. **Porta de Esquecimento (Forget Gate):**
+   - Decide quais informações da célula de memória serão esquecidas ou mantidas.
+   - É uma porta sigmoid que determina a quantidade de cada informação antiga a ser mantida.
+
+4. **Atualização da Célula de Memória:**
+   - A célula de memória é atualizada multiplicando o vetor de esquecimento pelo estado atual da célula e adicionando o produto da porta de entrada e do vetor de candidato.
+
+5. **Porta de Saída (Output Gate):**
+   - Decide qual parte da célula de memória atualizada será a saída da célula.
+   - Passa o conteúdo da célula de memória atualizado por uma função de ativação (geralmente tanh) e multiplica pelo resultado da porta de saída (sigmoid).
+
+#### Exemplo de Implementação em Python usando Keras:
+
+```python
+from tensorflow.keras.layers import Input, LSTM
+
+# Definindo a entrada
+input_sequence = Input(shape=(timesteps, input_features))
+
+# Adicionando uma camada LSTM
+lstm_output = LSTM(units=hidden_units)(input_sequence)
+
+# O 'lstm_output' pode ser conectado a outras camadas da rede neural
+```
+
+Neste exemplo, `timesteps` refere-se ao número de etapas de tempo na sequência de entrada, `input_features` é a dimensão dos vetores de entrada em cada etapa de tempo, e `hidden_units` é o número de unidades na camada LSTM. A camada LSTM é responsável por processar sequências temporais e aprender dependências de longo prazo.
+
+LSTMs são amplamente utilizadas em aplicações de processamento de linguagem natural, tradução automática, geração de texto, entre outras, onde a compreensão de dependências temporais é crucial. Elas se destacam em lidar com sequências de dados devido à sua capacidade de lembrar informações relevantes por longos períodos.
+
 ### Redes Recorrentes GRU e Redes Recorrentes Bidirecionais
+
+#### Redes Recorrentes GRU
+As Redes Recorrentes Gated Recurrent Unit (GRU) são uma variação das Redes Neurais Recorrentes (RNNs) projetadas para superar alguns dos desafios das RNNs tradicionais, como o problema de gradiente desaparecendo e de explodir. Elas foram propostas por Kyunghyun Cho et al. em 2014.
+
+#### Teoria da GRU:
+
+1. **Célula de Estado:**
+   - Similar à célula de memória em LSTMs, a GRU possui uma célula de estado que representa a memória interna da unidade recorrente.
+
+2. **Porta de Reset (Reset Gate):**
+   - Responsável por decidir quais informações antigas da célula de estado devem ser esquecidas.
+   - Controla a quantidade de informação do passado que deve ser considerada na atualização.
+
+3. **Atualização da Célula de Estado:**
+   - A célula de estado é atualizada usando uma combinação ponderada da informação antiga e da informação candidata, que é calculada usando a porta de reset.
+
+4. **Porta de Atualização (Update Gate):**
+   - Determina quanto da informação candidata deve ser adicionada à célula de estado.
+
+5. **Cálculo da Saída:**
+   - A saída é calculada usando a célula de estado atualizada.
+
+#### Exemplo de Implementação em Python usando Keras:
+
+```python
+from tensorflow.keras.layers import Input, GRU
+
+# Definindo a entrada
+input_sequence = Input(shape=(timesteps, input_features))
+
+# Adicionando uma camada GRU
+gru_output = GRU(units=hidden_units)(input_sequence)
+
+# O 'gru_output' pode ser conectado a outras camadas da rede neural
+```
+
+No código acima, `timesteps` refere-se ao número de etapas de tempo na sequência de entrada, `input_features` é a dimensão dos vetores de entrada em cada etapa de tempo, e `hidden_units` é o número de unidades na camada GRU. A camada GRU é eficaz para lidar com dependências temporais em sequências de dados e tem um número menor de parâmetros em comparação com LSTMs, o que pode ser vantajoso em algumas situações.
+
+As GRUs são amplamente utilizadas em aplicações de processamento de linguagem natural, tradução automática, geração de texto, entre outras, onde a modelagem de sequências é fundamental.
+
+#### Redes Recorrentes Bidirecionais
+As Redes Recorrentes Bidirecionais (BiRNNs) são uma extensão das Redes Neurais Recorrentes (RNNs) que processam a sequência de entrada em duas direções: do início ao fim e do fim ao início. Essa abordagem permite que a rede capture informações contextuais tanto do passado quanto do futuro, o que pode ser crucial em tarefas que dependem de contextos amplos.
+
+### Teoria das BiRNNs:
+
+1. **Camadas Recorrentes em Ambas as Direções:**
+   - As BiRNNs consistem em duas camadas recorrentes separadas, uma para processar a sequência do início ao fim (normal) e outra para processar a sequência do fim ao início (invertida).
+
+2. **Combinando as Saídas:**
+   - As saídas das duas camadas recorrentes são combinadas, geralmente concatenadas, para formar a representação final da sequência.
+
+3. **Benefícios da Bidirecionalidade:**
+   - A abordagem bidirecional ajuda a capturar informações contextuais de ambos os lados de cada posição na sequência, permitindo uma compreensão mais abrangente do contexto.
+
+### Exemplo de Implementação em Python usando Keras:
+
+```python
+from tensorflow.keras.layers import Input, Bidirectional, LSTM
+
+# Definindo a entrada
+input_sequence = Input(shape=(timesteps, input_features))
+
+# Adicionando uma camada LSTM bidirecional
+bi_lstm_output = Bidirectional(LSTM(units=hidden_units))(input_sequence)
+
+# O 'bi_lstm_output' pode ser conectado a outras camadas da rede neural
+```
+
+No código acima, `timesteps` refere-se ao número de etapas de tempo na sequência de entrada, `input_features` é a dimensão dos vetores de entrada em cada etapa de tempo, e `hidden_units` é o número de unidades na camada LSTM bidirecional. Essa abordagem é útil em tarefas como reconhecimento de entidades em texto, tradução automática, e outras onde informações contextuais de ambas as direções são relevantes.
+
+As BiRNNs são poderosas para modelar dependências temporais em sequências e podem levar a melhorias significativas em desempenho em comparação com RNNs unidirecionais em muitas tarefas de processamento de sequências.
+
 ### Lista 06 (Colab)
 - Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/notebooks/nome.ipynb)
-
-### Entrega 02 - RNNs Bidirecionais LSTM e GRU
