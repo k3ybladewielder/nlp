@@ -1382,7 +1382,8 @@ Considere a seguinte frase:
   - Cada palavra de contexto é mapeada para seu vetor denso correspondente.
 
   Exemplos de Mapeamento:
-  - $ \mathbf{v}_{\text{gosto}} $, $ \mathbf{v}_{\text{de}} $, $ \mathbf{v}_{\text{comer}} $, $ \mathbf{v}_{\text{uma}} $, $ \mathbf{v}_{\text{deliciosa}} $
+
+$ \mathbf{v}_{\text{gosto}} $, $ \mathbf{v}_{\text{de}} $, $ \mathbf{v}_{\text{comer}} $, $ \mathbf{v}_{\text{uma}} $, $ \mathbf{v}_{\text{deliciosa}} $
 
 
 - **Soma dos Vetores de Contexto:**
