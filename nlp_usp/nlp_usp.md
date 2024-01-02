@@ -1383,17 +1383,8 @@ Considere a seguinte frase:
 
   Exemplos de Mapeamento:
   
-$$ 
-\text{v}_{\text{gosto}}, \text{v}_{\text{de}}, \text{v}_{\text{comer}}, \text{v}_{\text{uma}}, \text{v}_{\text{deliciosa}} 
-$$
-
-$$\text{v}_{\text{gosto}}, \text{v}_{\text{de}}, \text{v}_{\text{comer}}, \text{v}_{\text{uma}}, \text{v}_{\text{deliciosa}}$$
-
-$ 
-\text{v}_{\text{gosto}}, \text{v}_{\text{de}}, \text{v}_{\text{comer}}, \text{v}_{\text{uma}}, \text{v}_{\text{deliciosa}} 
-$
+  - $\text{v}_{\text{gosto}}$, $\text{v}_{\text{de}}$, $\text{v}_{\text{comer}}$, $\text{v}_{\text{uma}}$, $\text{v}_{\text{deliciosa}}$
  
-
 - **Soma dos Vetores de Contexto:**
   - Os vetores de contexto são somados para obter uma representação agregada.
 
