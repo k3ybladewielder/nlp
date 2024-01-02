@@ -1288,7 +1288,7 @@ O modelo Skip-Gram é uma arquitetura do Word2Vec que tem como objetivo prever a
    - Mapeie a palavra de destino para um vetor denso no espaço vetorial (embedding).
 
    Exemplo:
-   - "banana" pode ser mapeada para um vetor $\mathbf{v}_{\text{banana}}$.
+   - "banana" pode ser mapeada para um vetor $\text{v}_{\text{banana}}$.
 
 3. **Geração de Exemplos de Treinamento:**
    - Crie pares de palavra de destino e palavras de contexto (vizinhas) a partir do texto.
@@ -1300,7 +1300,7 @@ O modelo Skip-Gram é uma arquitetura do Word2Vec que tem como objetivo prever a
    - O modelo tenta prever as palavras de contexto usando a palavra de destino como entrada.
 
    Exemplo:
-   - Dada a palavra de destino "banana" e seu vetor $\mathbf{v}_{\text{banana}}$, o modelo tenta prever as palavras de contexto como "gosto", "de", "comer", etc.
+   - Dada a palavra de destino "banana" e seu vetor $\text{v}_{\text{banana}}$, o modelo tenta prever as palavras de contexto como "gosto", "de", "comer", etc.
 
 5. **Otimização dos Parâmetros:**
    - Durante o treinamento, os parâmetros da rede neural são ajustados para maximizar a probabilidade de prever as palavras de contexto corretas.
@@ -1327,7 +1327,7 @@ Considere a seguinte frase:
   - $"banana", "deliciosa"$
 
 - **Treinamento do Modelo:**
-  - O modelo Skip-Gram tentará ajustar seus parâmetros para que, dado o vetor $\mathbf{v}_{\text{banana}}$, seja capaz de prever corretamente as palavras de contexto em cada par.
+  - O modelo Skip-Gram tentará ajustar seus parâmetros para que, dado o vetor $\text{v}_{\text{banana}}$, seja capaz de prever corretamente as palavras de contexto em cada par.
 
 Esse processo é repetido para várias palavras de destino em todo o corpus de texto durante o treinamento. Após o treinamento, os vetores resultantes representam semanticamente as palavras no espaço vetorial, onde palavras com contextos semelhantes têm vetores próximos uns aos outros. Essa propriedade é útil para tarefas de PLN, onde a similaridade semântica entre palavras é importante.
 
@@ -1344,19 +1344,19 @@ O Continuous Bag of Words (CBOW) é outra arquitetura do modelo Word2Vec que vis
    - Mapeie cada palavra de contexto para um vetor denso no espaço vetorial (embedding).
 
    Exemplo:
-   - "gosto" pode ser mapeada para $\mathbf{v}_{\text{gosto}}$, "de" para $\mathbf{v}_{\text{de}}$, e assim por diante.
+   - "gosto" pode ser mapeada para $\text{v}_{\text{gosto}}$, "de" para $\text{v}_{\text{de}}$, e assim por diante.
 
 3. **Soma dos Vetores de Contexto:**
    - Some os vetores de contexto para obter uma representação agregada.
 
    Exemplo:
-   - $\mathbf{v}_{\text{contexto}} = \mathbf{v}_{\text{gosto}} + \mathbf{v}_{\text{de}} + \mathbf{v}_{\text{comer}} + \mathbf{v}_{\text{uma}} + \mathbf{v}_{\text{deliciosa}}$
+   - $\text{v}_{\text{contexto}} = \text{v}_{\text{gosto}} + \text{v}_{\text{de}} + \text{v}_{\text{comer}} + \text{v}_{\text{uma}} + \text{v}_{\text{deliciosa}}$
 
 4. **Previsão da Palavra de Destino (Centro):**
    - O modelo tenta prever a palavra de destino usando a representação agregada dos vetores de contexto.
 
    Exemplo:
-   - Dada a representação $\mathbf{v}_{\text{contexto}}$, o modelo tenta prever a palavra de destino "banana".
+   - Dada a representação $\text{v}_{\text{contexto}}$, o modelo tenta prever a palavra de destino "banana".
 
 5. **Treinamento: Otimização dos Parâmetros:**
    - Durante o treinamento, os parâmetros da rede neural são ajustados para maximizar a probabilidade de prever corretamente a palavra de destino.
@@ -1384,13 +1384,13 @@ Considere a seguinte frase:
   Exemplos de Mapeamento:
   
 $$ 
-\mathbf{v}_{\text{gosto}}, \mathbf{v}_{\text{de}}, \mathbf{v}_{\text{comer}}, \mathbf{v}_{\text{uma}}, \mathbf{v}_{\text{deliciosa}} 
+\text{v}_{\text{gosto}}, \text{v}_{\text{de}}, \text{v}_{\text{comer}}, \text{v}_{\text{uma}}, \text{v}_{\text{deliciosa}} 
 $$
 
-$$\mathbf{v}_{\text{gosto}}, \mathbf{v}_{\text{de}}, \mathbf{v}_{\text{comer}}, \mathbf{v}_{\text{uma}}, \mathbf{v}_{\text{deliciosa}} $$
+$$\text{v}_{\text{gosto}}, \text{v}_{\text{de}}, \text{v}_{\text{comer}}, \text{v}_{\text{uma}}, \text{v}_{\text{deliciosa}} $$
 
 $ 
-\mathbf{v}_{\text{gosto}}, \mathbf{v}_{\text{de}}, \mathbf{v}_{\text{comer}}, \mathbf{v}_{\text{uma}}, \mathbf{v}_{\text{deliciosa}} 
+\text{v}_{\text{gosto}}, \text{v}_{\text{de}}, \text{v}_{\text{comer}}, \text{v}_{\text{uma}}, \text{v}_{\text{deliciosa}} 
 $
  
 
@@ -1398,10 +1398,10 @@ $
   - Os vetores de contexto são somados para obter uma representação agregada.
 
   Exemplo:
-  - $\mathbf{v}_{\text{contexto}} = \mathbf{v}_{\text{gosto}} + \mathbf{v}_{\text{de}} + \mathbf{v}_{\text{comer}} + \mathbf{v}_{\text{uma}} + \mathbf{v}_{\text{deliciosa}}$
+  - $\text{v}_{\text{contexto}} = \text{v}_{\text{gosto}} + \text{v}_{\text{de}} + \text{v}_{\text{comer}} + \text{v}_{\text{uma}} + \text{v}_{\text{deliciosa}}$
 
 - **Previsão da Palavra de Destino:**
-  - O modelo tenta prever a palavra de destino "banana" usando $\mathbf{v}_{\text{contexto}}$.
+  - O modelo tenta prever a palavra de destino "banana" usando $\text{v}_{\text{contexto}}$.
 
 Esse processo é repetido para várias palavras de destino em todo o corpus de texto durante o treinamento. Após o treinamento, os vetores resultantes representam semanticamente as palavras no espaço vetorial, onde palavras com contextos semelhantes têm vetores próximos uns aos outros.
 
