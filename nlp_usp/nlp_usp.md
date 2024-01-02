@@ -1389,7 +1389,7 @@ Considere a seguinte frase:
   - Os vetores de contexto são somados para obter uma representação agregada.
 
   Exemplo:
-  - $\text{v}_{\text{contexto}} = \text{v}_{\text{gosto}} + \text{v}_{\text{de}} + \text{v}_{\text{comer}} + \text{v}_{\text{uma}} + \text{v}_{\text{deliciosa}}$
+  - $$\text{v}_{\text{contexto}} = \text{v}_{\text{gosto}} + \text{v}_{\text{de}} + \text{v}_{\text{comer}} + \text{v}_{\text{uma}} + \text{v}_{\text{deliciosa}}$$
 
 - **Previsão da Palavra de Destino:**
   - O modelo tenta prever a palavra de destino "banana" usando $\text{v}_{\text{contexto}}$.
