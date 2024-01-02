@@ -1295,7 +1295,7 @@ O modelo Skip-Gram é uma arquitetura do Word2Vec que tem como objetivo prever a
    - O modelo tenta prever as palavras de contexto usando a palavra de destino como entrada.
 
    Exemplo:
-   - Dada a palavra de destino "banana" e seu vetor \(\mathbf{v}_{\text{banana}}\), o modelo tenta prever as palavras de contexto como "gosto", "de", "comer", etc.
+   - Dada a palavra de destino "banana" e seu vetor $\mathbf{v}_{\text{banana}}$, o modelo tenta prever as palavras de contexto como "gosto", "de", "comer", etc.
 
 5. **Otimização dos Parâmetros:**
    - Durante o treinamento, os parâmetros da rede neural são ajustados para maximizar a probabilidade de prever as palavras de contexto corretas.
