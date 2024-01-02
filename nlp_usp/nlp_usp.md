@@ -1706,4 +1706,4 @@ No código acima, `timesteps` refere-se ao número de etapas de tempo na sequên
 As BiRNNs são poderosas para modelar dependências temporais em sequências e podem levar a melhorias significativas em desempenho em comparação com RNNs unidirecionais em muitas tarefas de processamento de sequências.
 
 ### Lista 06 (Colab)
-- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/notebooks/nome.ipynb)
+- Acesse [aqui](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/notebooks/06_LSTM&GRU.ipynb)
