@@ -1387,7 +1387,7 @@ $$
 \text{v}_{\text{gosto}}, \text{v}_{\text{de}}, \text{v}_{\text{comer}}, \text{v}_{\text{uma}}, \text{v}_{\text{deliciosa}} 
 $$
 
-$$\text{v}_{\text{gosto}}, \text{v}_{\text{de}}, \text{v}_{\text{comer}}, \text{v}_{\text{uma}}, \text{v}_{\text{deliciosa}} $$
+$$\text{v}_{\text{gosto}}, \text{v}_{\text{de}}, \text{v}_{\text{comer}}, \text{v}_{\text{uma}}, \text{v}_{\text{deliciosa}}$$
 
 $ 
 \text{v}_{\text{gosto}}, \text{v}_{\text{de}}, \text{v}_{\text{comer}}, \text{v}_{\text{uma}}, \text{v}_{\text{deliciosa}} 
