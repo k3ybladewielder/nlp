@@ -1222,11 +1222,11 @@ O Word2Vec é um modelo popular no campo de processamento de linguagem natural (
 
 Existem dois principais arquiteturas do Word2Vec: Skip-Gram e Continuous Bag of Words (CBOW).
 
-<img src="word2vec.jpg">
+<img src="./imgs/word2vec.jpg">
 
 #### Skip-Gram:
 
-<img src="skip-gram.png">
+<img src="./imgs/skip-gram.png">
 
 No modelo Skip-Gram, o objetivo é prever as palavras de contexto (palavras vizinhas) dadas uma palavra de destino. O processo é o seguinte:
 
@@ -1244,7 +1244,7 @@ No modelo Skip-Gram, o objetivo é prever as palavras de contexto (palavras vizi
 
 #### Continuous Bag of Words (CBOW):
 
-<img src="cbow.png">
+<img src="./imgs/cbow.png">
 
 No modelo CBOW, o objetivo é prever a palavra de destino a partir de palavras de contexto. O processo é inverso ao do Skip-Gram:
 
@@ -1382,6 +1382,7 @@ Considere a seguinte frase:
   - Cada palavra de contexto é mapeada para seu vetor denso correspondente.
 
   Exemplos de Mapeamento:
+  
 $$ \mathbf{v}_{\text{gosto}}, \mathbf{v}_{\text{de}}, \mathbf{v}_{\text{comer}}, \mathbf{v}_{\text{uma}}, \mathbf{v}_{\text{deliciosa}} $$
  
 
