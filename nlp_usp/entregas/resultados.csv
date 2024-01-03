@@ -1,0 +1,5 @@
+,Método,Acurácia,Melhor (S/N)
+3,GRU Bidirecional,0.8401130437850952,S
+1,LSTM Bidirecional,0.8390766978263855,N
+0,LSTM Unidirecional,0.6972000002861023,N
+2,GRU Unidirecional,0.6972000002861023,N
