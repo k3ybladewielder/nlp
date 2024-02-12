@@ -17,12 +17,9 @@ Natural Language Processing (NLP) Course Notes, resources and exercises.
   - Stanford CS25 - Transformers United
   
 ## Conferences 📜
-### NLP Focused  
-  - ACL, NAACL, EMNLP, AACL, EACL, COLING, CoNLL
-### WEB, Knowledge bases and IA focused
-  - WWW, WSDM, KDD, ICWSM, IJCAI, AAAI, CogSci, SCiL
-### Machine Learning focused
-  - ICML, NeurIPS ICLR
+- **NLP Focused**: ACL, NAACL, EMNLP, AACL, EACL, COLING, CoNLL
+- **WEB, Knowledge bases and IA focused**: WWW, WSDM, KDD, ICWSM, IJCAI, AAAI, CogSci, SCiL
+- **Machine Learning focused**: ICML, NeurIPS ICLR
   
 ## Resources 🧰
 - [LLM Course](https://github.com/mlabonne/llm-course)
