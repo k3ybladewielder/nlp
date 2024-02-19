@@ -28,6 +28,7 @@ Natural Language Processing (NLP) Course Notes, resources and exercises.
 - [Reasoning in Large Language Models](https://github.com/jeffhj/LM-reasoning)
 - [Reasoning with Language Model Prompting Papers](https://github.com/zjunlp/Prompt4ReasoningPapers)
 - [Prompt Engineering Guide](https://www.promptingguide.ai/)
+- [VectorHub](https://hub.superlinked.com/)
 - Datacamp Spacy Cheatsheet [(blog post)](https://www.datacamp.com/cheat-sheet/spacy-cheat-sheet-advanced-nlp-in-python) and [(pdf)](spacy_cheatsheet.pdf)
 
 ## Licence
