@@ -130,5 +130,11 @@ def sanity_check():
     print("-" * 40)
 
 
-if __name__ == "__main__":
+#if __name__ == "__main__":
+#    sanity_check()
+
+def main():
     sanity_check()
+
+if __name__ == "__main__":
+    main()
