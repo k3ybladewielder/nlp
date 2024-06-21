@@ -4,6 +4,11 @@ Este repositório possui anotações, notas e insights **pessoais** sobre estudo
 ## Book notes 📚
 - [Processamento de Linguagem Natural: Conceitos, Técnicas e Aplicações em Português](https://github.com/k3ybladewielder/nlp/blob/main/books/pln_caseli.md)
 - Speech and Language Processing (3rd ed.) by Dan Jurafsky and James H. Martin [(book available here)](https://web.stanford.edu/~jurafsky/slp3/ed3book.pdf)
+- Natural Language Processing with PyTorch: Build Intelligent Language Applications Using Deep Learning by Delip Rao
+- Natural Language Processing with Python: Analyzing Text with the Natural Language Toolkit by Steven Bird and Ewan Klein
+- Natural Language Processing with Transformers, Revised Edition: Building Language Applications With Hugging Face by Leandro Von Werra
+- Practical Natural Language Processing: A Comprehensive Guide to Building Real-World NLP Systems by Amij Grupta and Bodhisattwa Majumder
+- Linguística Computacional: 13 by Cláudia Freitas
 
 ## Courses 🧑‍💻
 Natural Language Processing (NLP) Course Notes, resources and exercises.
