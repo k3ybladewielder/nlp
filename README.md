@@ -1,8 +1,9 @@
 # NLP Studies 🗝️
 Este repositório possui anotações, notas e insights **pessoais** sobre estudos. Ele não possui materiais derivados.
 
-## Book notes
+## Book notes 📚
 - [Processamento de Linguagem Natural: Conceitos, Técnicas e Aplicações em Português](https://github.com/k3ybladewielder/nlp/blob/main/books/pln_caseli.md)
+- Speech and Language Processing (3rd ed.) by Dan Jurafsky and James H. Martin [(book available here)](https://web.stanford.edu/~jurafsky/slp3/ed3book.pdf)
 
 ## Courses 🧑‍💻
 Natural Language Processing (NLP) Course Notes, resources and exercises.
