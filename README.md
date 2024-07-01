@@ -30,6 +30,7 @@ Natural Language Processing (NLP) Course Notes, resources and exercises.
 ## Resources 🧰
 - [LLM Course](https://github.com/mlabonne/llm-course)
 - [Hands-on LLMs Course](https://github.com/iusztinpaul/hands-on-llms?tab=readme-ov-file#hands-on-llms-course-)
+- [The Full Stack LLM Bootcamp](https://fullstackdeeplearning.com/)
 - [ReasoningNLP (Paper list)](https://github.com/FreedomIntelligence/ReasoningNLP)
 - [Reasoning in Large Language Models](https://github.com/jeffhj/LM-reasoning)
 - [Reasoning with Language Model Prompting Papers](https://github.com/zjunlp/Prompt4ReasoningPapers)
