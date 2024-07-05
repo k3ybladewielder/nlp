@@ -12,7 +12,7 @@ Este repositório possui anotações, notas e insights **pessoais** sobre estudo
 
 ## Courses 🧑‍💻
 Natural Language Processing (NLP) Course Notes, resources and exercises.
-  - **Natural Language Processing with Classification and Vector Spaces @ DeeplearningAI**. [Notebook](  (https://github.com/k3ybladewielder/nlp/blob/main/nlp_classification_vectors/nlp_classification_vectors.ipynb)) 📚, [Curso](https://www.coursera.org/learn/classification-vector-spaces-in-nlp)
+  - **Natural Language Processing with Classification and Vector Spaces @ DeeplearningAI**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/nlp_classification_vectors/nlp_classification_vectors.ipynb)) 📚, [Curso](https://www.coursera.org/learn/classification-vector-spaces-in-nlp)
   - [Natural Language Processing with Probabilistic Models @ DeeplearningAI](https://github.com/k3ybladewielder/nlp/blob/main/nlp_probabilistic_models/nlp_prob_models.ipynb)
   - [Natural Language Processing with Sequence Models @ DeeplearningAI](https://github.com/k3ybladewielder/nlp/blob/main/nlp_sequence_models/nlp_seq_models.ipynb)
   - Natural Language Processing with Attention Models @ DeeplearningAI
