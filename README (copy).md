@@ -12,9 +12,9 @@ Este repositório possui anotações, resumos, fichamentos e insights **pessoais
 
 ## Courses 🧑‍💻
   - **Natural Language Processing with Classification and Vector Spaces @ DeeplearningAI**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/nlp_classification_vectors/nlp_classification_vectors.ipynb) 📚, [Curso](https://www.coursera.org/learn/classification-vector-spaces-in-nlp) 💻
-  - **Natural Language Processing with Probabilistic Models @ DeeplearningAI**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/nlp_probabilistic_models/nlp_prob_models.ipynb) 📚, [Curso](https://www.coursera.org/learn/probabilistic-models-in-nlp) 💻
-  - **Natural Language Processing with Sequence Models @ DeeplearningAI**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/nlp_sequence_models/nlp_seq_models.ipynb) 📚, [Curso](https://www.coursera.org/learn/sequence-models-in-nlp) 💻  
-  - **Natural Language Processing with Attention Models @ DeeplearningAI**. [Notebook]() 📚, [Curso]() 💻 
+  - **NLP with Probabilistic Models @ DeeplearningAI**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/nlp_probabilistic_models/nlp_prob_models.ipynb) 📚, [Curso](https://www.coursera.org/learn/probabilistic-models-in-nlp) 💻
+  - **NLP with Sequence Models @ DeeplearningAI**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/nlp_sequence_models/nlp_seq_models.ipynb) 📚, [Curso](https://www.coursera.org/learn/sequence-models-in-nlp) 💻  
+  - **NLP with Attention Models @ DeeplearningAI**. [Notebook]() 📚, [Curso]() 💻 
   - **Processamento Neural de Linguagem Natural em Português @ USP**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/nlp_usp.md) 📚, [Curso](https://www.coursera.org/learn/processamento-neural-linguagem-natural-em-portugues-i)  
   - **HuggingFace NLP Course**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/huggingface_course/nlp_course.ipynb) 📚, [Curso](https://huggingface.co/learn/nlp-course/chapter1/1) 💻
   
