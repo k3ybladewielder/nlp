@@ -15,12 +15,13 @@ Natural Language Processing (NLP) Course Notes, resources and exercises.
   - **Natural Language Processing with Classification and Vector Spaces @ DeeplearningAI**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/nlp_classification_vectors/nlp_classification_vectors.ipynb) 📚, [Curso](https://www.coursera.org/learn/classification-vector-spaces-in-nlp) 💻
   - **Natural Language Processing with Probabilistic Models @ DeeplearningAI**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/nlp_probabilistic_models/nlp_prob_models.ipynb) 📚, [Curso](https://www.coursera.org/learn/probabilistic-models-in-nlp) 💻
   - **Natural Language Processing with Sequence Models @ DeeplearningAI**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/nlp_sequence_models/nlp_seq_models.ipynb) 📚, [Curso](https://www.coursera.org/learn/sequence-models-in-nlp) 💻  
-  - Natural Language Processing with Attention Models @ DeeplearningAI
-  - [Processamento Neural de Linguagem Natural em Português @ USP](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/nlp_usp.md)
-  - [HuggingFace NLP Course](https://github.com/k3ybladewielder/nlp/blob/main/huggingface_course/nlp_course.ipynb)
-  - [Stanford CS224N: NLP with Deep Learning](https://github.com/k3ybladewielder/nlp/blob/main/stanford_cs224n/stanford_cs224n.md)
-  - [Stanford XCS224U: Natural Language Understanding](https://github.com/k3ybladewielder/nlp/blob/main/stanford_xcs224u/stanford_xcs224u.md)
-  - Stanford CS25 - Transformers United
+  - **Natural Language Processing with Attention Models @ DeeplearningAI**. [Notebook]() 📚, [Curso]() 💻 
+  - **Processamento Neural de Linguagem Natural em Português @ USP**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/nlp_usp.md) 📚, [Curso](https://www.coursera.org/learn/processamento-neural-linguagem-natural-em-portugues-i)  
+  - **HuggingFace NLP Course**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/huggingface_course/nlp_course.ipynb) 📚, [Curso](https://huggingface.co/learn/nlp-course/chapter1/1) 💻
+  
+  - **Stanford CS224N: NLP with Deep Learning**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/stanford_cs224n/stanford_cs224n.md) 📚, [Curso](https://web.stanford.edu/class/cs224n/)e [Aulas](https://www.youtube.com/playlist?list=PLoROMvodv4rOSH4v6133s9LFPRHjEmbmJ) 💻
+  - **Stanford XCS224U: Natural Language Understanding**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/stanford_xcs224u/stanford_xcs224u.md) 📚, [Curso](https://web.stanford.edu/class/cs224u/index.html) e [Aulas](https://www.youtube.com/playlist?list=PLoROMvodv4rOwvldxftJTmoR3kRcWkJBp) 💻
+  - **Stanford CS25 - Transformers United**. [Notebook]() 📚, [Curso]() 💻
   
 ## Conferences 📜
 - **NLP Focused**: ACL, NAACL, EMNLP, AACL, EACL, COLING, CoNLL
