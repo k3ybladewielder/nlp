@@ -3,11 +3,11 @@ Este repositório possui anotações, resumos, fichamentos e insights **pessoais
 
 ## Books 📚
 - **Processamento de Linguagem Natural: Conceitos, Técnicas e Aplicações em Português**. [Fichamento](https://github.com/k3ybladewielder/nlp/blob/main/books/pln_caseli.md) 📑, [Livro](https://brasileiraspln.com/livro-pln/2a-edicao/) 📚 
-- **Speech and Language Processing (3rd ed.) by Dan Jurafsky and James H. Martin**. [Fichamento]() 📑, [Livro](https://web.stanford.edu/~jurafsky/slp3/ed3book.pdf) 📚 
-- **Natural Language Processing with PyTorch: Build Intelligent Language Applications Using Deep Learning by Delip Rao**. [Fichamento]() 📑, [Livro]() 📚
-- **Natural Language Processing with Python: Analyzing Text with the Natural Language Toolkit by Steven Bird and Ewan Klein**. [Fichamento]() 📑, [Livro]() 📚
-- **Natural Language Processing with Transformers, Revised Edition: Building Language Applications With Hugging Face by Leandro Von Werra**. [Fichamento]() 📑, [Livro]() 📚
-- **Practical Natural Language Processing: A Comprehensive Guide to Building Real-World NLP Systems by Amij Grupta and Bodhisattwa Majumder**. [Fichamento]() 📑, [Livro]() 📚
+- **Speech and Language Processing (3rd ed.)**. [Fichamento]() 📑, [Livro](https://web.stanford.edu/~jurafsky/slp3/ed3book.pdf) 📚 
+- **Natural Language Processing with PyTorch**. [Fichamento]() 📑, [Livro]() 📚
+- **Natural Language Processing with Python**. [Fichamento]() 📑, [Livro]() 📚
+- **Natural Language Processing with Transformers**. [Fichamento]() 📑, [Livro]() 📚
+- **Practical Natural Language Processing**. [Fichamento]() 📑, [Livro]() 📚
 - **Linguística Computacional: 13 by Cláudia Freitas**. [Fichamento]() 📑, [Livro]() 📚
 
 ## Courses 🧑‍💻
