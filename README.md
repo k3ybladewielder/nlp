@@ -17,7 +17,7 @@ Este repositório possui anotações, resumos, fichamentos e insights **pessoais
 - **Natural Language Processing with Attention Models @ DeeplearningAI**. [Notebook]() 📚, [Curso]() 💻 
 - **Processamento Neural de Linguagem Natural em Português @ USP**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/nlp_usp/nlp_usp.md) 📚, [Curso](https://www.coursera.org/learn/processamento-neural-linguagem-natural-em-portugues-i)  
 - **HuggingFace NLP Course**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/huggingface_course/nlp_course.ipynb) 📚, [Curso](https://huggingface.co/learn/nlp-course/chapter1/1) 💻
-- **Stanford CS224N: NLP with Deep Learning**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/stanford_cs224n/stanford_cs224n.md) 📚, [Curso](https://web.stanford.edu/class/cs224n/)e [Aulas](https://www.youtube.com/playlist?list=PLoROMvodv4rOSH4v6133s9LFPRHjEmbmJ) 💻
+- **Stanford CS224N: NLP with Deep Learning**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/stanford_cs224n/stanford_cs224n.md) 📚, [Curso](https://web.stanford.edu/class/cs224n/) e [Aulas](https://www.youtube.com/playlist?list=PLoROMvodv4rOSH4v6133s9LFPRHjEmbmJ) 💻
 - **Stanford XCS224U: Natural Language Understanding**. [Notebook](https://github.com/k3ybladewielder/nlp/blob/main/stanford_xcs224u/stanford_xcs224u.md) 📚, [Curso](https://web.stanford.edu/class/cs224u/index.html) e [Aulas](https://www.youtube.com/playlist?list=PLoROMvodv4rOwvldxftJTmoR3kRcWkJBp) 💻
 - **Stanford CS25 - Transformers United**. [Notebook]() 📚, [Curso]() 💻
 
